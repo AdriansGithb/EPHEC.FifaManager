@@ -8,8 +8,8 @@ namespace Models
 {
     public class mdlClassement
     {
-        public int Position { get; set; }
-        public string Nom { get; set; }
-        public int Id { get; set; }
+        public int position { get; set; }
+        public string nomEqp { get; set; }
+        public int eqpId { get; set; }
     }
 }
