@@ -8,12 +8,12 @@ namespace BackEnd_DAL
 {
     public class ClassementData
     {
-        public List<Constitution_Championnat> SelectClassement(int champ)
+        public List<SP_SelectClassement_Result> SelectClassement(int champ)
         {
             //récupération de la liste des équipes du championnat @champ
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
-            List<Constitution_Championnat> listCoChmp = ctx.SP_SelectConstChamp(champ).ToList();
-            return listCoChmp;
+            List<SP_SelectClassement_Result> lstClassmnt = ctx.SP_SelectClassement(champ).ToList();
+            return lstClassmnt;
         }
     }
 }

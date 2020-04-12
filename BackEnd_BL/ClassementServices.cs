@@ -14,20 +14,19 @@ namespace BackEnd_BL
         public List<mdlClassement> GetClassement(int champ)
         {
             ClassementData oData = new ClassementData();
-            List<Constitution_Championnat> lstCChmp = oData.SelectClassement(champ).ToList();
+            List<SP_SelectClassement_Result> lstClassRes = oData.SelectClassement(champ).ToList();
 
-            //tranformation en modèles
+            //tranformation en modèles classement
             List<mdlClassement> returnLst = new List<mdlClassement>();
 
-            foreach (Constitution_Championnat eqp in lstCChmp)
+            foreach (SP_SelectClassement_Result eqp in lstClassRes)
             {
-                mdlClassement oCChmp = new mdlClassement();
-                oCChmp.Id = eqp.CoChmp_ID;
-                oCChmp.Equipe_Id = eqp.CoChmp_Eqp_ID;
-                oCChmp.Classement = eqp.CoChmp_Classement;
-                oCChmp.Champ_Id = eqp.CoChmp_Champ_ID;
+                mdlClassement oClassement = new mdlClassement();
+                oClassement.position = eqp.CoChmp_Classement;
+                oClassement.nomEqp = eqp.Eqp_Nom;
+                oClassement.eqpId = eqp.Eqp_ID;
 
-                returnLst.Add(oCChmp);
+                returnLst.Add(oClassement);
             }
 
             return returnLst;

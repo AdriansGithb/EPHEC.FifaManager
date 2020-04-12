@@ -107,6 +107,9 @@
     <Compile Include="SP_SelectAllChampionnats_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_SelectClassement_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_SelectConstChamp_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
