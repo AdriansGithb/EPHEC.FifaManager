@@ -25,7 +25,7 @@ namespace BackEnd_DAL
         public int CoChmp_ID { get; set; }
         public int CoChmp_Champ_ID { get; set; }
         public int CoChmp_Eqp_ID { get; set; }
-        public short CoChmp_Classement { get; set; }
+        public short CoChmp_Points { get; set; }
     
         public virtual Championnats Championnats { get; set; }
         public virtual Equipes Equipes { get; set; }
