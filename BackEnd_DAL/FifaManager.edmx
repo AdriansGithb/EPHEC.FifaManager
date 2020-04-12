@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Championnats">
           <Key>
             <PropertyRef Name="Champ_ID" />
@@ -460,7 +460,8 @@
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Fifa_ManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -481,12 +482,12 @@
           <Property Name="CoChmp_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CoChmp_Champ_ID" Type="Int32" Nullable="false" />
           <Property Name="CoChmp_Eqp_ID" Type="Int32" Nullable="false" />
+          <Property Name="CoChmp_Points" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Championnats" Relationship="Self.FK_Constitution_Championnat_Championnats" FromRole="Constitution_Championnat" ToRole="Championnats" />
           <NavigationProperty Name="Equipes" Relationship="Self.FK_Constitution_Championnat_Equipes" FromRole="Constitution_Championnat" ToRole="Equipes" />
           <NavigationProperty Name="Constitution_Equipes" Relationship="Self.FK_Constitution_Equipes_Constitution_Championnat" FromRole="Constitution_Championnat" ToRole="Constitution_Equipes" />
           <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Constitution_Championnat" FromRole="Constitution_Championnat" ToRole="Matchs" />
           <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_Constitution_Championnat1" FromRole="Constitution_Championnat" ToRole="Matchs" />
-          <Property Name="CoChmp_Points" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Constitution_Equipes">
           <Key>
@@ -951,7 +952,7 @@
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
           <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
-          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -971,7 +972,7 @@
           <Property Type="Int16" Name="Champ_Annee" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_SelectClassement_Result">
-          <Property Type="Int16" Name="CoChmp_Classement" Nullable="false" />
+          <Property Type="Int16" Name="CoChmp_Points" Nullable="false" />
           <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Eqp_ID" Nullable="false" />
         </ComplexType>
@@ -993,10 +994,10 @@
           <EntitySetMapping Name="Constitution_Championnat">
             <EntityTypeMapping TypeName="Fifa_ManagerModel.Constitution_Championnat">
               <MappingFragment StoreEntitySet="Constitution_Championnat">
-                <ScalarProperty Name="CoChmp_Points" ColumnName="CoChmp_Points" />
                 <ScalarProperty Name="CoChmp_ID" ColumnName="CoChmp_ID" />
                 <ScalarProperty Name="CoChmp_Champ_ID" ColumnName="CoChmp_Champ_ID" />
                 <ScalarProperty Name="CoChmp_Eqp_ID" ColumnName="CoChmp_Eqp_ID" />
+                <ScalarProperty Name="CoChmp_Points" ColumnName="CoChmp_Points" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1140,7 +1141,7 @@
           <FunctionImportMapping FunctionImportName="SP_SelectClassement" FunctionName="Fifa_ManagerModel.Store.SP_SelectClassement">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectClassement_Result">
-                <ScalarProperty Name="CoChmp_Classement" ColumnName="CoChmp_Classement" />
+                <ScalarProperty Name="CoChmp_Points" ColumnName="CoChmp_Points" />
                 <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
                 <ScalarProperty Name="Eqp_ID" ColumnName="Eqp_ID" />
               </ComplexTypeMapping>

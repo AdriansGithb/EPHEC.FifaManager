@@ -22,7 +22,8 @@ namespace BackEnd_BL
             foreach (SP_SelectClassement_Result eqp in lstClassRes)
             {
                 mdlClassement oClassement = new mdlClassement();
-                oClassement.position = eqp.CoChmp_Classement;
+                oClassement.position = (lstClassRes.IndexOf(eqp)+1);
+                oClassement.pts=eqp.CoChmp_Points;
                 oClassement.nomEqp = eqp.Eqp_Nom;
                 oClassement.eqpId = eqp.Eqp_ID;
 

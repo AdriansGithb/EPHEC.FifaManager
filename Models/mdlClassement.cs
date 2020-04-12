@@ -9,7 +9,9 @@ namespace Models
     public class mdlClassement
     {
         public int position { get; set; }
+        public int pts { get; set; }
         public string nomEqp { get; set; }
         public int eqpId { get; set; }
+
     }
 }

@@ -13,7 +13,7 @@ namespace BackEnd_DAL
     
     public partial class SP_SelectClassement_Result
     {
-        public short CoChmp_Classement { get; set; }
+        public short CoChmp_Points { get; set; }
         public string Eqp_Nom { get; set; }
         public int Eqp_ID { get; set; }
     }
