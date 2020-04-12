@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace BackEnd_BL
 {
-    public class ConstChampServices
+    public class ClassementServices
     {
         //obtenir le classement d'un championnat sélectionné
-        public List<mdlConstChamp> GetClassement(int champ)
+        public List<mdlClassement> GetClassement(int champ)
         {
             ClassementData oData = new ClassementData();
             List<Constitution_Championnat> lstCChmp = oData.SelectClassement(champ).ToList();
 
             //tranformation en modèles
-            List<mdlConstChamp> returnLst = new List<mdlConstChamp>();
+            List<mdlClassement> returnLst = new List<mdlClassement>();
 
             foreach (Constitution_Championnat eqp in lstCChmp)
             {
-                mdlConstChamp oCChmp = new mdlConstChamp();
+                mdlClassement oCChmp = new mdlClassement();
                 oCChmp.Id = eqp.CoChmp_ID;
                 oCChmp.Equipe_Id = eqp.CoChmp_Eqp_ID;
                 oCChmp.Classement = eqp.CoChmp_Classement;

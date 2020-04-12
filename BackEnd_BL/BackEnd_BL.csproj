@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChampionnatsServices.cs" />
-    <Compile Include="ConstChampServices.cs" />
+    <Compile Include="ClassementServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

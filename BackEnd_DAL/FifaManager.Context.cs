@@ -20,7 +20,6 @@ namespace BackEnd_DAL
         public Fifa_ManagerEntities()
             : base("name=Fifa_ManagerEntities")
         {
-            var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -150,22 +149,13 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Championnats>("SP_SelectAllChampionnats", mergeOption);
         }
     
-        public virtual ObjectResult<Constitution_Championnat> SP_SelectConstChamp(Nullable<int> champ_id)
+        public virtual ObjectResult<SP_SelectClassement_Result> SP_SelectClassement(Nullable<int> champ_id)
         {
             var champ_idParameter = champ_id.HasValue ?
                 new ObjectParameter("champ_id", champ_id) :
                 new ObjectParameter("champ_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Constitution_Championnat>("SP_SelectConstChamp", champ_idParameter);
-        }
-    
-        public virtual ObjectResult<Constitution_Championnat> SP_SelectConstChamp(Nullable<int> champ_id, MergeOption mergeOption)
-        {
-            var champ_idParameter = champ_id.HasValue ?
-                new ObjectParameter("champ_id", champ_id) :
-                new ObjectParameter("champ_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Constitution_Championnat>("SP_SelectConstChamp", mergeOption, champ_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectClassement_Result>("SP_SelectClassement", champ_idParameter);
         }
     }
 }

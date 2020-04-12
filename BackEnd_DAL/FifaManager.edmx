@@ -370,7 +370,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
-        <Function Name="SP_SelectConstChamp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+        <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
@@ -950,8 +950,8 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
-          <FunctionImport Name="SP_SelectConstChamp" EntitySet="Constitution_Championnat" ReturnType="Collection(Fifa_ManagerModel.Constitution_Championnat)">
-          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -975,6 +975,11 @@
           <Property Type="Int32" Name="CoChmp_Champ_ID" Nullable="false" />
           <Property Type="Int32" Name="CoChmp_Eqp_ID" Nullable="false" />
           <Property Type="Int16" Name="CoChmp_Classement" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectClassement_Result">
+          <Property Type="Int16" Name="CoChmp_Classement" Nullable="false" />
+          <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Eqp_ID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1138,7 +1143,14 @@
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Fifa_ManagerModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="SP_SelectAllChampionnats" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllChampionnats">
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_SelectConstChamp" FunctionName="Fifa_ManagerModel.Store.SP_SelectConstChamp">
+          <FunctionImportMapping FunctionImportName="SP_SelectClassement" FunctionName="Fifa_ManagerModel.Store.SP_SelectClassement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectClassement_Result">
+                <ScalarProperty Name="CoChmp_Classement" ColumnName="CoChmp_Classement" />
+                <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
+                <ScalarProperty Name="Eqp_ID" ColumnName="Eqp_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>

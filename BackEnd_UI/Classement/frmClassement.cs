@@ -39,8 +39,8 @@ namespace BackEnd_UI
             mdlChampionnat selChamp = new mdlChampionnat();
             selChamp = (mdlChampionnat)boxChampSelection.SelectedItem;
 
-            ConstChampServices oServices = new ConstChampServices();
-            List<mdlConstChamp> classmnt = new List<mdlConstChamp>();
+            ClassementServices oServices = new ClassementServices();
+            List<mdlClassement> classmnt = new List<mdlClassement>();
             classmnt = oServices.GetClassement(selChamp.Id);
 
             gridClassement.DataSource = classmnt;
