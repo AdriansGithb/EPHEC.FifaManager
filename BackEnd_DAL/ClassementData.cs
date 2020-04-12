@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BackEnd_DAL
 {
-    public class ConstChampData
+    public class ClassementData
     {
-        public List<Constitution_Championnat> SelectConstChamp(int champ)
+        public List<Constitution_Championnat> SelectClassement(int champ)
         {
             //récupération de la liste des équipes du championnat @champ
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();

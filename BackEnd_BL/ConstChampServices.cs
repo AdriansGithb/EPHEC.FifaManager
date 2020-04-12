@@ -13,8 +13,8 @@ namespace BackEnd_BL
         //obtenir le classement d'un championnat sélectionné
         public List<mdlConstChamp> GetClassement(int champ)
         {
-            ConstChampData oData = new ConstChampData();
-            List<Constitution_Championnat> lstCChmp = oData.SelectConstChamp(champ).ToList();
+            ClassementData oData = new ClassementData();
+            List<Constitution_Championnat> lstCChmp = oData.SelectClassement(champ).ToList();
 
             //tranformation en modèles
             List<mdlConstChamp> returnLst = new List<mdlConstChamp>();

@@ -57,7 +57,7 @@
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
     <Compile Include="ChampionnatsData.cs" />
-    <Compile Include="ConstChampData.cs" />
+    <Compile Include="ClassementData.cs" />
     <Compile Include="Constitution_Championnat.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
