@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BackEnd_UI.Match;
 
 namespace BackEnd_UI
 {
@@ -22,6 +23,13 @@ namespace BackEnd_UI
             frmClassement FrmClas = new frmClassement();
             FrmClas.MdiParent = this;
             FrmClas.Show();
+        }
+
+        private void mnResults_Click(object sender, EventArgs e)
+        {
+            frmResultats frmRes = new frmResultats();
+            frmRes.MdiParent = this;
+            frmRes.Show();
         }
     }
 }

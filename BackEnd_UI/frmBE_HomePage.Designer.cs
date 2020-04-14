@@ -30,9 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.classementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.voirLeClassementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnVoirClssmnt = new System.Windows.Forms.ToolStripMenuItem();
             this.matchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.voirModifierLesRésultatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnResults = new System.Windows.Forms.ToolStripMenuItem();
             this.calendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.générerUnCalendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifierUnCalendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,31 +63,32 @@
             // classementToolStripMenuItem
             // 
             this.classementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.voirLeClassementToolStripMenuItem});
+            this.mnVoirClssmnt});
             this.classementToolStripMenuItem.Name = "classementToolStripMenuItem";
             this.classementToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.classementToolStripMenuItem.Text = "Classement";
             // 
-            // voirLeClassementToolStripMenuItem
+            // mnVoirClssmnt
             // 
-            this.voirLeClassementToolStripMenuItem.Name = "voirLeClassementToolStripMenuItem";
-            this.voirLeClassementToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.voirLeClassementToolStripMenuItem.Text = "Voir le classement";
-            this.voirLeClassementToolStripMenuItem.Click += new System.EventHandler(this.mn_VoirClassement_Click);
+            this.mnVoirClssmnt.Name = "mnVoirClssmnt";
+            this.mnVoirClssmnt.Size = new System.Drawing.Size(180, 22);
+            this.mnVoirClssmnt.Text = "Voir le classement";
+            this.mnVoirClssmnt.Click += new System.EventHandler(this.mn_VoirClassement_Click);
             // 
             // matchToolStripMenuItem
             // 
             this.matchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.voirModifierLesRésultatsToolStripMenuItem});
+            this.mnResults});
             this.matchToolStripMenuItem.Name = "matchToolStripMenuItem";
             this.matchToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.matchToolStripMenuItem.Text = "Match";
             // 
-            // voirModifierLesRésultatsToolStripMenuItem
+            // mnResults
             // 
-            this.voirModifierLesRésultatsToolStripMenuItem.Name = "voirModifierLesRésultatsToolStripMenuItem";
-            this.voirModifierLesRésultatsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.voirModifierLesRésultatsToolStripMenuItem.Text = "Voir/Modifier les résultats";
+            this.mnResults.Name = "mnResults";
+            this.mnResults.Size = new System.Drawing.Size(208, 22);
+            this.mnResults.Text = "Voir/Modifier les résultats";
+            this.mnResults.Click += new System.EventHandler(this.mnResults_Click);
             // 
             // calendrierToolStripMenuItem
             // 
@@ -152,7 +153,7 @@
             this.voirLesCartonsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.voirLesCartonsToolStripMenuItem.Text = "Voir les cartons";
             // 
-            // frmHomePage
+            // frmBE_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,7 +161,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmHomePage";
+            this.Name = "frmBE_HomePage";
             this.Text = "BackEnd";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
@@ -174,9 +175,9 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem classementToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem voirLeClassementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnVoirClssmnt;
         private System.Windows.Forms.ToolStripMenuItem matchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem voirModifierLesRésultatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnResults;
         private System.Windows.Forms.ToolStripMenuItem calendrierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem générerUnCalendrierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifierUnCalendrierToolStripMenuItem;

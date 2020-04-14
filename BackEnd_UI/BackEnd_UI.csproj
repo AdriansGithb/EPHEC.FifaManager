@@ -58,6 +58,12 @@
     <Compile Include="frmBE_HomePage.Designer.cs">
       <DependentUpon>frmBE_HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Match\frmResultats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Match\frmResultats.Designer.cs">
+      <DependentUpon>frmResultats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Classement\frmClassement.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBE_HomePage.resx">
       <DependentUpon>frmBE_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Match\frmResultats.resx">
+      <DependentUpon>frmResultats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,7 +116,6 @@
     <Folder Include="Cartons\" />
     <Folder Include="GstnEqp\" />
     <Folder Include="Joueurs\" />
-    <Folder Include="Match\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
