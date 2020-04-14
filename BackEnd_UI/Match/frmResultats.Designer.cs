@@ -58,6 +58,7 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // gpBoxSaisons
             // 

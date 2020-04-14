@@ -17,7 +17,6 @@ namespace BackEnd_UI.Match
         {
             InitializeComponent();
             gridResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         private void frmResultats_Load(object sender, System.EventArgs e)
@@ -27,6 +26,13 @@ namespace BackEnd_UI.Match
             lstChamp = oService.GetChampionnats();
             boxChampSelection.DataSource = lstChamp;
             boxChampSelection.SelectedIndex = 0;
+        }
+
+        private void boxChampSelection_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            ResultatsServices oResServices = new ResultatsServices();
+            List<mdlResultats> lstRes = oResServices.GetResultats(1);
+            gridResults.DataSource = lstRes;
         }
     }
 }

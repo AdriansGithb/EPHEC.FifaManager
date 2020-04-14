@@ -19,14 +19,14 @@ namespace BackEnd_BL
             foreach (SP_SelectResults_Result res in lstRes)
             {
                 mdlResultats oRes = new mdlResultats();
-                oRes.match_ID = res.Match_ID;
-                oRes.date = (DateTime)res.Date;
-                oRes.nom_EqpDom = res.Equipe_Domicile;
-                oRes.nom_EqpVisit = res.Equipe_Visiteuse;
-                oRes.goalsDom = (int)res.Goals_Domicile;
-                oRes.goalsVisit = (int) res.Goals_Visiteur;
-                oRes.resultDom = res.Resultat_Domicile;
-                oRes.resultVisit = res.Resultat_Visiteur;
+                oRes.Match_ID = res.Match_ID;
+                oRes.Date = res.Date;
+                oRes.Nom_EqpDom = res.Equipe_Domicile;
+                oRes.Nom_EqpVisit = res.Equipe_Visiteuse;
+                oRes.GoalsDom = res.Goals_Domicile;
+                oRes.GoalsVisit = res.Goals_Visiteur;
+                oRes.ResultDom = res.Resultat_Domicile;
+                oRes.ResultVisit = res.Resultat_Visiteur;
 
                 rtrnList.Add(oRes);
             }

@@ -8,13 +8,13 @@ namespace Models
 {
     public class mdlResultats
     {
-        public int match_ID;
-        public DateTime date;
-        public string nom_EqpDom;
-        public string nom_EqpVisit;
-        public int goalsDom;
-        public int goalsVisit;
-        public string resultDom;
-        public string resultVisit;
+        public int Match_ID { get; set; }
+        public DateTime? Date { get; set; }
+        public string Nom_EqpDom { get; set; }
+        public string Nom_EqpVisit { get; set; }
+        public short? GoalsDom { get; set; }
+        public short? GoalsVisit { get; set; }
+        public string ResultDom { get; set; }
+        public string ResultVisit { get; set; }
     }
 }
