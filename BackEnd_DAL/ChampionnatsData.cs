@@ -8,9 +8,9 @@ namespace BackEnd_DAL
 {
     public class ChampionnatsData
     {
+        // appel dans la DAL pour récupérer la liste des championnats
         public List<Championnats> SelectAllChampionnats()
         {
-            //récupération des championnats
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
             List<Championnats> listChamps = ctx.SP_SelectAllChampionnats().ToList();
             return listChamps;

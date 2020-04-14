@@ -10,12 +10,13 @@ namespace BackEnd_BL
 {
     public class ChampionnatsServices
     {
+        // obtenir la liste des championnats inscrits dans la BD
         public List<mdlChampionnat> GetChampionnats()
         {
             ChampionnatsData oData = new ChampionnatsData();
             List<Championnats> lstChamp = oData.SelectAllChampionnats().ToList();
 
-            //tranformation en modèles
+            //tranformation en modèles mdlChampionnat
             List<mdlChampionnat> returnLst = new List<mdlChampionnat>();
 
             foreach (Championnats champ in lstChamp)
