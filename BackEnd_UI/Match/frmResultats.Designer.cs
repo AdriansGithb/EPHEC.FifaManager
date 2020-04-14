@@ -135,6 +135,7 @@
             this.Controls.Add(this.gridResults);
             this.Name = "frmResultats";
             this.Text = "Voir / Modifier les résultats";
+            this.Load += new System.EventHandler(this.frmResultats_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
             this.gpBoxSaisons.ResumeLayout(false);
             this.gpBoxSaisons.PerformLayout();
