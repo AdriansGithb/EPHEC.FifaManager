@@ -31,9 +31,9 @@
             this.gridResults = new System.Windows.Forms.DataGridView();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
             this.gpBoxSaisons = new System.Windows.Forms.GroupBox();
-            this.rdbtnSeason1 = new System.Windows.Forms.RadioButton();
-            this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
+            this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
+            this.rdbtnSeason1 = new System.Windows.Forms.RadioButton();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).BeginInit();
@@ -70,27 +70,7 @@
             this.gpBoxSaisons.Size = new System.Drawing.Size(424, 123);
             this.gpBoxSaisons.TabIndex = 6;
             this.gpBoxSaisons.TabStop = false;
-            this.gpBoxSaisons.Text = "Sélectionner la saison à afficher";
-            // 
-            // rdbtnSeason1
-            // 
-            this.rdbtnSeason1.AutoSize = true;
-            this.rdbtnSeason1.Location = new System.Drawing.Point(36, 86);
-            this.rdbtnSeason1.Name = "rdbtnSeason1";
-            this.rdbtnSeason1.Size = new System.Drawing.Size(66, 17);
-            this.rdbtnSeason1.TabIndex = 0;
-            this.rdbtnSeason1.Text = "Saison 1";
-            this.rdbtnSeason1.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnSeason2
-            // 
-            this.rdbtnSeason2.AutoSize = true;
-            this.rdbtnSeason2.Location = new System.Drawing.Point(174, 86);
-            this.rdbtnSeason2.Name = "rdbtnSeason2";
-            this.rdbtnSeason2.Size = new System.Drawing.Size(66, 17);
-            this.rdbtnSeason2.TabIndex = 1;
-            this.rdbtnSeason2.Text = "Saison 2";
-            this.rdbtnSeason2.UseVisualStyleBackColor = true;
+            this.gpBoxSaisons.Text = "Sélectionner le championnat et la saison à afficher";
             // 
             // rdbtnAllSeason
             // 
@@ -103,6 +83,26 @@
             this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnSeason2
+            // 
+            this.rdbtnSeason2.AutoSize = true;
+            this.rdbtnSeason2.Location = new System.Drawing.Point(174, 86);
+            this.rdbtnSeason2.Name = "rdbtnSeason2";
+            this.rdbtnSeason2.Size = new System.Drawing.Size(66, 17);
+            this.rdbtnSeason2.TabIndex = 1;
+            this.rdbtnSeason2.Text = "Saison 2";
+            this.rdbtnSeason2.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnSeason1
+            // 
+            this.rdbtnSeason1.AutoSize = true;
+            this.rdbtnSeason1.Location = new System.Drawing.Point(36, 86);
+            this.rdbtnSeason1.Name = "rdbtnSeason1";
+            this.rdbtnSeason1.Size = new System.Drawing.Size(66, 17);
+            this.rdbtnSeason1.TabIndex = 0;
+            this.rdbtnSeason1.Text = "Saison 1";
+            this.rdbtnSeason1.UseVisualStyleBackColor = true;
             // 
             // btnReset
             // 
