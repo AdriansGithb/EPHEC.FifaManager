@@ -16,11 +16,16 @@ namespace BackEnd_UI.Match
         public frmResultats()
         {
             InitializeComponent();
-            gridResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            /* ajout des méthodes suivantes dans le initialize component :
+                * this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+                    *permet aux données de remplir le tab
+                *
+             */
         }
 
         private void frmResultats_Load(object sender, System.EventArgs e)
         {
+
             //chargement de la liste des championnats
             ChampionnatsServices oService = new ChampionnatsServices();
             List<mdlChampionnat> lstChamp = new List<mdlChampionnat>();

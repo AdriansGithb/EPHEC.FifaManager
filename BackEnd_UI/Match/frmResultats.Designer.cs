@@ -49,6 +49,8 @@
             this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridResults.Size = new System.Drawing.Size(800, 289);
             this.gridResults.TabIndex = 0;
+            //ajout personnel
+            this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             // 
             // boxChampSelection
             // 

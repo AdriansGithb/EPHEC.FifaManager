@@ -17,9 +17,12 @@ namespace BackEnd_UI
         public frmClassement()
         {
             InitializeComponent();
-            gridClassement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            /* ajout des méthodes suivantes dans le initialize component :
+                * this.gridClassement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+                    *permet aux données de remplir le tab
+             */
         }
+
         //chargement de la page classement : liste de championnats chargée dans la combobox, 1er champ sélectionné et chargé par défaut
         private void frmClassement_Load(object sender, EventArgs e)
         {
@@ -29,6 +32,7 @@ namespace BackEnd_UI
             boxChampSelection.DataSource = lstChamp;
             boxChampSelection.SelectedIndex = 0;
         }
+
         //changement du tableau de classement lorsque l'on change de championnat sélectionné
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {

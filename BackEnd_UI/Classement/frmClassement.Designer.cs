@@ -43,6 +43,8 @@
             this.gridClassement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClassement.Size = new System.Drawing.Size(800, 411);
             this.gridClassement.TabIndex = 5;
+            //ajout personnel 
+            this.gridClassement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             // 
             // boxChampSelection
             // 
