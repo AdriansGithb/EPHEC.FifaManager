@@ -46,6 +46,7 @@
             this.gridResults.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridResults.Location = new System.Drawing.Point(0, 161);
             this.gridResults.Name = "gridResults";
+            this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridResults.Size = new System.Drawing.Size(800, 289);
             this.gridResults.TabIndex = 0;
             // 

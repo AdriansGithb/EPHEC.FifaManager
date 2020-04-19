@@ -21,6 +21,7 @@ namespace BackEnd_UI.Match
 
         private void frmResultats_Load(object sender, System.EventArgs e)
         {
+            //chargement de la liste des championnats
             ChampionnatsServices oService = new ChampionnatsServices();
             List<mdlChampionnat> lstChamp = new List<mdlChampionnat>();
             lstChamp = oService.GetChampionnats();
@@ -30,8 +31,20 @@ namespace BackEnd_UI.Match
 
         private void boxChampSelection_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            //vérification du radiobutton sélectionné pour connaître la saison à afficher
+            int ssn;
+            if (rdbtnSeason1.Checked == true)
+                ssn = 1;
+                else if (rdbtnSeason2.Checked == true)
+                    ssn = 2;
+                    else ssn = 12;
+            //récupération de l'ID championnat sélectionné
+            mdlChampionnat oChamp = new mdlChampionnat();
+            oChamp = (mdlChampionnat)boxChampSelection.SelectedItem;
+            int champId = oChamp.Id;
+            //envoi de la requête vers la BL pour remplir le datagridview en fonction du championnat et de la/les saison(s)
             ResultatsServices oResServices = new ResultatsServices();
-            List<mdlResultats> lstRes = oResServices.GetResultats(1);
+            List<mdlResultats> lstRes = oResServices.GetResultats(champId,ssn);
             gridResults.DataSource = lstRes;
         }
     }
