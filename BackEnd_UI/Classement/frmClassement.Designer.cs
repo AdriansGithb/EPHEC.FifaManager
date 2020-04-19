@@ -35,16 +35,17 @@
             // 
             // gridClassement
             // 
+            this.gridClassement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridClassement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridClassement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridClassement.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridClassement.Location = new System.Drawing.Point(0, 39);
             this.gridClassement.Name = "gridClassement";
             this.gridClassement.ReadOnly = true;
             this.gridClassement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClassement.Size = new System.Drawing.Size(800, 411);
             this.gridClassement.TabIndex = 5;
-            //ajout personnel 
-            this.gridClassement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             // 
             // boxChampSelection
             // 

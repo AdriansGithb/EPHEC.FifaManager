@@ -42,9 +42,11 @@
             // 
             // gridResults
             // 
+            this.gridResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridResults.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridResults.Location = new System.Drawing.Point(0, 161);
             this.gridResults.Name = "gridResults";
             this.gridResults.ReadOnly = true;
