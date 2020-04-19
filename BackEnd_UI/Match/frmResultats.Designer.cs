@@ -34,8 +34,6 @@
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason1 = new System.Windows.Forms.RadioButton();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).BeginInit();
             this.gpBoxSaisons.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +69,7 @@
             this.gpBoxSaisons.Controls.Add(this.rdbtnSeason2);
             this.gpBoxSaisons.Controls.Add(this.rdbtnSeason1);
             this.gpBoxSaisons.Controls.Add(this.boxChampSelection);
-            this.gpBoxSaisons.Location = new System.Drawing.Point(29, 12);
+            this.gpBoxSaisons.Location = new System.Drawing.Point(194, 12);
             this.gpBoxSaisons.Name = "gpBoxSaisons";
             this.gpBoxSaisons.Size = new System.Drawing.Size(424, 123);
             this.gpBoxSaisons.TabIndex = 6;
@@ -113,33 +111,11 @@
             this.rdbtnSeason1.UseVisualStyleBackColor = true;
             this.rdbtnSeason1.Click += new System.EventHandler(this.gridResults_LoadSelection);
             // 
-            // btnReset
-            // 
-            this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(557, 29);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(166, 44);
-            this.btnReset.TabIndex = 7;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(557, 98);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(166, 44);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Sauver changements";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // frmResultats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.gpBoxSaisons);
             this.Controls.Add(this.gridResults);
             this.Name = "frmResultats";
@@ -160,7 +136,5 @@
         private System.Windows.Forms.RadioButton rdbtnAllSeason;
         private System.Windows.Forms.RadioButton rdbtnSeason2;
         private System.Windows.Forms.RadioButton rdbtnSeason1;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnSave;
     }
 }
