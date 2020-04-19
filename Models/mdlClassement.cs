@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class mdlClassement
+    public class MdlClassement
     {
-        public int position { get; set; }
-        public int pts { get; set; }
-        public string nomEqp { get; set; }
-        public int eqpId { get; set; }
+        public int Position { get; set; }
+        public int Pts { get; set; }
+        public string NomEqp { get; set; }
+        public int EqpId { get; set; }
 
     }
 }

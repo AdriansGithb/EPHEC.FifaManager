@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class mdlResultats
+    public class MdlResultats
     {
         public int Match_ID { get; set; }
         public DateTime? Date { get; set; }

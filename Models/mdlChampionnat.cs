@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Models
 {
 
-    public class mdlChampionnat
+    public class MdlChampionnat
     {
         public int Id { get; set; }
         public string Nom { get; set; }

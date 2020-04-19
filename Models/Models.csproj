@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="mdlChampionnat.cs" />
-    <Compile Include="mdlClassement.cs" />
-    <Compile Include="mdlResultats.cs" />
+    <Compile Include="MdlChampionnat.cs" />
+    <Compile Include="MdlClassement.cs" />
+    <Compile Include="MdlResultats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,7 +27,7 @@ namespace BackEnd_UI
         private void frmClassement_Load(object sender, EventArgs e)
         {
             ChampionnatsServices oService = new ChampionnatsServices();
-            List<mdlChampionnat> lstChamp = new List<mdlChampionnat>();
+            List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
             lstChamp = oService.GetChampionnats();
             boxChampSelection.DataSource = lstChamp;
             boxChampSelection.SelectedIndex = 0;
@@ -36,11 +36,11 @@ namespace BackEnd_UI
         //changement du tableau de classement lorsque l'on change de championnat sélectionné
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mdlChampionnat selChamp = new mdlChampionnat();
-            selChamp = (mdlChampionnat)boxChampSelection.SelectedItem;
+            MdlChampionnat selChamp = new MdlChampionnat();
+            selChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
 
             ClassementServices oServices = new ClassementServices();
-            List<mdlClassement> classmnt = new List<mdlClassement>();
+            List<MdlClassement> classmnt = new List<MdlClassement>();
             classmnt = oServices.GetClassement(selChamp.Id);
 
             gridClassement.DataSource = classmnt;
