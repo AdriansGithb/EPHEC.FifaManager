@@ -48,9 +48,10 @@
             this.gridResults.Location = new System.Drawing.Point(0, 161);
             this.gridResults.Name = "gridResults";
             this.gridResults.ReadOnly = true;
-            this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridResults.Size = new System.Drawing.Size(800, 289);
             this.gridResults.TabIndex = 0;
+            this.gridResults.DoubleClick += new System.EventHandler(this.gridResults_DoubleClick);
             // 
             // boxChampSelection
             // 

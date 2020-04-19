@@ -51,5 +51,12 @@ namespace BackEnd_UI.Match
             List<MdlResultats> lstRes = oResServices.GetResultats(champId,ssn);
             gridResults.DataSource = lstRes;
         }
+
+        private void gridResults_DoubleClick(object sender, System.EventArgs e)
+        {
+            frmModifResult oFrmModifResult = new frmModifResult();
+            oFrmModifResult.MdiParent = this.MdiParent;
+            oFrmModifResult.Show();
+        }
     }
 }
