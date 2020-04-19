@@ -42,6 +42,7 @@
             // 
             // gridResults
             // 
+            this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridResults.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridResults.Location = new System.Drawing.Point(0, 161);
@@ -49,8 +50,6 @@
             this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridResults.Size = new System.Drawing.Size(800, 289);
             this.gridResults.TabIndex = 0;
-            //ajout personnel
-            this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             // 
             // boxChampSelection
             // 
@@ -87,6 +86,7 @@
             this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
+            this.rdbtnAllSeason.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // rdbtnSeason2
             // 
@@ -97,6 +97,7 @@
             this.rdbtnSeason2.TabIndex = 1;
             this.rdbtnSeason2.Text = "Saison 2";
             this.rdbtnSeason2.UseVisualStyleBackColor = true;
+            this.rdbtnSeason2.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // rdbtnSeason1
             // 
@@ -107,6 +108,7 @@
             this.rdbtnSeason1.TabIndex = 0;
             this.rdbtnSeason1.Text = "Saison 1";
             this.rdbtnSeason1.UseVisualStyleBackColor = true;
+            this.rdbtnSeason1.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // btnReset
             // 

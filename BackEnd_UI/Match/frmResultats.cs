@@ -31,7 +31,6 @@ namespace BackEnd_UI.Match
             List<mdlChampionnat> lstChamp = new List<mdlChampionnat>();
             lstChamp = oService.GetChampionnats();
             boxChampSelection.DataSource = lstChamp;
-            boxChampSelection.SelectedIndex = 0;
         }
 
         private void boxChampSelection_SelectedIndexChanged(object sender, System.EventArgs e)
