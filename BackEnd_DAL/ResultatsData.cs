@@ -8,6 +8,7 @@ namespace BackEnd_DAL
 {
     public class ResultatsData
     {
+        // Appel de la SP SelectResults qui renvoit tous les résultats d'une saison entrée en paramètre
         public List<SP_SelectResults_Result> SelectResultats(int champId, int ssn)
         {
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
@@ -23,6 +24,13 @@ namespace BackEnd_DAL
             else lstRes = ctx.SP_SelectResults(champId,ssn).ToList();
 
             return lstRes;
+        }
+        // Appel de la SP SelectAllTypeResults qui renvoit tous les types de résultat de la BD (id et libelle)
+        public List<SP_SelectAllTypeResults_Result> SelectAllTypeResults()
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            List<SP_SelectAllTypeResults_Result> lstTpRes = ctx.SP_SelectAllTypeResults().ToList();
+            return lstTpRes;
         }
     }
 }
