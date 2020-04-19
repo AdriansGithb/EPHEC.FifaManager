@@ -17,7 +17,7 @@ namespace BackEnd_DAL
             {
                 //si on doit récupérer 2 saisons, récupérer la 1ere puis ajout de la 2e
                 lstRes = ctx.SP_SelectResults(champId, 1).ToList();
-                lstRes.Add(ctx.SP_SelectResults(champId, 2).ToList());
+                lstRes.AddRange(ctx.SP_SelectResults(champId, 2).ToList()); 
             }
             //sinon, récupération de la 1e ou 2e saison uniquement
             else lstRes = ctx.SP_SelectResults(champId,ssn).ToList();
