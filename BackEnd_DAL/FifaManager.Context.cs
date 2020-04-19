@@ -159,13 +159,17 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectClassement_Result>("SP_SelectClassement", champ_idParameter);
         }
     
-        public virtual ObjectResult<SP_SelectResults_Result> SP_SelectResults(Nullable<int> ssn_id)
+        public virtual ObjectResult<SP_SelectResults_Result> SP_SelectResults(Nullable<int> champ_id, Nullable<int> ssn)
         {
-            var ssn_idParameter = ssn_id.HasValue ?
-                new ObjectParameter("ssn_id", ssn_id) :
-                new ObjectParameter("ssn_id", typeof(int));
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", ssn_idParameter);
+            var ssnParameter = ssn.HasValue ?
+                new ObjectParameter("ssn", ssn) :
+                new ObjectParameter("ssn", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
         }
     }
 }

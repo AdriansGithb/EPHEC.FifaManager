@@ -374,7 +374,8 @@
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_SelectResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
-          <Parameter Name="ssn_id" Type="int" Mode="In" />
+          <Parameter Name="champ_id" Type="int" Mode="In" />
+          <Parameter Name="ssn" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
           <EntitySet Name="Championnats" EntityType="Self.Championnats" Schema="dbo" store:Type="Tables" />
@@ -957,7 +958,8 @@
           <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectResults_Result)">
-            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+            <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
