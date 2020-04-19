@@ -61,7 +61,7 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
-            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.gridResults_LoadSelection);
             // 
             // gpBoxSaisons
             // 
@@ -87,7 +87,7 @@
             this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
-            this.rdbtnAllSeason.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
+            this.rdbtnAllSeason.Click += new System.EventHandler(this.gridResults_LoadSelection);
             // 
             // rdbtnSeason2
             // 
@@ -98,7 +98,7 @@
             this.rdbtnSeason2.TabIndex = 1;
             this.rdbtnSeason2.Text = "Saison 2";
             this.rdbtnSeason2.UseVisualStyleBackColor = true;
-            this.rdbtnSeason2.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
+            this.rdbtnSeason2.Click += new System.EventHandler(this.gridResults_LoadSelection);
             // 
             // rdbtnSeason1
             // 
@@ -109,7 +109,7 @@
             this.rdbtnSeason1.TabIndex = 0;
             this.rdbtnSeason1.Text = "Saison 1";
             this.rdbtnSeason1.UseVisualStyleBackColor = true;
-            this.rdbtnSeason1.Click += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
+            this.rdbtnSeason1.Click += new System.EventHandler(this.gridResults_LoadSelection);
             // 
             // btnReset
             // 

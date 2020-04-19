@@ -33,7 +33,7 @@ namespace BackEnd_UI.Match
             boxChampSelection.DataSource = lstChamp;
         }
 
-        private void boxChampSelection_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void gridResults_LoadSelection(object sender, System.EventArgs e)
         {
             //vérification du radiobutton sélectionné pour connaître la saison à afficher
             int ssn;
