@@ -340,6 +340,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
@@ -902,6 +903,7 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_SelectAllTypeResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeResults_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -933,6 +935,10 @@
           <Property Type="Int16" Name="Goals_Visiteur" Nullable="true" />
           <Property Type="String" Name="Resultat_Domicile" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllTypeResults_Result">
+          <Property Type="Int32" Name="Res_ID" Nullable="false" />
+          <Property Type="String" Name="Res_Libelle" Nullable="false" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1093,6 +1099,14 @@
                 <ScalarProperty Name="Goals_Visiteur" ColumnName="Goals Visiteur" />
                 <ScalarProperty Name="Resultat_Domicile" ColumnName="Resultat Domicile" />
                 <ScalarProperty Name="Resultat_Visiteur" ColumnName="Resultat Visiteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllTypeResults" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllTypeResults">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectAllTypeResults_Result">
+                <ScalarProperty Name="Res_ID" ColumnName="Res_ID" />
+                <ScalarProperty Name="Res_Libelle" ColumnName="Res_Libelle" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

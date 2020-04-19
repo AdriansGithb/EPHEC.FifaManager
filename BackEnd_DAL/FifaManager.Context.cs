@@ -21,8 +21,9 @@ namespace BackEnd_DAL
             : base("name=Fifa_ManagerEntities")
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -72,6 +73,11 @@ namespace BackEnd_DAL
                 new ObjectParameter("ssn", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
+        }
+    
+        public virtual ObjectResult<SP_SelectAllTypeResults_Result> SP_SelectAllTypeResults()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllTypeResults_Result>("SP_SelectAllTypeResults");
         }
     }
 }
