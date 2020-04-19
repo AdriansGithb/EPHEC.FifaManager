@@ -35,6 +35,7 @@
             this.lblEqpVis = new System.Windows.Forms.Label();
             this.lstbxResEqpVis = new System.Windows.Forms.ListBox();
             this.lblMatch = new System.Windows.Forms.Label();
+            this.lblConsigne = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSave
@@ -66,20 +67,20 @@
             // lblEqpDom
             // 
             this.lblEqpDom.AutoSize = true;
-            this.lblEqpDom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEqpDom.Location = new System.Drawing.Point(45, 75);
+            this.lblEqpDom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEqpDom.Location = new System.Drawing.Point(44, 71);
             this.lblEqpDom.Name = "lblEqpDom";
-            this.lblEqpDom.Size = new System.Drawing.Size(85, 16);
+            this.lblEqpDom.Size = new System.Drawing.Size(96, 20);
             this.lblEqpDom.TabIndex = 3;
             this.lblEqpDom.Text = "lblEqpDom";
             // 
             // lblEqpVis
             // 
             this.lblEqpVis.AutoSize = true;
-            this.lblEqpVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEqpVis.Location = new System.Drawing.Point(239, 75);
+            this.lblEqpVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEqpVis.Location = new System.Drawing.Point(238, 71);
             this.lblEqpVis.Name = "lblEqpVis";
-            this.lblEqpVis.Size = new System.Drawing.Size(75, 16);
+            this.lblEqpVis.Size = new System.Drawing.Size(84, 20);
             this.lblEqpVis.TabIndex = 4;
             this.lblEqpVis.Text = "lblEqpVis";
             // 
@@ -94,18 +95,29 @@
             // lblMatch
             // 
             this.lblMatch.AutoSize = true;
-            this.lblMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatch.Location = new System.Drawing.Point(155, 9);
+            this.lblMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatch.Location = new System.Drawing.Point(12, 9);
             this.lblMatch.Name = "lblMatch";
-            this.lblMatch.Size = new System.Drawing.Size(88, 24);
+            this.lblMatch.Size = new System.Drawing.Size(63, 18);
             this.lblMatch.TabIndex = 6;
             this.lblMatch.Text = "lblMatch";
+            // 
+            // lblConsigne
+            // 
+            this.lblConsigne.AutoSize = true;
+            this.lblConsigne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsigne.Location = new System.Drawing.Point(48, 42);
+            this.lblConsigne.Name = "lblConsigne";
+            this.lblConsigne.Size = new System.Drawing.Size(212, 16);
+            this.lblConsigne.TabIndex = 7;
+            this.lblConsigne.Text = "Modifiez les résultats puis sauvez :";
             // 
             // frmModifResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 301);
+            this.Controls.Add(this.lblConsigne);
             this.Controls.Add(this.lblMatch);
             this.Controls.Add(this.lstbxResEqpVis);
             this.Controls.Add(this.lblEqpVis);
@@ -115,6 +127,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmModifResult";
             this.Text = "frmModifResult";
+            this.Load += new System.EventHandler(this.frmModifResult_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +142,6 @@
         private System.Windows.Forms.Label lblEqpVis;
         private System.Windows.Forms.ListBox lstbxResEqpVis;
         private System.Windows.Forms.Label lblMatch;
+        private System.Windows.Forms.Label lblConsigne;
     }
 }

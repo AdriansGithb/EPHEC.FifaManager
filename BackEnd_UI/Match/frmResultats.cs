@@ -13,6 +13,7 @@ namespace BackEnd_UI.Match
 {
     public partial class frmResultats : Form
     {
+        public static MdlResultats ResAModifier;
         public frmResultats()
         {
             InitializeComponent();
@@ -54,6 +55,7 @@ namespace BackEnd_UI.Match
 
         private void gridResults_DoubleClick(object sender, System.EventArgs e)
         {
+            ResAModifier = (MdlResultats)gridResults.CurrentRow.DataBoundItem;
             frmModifResult oFrmModifResult = new frmModifResult();
             oFrmModifResult.MdiParent = this.MdiParent;
             oFrmModifResult.Show();
