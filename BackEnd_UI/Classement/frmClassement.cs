@@ -30,6 +30,7 @@ namespace BackEnd_UI
             List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
             lstChamp = oService.GetChampionnats();
             boxChampSelection.DataSource = lstChamp;
+            boxChampSelection.DisplayMember = "NomString";
             boxChampSelection.SelectedIndex = 0;
         }
 
