@@ -53,108 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Championnats.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
     <Compile Include="ChampionnatsData.cs" />
     <Compile Include="ClassementData.cs" />
-    <Compile Include="Constitution_Championnat.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Constitution_Equipes.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Equipes.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Events.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FifaManager.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FifaManager.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FifaManager.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FifaManager.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FifaManager.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Inscription_Matchs.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Joueurs.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Matchs.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultatsData.cs" />
-    <Compile Include="Saisons.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_SelectAllChampionnats_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_SelectAllTypeResults_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_SelectClassement_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_SelectResults_Result.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Suspensions.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Types_Events.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Types_Resultats.cs">
-      <DependentUpon>FifaManager.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="FifaManager.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FifaManager.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="FifaManager.edmx.diagram">
-      <DependentUpon>FifaManager.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FifaManager.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FifaManager.edmx</DependentUpon>
-      <LastGenOutput>FifaManager.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="FifaManager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FifaManager.edmx</DependentUpon>
-      <LastGenOutput>FifaManager.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
