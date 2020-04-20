@@ -23,9 +23,9 @@ namespace BackEnd_BL
             {
                 MdlClassement oClassement = new MdlClassement();
                 oClassement.Position = (lstClassRes.IndexOf(eqp)+1);
-                oClassement.Pts=eqp.Points;
-                oClassement.NomEqp = eqp.Eqp_Nom;
-                oClassement.EqpId = eqp.Eqp_ID;
+                oClassement.Points=(int)eqp.Points;
+                oClassement.EquipeNom = eqp.Eqp_Nom;
+                oClassement.EquipeID = (int)eqp.Eqp_ID;
 
                 returnLst.Add(oClassement);
             }

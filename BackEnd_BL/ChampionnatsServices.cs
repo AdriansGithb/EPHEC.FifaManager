@@ -22,6 +22,7 @@ namespace BackEnd_BL
             foreach (Championnats champ in lstChamp)
             {
                 MdlChampionnat oChamp = new MdlChampionnat(champ.Champ_ID,champ.Champ_Nom,champ.Champ_Annee);
+                //A SUPPRIMER SI OK POUR CONSTRUCTEUR
                 //oChamp.Id = champ.Champ_ID;
                 //oChamp.Nom = champ.Champ_Nom;
                 //oChamp.Annee = champ.Champ_Annee;

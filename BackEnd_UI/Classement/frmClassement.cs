@@ -45,8 +45,6 @@ namespace BackEnd_UI
             classmnt = oServices.GetClassement(selChamp.Id);
 
             gridClassement.DataSource = classmnt;
-            gridClassement.Columns[0].HeaderText = "Position";
-            gridClassement.Columns[1].HeaderText = "Points";
             gridClassement.Columns[2].HeaderText = "Equipe";
             gridClassement.Columns[3].HeaderText = "Equipe ID";
 
