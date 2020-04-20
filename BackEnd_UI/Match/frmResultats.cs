@@ -32,6 +32,8 @@ namespace BackEnd_UI.Match
             List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
             lstChamp = oService.GetChampionnats();
             boxChampSelection.DataSource = lstChamp;
+            boxChampSelection.DisplayMember = "NomString";
+
         }
 
         private void gridResults_LoadSelection(object sender, System.EventArgs e)
@@ -46,10 +48,9 @@ namespace BackEnd_UI.Match
             //récupération de l'ID championnat sélectionné
             MdlChampionnat oChamp = new MdlChampionnat();
             oChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
-            int champId = oChamp.Id;
             //envoi de la requête vers la BL pour remplir le datagridview en fonction du championnat et de la/les saison(s)
             ResultatsServices oResServices = new ResultatsServices();
-            List<MdlResultats> lstRes = oResServices.GetResultats(champId,ssn);
+            List<MdlResultats> lstRes = oResServices.GetResultats(oChamp.Id,ssn);
             gridResults.DataSource = lstRes;
         }
 
