@@ -14,27 +14,27 @@ namespace BackEnd_UI.Match
 {
     public partial class frmModifResult : Form
     {
-        private int matchId;
-        public frmModifResult()
+        // chargement de la form avec un objet résultat à modifier
+        public frmModifResult(MdlResultats resAModifier)
         {
             InitializeComponent();
-        }
-
-        private void frmModifResult_Load(object sender, EventArgs e)
-        {            
-            matchId = frmResultats.ResAModifier.Match_ID;
-            lblMatch.Text = $"Match ID : {frmResultats.ResAModifier.Match_ID}";
-            lblEqpDom.Text = frmResultats.ResAModifier.Nom_EqpDom;
-            lblEqpVis.Text = frmResultats.ResAModifier.Nom_EqpVisit;
+            //charger les noms des labels avec les données de l'objet reçu
+            lblMatch.Text = $"Match ID : {resAModifier.Match_ID}";
+            lblEqpDom.Text = resAModifier.Nom_EqpDom;
+            lblEqpVis.Text = resAModifier.Nom_EqpVisit;
+            //chargement de la liste des types de résultats possibles, pour insérer dans les listbox domicile et visiteur
             ResultatsServices oServices = new ResultatsServices();
+            //liste equipe domicile
             lstbxResEqpDom.DataSource = oServices.GetTypeResults();
             lstbxResEqpDom.ValueMember = "Libelle";
-            lstbxResEqpDom.SelectedValue = frmResultats.ResAModifier.ResultDom;
+            lstbxResEqpDom.SelectedValue= resAModifier.ResultDom;
+            //liste equipe visiteuse
             lstbxResEqpVis.DataSource = oServices.GetTypeResults();
             lstbxResEqpVis.ValueMember = "Libelle";
-            lstbxResEqpVis.SelectedValue = frmResultats.ResAModifier.ResultVisit;
+            lstbxResEqpVis.SelectedValue = resAModifier.ResultVisit;
 
         }
+
 
     }
 }

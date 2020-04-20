@@ -127,7 +127,6 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmModifResult";
             this.Text = "frmModifResult";
-            this.Load += new System.EventHandler(this.frmModifResult_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
