@@ -57,10 +57,13 @@ namespace BackEnd_UI.Match
             if ((slctdResDom.Id != resAModifier.ResDomTypeID) ||
                 (slctdResVis.Id != resAModifier.ResVstTypeID))
             {
-                resAModifier.ResDomTypeID = slctdResDom.Id;
-                resAModifier.ResultDom = slctdResDom.Libelle;
-                resAModifier.ResVstTypeID = slctdResVis.Id;
-                resAModifier.ResultVisit = slctdResVis.Libelle;
+                //resAModifier.ResDomTypeID = slctdResDom.Id;
+                //resAModifier.ResultDom = slctdResDom.Libelle;
+                //resAModifier.ResVstTypeID = slctdResVis.Id;
+                //resAModifier.ResultVisit = slctdResVis.Libelle;
+
+                ResultatsServices oServices = new ResultatsServices();
+                oServices.SetResultat(resAModifier.Match_ID, slctdResDom.Id,slctdResVis.Id);
                 MessageBox.Show("changements effectués");
                 this.Close();
 

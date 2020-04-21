@@ -55,5 +55,11 @@ namespace BackEnd_BL
 
             return rtrnLst;
         }
+
+        public void SetResultat(int mchId, int newResDom, int newResVst)
+        {
+            ResultatsData oData = new ResultatsData();
+            oData.ModifResult( mchId, newResDom, newResVst);
+        }
     }
 }
