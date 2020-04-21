@@ -17,8 +17,6 @@ namespace BackEnd_DAL
         public Nullable<System.DateTime> Date { get; set; }
         public string Equipe_Domicile { get; set; }
         public string Equipe_Visiteuse { get; set; }
-        public Nullable<short> Goals_Domicile { get; set; }
-        public Nullable<short> Goals_Visiteur { get; set; }
         public string Resultat_Domicile { get; set; }
         public string Resultat_Visiteur { get; set; }
         public int TypeResultIDDomicile { get; set; }

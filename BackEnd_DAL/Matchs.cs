@@ -29,8 +29,6 @@ namespace BackEnd_DAL
         public Nullable<System.DateTime> Mch_Date { get; set; }
         public Nullable<int> Mch_Res_ID_Dom { get; set; }
         public Nullable<int> Mch_Res_ID_Visit { get; set; }
-        public Nullable<short> Mch_Score_Eqp_Dom { get; set; }
-        public Nullable<short> Mch_Score_Eqp_Visit { get; set; }
     
         public virtual Constitution_Championnat Constitution_Championnat { get; set; }
         public virtual Constitution_Championnat Constitution_Championnat1 { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Championnats">
           <Key>
             <PropertyRef Name="Champ_ID" />
@@ -73,8 +73,6 @@
           <Property Name="Mch_Date" Type="date" />
           <Property Name="Mch_Res_ID_Dom" Type="int" />
           <Property Name="Mch_Res_ID_Visit" Type="int" />
-          <Property Name="Mch_Score_Eqp_Dom" Type="smallint" />
-          <Property Name="Mch_Score_Eqp_Visit" Type="smallint" />
         </EntityType>
         <EntityType Name="Saisons">
           <Key>
@@ -434,8 +432,7 @@
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Fifa_ManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -527,8 +524,6 @@
           <Property Name="Mch_Date" Type="DateTime" Precision="0" />
           <Property Name="Mch_Res_ID_Dom" Type="Int32" />
           <Property Name="Mch_Res_ID_Visit" Type="Int32" />
-          <Property Name="Mch_Score_Eqp_Dom" Type="Int16" />
-          <Property Name="Mch_Score_Eqp_Visit" Type="Int16" />
           <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Matchs_Constitution_Championnat" FromRole="Matchs" ToRole="Constitution_Championnat" />
           <NavigationProperty Name="Constitution_Championnat1" Relationship="Self.FK_Matchs_Constitution_Championnat1" FromRole="Matchs" ToRole="Constitution_Championnat" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Events_Matchs" FromRole="Matchs" ToRole="Events" />
@@ -897,7 +892,7 @@
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
           <FunctionImport Name="SP_SelectAllTypeResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeResults_Result)" />
           <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
-            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectResults_Result)">
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
@@ -923,8 +918,6 @@
           <Property Type="DateTime" Name="Date" Nullable="true" />
           <Property Type="String" Name="Equipe_Domicile" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Equipe_Visiteuse" Nullable="false" MaxLength="50" />
-          <Property Type="Int16" Name="Goals_Domicile" Nullable="true" />
-          <Property Type="Int16" Name="Goals_Visiteur" Nullable="true" />
           <Property Type="String" Name="Resultat_Domicile" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="TypeResultIDDomicile" Nullable="false" />
@@ -1010,9 +1003,7 @@
                 <ScalarProperty Name="Mch_Date" ColumnName="Mch_Date" />
                 <ScalarProperty Name="Mch_Res_ID_Dom" ColumnName="Mch_Res_ID_Dom" />
                 <ScalarProperty Name="Mch_Res_ID_Visit" ColumnName="Mch_Res_ID_Visit" />
-                <ScalarProperty Name="Mch_Score_Eqp_Dom" ColumnName="Mch_Score_Eqp_Dom" />
-                <ScalarProperty Name="Mch_Score_Eqp_Visit" ColumnName="Mch_Score_Eqp_Visit" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Saisons">
@@ -1092,8 +1083,6 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Equipe_Domicile" ColumnName="Equipe Domicile" />
                 <ScalarProperty Name="Equipe_Visiteuse" ColumnName="Equipe Visiteuse" />
-                <ScalarProperty Name="Goals_Domicile" ColumnName="Goals Domicile" />
-                <ScalarProperty Name="Goals_Visiteur" ColumnName="Goals Visiteur" />
                 <ScalarProperty Name="Resultat_Domicile" ColumnName="Resultat Domicile" />
                 <ScalarProperty Name="Resultat_Visiteur" ColumnName="Resultat Visiteur" />
                 <ScalarProperty Name="TypeResultIDDomicile" ColumnName="TypeResultIDDomicile" />
