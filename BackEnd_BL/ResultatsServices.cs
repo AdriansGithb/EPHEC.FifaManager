@@ -25,8 +25,6 @@ namespace BackEnd_BL
                 oRes.Date = res.Date;
                 oRes.Nom_EqpDom = res.Equipe_Domicile;
                 oRes.Nom_EqpVisit = res.Equipe_Visiteuse;
-                oRes.GoalsDom = res.Goals_Domicile;
-                oRes.GoalsVisit = res.Goals_Visiteur;
                 oRes.ResultDom = res.Resultat_Domicile;
                 oRes.ResDomTypeID = res.TypeResultIDDomicile;
                 oRes.ResultVisit = res.Resultat_Visiteur;
