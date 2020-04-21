@@ -336,6 +336,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_ModifResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="match_id" Type="int" Mode="In" />
+          <Parameter Name="tpResDomId" Type="int" Mode="In" />
+          <Parameter Name="tpResVisId" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
@@ -898,6 +903,11 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_ModifResult">
+            <Parameter Name="match_id" Mode="In" Type="Int32" />
+            <Parameter Name="tpResDomId" Mode="In" Type="Int32" />
+            <Parameter Name="tpResVisId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1090,6 +1100,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ModifResult" FunctionName="Fifa_ManagerModel.Store.SP_ModifResult" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

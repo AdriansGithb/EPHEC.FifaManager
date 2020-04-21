@@ -20,6 +20,7 @@ namespace BackEnd_DAL
         public Fifa_ManagerEntities()
             : base("name=Fifa_ManagerEntities")
         {
+            var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -76,6 +77,23 @@ namespace BackEnd_DAL
                 new ObjectParameter("ssn", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
+        }
+    
+        public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId)
+        {
+            var match_idParameter = match_id.HasValue ?
+                new ObjectParameter("match_id", match_id) :
+                new ObjectParameter("match_id", typeof(int));
+    
+            var tpResDomIdParameter = tpResDomId.HasValue ?
+                new ObjectParameter("tpResDomId", tpResDomId) :
+                new ObjectParameter("tpResDomId", typeof(int));
+    
+            var tpResVisIdParameter = tpResVisId.HasValue ?
+                new ObjectParameter("tpResVisId", tpResVisId) :
+                new ObjectParameter("tpResVisId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModifResult", match_idParameter, tpResDomIdParameter, tpResVisIdParameter);
         }
     }
 }
