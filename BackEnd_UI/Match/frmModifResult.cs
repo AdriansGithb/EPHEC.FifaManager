@@ -36,9 +36,11 @@ namespace BackEnd_UI.Match
             lstbxResEqpVis.ValueMember = "Id";
             //sélection par défaut du résultat de départ
             lstbxResEqpVis.SelectedValue = resAModifier.ResVstTypeID;
-
         }
 
-
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
