@@ -73,6 +73,7 @@
           <Property Name="Mch_Date" Type="date" />
           <Property Name="Mch_Res_ID_Dom" Type="int" />
           <Property Name="Mch_Res_ID_Visit" Type="int" />
+          <Property Name="Mch_LastUpdate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Saisons">
           <Key>
@@ -537,6 +538,7 @@
           <NavigationProperty Name="Types_Resultats" Relationship="Self.FK_Matchs_Types_Resultats" FromRole="Matchs" ToRole="Types_Resultats" />
           <NavigationProperty Name="Types_Resultats1" Relationship="Self.FK_Matchs_Types_Resultats1" FromRole="Matchs" ToRole="Types_Resultats" />
           <NavigationProperty Name="Suspensions" Relationship="Self.FK_Suspensions_Matchs" FromRole="Matchs" ToRole="Suspensions" />
+          <Property Name="Mch_LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Saisons">
           <Key>
@@ -932,6 +934,7 @@
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="TypeResultIDDomicile" Nullable="false" />
           <Property Type="Int32" Name="TypeResultIDVisiteur" Nullable="false" />
+          <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1006,6 +1009,7 @@
           <EntitySetMapping Name="Matchs">
             <EntityTypeMapping TypeName="Fifa_ManagerModel.Matchs">
               <MappingFragment StoreEntitySet="Matchs">
+                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
                 <ScalarProperty Name="Mch_ID" ColumnName="Mch_ID" />
                 <ScalarProperty Name="Mch_Eqp_Dom_ID" ColumnName="Mch_Eqp_Dom_ID" />
                 <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
@@ -1097,6 +1101,7 @@
                 <ScalarProperty Name="Resultat_Visiteur" ColumnName="Resultat Visiteur" />
                 <ScalarProperty Name="TypeResultIDDomicile" ColumnName="TypeResultIDDomicile" />
                 <ScalarProperty Name="TypeResultIDVisiteur" ColumnName="TypeResultIDVisiteur" />
+                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

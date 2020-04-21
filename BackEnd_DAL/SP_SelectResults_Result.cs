@@ -21,5 +21,6 @@ namespace BackEnd_DAL
         public string Resultat_Visiteur { get; set; }
         public int TypeResultIDDomicile { get; set; }
         public int TypeResultIDVisiteur { get; set; }
+        public System.DateTime Mch_LastUpdate { get; set; }
     }
 }
