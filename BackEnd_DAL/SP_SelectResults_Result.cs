@@ -21,5 +21,7 @@ namespace BackEnd_DAL
         public Nullable<short> Goals_Visiteur { get; set; }
         public string Resultat_Domicile { get; set; }
         public string Resultat_Visiteur { get; set; }
+        public int TypeResultIDDomicile { get; set; }
+        public int TypeResultIDVisiteur { get; set; }
     }
 }

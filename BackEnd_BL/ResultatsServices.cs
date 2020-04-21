@@ -28,7 +28,9 @@ namespace BackEnd_BL
                 oRes.GoalsDom = res.Goals_Domicile;
                 oRes.GoalsVisit = res.Goals_Visiteur;
                 oRes.ResultDom = res.Resultat_Domicile;
+                oRes.ResDomTypeID = res.TypeResultIDDomicile;
                 oRes.ResultVisit = res.Resultat_Visiteur;
+                oRes.ResVstTypeID = res.TypeResultIDVisiteur;
 
                 rtrnList.Add(oRes);
             }

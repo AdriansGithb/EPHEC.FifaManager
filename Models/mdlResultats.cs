@@ -15,6 +15,9 @@ namespace Models
         public short? GoalsDom { get; set; }
         public short? GoalsVisit { get; set; }
         public string ResultDom { get; set; }
+        public int ResDomTypeID { get; set; }
         public string ResultVisit { get; set; }
+        public int ResVstTypeID { get; set; }
+
     }
 }
