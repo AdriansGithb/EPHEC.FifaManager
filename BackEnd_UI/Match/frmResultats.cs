@@ -52,8 +52,8 @@ namespace BackEnd_UI.Match
             List<MdlResultats> lstRes = oResServices.GetResultats(oChamp.Id,ssn);
             gridResults.DataSource = lstRes;
             //cacher les colonnes avec l'ID du type résultat
-            gridResults.Columns[7].Visible = false;
-            gridResults.Columns[9].Visible = false;
+            //gridResults.Columns[7].Visible = false;
+            //gridResults.Columns[9].Visible = false;
         }
 
         private void gridResults_DoubleClick(object sender, System.EventArgs e)

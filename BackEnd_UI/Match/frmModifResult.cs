@@ -14,10 +14,15 @@ namespace BackEnd_UI.Match
 {
     public partial class frmModifResult : Form
     {
+        private MdlResultats resAModifier;
         // chargement de la form avec un objet résultat à modifier
-        public frmModifResult(MdlResultats resAModifier)
+        public frmModifResult(MdlResultats slctdRes)
         {
             InitializeComponent();
+            resAModifier = slctdRes;
+        }
+        private void frmModifResult_Load(object sender, EventArgs e)
+        {
             //charger les noms des labels avec les données de l'objet reçu
             lblMatch.Text = $"Match ID : {resAModifier.Match_ID}";
             lblEqpDom.Text = resAModifier.Nom_EqpDom;
@@ -29,7 +34,7 @@ namespace BackEnd_UI.Match
             lstbxResEqpDom.DisplayMember = "Libelle";
             lstbxResEqpDom.ValueMember = "Id";
             //sélection par défaut du résultat de départ
-            lstbxResEqpDom.SelectedValue= resAModifier.ResDomTypeID;
+            lstbxResEqpDom.SelectedValue = resAModifier.ResDomTypeID;
             //liste equipe visiteuse : affichage du libellé dans la liste, mais valeur de l'objet = l'ID du type résultat
             lstbxResEqpVis.DataSource = oServices.GetTypeResults();
             lstbxResEqpVis.DisplayMember = "Libelle";
@@ -37,10 +42,36 @@ namespace BackEnd_UI.Match
             //sélection par défaut du résultat de départ
             lstbxResEqpVis.SelectedValue = resAModifier.ResVstTypeID;
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //transformation de l'item en MdlTypeResult
+            MdlTypeResult slctdResDom = (MdlTypeResult)lstbxResEqpDom.SelectedItem;
+            MdlTypeResult slctdResVis = (MdlTypeResult)lstbxResEqpVis.SelectedItem;
+
+            //vérification de modification avant changement
+            if ((slctdResDom.Id != resAModifier.ResDomTypeID) ||
+                (slctdResVis.Id != resAModifier.ResVstTypeID))
+            {
+                resAModifier.ResDomTypeID = slctdResDom.Id;
+                resAModifier.ResultDom = slctdResDom.Libelle;
+                resAModifier.ResVstTypeID = slctdResVis.Id;
+                resAModifier.ResultVisit = slctdResVis.Libelle;
+                MessageBox.Show("changements effectués");
+                this.Close();
+
+            }
+            else   //si pas de changement
+            {
+                MessageBox.Show("pas de changement effectué");
+                this.Close();
+            }
+        }
+
+
     }
 }

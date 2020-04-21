@@ -46,6 +46,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Sauver";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -128,6 +129,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmModifResult";
             this.Text = "frmModifResult";
+            this.Load += new System.EventHandler(this.frmModifResult_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
