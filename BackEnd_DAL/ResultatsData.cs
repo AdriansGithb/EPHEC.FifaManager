@@ -33,10 +33,10 @@ namespace BackEnd_DAL
             return lstTpRes;
         }
         //Appel de la SP_ModifResult qui va modifier la valeur des résultats dans la table Matchs de la BD
-        public void ModifResult(int mchId, int newResDom, int newResVst)
+        public void ModifResult(int mchId, int newResDom, int newResVst, DateTime lstUpdt)
         {
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
-            ctx.SP_ModifResult(mchId, newResDom, newResVst);
+            ctx.SP_ModifResult(mchId, newResDom, newResVst,lstUpdt);
         }
     }
 }

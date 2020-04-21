@@ -341,6 +341,7 @@
           <Parameter Name="match_id" Type="int" Mode="In" />
           <Parameter Name="tpResDomId" Type="int" Mode="In" />
           <Parameter Name="tpResVisId" Type="int" Mode="In" />
+          <Parameter Name="lstUpdt" Type="datetime" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
@@ -909,6 +910,7 @@
             <Parameter Name="match_id" Mode="In" Type="Int32" />
             <Parameter Name="tpResDomId" Mode="In" Type="Int32" />
             <Parameter Name="tpResVisId" Mode="In" Type="Int32" />
+            <Parameter Name="lstUpdt" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">

@@ -58,14 +58,13 @@ namespace BackEnd_UI.Match
                 (slctdResVis.Id != resAModifier.ResVstTypeID))
             {
                 ResultatsServices oServices = new ResultatsServices();
-                oServices.SetResultat(resAModifier.Match_ID, slctdResDom.Id,slctdResVis.Id);
+                oServices.SetResultat(resAModifier.Match_ID, slctdResDom.Id, slctdResVis.Id, resAModifier.LastUpdate);
                 MessageBox.Show("changements effectués");
                 this.Close();
             }
             else   //si pas de changement
             {
-                MessageBox.Show("pas de changement effectué");
-                this.Close();
+                MessageBox.Show("Vous n'avez pas effectué de modification");
             }
         }
 

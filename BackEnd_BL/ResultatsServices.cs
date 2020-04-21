@@ -57,10 +57,10 @@ namespace BackEnd_BL
             return rtrnLst;
         }
 
-        public void SetResultat(int mchId, int newResDom, int newResVst)
+        public void SetResultat(int mchId, int newResDom, int newResVst, DateTime lstUpdt)
         {
             ResultatsData oData = new ResultatsData();
-            oData.ModifResult( mchId, newResDom, newResVst);
+            oData.ModifResult( mchId, newResDom, newResVst, lstUpdt);
         }
     }
 }

@@ -79,7 +79,7 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
         }
     
-        public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId)
+        public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
         {
             var match_idParameter = match_id.HasValue ?
                 new ObjectParameter("match_id", match_id) :
@@ -93,7 +93,11 @@ namespace BackEnd_DAL
                 new ObjectParameter("tpResVisId", tpResVisId) :
                 new ObjectParameter("tpResVisId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModifResult", match_idParameter, tpResDomIdParameter, tpResVisIdParameter);
+            var lstUpdtParameter = lstUpdt.HasValue ?
+                new ObjectParameter("lstUpdt", lstUpdt) :
+                new ObjectParameter("lstUpdt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModifResult", match_idParameter, tpResDomIdParameter, tpResVisIdParameter, lstUpdtParameter);
         }
     }
 }
