@@ -29,6 +29,7 @@ namespace BackEnd_BL
                 oRes.ResDomTypeID = res.TypeResultIDDomicile;
                 oRes.ResultVisit = res.Resultat_Visiteur;
                 oRes.ResVstTypeID = res.TypeResultIDVisiteur;
+                oRes.LastUpdate = res.Mch_LastUpdate;
 
                 rtrnList.Add(oRes);
             }

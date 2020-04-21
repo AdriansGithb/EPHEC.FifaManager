@@ -16,6 +16,7 @@ namespace Models
         public int ResDomTypeID { get; set; }
         public string ResultVisit { get; set; }
         public int ResVstTypeID { get; set; }
+        public DateTime LastUpdate { get; set; }
 
     }
 }

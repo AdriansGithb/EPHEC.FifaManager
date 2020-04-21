@@ -54,6 +54,7 @@ namespace BackEnd_UI.Match
             //cacher les colonnes avec l'ID du type résultat
             //gridResults.Columns[7].Visible = false;
             //gridResults.Columns[9].Visible = false;
+            //gridResults.Columns[10].Visible = false;
         }
 
         private void gridResults_DoubleClick(object sender, System.EventArgs e)
