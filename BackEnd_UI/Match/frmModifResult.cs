@@ -24,14 +24,18 @@ namespace BackEnd_UI.Match
             lblEqpVis.Text = resAModifier.Nom_EqpVisit;
             //chargement de la liste des types de résultats possibles, pour insérer dans les listbox domicile et visiteur
             ResultatsServices oServices = new ResultatsServices();
-            //liste equipe domicile
+            //liste equipe domicile : affichage du libellé dans la liste, mais valeur de l'objet = l'ID du type résultat
             lstbxResEqpDom.DataSource = oServices.GetTypeResults();
-            lstbxResEqpDom.ValueMember = "Libelle";
-            lstbxResEqpDom.SelectedValue= resAModifier.ResultDom;
-            //liste equipe visiteuse
+            lstbxResEqpDom.DisplayMember = "Libelle";
+            lstbxResEqpDom.ValueMember = "Id";
+            //sélection par défaut du résultat de départ
+            lstbxResEqpDom.SelectedValue= resAModifier.ResDomTypeID;
+            //liste equipe visiteuse : affichage du libellé dans la liste, mais valeur de l'objet = l'ID du type résultat
             lstbxResEqpVis.DataSource = oServices.GetTypeResults();
-            lstbxResEqpVis.ValueMember = "Libelle";
-            lstbxResEqpVis.SelectedValue = resAModifier.ResultVisit;
+            lstbxResEqpVis.DisplayMember = "Libelle";
+            lstbxResEqpVis.ValueMember = "Id";
+            //sélection par défaut du résultat de départ
+            lstbxResEqpVis.SelectedValue = resAModifier.ResVstTypeID;
 
         }
 
