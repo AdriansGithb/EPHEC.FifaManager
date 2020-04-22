@@ -1,5 +1,7 @@
 ﻿using BackEnd_BL;
+using Errors;
 using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,45 +27,70 @@ namespace BackEnd_UI.Match
 
         private void frmResultats_Load(object sender, System.EventArgs e)
         {
-
-            //chargement de la liste des championnats
-            ChampionnatsServices oService = new ChampionnatsServices();
-            List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
-            lstChamp = oService.GetChampionnats();
-            boxChampSelection.DataSource = lstChamp;
-            boxChampSelection.DisplayMember = "NomString";
+            try
+            {
+                //chargement de la liste des championnats
+                ChampionnatsServices oService = new ChampionnatsServices();
+                List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
+                lstChamp = oService.GetChampionnats();
+                boxChampSelection.DataSource = lstChamp;
+                boxChampSelection.DisplayMember = "NomString";
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
 
         }
 
+        //fonction pour charger/recharger le tableau de résultats
         private void gridResults_LoadSelection(object sender, System.EventArgs e)
         {
-            //vérification du radiobutton sélectionné pour connaître la saison à afficher
-            int ssn;
-            if (rdbtnSeason1.Checked == true)
-                ssn = 1;
+            try
+            {
+                //vérification du radiobutton sélectionné pour connaître la saison à afficher
+                int ssn;
+                if (rdbtnSeason1.Checked == true)
+                    ssn = 1;
                 else if (rdbtnSeason2.Checked == true)
                     ssn = 2;
-                    else ssn = 12;
-            //récupération de l'ID championnat sélectionné
-            MdlChampionnat oChamp = new MdlChampionnat();
-            oChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
-            //envoi de la requête vers la BL pour remplir le datagridview en fonction du championnat et de la/les saison(s)
-            ResultatsServices oResServices = new ResultatsServices();
-            List<MdlResultats> lstRes = oResServices.GetResultats(oChamp.Id,ssn);
-            gridResults.DataSource = lstRes;
-            //cacher les colonnes avec l'ID du type résultat
-            //gridResults.Columns[7].Visible = false;
-            //gridResults.Columns[9].Visible = false;
-            //gridResults.Columns[10].Visible = false;
+                else ssn = 12;
+                //récupération de l'ID championnat sélectionné
+                MdlChampionnat oChamp = new MdlChampionnat();
+                oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
+                //envoi de la requête vers la BL pour remplir le datagridview en fonction du championnat et de la/les saison(s)
+                ResultatsServices oResServices = new ResultatsServices();
+                List<MdlResultats> lstRes = oResServices.GetResultats(oChamp.Id, ssn);
+                gridResults.DataSource = lstRes;
+                //cacher les colonnes avec l'ID du type résultat
+                //gridResults.Columns[7].Visible = false;
+                //gridResults.Columns[9].Visible = false;
+                //gridResults.Columns[10].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
 
+        //double cliquer dans le tableau résultat = ouvrir une fenêtre de modification de la ligne sélectionnée
         private void gridResults_DoubleClick(object sender, System.EventArgs e)
         {
-            //ouverture de la fenêtre de modification de résultat
-            MdlResultats slctdRes = (MdlResultats)gridResults.CurrentRow.DataBoundItem;
-            frmModifResult oFrmModifResult = new frmModifResult(slctdRes);
-            oFrmModifResult.MdiParent = this.MdiParent;
-            oFrmModifResult.Show();
+            try
+            {
+                //ouverture de la fenêtre de modification de résultat
+                MdlResultats slctdRes = (MdlResultats) gridResults.CurrentRow.DataBoundItem;
+                frmModifResult oFrmModifResult = new frmModifResult(slctdRes);
+                oFrmModifResult.MdiParent = this.MdiParent;
+                oFrmModifResult.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }
