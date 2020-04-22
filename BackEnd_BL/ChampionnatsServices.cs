@@ -3,6 +3,7 @@ using Errors;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,13 @@ namespace BackEnd_BL
 
                 return returnLst;
             }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new BusinessErrors(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

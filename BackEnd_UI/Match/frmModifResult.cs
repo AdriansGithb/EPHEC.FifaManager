@@ -16,20 +16,12 @@ namespace BackEnd_UI.Match
     public partial class frmModifResult : Form
     {
         private MdlResultats resAModifier;
+        
         // chargement de la form avec un objet résultat à modifier
         public frmModifResult(MdlResultats slctdRes)
         {
-            try
-            {
                 InitializeComponent();
                 resAModifier = slctdRes;
-            }
-            catch (Exception ex)
-            {
-                BusinessErrors oError = new BusinessErrors(ex.Message);
-                MessageBox.Show(oError.Message);
-            }
-
         }
 
         //fonction permettant de charger les données de la form en fonction des paramètres de l'objet reçu, et des types de résultats dispos dans la BD
@@ -61,8 +53,8 @@ namespace BackEnd_UI.Match
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
-
         }
+        
         //fermer la fenêtre si on clique sur annuler
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -98,7 +90,7 @@ namespace BackEnd_UI.Match
                 }
                 else //si pas de changement
                 {
-                    MessageBox.Show("Vous n'avez pas effectué de modification");
+                    MessageBox.Show("Vous n'avez pas effectué de modification à sauvegarder");
                 }
             }
             catch (Exception ex)

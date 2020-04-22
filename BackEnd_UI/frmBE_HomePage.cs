@@ -32,7 +32,6 @@ namespace BackEnd_UI
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
-
         }
 
         private void mnResults_Click(object sender, EventArgs e)
@@ -48,7 +47,6 @@ namespace BackEnd_UI
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
-
         }
     }
 }

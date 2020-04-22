@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,9 +41,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new BusinessErrors(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -68,9 +73,13 @@ namespace BackEnd_BL
 
                 return rtrnLst;
             }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new BusinessErrors(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -82,9 +91,13 @@ namespace BackEnd_BL
                 ResultatsData oData = new ResultatsData();
                 oData.ModifResult(mchId, newResDom, newResVst, lstUpdt);
             }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new BusinessErrors(ex.Message);
+                throw new Exception(ex.InnerException.Message);
             }
         }
     }

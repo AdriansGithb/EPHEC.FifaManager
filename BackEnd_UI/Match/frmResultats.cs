@@ -41,7 +41,6 @@ namespace BackEnd_UI.Match
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
-
         }
 
         //fonction pour charger/recharger le tableau de résultats

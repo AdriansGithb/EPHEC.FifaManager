@@ -15,7 +15,7 @@ namespace Errors
             switch (erMsg)
             {
                 case "NewResultRecordInDB":
-                    _Message = "Les données ont été modifiées entre temps, veuillez recommencer la procédure";
+                   _Message = "Les données ont été modifiées entre-temps. Veuillez recommencer la procédure";
                     break;
                 default: _Message = "Erreur inconnue, veuillez contacter un administrateur";
                     break;
