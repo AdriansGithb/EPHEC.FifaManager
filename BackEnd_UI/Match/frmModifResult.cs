@@ -59,7 +59,7 @@ namespace BackEnd_UI.Match
             {
                 ResultatsServices oServices = new ResultatsServices();
                 oServices.SetResultat(resAModifier.Match_ID, slctdResDom.Id, slctdResVis.Id, resAModifier.LastUpdate);
-                MessageBox.Show("changements effectués");
+                MessageBox.Show("Modifications sauvegardées");
                 this.Close();
             }
             else   //si pas de changement
