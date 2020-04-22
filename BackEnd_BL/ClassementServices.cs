@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Errors;
 
 namespace BackEnd_BL
 {
@@ -13,24 +14,31 @@ namespace BackEnd_BL
         //obtenir le classement d'un championnat sélectionné
         public List<MdlClassement> GetClassement(int champ)
         {
-            ClassementData oData = new ClassementData();
-            List<SP_SelectClassement_Result> lstClassRes = oData.SelectClassement(champ).ToList();
-
-            //tranformation en modèles classement
-            List<MdlClassement> returnLst = new List<MdlClassement>();
-
-            foreach (SP_SelectClassement_Result eqp in lstClassRes)
+            try
             {
-                MdlClassement oClassement = new MdlClassement();
-                oClassement.Position = (lstClassRes.IndexOf(eqp)+1);
-                oClassement.Points=(int)eqp.Points;
-                oClassement.EquipeNom = eqp.Eqp_Nom;
-                oClassement.EquipeID = (int)eqp.Eqp_ID;
+                ClassementData oData = new ClassementData();
+                List<SP_SelectClassement_Result> lstClassRes = oData.SelectClassement(champ).ToList();
 
-                returnLst.Add(oClassement);
+                //tranformation en modèles classement
+                List<MdlClassement> returnLst = new List<MdlClassement>();
+
+                foreach (SP_SelectClassement_Result eqp in lstClassRes)
+                {
+                    MdlClassement oClassement = new MdlClassement();
+                    oClassement.Position = (lstClassRes.IndexOf(eqp) + 1);
+                    oClassement.Points = (int) eqp.Points;
+                    oClassement.EquipeNom = eqp.Eqp_Nom;
+                    oClassement.EquipeID = (int) eqp.Eqp_ID;
+
+                    returnLst.Add(oClassement);
+                }
+
+                return returnLst;
             }
-
-            return returnLst;
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
     }
 }
