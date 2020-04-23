@@ -22,7 +22,7 @@ namespace BackEnd_DAL
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -41,6 +41,27 @@ namespace BackEnd_DAL
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Types_Events> Types_Events { get; set; }
         public virtual DbSet<Types_Resultats> Types_Resultats { get; set; }
+    
+        public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
+        {
+            var match_idParameter = match_id.HasValue ?
+                new ObjectParameter("match_id", match_id) :
+                new ObjectParameter("match_id", typeof(int));
+    
+            var tpResDomIdParameter = tpResDomId.HasValue ?
+                new ObjectParameter("tpResDomId", tpResDomId) :
+                new ObjectParameter("tpResDomId", typeof(int));
+    
+            var tpResVisIdParameter = tpResVisId.HasValue ?
+                new ObjectParameter("tpResVisId", tpResVisId) :
+                new ObjectParameter("tpResVisId", typeof(int));
+    
+            var lstUpdtParameter = lstUpdt.HasValue ?
+                new ObjectParameter("lstUpdt", lstUpdt) :
+                new ObjectParameter("lstUpdt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModifResult", match_idParameter, tpResDomIdParameter, tpResVisIdParameter, lstUpdtParameter);
+        }
     
         public virtual ObjectResult<Championnats> SP_SelectAllChampionnats()
         {
@@ -77,27 +98,6 @@ namespace BackEnd_DAL
                 new ObjectParameter("ssn", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
-        }
-    
-        public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
-        {
-            var match_idParameter = match_id.HasValue ?
-                new ObjectParameter("match_id", match_id) :
-                new ObjectParameter("match_id", typeof(int));
-    
-            var tpResDomIdParameter = tpResDomId.HasValue ?
-                new ObjectParameter("tpResDomId", tpResDomId) :
-                new ObjectParameter("tpResDomId", typeof(int));
-    
-            var tpResVisIdParameter = tpResVisId.HasValue ?
-                new ObjectParameter("tpResVisId", tpResVisId) :
-                new ObjectParameter("tpResVisId", typeof(int));
-    
-            var lstUpdtParameter = lstUpdt.HasValue ?
-                new ObjectParameter("lstUpdt", lstUpdt) :
-                new ObjectParameter("lstUpdt", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModifResult", match_idParameter, tpResDomIdParameter, tpResVisIdParameter, lstUpdtParameter);
         }
     }
 }

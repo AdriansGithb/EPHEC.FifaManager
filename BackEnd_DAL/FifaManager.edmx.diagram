@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b1fb3ec5cb8493ba2dbbed999f9bf03" Name="Diagram1">
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Championnats" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Constitution_Championnat" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Constitution_Equipes" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Equipes" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Events" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Inscription_Matchs" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Joueurs" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Matchs" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Saisons" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Suspensions" Width="1.5" PointX="15" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Events" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Resultats" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+      <Diagram DiagramId="1644b2ecef2749f78d9edb6ab945a0f8" Name="Diagram1">
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Championnats" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Constitution_Championnat" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Constitution_Equipes" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Equipes" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Events" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Inscription_Matchs" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Joueurs" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Matchs" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Saisons" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Suspensions" Width="1.5" PointX="15" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Events" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Resultats" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Championnat_Championnats" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Saisons_Championnats" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Championnat_Equipes" ManuallyRouted="false" />

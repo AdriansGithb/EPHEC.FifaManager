@@ -23,8 +23,7 @@ namespace BackEnd_DAL
     
         public int Ssn_ID { get; set; }
         public int Ssn_Champ_ID { get; set; }
-        public Nullable<System.DateTime> Ssn_Date_Debut { get; set; }
-        public Nullable<System.DateTime> Ssn_Date_Fin { get; set; }
+        public System.DateTime Ssn_Date_Debut { get; set; }
         public bool Ssn_Num { get; set; }
     
         public virtual Championnats Championnats { get; set; }

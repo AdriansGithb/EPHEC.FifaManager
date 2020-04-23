@@ -18,8 +18,8 @@ namespace BackEnd_DAL
         public string Equipe_Domicile { get; set; }
         public string Equipe_Visiteuse { get; set; }
         public string Resultat_Domicile { get; set; }
-        public string Resultat_Visiteur { get; set; }
         public int TypeResultIDDomicile { get; set; }
+        public string Resultat_Visiteur { get; set; }
         public int TypeResultIDVisiteur { get; set; }
         public System.DateTime Mch_LastUpdate { get; set; }
     }
