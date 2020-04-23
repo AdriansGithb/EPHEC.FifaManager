@@ -30,7 +30,7 @@
         {
             this.gridResults = new System.Windows.Forms.DataGridView();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
-            this.gpBoxSaisons = new System.Windows.Forms.GroupBox();
+            this.gpbxGeneration = new System.Windows.Forms.GroupBox();
             this.btnGnrClndr = new System.Windows.Forms.Button();
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
@@ -41,7 +41,7 @@
             this.btnSaveClose = new System.Windows.Forms.Button();
             this.btnSaveInsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).BeginInit();
-            this.gpBoxSaisons.SuspendLayout();
+            this.gpbxGeneration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,22 +69,23 @@
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
             // 
-            // gpBoxSaisons
+            // gpbxGeneration
             // 
-            this.gpBoxSaisons.Controls.Add(this.btnGnrClndr);
-            this.gpBoxSaisons.Controls.Add(this.rdbtnAllSeason);
-            this.gpBoxSaisons.Controls.Add(this.rdbtnSeason2);
-            this.gpBoxSaisons.Controls.Add(this.rdbtnSeason1);
-            this.gpBoxSaisons.Controls.Add(this.boxChampSelection);
-            this.gpBoxSaisons.Location = new System.Drawing.Point(12, 12);
-            this.gpBoxSaisons.Name = "gpBoxSaisons";
-            this.gpBoxSaisons.Size = new System.Drawing.Size(633, 123);
-            this.gpBoxSaisons.TabIndex = 8;
-            this.gpBoxSaisons.TabStop = false;
-            this.gpBoxSaisons.Text = "Sélectionner le championnat et la saison à afficher";
+            this.gpbxGeneration.Controls.Add(this.btnGnrClndr);
+            this.gpbxGeneration.Controls.Add(this.rdbtnAllSeason);
+            this.gpbxGeneration.Controls.Add(this.rdbtnSeason2);
+            this.gpbxGeneration.Controls.Add(this.rdbtnSeason1);
+            this.gpbxGeneration.Controls.Add(this.boxChampSelection);
+            this.gpbxGeneration.Location = new System.Drawing.Point(12, 12);
+            this.gpbxGeneration.Name = "gpbxGeneration";
+            this.gpbxGeneration.Size = new System.Drawing.Size(633, 123);
+            this.gpbxGeneration.TabIndex = 8;
+            this.gpbxGeneration.TabStop = false;
+            this.gpbxGeneration.Text = "Sélectionner le championnat et la saison ";
             // 
             // btnGnrClndr
             // 
+            this.btnGnrClndr.Enabled = false;
             this.btnGnrClndr.Location = new System.Drawing.Point(443, 30);
             this.btnGnrClndr.Name = "btnGnrClndr";
             this.btnGnrClndr.Size = new System.Drawing.Size(184, 73);
@@ -95,18 +96,18 @@
             // rdbtnAllSeason
             // 
             this.rdbtnAllSeason.AutoSize = true;
-            this.rdbtnAllSeason.Checked = true;
+            this.rdbtnAllSeason.Enabled = false;
             this.rdbtnAllSeason.Location = new System.Drawing.Point(319, 86);
             this.rdbtnAllSeason.Name = "rdbtnAllSeason";
             this.rdbtnAllSeason.Size = new System.Drawing.Size(83, 17);
             this.rdbtnAllSeason.TabIndex = 2;
-            this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
             // 
             // rdbtnSeason2
             // 
             this.rdbtnSeason2.AutoSize = true;
+            this.rdbtnSeason2.Enabled = false;
             this.rdbtnSeason2.Location = new System.Drawing.Point(174, 86);
             this.rdbtnSeason2.Name = "rdbtnSeason2";
             this.rdbtnSeason2.Size = new System.Drawing.Size(66, 17);
@@ -117,6 +118,7 @@
             // rdbtnSeason1
             // 
             this.rdbtnSeason1.AutoSize = true;
+            this.rdbtnSeason1.Enabled = false;
             this.rdbtnSeason1.Location = new System.Drawing.Point(36, 86);
             this.rdbtnSeason1.Name = "rdbtnSeason1";
             this.rdbtnSeason1.Size = new System.Drawing.Size(66, 17);
@@ -190,12 +192,13 @@
             this.Controls.Add(this.lblGnrClndr);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.gridResults);
-            this.Controls.Add(this.gpBoxSaisons);
+            this.Controls.Add(this.gpbxGeneration);
             this.Name = "frmGnrCalendrier";
             this.Text = "Génération de calendrier de championnat";
+            this.Load += new System.EventHandler(this.frmGnrCalendrier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
-            this.gpBoxSaisons.ResumeLayout(false);
-            this.gpBoxSaisons.PerformLayout();
+            this.gpbxGeneration.ResumeLayout(false);
+            this.gpbxGeneration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,7 +209,7 @@
 
         private System.Windows.Forms.DataGridView gridResults;
         private System.Windows.Forms.ComboBox boxChampSelection;
-        private System.Windows.Forms.GroupBox gpBoxSaisons;
+        private System.Windows.Forms.GroupBox gpbxGeneration;
         private System.Windows.Forms.RadioButton rdbtnAllSeason;
         private System.Windows.Forms.RadioButton rdbtnSeason2;
         private System.Windows.Forms.RadioButton rdbtnSeason1;
