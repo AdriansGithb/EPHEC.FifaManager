@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BackEnd_UI.Calendrier
 {
-    public partial class frmCalendrier : Form
+    public partial class frmGnrCalendrier : Form
     {
-        public frmCalendrier()
+        public frmGnrCalendrier()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace BackEnd_UI.Calendrier
 {
-    partial class frmCalendrier
+    partial class frmGnrCalendrier
     {
         /// <summary>
         /// Required designer variable.
@@ -179,7 +179,7 @@
             this.btnSaveInsert.Text = "Sauver calendrier et ouvrir la fenêtre de modification des matchs";
             this.btnSaveInsert.UseVisualStyleBackColor = true;
             // 
-            // frmCalendrier
+            // frmGnrCalendrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,8 +191,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.gridResults);
             this.Controls.Add(this.gpBoxSaisons);
-            this.Name = "frmCalendrier";
-            this.Text = "frmCalendrier";
+            this.Name = "frmGnrCalendrier";
+            this.Text = "Génération de calendrier de championnat";
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
             this.gpBoxSaisons.ResumeLayout(false);
             this.gpBoxSaisons.PerformLayout();

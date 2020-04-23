@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calendrier\frmCalendrier.cs">
+    <Compile Include="Calendrier\frmGnrCalendrier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calendrier\frmCalendrier.Designer.cs">
-      <DependentUpon>frmCalendrier.cs</DependentUpon>
+    <Compile Include="Calendrier\frmGnrCalendrier.Designer.cs">
+      <DependentUpon>frmGnrCalendrier.cs</DependentUpon>
     </Compile>
     <Compile Include="Classement\frmClassement.cs">
       <SubType>Form</SubType>
@@ -78,8 +78,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Calendrier\frmCalendrier.resx">
-      <DependentUpon>frmCalendrier.cs</DependentUpon>
+    <EmbeddedResource Include="Calendrier\frmGnrCalendrier.resx">
+      <DependentUpon>frmGnrCalendrier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classement\frmClassement.resx">
       <DependentUpon>frmClassement.cs</DependentUpon>
