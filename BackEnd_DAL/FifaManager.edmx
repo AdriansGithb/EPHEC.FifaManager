@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Championnats">
           <Key>
             <PropertyRef Name="Champ_ID" />
@@ -84,6 +84,7 @@
           <Property Name="Ssn_Champ_ID" Type="int" Nullable="false" />
           <Property Name="Ssn_Date_Debut" Type="date" Nullable="false" />
           <Property Name="Ssn_Num" Type="bit" Nullable="false" />
+          <Property Name="Ssn_Date_Gnr_Clndr" Type="datetime" />
         </EntityType>
         <EntityType Name="Suspensions">
           <Key>
@@ -337,6 +338,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="FN_CheckGnrClndrPossible" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" ReturnType="varchar">
+          <Parameter Name="champ_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_ModifResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="match_id" Type="int" Mode="In" />
           <Parameter Name="tpResDomId" Type="int" Mode="In" />
@@ -439,8 +443,7 @@
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Fifa_ManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -554,6 +557,7 @@
           <NavigationProperty Name="Championnats" Relationship="Self.FK_Saisons_Championnats" FromRole="Saisons" ToRole="Championnats" />
           <NavigationProperty Name="Constitution_Equipes" Relationship="Self.FK_Constitution_Equipes_Saisons" FromRole="Saisons" ToRole="Constitution_Equipes" />
           <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Saisons" FromRole="Saisons" ToRole="Matchs" />
+          <Property Name="Ssn_Date_Gnr_Clndr" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Suspensions">
           <Key>
@@ -907,7 +911,7 @@
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
           <FunctionImport Name="SP_SelectAllTypeResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeResults_Result)" />
           <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
-            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectResults_Result)">
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
@@ -1028,6 +1032,7 @@
           <EntitySetMapping Name="Saisons">
             <EntityTypeMapping TypeName="Fifa_ManagerModel.Saisons">
               <MappingFragment StoreEntitySet="Saisons">
+                <ScalarProperty Name="Ssn_Date_Gnr_Clndr" ColumnName="Ssn_Date_Gnr_Clndr" />
                 <ScalarProperty Name="Ssn_ID" ColumnName="Ssn_ID" />
                 <ScalarProperty Name="Ssn_Champ_ID" ColumnName="Ssn_Champ_ID" />
                 <ScalarProperty Name="Ssn_Date_Debut" ColumnName="Ssn_Date_Debut" />

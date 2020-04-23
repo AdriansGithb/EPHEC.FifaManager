@@ -25,6 +25,7 @@ namespace BackEnd_DAL
         public int Ssn_Champ_ID { get; set; }
         public System.DateTime Ssn_Date_Debut { get; set; }
         public bool Ssn_Num { get; set; }
+        public Nullable<System.DateTime> Ssn_Date_Gnr_Clndr { get; set; }
     
         public virtual Championnats Championnats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

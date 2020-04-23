@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendrierData.cs" />
     <Compile Include="Championnats.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
@@ -85,6 +86,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FifaManager.edmx</DependentUpon>
     </Compile>
+    <Compile Include="FifaManager.Functions.cs" />
     <Compile Include="Inscription_Matchs.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
