@@ -12,6 +12,7 @@ namespace Models
         public int Id { get; set; }
         public string Nom { get; set; }
         public int Annee { get; set; }
+        public int NbSemnSsn { get; set; }
         public string NomString { get; set; }
 
         public MdlChampionnat()
@@ -19,11 +20,12 @@ namespace Models
 
         }
         
-        public MdlChampionnat(int id, string nom, int annee)
+        public MdlChampionnat(int id, string nom, int annee, int nbSemn)
         {
             this.Id = id;
             this.Nom = nom;
             this.Annee = annee;
+            this.NbSemnSsn = nbSemn;
             this.NomString = $"{this.Annee} - {this.Nom}";
         }
         
