@@ -71,7 +71,7 @@
             // mnVoirClssmnt
             // 
             this.mnVoirClssmnt.Name = "mnVoirClssmnt";
-            this.mnVoirClssmnt.Size = new System.Drawing.Size(180, 22);
+            this.mnVoirClssmnt.Size = new System.Drawing.Size(168, 22);
             this.mnVoirClssmnt.Text = "Voir le classement";
             this.mnVoirClssmnt.Click += new System.EventHandler(this.mn_VoirClassement_Click);
             // 
@@ -104,6 +104,7 @@
             this.générerUnCalendrierToolStripMenuItem.Name = "générerUnCalendrierToolStripMenuItem";
             this.générerUnCalendrierToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.générerUnCalendrierToolStripMenuItem.Text = "Générer un calendrier";
+            this.générerUnCalendrierToolStripMenuItem.Click += new System.EventHandler(this.mn_gnrClndr_Click);
             // 
             // modifierUnCalendrierToolStripMenuItem
             // 

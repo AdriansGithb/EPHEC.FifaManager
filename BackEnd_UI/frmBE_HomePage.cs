@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BackEnd_UI.Calendrier;
 using BackEnd_UI.Match;
 using Errors;
 
@@ -41,6 +42,21 @@ namespace BackEnd_UI
                 frmResultats frmRes = new frmResultats();
                 frmRes.MdiParent = this;
                 frmRes.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        private void mn_gnrClndr_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmCalendrier frmClndr = new frmCalendrier();
+                frmClndr.MdiParent = this;
+                frmClndr.Show();
             }
             catch (Exception ex)
             {
