@@ -345,6 +345,9 @@
           <Parameter Name="lstUpdt" Type="datetime" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_SelectAllSsn1Champ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="champ_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
@@ -914,6 +917,9 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_SelectAllSsn1Champ" EntitySet="Saisons" ReturnType="Collection(Fifa_ManagerModel.Saisons)">
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -940,6 +946,13 @@
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="TypeResultIDVisiteur" Nullable="false" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllSsn1Champ_Result">
+          <Property Type="Int32" Name="Ssn_ID" Nullable="false" />
+          <Property Type="Int32" Name="Ssn_Champ_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Ssn_Date_Debut" Nullable="false" />
+          <Property Type="Boolean" Name="Ssn_Num" Nullable="false" />
+          <Property Type="DateTime" Name="Ssn_Date_Gnr_Clndr" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1111,6 +1124,8 @@
                 <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
               </ComplexTypeMapping>
             </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllSsn1Champ" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllSsn1Champ">
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
