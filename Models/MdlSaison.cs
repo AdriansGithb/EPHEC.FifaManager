@@ -8,5 +8,10 @@ namespace Models
 {
     class MdlSaison
     {
+        public int Id { get; set; }
+        public int Champ_Id { get; set; }
+        public DateTime Debut { get; set; }
+        public int FirstOrSecond { get; set; }
+        public DateTime? GnrClndr { get; set; }
     }
 }
