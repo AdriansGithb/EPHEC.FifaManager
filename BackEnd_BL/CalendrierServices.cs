@@ -86,10 +86,6 @@ namespace BackEnd_BL
 
                 return possible;
             }
-            catch (NullReferenceException ex)
-            {
-                throw new Exception(ex.Message);
-            }
             catch (SqlException ex)
             {
                 throw new Exception(ex.Message);
