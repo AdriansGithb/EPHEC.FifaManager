@@ -54,7 +54,7 @@ namespace BackEnd_UI
         {
             try
             {
-                frmGnrCalendrier frmClndr = new frmGnrCalendrier();
+                frmCalendrier frmClndr = new frmCalendrier();
                 frmClndr.MdiParent = this;
                 frmClndr.Show();
             }
