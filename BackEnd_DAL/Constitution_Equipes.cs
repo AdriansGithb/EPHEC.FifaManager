@@ -27,8 +27,8 @@ namespace BackEnd_DAL
     
         public virtual Constitution_Championnat Constitution_Championnat { get; set; }
         public virtual Joueurs Joueurs { get; set; }
-        public virtual Saisons Saisons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscription_Matchs> Inscription_Matchs { get; set; }
+        public virtual Saisons Saisons { get; set; }
     }
 }

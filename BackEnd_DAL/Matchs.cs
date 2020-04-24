@@ -37,10 +37,10 @@ namespace BackEnd_DAL
         public virtual ICollection<Events> Events { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscription_Matchs> Inscription_Matchs { get; set; }
-        public virtual Saisons Saisons { get; set; }
         public virtual Types_Resultats Types_Resultats { get; set; }
         public virtual Types_Resultats Types_Resultats1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Suspensions> Suspensions { get; set; }
+        public virtual Saisons Saisons { get; set; }
     }
 }

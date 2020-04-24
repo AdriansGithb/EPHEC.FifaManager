@@ -13,29 +13,29 @@
         <EntityTypeShape EntityType="Fifa_ManagerModel.Inscription_Matchs" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.Joueurs" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.Matchs" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Fifa_ManagerModel.Saisons" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.Suspensions" Width="1.5" PointX="15" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Events" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Fifa_ManagerModel.Types_Resultats" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Championnat_Championnats" ManuallyRouted="false" />
-        <AssociationConnector Association="Fifa_ManagerModel.FK_Saisons_Championnats" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Championnat_Equipes" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Equipes_Constitution_Championnat" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Constitution_Championnat" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Constitution_Championnat1" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Equipes_Joueurs" ManuallyRouted="false" />
-        <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Equipes_Saisons" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Inscription_Matchs_Constitution_Equipes" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Events_Inscription_Matchs" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Events_Matchs" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Events_Types_Events" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Suspensions_Events" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Inscription_Matchs_Matchs" ManuallyRouted="false" />
-        <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Saisons" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Types_Resultats" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Types_Resultats1" ManuallyRouted="false" />
         <AssociationConnector Association="Fifa_ManagerModel.FK_Suspensions_Matchs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Fifa_ManagerModel.Saisons" Width="1.5" PointX="3" PointY="9.25" />
+        <AssociationConnector Association="Fifa_ManagerModel.FK_Saisons_Championnats" />
+        <AssociationConnector Association="Fifa_ManagerModel.FK_Constitution_Equipes_Saisons" />
+        <AssociationConnector Association="Fifa_ManagerModel.FK_Matchs_Saisons" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

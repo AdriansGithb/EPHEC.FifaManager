@@ -36,11 +36,11 @@ namespace BackEnd_DAL
         public virtual DbSet<Inscription_Matchs> Inscription_Matchs { get; set; }
         public virtual DbSet<Joueurs> Joueurs { get; set; }
         public virtual DbSet<Matchs> Matchs { get; set; }
-        public virtual DbSet<Saisons> Saisons { get; set; }
         public virtual DbSet<Suspensions> Suspensions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Types_Events> Types_Events { get; set; }
         public virtual DbSet<Types_Resultats> Types_Resultats { get; set; }
+        public virtual DbSet<Saisons> Saisons { get; set; }
     
         public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
         {
@@ -100,22 +100,13 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
         }
     
-        public virtual ObjectResult<Saisons> SP_SelectAllSsn1Champ(Nullable<int> champ_id)
+        public virtual int SP_SelectAllSsn1Champ(Nullable<int> champ_id)
         {
             var champ_idParameter = champ_id.HasValue ?
                 new ObjectParameter("champ_id", champ_id) :
                 new ObjectParameter("champ_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Saisons>("SP_SelectAllSsn1Champ", champ_idParameter);
-        }
-    
-        public virtual ObjectResult<Saisons> SP_SelectAllSsn1Champ(Nullable<int> champ_id, MergeOption mergeOption)
-        {
-            var champ_idParameter = champ_id.HasValue ?
-                new ObjectParameter("champ_id", champ_id) :
-                new ObjectParameter("champ_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Saisons>("SP_SelectAllSsn1Champ", mergeOption, champ_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SelectAllSsn1Champ", champ_idParameter);
         }
     }
 }
