@@ -855,7 +855,7 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_SelectAllSsn1Champ">
+          <FunctionImport Name="SP_SelectAllSsn1Champ" EntitySet="Saisons" ReturnType="Collection(Fifa_ManagerModel.Saisons)">
           <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Saisons" EntityType="Fifa_ManagerModel.Saisons" />

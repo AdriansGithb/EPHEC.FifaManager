@@ -31,10 +31,10 @@
             this.gridResults = new System.Windows.Forms.DataGridView();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
             this.gpbxGeneration = new System.Windows.Forms.GroupBox();
-            this.btnGnrClndr = new System.Windows.Forms.Button();
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason1 = new System.Windows.Forms.RadioButton();
+            this.btnGnrClndr = new System.Windows.Forms.Button();
             this.lblMchNoDate = new System.Windows.Forms.Label();
             this.lblGnrClndr = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -69,6 +69,7 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // gpbxGeneration
             // 
@@ -83,31 +84,21 @@
             this.gpbxGeneration.TabStop = false;
             this.gpbxGeneration.Text = "Sélectionner le championnat et la saison ";
             // 
-            // btnGnrClndr
-            // 
-            this.btnGnrClndr.Enabled = false;
-            this.btnGnrClndr.Location = new System.Drawing.Point(36, 30);
-            this.btnGnrClndr.Name = "btnGnrClndr";
-            this.btnGnrClndr.Size = new System.Drawing.Size(188, 73);
-            this.btnGnrClndr.TabIndex = 14;
-            this.btnGnrClndr.Text = "Générer un nouveau calendrier";
-            this.btnGnrClndr.UseVisualStyleBackColor = true;
-            // 
             // rdbtnAllSeason
             // 
             this.rdbtnAllSeason.AutoSize = true;
-            this.rdbtnAllSeason.Enabled = false;
+            this.rdbtnAllSeason.Checked = true;
             this.rdbtnAllSeason.Location = new System.Drawing.Point(319, 86);
             this.rdbtnAllSeason.Name = "rdbtnAllSeason";
             this.rdbtnAllSeason.Size = new System.Drawing.Size(83, 17);
             this.rdbtnAllSeason.TabIndex = 2;
+            this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
             // 
             // rdbtnSeason2
             // 
             this.rdbtnSeason2.AutoSize = true;
-            this.rdbtnSeason2.Enabled = false;
             this.rdbtnSeason2.Location = new System.Drawing.Point(174, 86);
             this.rdbtnSeason2.Name = "rdbtnSeason2";
             this.rdbtnSeason2.Size = new System.Drawing.Size(66, 17);
@@ -118,7 +109,6 @@
             // rdbtnSeason1
             // 
             this.rdbtnSeason1.AutoSize = true;
-            this.rdbtnSeason1.Enabled = false;
             this.rdbtnSeason1.Location = new System.Drawing.Point(36, 86);
             this.rdbtnSeason1.Name = "rdbtnSeason1";
             this.rdbtnSeason1.Size = new System.Drawing.Size(66, 17);
@@ -126,10 +116,19 @@
             this.rdbtnSeason1.Text = "Saison 1";
             this.rdbtnSeason1.UseVisualStyleBackColor = true;
             // 
+            // btnGnrClndr
+            // 
+            this.btnGnrClndr.Location = new System.Drawing.Point(36, 30);
+            this.btnGnrClndr.Name = "btnGnrClndr";
+            this.btnGnrClndr.Size = new System.Drawing.Size(188, 73);
+            this.btnGnrClndr.TabIndex = 14;
+            this.btnGnrClndr.Text = "Générer un nouveau calendrier";
+            this.btnGnrClndr.UseVisualStyleBackColor = true;
+            this.btnGnrClndr.Click += new System.EventHandler(this.btnGnrClndr_Click);
+            // 
             // lblMchNoDate
             // 
             this.lblMchNoDate.AutoSize = true;
-            this.lblMchNoDate.Enabled = false;
             this.lblMchNoDate.Location = new System.Drawing.Point(697, 193);
             this.lblMchNoDate.Name = "lblMchNoDate";
             this.lblMchNoDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -152,7 +151,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(482, 212);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -180,7 +178,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pour modifier, double cliquer sur le match cible";
             // 
-            // CalendrierTest
+            // frmCalendrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,8 +190,9 @@
             this.Controls.Add(this.lblGnrClndr);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
-            this.Name = "CalendrierTest";
+            this.Name = "frmCalendrier";
             this.Text = "CalendrierTest";
+            this.Load += new System.EventHandler(this.frmCalendrier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
             this.gpbxGeneration.ResumeLayout(false);
             this.gpbxGeneration.PerformLayout();

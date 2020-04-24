@@ -20,7 +20,17 @@ namespace Errors
                 case "Schema specified is not valid. Errors: \r\nFifaManager.ssdl(2,2) : error 0152: No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SqlClient'. Make sure the provider is registered in the 'entityFramework' section of the application config file. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.":
                     _Message = "La base de données n'est pas connectée. Contactez un administrateur.";
                     break;
-                default: 
+                case "clndr Ssn 1 non générable":
+                    _Message = "La saison 1 a déjà commencé. Le calendrier ne peut donc être (re)généré.";
+                    break;
+                case "clndr Ssn 2 non générable":
+                    _Message ="La saison 2 a déjà commencé. Le calendrier ne peut donc être (re)généré.";
+                    break;
+                case "clndr Ssn 12 non générable":
+                    _Message =
+                        "Les 2 saisons sélectionnées ont déjà commencé. Le calendrier ne peut donc être (re)généré.";
+                    break;
+                default:
                     _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 //default:
                 //    _Message = erMsg;

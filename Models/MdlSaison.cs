@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class MdlSaison
+    public class MdlSaison
     {
         public int Id { get; set; }
         public int Champ_Id { get; set; }
