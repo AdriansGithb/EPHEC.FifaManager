@@ -338,9 +338,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="FN_CheckGnrClndrPossible" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" ReturnType="varchar">
-          <Parameter Name="champ_id" Type="int" Mode="In" />
-        </Function>
         <Function Name="SP_ModifResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="match_id" Type="int" Mode="In" />
           <Parameter Name="tpResDomId" Type="int" Mode="In" />

@@ -86,7 +86,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FifaManager.edmx</DependentUpon>
     </Compile>
-    <Compile Include="FifaManager.Functions.cs" />
     <Compile Include="Inscription_Matchs.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
