@@ -8,12 +8,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using SP_SelectCalendrier_Result = BackEnd_DAL.SP_SelectCalendrier_Result;
 
 namespace BackEnd_BL
 {
     public class CalendrierServices
     {
-        //méthode permettant d'appeler la DAL pour obtenir les 2 saisons d'un championnat déterminé
+        //fonction permettant d'appeler la DAL pour obtenir les 2 saisons d'un championnat déterminé
         public List<MdlSaison> GetChampSaisons(int champ_id)
         {
             try
@@ -46,7 +47,7 @@ namespace BackEnd_BL
             }
         }
 
-        //méthode pour vérifier la possibilité ou non de générer/modifier le calendrier du championnat sélectionné
+        //fonction pour vérifier la possibilité ou non de générer/modifier le calendrier du championnat sélectionné
         public bool GnrPossible(out int blckdSsn,int champ_id, int slctdSsn)
         {
             try
@@ -85,6 +86,71 @@ namespace BackEnd_BL
                 }
 
                 return possible;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //fonction de préparation des données pour les tableaux calendrier, qui renvoit 2 listes dans une liste
+        public List<List<MdlMatchClndr>> GetClndrLists(int champ_id, int slctdSsn)
+        {
+            try
+            {
+                List<SP_SelectCalendrier_Result> clndrBdList = new List<SP_SelectCalendrier_Result>();
+                List<MdlSaison> oSsnLst = GetChampSaisons(champ_id);
+                List<MdlMatchClndr> fullMatchList = new List<MdlMatchClndr>();
+                //chargement des listes de matchs en fonction de la saison sélectionnée
+                CalendrierData oData = new CalendrierData();
+                //si seule la saison 1 ou 2 est demandée
+                if (slctdSsn == 1 || slctdSsn == 2)
+                {
+                    MdlSaison oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == slctdSsn);
+                    clndrBdList = oData.SP_SelectCalendrier(oSsn.Id);
+                }
+                //sinon (les 2 saisons sont demandées)
+                else
+                {
+                    MdlSaison oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == 1);
+                    clndrBdList = oData.SP_SelectCalendrier(oSsn.Id);
+                    oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == 2);
+                    clndrBdList.AddRange(oData.SP_SelectCalendrier(oSsn.Id));
+                }
+                //transformation des objets en MdlMatchClndr
+                foreach (SP_SelectCalendrier_Result match in clndrBdList)
+                {
+                    MdlMatchClndr oMatchClndr = new MdlMatchClndr();
+                    oMatchClndr.Match_ID = match.Mch_ID;
+                    oMatchClndr.Date = match.Mch_Date;
+                    oMatchClndr.EqpDom_CoChmp_ID = match.Mch_Eqp_Dom_ID;
+                    oMatchClndr.Nom_EqpDom = match.EqpDom_Nom;
+                    oMatchClndr.EqpVisit_CoChmp_ID = match.Mch_Eqp_Visit_ID;
+                    oMatchClndr.Nom_EqpVisit = match.EqpVst_Nom;
+                    oMatchClndr.LastUpdate = match.Mch_LastUpdate;
+
+                    fullMatchList.Add(oMatchClndr);
+                }
+                //division de la liste en 2 listes : matchs avec ou sans date
+                List<MdlMatchClndr> datedMatchList = new List<MdlMatchClndr>();
+                List<MdlMatchClndr> undatedMatchList = new List<MdlMatchClndr>();
+
+                foreach (MdlMatchClndr match in fullMatchList)
+                {
+                    if(match.Date is null)
+                        undatedMatchList.Add(match);
+                    else datedMatchList.Add(match);
+                }
+                //renvoi des listes
+                List<List<MdlMatchClndr>> rtrnList = new List<List<MdlMatchClndr>>();
+                rtrnList.Add(datedMatchList);
+                rtrnList.Add(undatedMatchList);
+
+                return rtrnList;
             }
             catch (SqlException ex)
             {

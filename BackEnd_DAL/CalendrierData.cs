@@ -15,5 +15,13 @@ namespace BackEnd_DAL
             List<Saisons> lstSsn = ctx.SP_SelectAllSsn1Champ(champ_id).ToList();
             return lstSsn;
         }
+
+        //procédure permettant de récupérer la liste des matchs d'une saison déterminée
+        public List<SP_SelectCalendrier_Result> SP_SelectCalendrier(int ssn_id)
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            List<SP_SelectCalendrier_Result> lstClndr = ctx.SP_SelectCalendrier(ssn_id).ToList();
+            return lstClndr;
+        }
     }
 }

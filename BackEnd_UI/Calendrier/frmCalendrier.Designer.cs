@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridResults = new System.Windows.Forms.DataGridView();
+            this.gridClndrDated = new System.Windows.Forms.DataGridView();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
             this.gpbxGeneration = new System.Windows.Forms.GroupBox();
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
@@ -37,28 +37,28 @@
             this.btnGnrClndr = new System.Windows.Forms.Button();
             this.lblMchNoDate = new System.Windows.Forms.Label();
             this.lblGnrClndr = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridClndrUndated = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gridResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).BeginInit();
             this.gpbxGeneration.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gridResults
+            // gridClndrDated
             // 
-            this.gridResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridClndrDated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridResults.Location = new System.Drawing.Point(28, 212);
-            this.gridResults.MultiSelect = false;
-            this.gridResults.Name = "gridResults";
-            this.gridResults.ReadOnly = true;
-            this.gridResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridResults.Size = new System.Drawing.Size(436, 315);
-            this.gridResults.TabIndex = 14;
+            this.gridClndrDated.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridClndrDated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridClndrDated.Location = new System.Drawing.Point(28, 212);
+            this.gridClndrDated.MultiSelect = false;
+            this.gridClndrDated.Name = "gridClndrDated";
+            this.gridClndrDated.ReadOnly = true;
+            this.gridClndrDated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridClndrDated.Size = new System.Drawing.Size(436, 315);
+            this.gridClndrDated.TabIndex = 14;
             // 
             // boxChampSelection
             // 
@@ -69,7 +69,7 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
-            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.clndrGrids_Load);
             // 
             // gpbxGeneration
             // 
@@ -95,6 +95,7 @@
             this.rdbtnAllSeason.TabStop = true;
             this.rdbtnAllSeason.Text = "Saisons 1+2";
             this.rdbtnAllSeason.UseVisualStyleBackColor = true;
+            this.rdbtnAllSeason.Click += new System.EventHandler(this.clndrGrids_Load);
             // 
             // rdbtnSeason2
             // 
@@ -105,6 +106,7 @@
             this.rdbtnSeason2.TabIndex = 1;
             this.rdbtnSeason2.Text = "Saison 2";
             this.rdbtnSeason2.UseVisualStyleBackColor = true;
+            this.rdbtnSeason2.Click += new System.EventHandler(this.clndrGrids_Load);
             // 
             // rdbtnSeason1
             // 
@@ -115,6 +117,7 @@
             this.rdbtnSeason1.TabIndex = 0;
             this.rdbtnSeason1.Text = "Saison 1";
             this.rdbtnSeason1.UseVisualStyleBackColor = true;
+            this.rdbtnSeason1.Click += new System.EventHandler(this.clndrGrids_Load);
             // 
             // btnGnrClndr
             // 
@@ -145,19 +148,19 @@
             this.lblGnrClndr.TabIndex = 17;
             this.lblGnrClndr.Text = "Calendrier actuel :";
             // 
-            // dataGridView1
+            // gridClndrUndated
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridClndrUndated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(482, 212);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(436, 315);
-            this.dataGridView1.TabIndex = 16;
+            this.gridClndrUndated.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridClndrUndated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridClndrUndated.Location = new System.Drawing.Point(482, 212);
+            this.gridClndrUndated.MultiSelect = false;
+            this.gridClndrUndated.Name = "gridClndrUndated";
+            this.gridClndrUndated.ReadOnly = true;
+            this.gridClndrUndated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridClndrUndated.Size = new System.Drawing.Size(436, 315);
+            this.gridClndrUndated.TabIndex = 16;
             // 
             // groupBox1
             // 
@@ -184,19 +187,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 544);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gridResults);
+            this.Controls.Add(this.gridClndrDated);
             this.Controls.Add(this.gpbxGeneration);
             this.Controls.Add(this.lblMchNoDate);
             this.Controls.Add(this.lblGnrClndr);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridClndrUndated);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmCalendrier";
-            this.Text = "CalendrierTest";
+            this.Text = "Gestion de calendrier";
             this.Load += new System.EventHandler(this.frmCalendrier_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).EndInit();
             this.gpbxGeneration.ResumeLayout(false);
             this.gpbxGeneration.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,7 +208,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridResults;
+        private System.Windows.Forms.DataGridView gridClndrDated;
         private System.Windows.Forms.ComboBox boxChampSelection;
         private System.Windows.Forms.GroupBox gpbxGeneration;
         private System.Windows.Forms.RadioButton rdbtnAllSeason;
@@ -214,7 +217,7 @@
         private System.Windows.Forms.Button btnGnrClndr;
         private System.Windows.Forms.Label lblMchNoDate;
         private System.Windows.Forms.Label lblGnrClndr;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridClndrUndated;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
     }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class MdlMatchClndr
+    public class MdlMatchClndr
     {
         public int Match_ID { get; set; }
         public DateTime? Date { get; set; }
-        public int EqpDom_ID { get; set; }
+        public int EqpDom_CoChmp_ID { get; set; }
         public string Nom_EqpDom { get; set; }
-        public int EqpVisit_ID { get; set; }
+        public int EqpVisit_CoChmp_ID { get; set; }
         public string Nom_EqpVisit { get; set; }
         public DateTime LastUpdate { get; set; }
 

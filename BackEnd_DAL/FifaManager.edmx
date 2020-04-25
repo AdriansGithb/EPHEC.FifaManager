@@ -349,6 +349,9 @@
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_SelectCalendrier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="ssn_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
@@ -871,6 +874,9 @@
             <End Role="Saisons" EntitySet="Saisons" />
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
+          <FunctionImport Name="SP_SelectCalendrier" ReturnType="Collection(Fifa_ManagerModel.SP_SelectCalendrier_Result)">
+            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -954,6 +960,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="SP_SelectCalendrier_Result">
+          <Property Type="Int32" Name="Mch_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Mch_Date" Nullable="true" />
+          <Property Type="Int32" Name="Mch_Eqp_Dom_ID" Nullable="false" />
+          <Property Type="String" Name="EqpDom_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
+          <Property Type="String" Name="EqpVst_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1127,6 +1142,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectCalendrier" FunctionName="Fifa_ManagerModel.Store.SP_SelectCalendrier">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectCalendrier_Result">
+                <ScalarProperty Name="Mch_ID" ColumnName="Mch_ID" />
+                <ScalarProperty Name="Mch_Date" ColumnName="Mch_Date" />
+                <ScalarProperty Name="Mch_Eqp_Dom_ID" ColumnName="Mch_Eqp_Dom_ID" />
+                <ScalarProperty Name="EqpDom_Nom" ColumnName="EqpDom_Nom" />
+                <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
+                <ScalarProperty Name="EqpVst_Nom" ColumnName="EqpVst_Nom" />
+                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -39,7 +39,7 @@ namespace BackEnd_UI.Calendrier
 
         }
 
-        private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
+        private void clndrGrids_Load(object sender, EventArgs e)
         {
             try
             {                
@@ -54,9 +54,13 @@ namespace BackEnd_UI.Calendrier
                     slctdSsn = 2;
                 else slctdSsn = 12;
                 //envoi de la requête pour charger les tableaux en fonction de la saison sélectionnée
-
-
-
+                CalendrierServices oService = new CalendrierServices();
+                gridClndrDated.DataSource=oService.GetClndrLists(oChamp.Id, slctdSsn)[0];
+                gridClndrDated.Columns[2].Visible = false; gridClndrDated.Columns[4].Visible = false; gridClndrDated.Columns[6].Visible = false;
+                gridClndrDated.Columns[3].HeaderText = "Equipe Domicile"; gridClndrDated.Columns[5].HeaderText = "Equipe Visiteuse";
+                gridClndrUndated.DataSource = oService.GetClndrLists(oChamp.Id, slctdSsn)[1];
+                gridClndrUndated.Columns[2].Visible = false; /*gridClndrUndated.Columns[1].Visible=false;*/ gridClndrUndated.Columns[4].Visible = false; gridClndrUndated.Columns[6].Visible = false;
+                gridClndrUndated.Columns[3].HeaderText = "Equipe Domicile"; gridClndrUndated.Columns[5].HeaderText = "Equipe Visiteuse";
             }
             catch (Exception ex)
             {
