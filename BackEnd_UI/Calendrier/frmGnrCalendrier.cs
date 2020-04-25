@@ -19,8 +19,13 @@ namespace BackEnd_UI.Calendrier
 
         private void frmGnrCalendrier_Load(object sender, EventArgs e)
         {
-            this.button1.DialogResult = DialogResult.OK;
-            this.button2.DialogResult = DialogResult.Cancel;
+            this.btnSave.DialogResult = DialogResult.OK;
+            this.btnCancel.DialogResult = DialogResult.Cancel;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
 
         }
     }

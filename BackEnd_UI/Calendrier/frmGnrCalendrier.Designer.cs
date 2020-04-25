@@ -28,45 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnGnrClndr = new System.Windows.Forms.Button();
+            this.gridClndrDated = new System.Windows.Forms.DataGridView();
+            this.lblUndatedClndr = new System.Windows.Forms.Label();
+            this.gridClndrUndated = new System.Windows.Forms.DataGridView();
+            this.lblDatedClndr = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Location = new System.Drawing.Point(192, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "sauver";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(554, 439);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(185, 47);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Location = new System.Drawing.Point(492, 264);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "annuler";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(184, 439);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(185, 47);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Sauver";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnGnrClndr
+            // 
+            this.btnGnrClndr.Location = new System.Drawing.Point(342, 16);
+            this.btnGnrClndr.Name = "btnGnrClndr";
+            this.btnGnrClndr.Size = new System.Drawing.Size(263, 55);
+            this.btnGnrClndr.TabIndex = 30;
+            this.btnGnrClndr.Text = "(Re)Générer un calendrier";
+            this.btnGnrClndr.UseVisualStyleBackColor = true;
+            // 
+            // gridClndrDated
+            // 
+            this.gridClndrDated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gridClndrDated.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridClndrDated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridClndrDated.Location = new System.Drawing.Point(27, 92);
+            this.gridClndrDated.MultiSelect = false;
+            this.gridClndrDated.Name = "gridClndrDated";
+            this.gridClndrDated.ReadOnly = true;
+            this.gridClndrDated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridClndrDated.Size = new System.Drawing.Size(436, 315);
+            this.gridClndrDated.TabIndex = 26;
+            // 
+            // lblUndatedClndr
+            // 
+            this.lblUndatedClndr.AutoSize = true;
+            this.lblUndatedClndr.Location = new System.Drawing.Point(696, 73);
+            this.lblUndatedClndr.Name = "lblUndatedClndr";
+            this.lblUndatedClndr.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUndatedClndr.Size = new System.Drawing.Size(222, 13);
+            this.lblUndatedClndr.TabIndex = 29;
+            this.lblUndatedClndr.Text = "Matchs sans dates, à modifier ultérieurement :";
+            // 
+            // gridClndrUndated
+            // 
+            this.gridClndrUndated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridClndrUndated.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridClndrUndated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridClndrUndated.Location = new System.Drawing.Point(481, 92);
+            this.gridClndrUndated.MultiSelect = false;
+            this.gridClndrUndated.Name = "gridClndrUndated";
+            this.gridClndrUndated.ReadOnly = true;
+            this.gridClndrUndated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridClndrUndated.Size = new System.Drawing.Size(436, 315);
+            this.gridClndrUndated.TabIndex = 27;
+            // 
+            // lblDatedClndr
+            // 
+            this.lblDatedClndr.AutoSize = true;
+            this.lblDatedClndr.Location = new System.Drawing.Point(28, 73);
+            this.lblDatedClndr.Name = "lblDatedClndr";
+            this.lblDatedClndr.Size = new System.Drawing.Size(101, 13);
+            this.lblDatedClndr.TabIndex = 28;
+            this.lblDatedClndr.Text = "Calendrier proposé :";
             // 
             // frmGnrCalendrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(946, 511);
+            this.Controls.Add(this.btnGnrClndr);
+            this.Controls.Add(this.gridClndrDated);
+            this.Controls.Add(this.lblUndatedClndr);
+            this.Controls.Add(this.gridClndrUndated);
+            this.Controls.Add(this.lblDatedClndr);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Name = "frmGnrCalendrier";
-            this.Text = "frmGnrCalendrier";
+            this.Text = "Génération de calendrier";
             this.Load += new System.EventHandler(this.frmGnrCalendrier_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnGnrClndr;
+        private System.Windows.Forms.DataGridView gridClndrDated;
+        private System.Windows.Forms.Label lblUndatedClndr;
+        private System.Windows.Forms.DataGridView gridClndrUndated;
+        private System.Windows.Forms.Label lblDatedClndr;
     }
 }

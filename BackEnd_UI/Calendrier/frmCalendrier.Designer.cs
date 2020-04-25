@@ -30,20 +30,20 @@
         {
             this.gridClndrDated = new System.Windows.Forms.DataGridView();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
-            this.gpbxGeneration = new System.Windows.Forms.GroupBox();
+            this.gpbxSlctChamp = new System.Windows.Forms.GroupBox();
             this.rdbtnAllSeason = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason2 = new System.Windows.Forms.RadioButton();
             this.rdbtnSeason1 = new System.Windows.Forms.RadioButton();
             this.btnGnrClndr = new System.Windows.Forms.Button();
-            this.lblMchNoDate = new System.Windows.Forms.Label();
-            this.lblGnrClndr = new System.Windows.Forms.Label();
+            this.lblUndatedClndr = new System.Windows.Forms.Label();
+            this.lblDatedClndr = new System.Windows.Forms.Label();
             this.gridClndrUndated = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpbxGnrClndr = new System.Windows.Forms.GroupBox();
+            this.gpbxClndrs = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).BeginInit();
-            this.gpbxGeneration.SuspendLayout();
+            this.gpbxSlctChamp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gpbxGnrClndr.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridClndrDated
@@ -71,18 +71,18 @@
             this.boxChampSelection.TabIndex = 5;
             this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.clndrGrids_Load);
             // 
-            // gpbxGeneration
+            // gpbxSlctChamp
             // 
-            this.gpbxGeneration.Controls.Add(this.rdbtnAllSeason);
-            this.gpbxGeneration.Controls.Add(this.rdbtnSeason2);
-            this.gpbxGeneration.Controls.Add(this.rdbtnSeason1);
-            this.gpbxGeneration.Controls.Add(this.boxChampSelection);
-            this.gpbxGeneration.Location = new System.Drawing.Point(28, 18);
-            this.gpbxGeneration.Name = "gpbxGeneration";
-            this.gpbxGeneration.Size = new System.Drawing.Size(436, 123);
-            this.gpbxGeneration.TabIndex = 15;
-            this.gpbxGeneration.TabStop = false;
-            this.gpbxGeneration.Text = "Sélectionner le championnat et la saison ";
+            this.gpbxSlctChamp.Controls.Add(this.rdbtnAllSeason);
+            this.gpbxSlctChamp.Controls.Add(this.rdbtnSeason2);
+            this.gpbxSlctChamp.Controls.Add(this.rdbtnSeason1);
+            this.gpbxSlctChamp.Controls.Add(this.boxChampSelection);
+            this.gpbxSlctChamp.Location = new System.Drawing.Point(28, 18);
+            this.gpbxSlctChamp.Name = "gpbxSlctChamp";
+            this.gpbxSlctChamp.Size = new System.Drawing.Size(436, 123);
+            this.gpbxSlctChamp.TabIndex = 15;
+            this.gpbxSlctChamp.TabStop = false;
+            this.gpbxSlctChamp.Text = "Sélectionner le championnat et la saison ";
             // 
             // rdbtnAllSeason
             // 
@@ -129,24 +129,24 @@
             this.btnGnrClndr.UseVisualStyleBackColor = true;
             this.btnGnrClndr.Click += new System.EventHandler(this.btnGnrClndr_Click);
             // 
-            // lblMchNoDate
+            // lblUndatedClndr
             // 
-            this.lblMchNoDate.AutoSize = true;
-            this.lblMchNoDate.Location = new System.Drawing.Point(697, 193);
-            this.lblMchNoDate.Name = "lblMchNoDate";
-            this.lblMchNoDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblMchNoDate.Size = new System.Drawing.Size(221, 13);
-            this.lblMchNoDate.TabIndex = 18;
-            this.lblMchNoDate.Text = "Matchs sans dates, à modifier manuellement :";
+            this.lblUndatedClndr.AutoSize = true;
+            this.lblUndatedClndr.Location = new System.Drawing.Point(697, 193);
+            this.lblUndatedClndr.Name = "lblUndatedClndr";
+            this.lblUndatedClndr.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUndatedClndr.Size = new System.Drawing.Size(221, 13);
+            this.lblUndatedClndr.TabIndex = 18;
+            this.lblUndatedClndr.Text = "Matchs sans dates, à modifier manuellement :";
             // 
-            // lblGnrClndr
+            // lblDatedClndr
             // 
-            this.lblGnrClndr.AutoSize = true;
-            this.lblGnrClndr.Location = new System.Drawing.Point(29, 193);
-            this.lblGnrClndr.Name = "lblGnrClndr";
-            this.lblGnrClndr.Size = new System.Drawing.Size(92, 13);
-            this.lblGnrClndr.TabIndex = 17;
-            this.lblGnrClndr.Text = "Calendrier actuel :";
+            this.lblDatedClndr.AutoSize = true;
+            this.lblDatedClndr.Location = new System.Drawing.Point(29, 193);
+            this.lblDatedClndr.Name = "lblDatedClndr";
+            this.lblDatedClndr.Size = new System.Drawing.Size(92, 13);
+            this.lblDatedClndr.TabIndex = 17;
+            this.lblDatedClndr.Text = "Calendrier actuel :";
             // 
             // gridClndrUndated
             // 
@@ -162,45 +162,45 @@
             this.gridClndrUndated.Size = new System.Drawing.Size(436, 315);
             this.gridClndrUndated.TabIndex = 16;
             // 
-            // groupBox1
+            // gpbxGnrClndr
             // 
-            this.groupBox1.Controls.Add(this.btnGnrClndr);
-            this.groupBox1.Location = new System.Drawing.Point(553, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 123);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Création de calendrier";
+            this.gpbxGnrClndr.Controls.Add(this.btnGnrClndr);
+            this.gpbxGnrClndr.Location = new System.Drawing.Point(553, 18);
+            this.gpbxGnrClndr.Name = "gpbxGnrClndr";
+            this.gpbxGnrClndr.Size = new System.Drawing.Size(252, 123);
+            this.gpbxGnrClndr.TabIndex = 19;
+            this.gpbxGnrClndr.TabStop = false;
+            this.gpbxGnrClndr.Text = "Création de calendrier";
             // 
-            // groupBox2
+            // gpbxClndrs
             // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 165);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(922, 376);
-            this.groupBox2.TabIndex = 20;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pour modifier, double cliquer sur le match cible";
+            this.gpbxClndrs.Location = new System.Drawing.Point(12, 165);
+            this.gpbxClndrs.Name = "gpbxClndrs";
+            this.gpbxClndrs.Size = new System.Drawing.Size(922, 376);
+            this.gpbxClndrs.TabIndex = 20;
+            this.gpbxClndrs.TabStop = false;
+            this.gpbxClndrs.Text = "Pour modifier, double cliquer sur le match cible";
             // 
             // frmCalendrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 544);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpbxGnrClndr);
             this.Controls.Add(this.gridClndrDated);
-            this.Controls.Add(this.gpbxGeneration);
-            this.Controls.Add(this.lblMchNoDate);
-            this.Controls.Add(this.lblGnrClndr);
+            this.Controls.Add(this.gpbxSlctChamp);
+            this.Controls.Add(this.lblUndatedClndr);
+            this.Controls.Add(this.lblDatedClndr);
             this.Controls.Add(this.gridClndrUndated);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gpbxClndrs);
             this.Name = "frmCalendrier";
             this.Text = "Gestion de calendrier";
             this.Load += new System.EventHandler(this.frmCalendrier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).EndInit();
-            this.gpbxGeneration.ResumeLayout(false);
-            this.gpbxGeneration.PerformLayout();
+            this.gpbxSlctChamp.ResumeLayout(false);
+            this.gpbxSlctChamp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gpbxGnrClndr.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,15 +210,15 @@
 
         private System.Windows.Forms.DataGridView gridClndrDated;
         private System.Windows.Forms.ComboBox boxChampSelection;
-        private System.Windows.Forms.GroupBox gpbxGeneration;
+        private System.Windows.Forms.GroupBox gpbxSlctChamp;
         private System.Windows.Forms.RadioButton rdbtnAllSeason;
         private System.Windows.Forms.RadioButton rdbtnSeason2;
         private System.Windows.Forms.RadioButton rdbtnSeason1;
         private System.Windows.Forms.Button btnGnrClndr;
-        private System.Windows.Forms.Label lblMchNoDate;
-        private System.Windows.Forms.Label lblGnrClndr;
+        private System.Windows.Forms.Label lblUndatedClndr;
+        private System.Windows.Forms.Label lblDatedClndr;
         private System.Windows.Forms.DataGridView gridClndrUndated;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpbxGnrClndr;
+        private System.Windows.Forms.GroupBox gpbxClndrs;
     }
 }

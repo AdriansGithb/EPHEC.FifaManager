@@ -35,7 +35,6 @@
             this.mnResults = new System.Windows.Forms.ToolStripMenuItem();
             this.calendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.générerUnCalendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifierUnCalendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDéquipesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscrireTransférerUnJoueurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.joueursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,8 +92,7 @@
             // calendrierToolStripMenuItem
             // 
             this.calendrierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.générerUnCalendrierToolStripMenuItem,
-            this.modifierUnCalendrierToolStripMenuItem});
+            this.générerUnCalendrierToolStripMenuItem});
             this.calendrierToolStripMenuItem.Name = "calendrierToolStripMenuItem";
             this.calendrierToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.calendrierToolStripMenuItem.Text = "Calendrier";
@@ -102,15 +100,9 @@
             // générerUnCalendrierToolStripMenuItem
             // 
             this.générerUnCalendrierToolStripMenuItem.Name = "générerUnCalendrierToolStripMenuItem";
-            this.générerUnCalendrierToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.générerUnCalendrierToolStripMenuItem.Text = "Générer un calendrier";
+            this.générerUnCalendrierToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.générerUnCalendrierToolStripMenuItem.Text = "Gestion de calendrier";
             this.générerUnCalendrierToolStripMenuItem.Click += new System.EventHandler(this.mn_gnrClndr_Click);
-            // 
-            // modifierUnCalendrierToolStripMenuItem
-            // 
-            this.modifierUnCalendrierToolStripMenuItem.Name = "modifierUnCalendrierToolStripMenuItem";
-            this.modifierUnCalendrierToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.modifierUnCalendrierToolStripMenuItem.Text = "Modifier un calendrier";
             // 
             // gestionDéquipesToolStripMenuItem
             // 
@@ -181,7 +173,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnResults;
         private System.Windows.Forms.ToolStripMenuItem calendrierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem générerUnCalendrierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifierUnCalendrierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDéquipesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inscrireTransférerUnJoueurToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem joueursToolStripMenuItem;
