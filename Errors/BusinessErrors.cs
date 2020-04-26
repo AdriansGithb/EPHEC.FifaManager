@@ -30,10 +30,10 @@ namespace Errors
                     _Message =
                         "Les 2 saisons sélectionnées ont déjà commencé. Le calendrier ne peut donc être (re)généré.";
                     break;
-                default:
-                    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 //default:
-                //    _Message = erMsg;
+                //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
+                default:
+                    _Message = erMsg;
                     break;
             }
         }

@@ -2,6 +2,7 @@
 using BackEnd_DAL;
 using Errors;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -35,6 +36,7 @@ namespace BackEnd_BL
 
                     rtrnLst.Add(oSsn);
                 }
+
                 return rtrnLst;
             }
             catch (SqlException ex)
@@ -48,7 +50,7 @@ namespace BackEnd_BL
         }
 
         //fonction pour vérifier la possibilité ou non de générer/modifier le calendrier du championnat sélectionné
-        public bool GnrPossible(out int blckdSsn,int champ_id, int slctdSsn)
+        public bool GnrPossible(out int blckdSsn, int champ_id, int slctdSsn)
         {
             try
             {
@@ -76,11 +78,11 @@ namespace BackEnd_BL
                     //sinon, si les 2 saisons ont commencé
                     else if ((oSsn1.Debut <= DateTime.Today) && (oSsn2.Debut <= DateTime.Today))
                         blckdSsn = 12;
-                        //throw new Exception("Les 2 saisons ont commencé");
+                    //throw new Exception("Les 2 saisons ont commencé");
                     //sinon, si seule la saison 1 a commencé
                     else if (oSsn1.Debut <= DateTime.Today)
                         blckdSsn = 1;
-                        //throw new Exception("Seule la saison 1 a commencé");
+                    //throw new Exception("Seule la saison 1 a commencé");
                     else
                         throw new Exception("Seule la saison 2 a commencé");
                 }
@@ -121,6 +123,7 @@ namespace BackEnd_BL
                     oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == 2);
                     clndrBdList.AddRange(oData.SP_SelectCalendrier(oSsn.Id));
                 }
+
                 //transformation des objets en MdlMatchClndr
                 foreach (SP_SelectCalendrier_Result match in clndrBdList)
                 {
@@ -135,16 +138,18 @@ namespace BackEnd_BL
 
                     fullMatchList.Add(oMatchClndr);
                 }
+
                 //division de la liste en 2 listes : matchs avec ou sans date
                 List<MdlMatchClndr> datedMatchList = new List<MdlMatchClndr>();
                 List<MdlMatchClndr> undatedMatchList = new List<MdlMatchClndr>();
 
                 foreach (MdlMatchClndr match in fullMatchList)
                 {
-                    if(match.Date is null)
+                    if (match.Date is null)
                         undatedMatchList.Add(match);
                     else datedMatchList.Add(match);
                 }
+
                 //renvoi des listes
                 List<List<MdlMatchClndr>> rtrnList = new List<List<MdlMatchClndr>>();
                 rtrnList.Add(datedMatchList);
@@ -178,6 +183,7 @@ namespace BackEnd_BL
 
                     rtrnList.Add(oEqp);
                 }
+
                 return rtrnList;
             }
             catch (SqlException ex)
@@ -192,11 +198,11 @@ namespace BackEnd_BL
         }
 
         //création d'une liste de matchs pour la saison 1
-        public List<MdlMatchClndr> CreateMatchs_FirstSsn(int ssn_id)
+        public List<MdlMatchClndr> CreateMatchs_FirstSsn(int ssn1_id)
         {
             try
             {
-                List<MdlEquipeClndr> eqpList = GetEqpList(ssn_id);
+                List<MdlEquipeClndr> eqpList = GetEqpList(ssn1_id);
                 List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
                 int nbEqp = eqpList.Count;
 
@@ -209,7 +215,7 @@ namespace BackEnd_BL
                         nwMatch.Nom_EqpDom = eqpList[dom].Nom;
                         nwMatch.EqpVisit_CoChmp_ID = eqpList[vst].Id;
                         nwMatch.Nom_EqpVisit = eqpList[vst].Nom;
-                        nwMatch.Saison_Id = ssn_id;
+                        nwMatch.Saison_Id = ssn1_id;
 
                         matchList.Add(nwMatch);
                     }
@@ -225,24 +231,31 @@ namespace BackEnd_BL
         }
 
         //création d'une liste de matchs pour la saison 2
-        public List<MdlMatchClndr> CreateMatchs_SecondSsn(List<MdlMatchClndr> matchLstFrstSsn, int ssn2_id)
+        public List<MdlMatchClndr> CreateMatchs_SecondSsn(int ssn2_id)
         {
             try
             {
-                List<MdlMatchClndr> matchLstScndSsn = new List<MdlMatchClndr>();
-                foreach (MdlMatchClndr matchFrstSsn in matchLstFrstSsn)
-                {
-                    MdlMatchClndr nwMatch = new MdlMatchClndr();
-                    nwMatch.EqpDom_CoChmp_ID = matchFrstSsn.EqpVisit_CoChmp_ID;
-                    nwMatch.Nom_EqpDom = matchFrstSsn.Nom_EqpVisit;
-                    nwMatch.EqpVisit_CoChmp_ID = matchFrstSsn.EqpDom_CoChmp_ID;
-                    nwMatch.Nom_EqpVisit = matchFrstSsn.Nom_EqpDom;
-                    nwMatch.Saison_Id = ssn2_id;
+                List<MdlEquipeClndr> eqpList = GetEqpList(ssn2_id);
+                List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
+                int nbEqp = eqpList.Count;
 
-                    matchLstScndSsn.Add(nwMatch);
+                for (int dom = (nbEqp - 1); dom > 0 ; dom--)
+                {
+                    for (int vst = 0 ; vst < dom; vst++)
+                    {
+                        MdlMatchClndr nwMatch = new MdlMatchClndr();
+                        nwMatch.EqpDom_CoChmp_ID = eqpList[dom].Id;
+                        nwMatch.Nom_EqpDom = eqpList[dom].Nom;
+                        nwMatch.EqpVisit_CoChmp_ID = eqpList[vst].Id;
+                        nwMatch.Nom_EqpVisit = eqpList[vst].Nom;
+                        nwMatch.Saison_Id = ssn2_id;
+
+                        matchList.Add(nwMatch);
+                    }
                 }
 
-                return matchLstScndSsn;
+                return matchList;
+
             }
             catch (Exception ex)
             {
@@ -250,12 +263,158 @@ namespace BackEnd_BL
             }
         }
 
-        //fonction générant des calendriers
-        public List<MdlMatchClndr> GenererCalendrier(List<MdlSaison> lstSsnChamp, int slctdSsn)
+        //génération d'une liste comprenant les week-end de la saison
+        public List<DateTime> CreateSsnDateList_Ssn(DateTime beginDate)
         {
             try
             {
-                return new List<MdlMatchClndr>();
+                DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks*7);
+                List<DateTime> rtrnLst = new List<DateTime>();
+                for (DateTime begin = beginDate; EndDate.CompareTo(begin)>=0; begin=begin.AddDays(1))
+                {
+                    if(begin.DayOfWeek==DayOfWeek.Saturday||begin.DayOfWeek==DayOfWeek.Sunday)
+                        rtrnLst.Add(begin);
+                }
+
+                return rtrnLst;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        //attribution aléatoire de dates pour une liste de matchs
+        public List<MdlMatchClndr> GenererDates_MatchsListe(List<MdlMatchClndr> matchLst, List<DateTime> datesPossibles)
+        {
+            try
+            {
+                //calcul du nombre de matchs max possible par w-e
+                int nbEqp = (matchLst.GroupBy(match => match.EqpDom_CoChmp_ID).ToList().Count)+1;
+                int maxMatchPerDay = nbEqp / 2;
+                //initiation des variables utiles
+                int indexDatPoss = 0;
+                List<DateTime> lstDatePerWE = new List<DateTime>();
+                List<MdlMatchClndr> rtrnMatchList = new List<MdlMatchClndr>();
+                List<MdlMatchClndr> tempMatchList = new List<MdlMatchClndr>();
+                MdlMatchClndr tempMatch = new MdlMatchClndr();
+                int slctdDateIndex;
+                int slctdMatchIndex;
+                Random tirage = new Random();
+                //boucle dans la liste des dates
+                while ((indexDatPoss < datesPossibles.Count) && (matchLst.Count > 0))
+                {
+                    //vérification si la 1ere date est un dimanche, ou si c'est la dernière de la liste :
+                    //si oui, une seule date est possible pour cette insertion,
+                    //si non, on insère 2 dates
+                    if ((datesPossibles[indexDatPoss].DayOfWeek == DayOfWeek.Sunday)||(indexDatPoss==(datesPossibles.Count-1)))
+                    {
+                        lstDatePerWE.Add(datesPossibles[indexDatPoss]);
+                        indexDatPoss += 1;
+                    }
+                    else
+                    {
+                        lstDatePerWE.Add(datesPossibles[indexDatPoss]);
+                        lstDatePerWE.Add(datesPossibles[(indexDatPoss+1)]);
+                        indexDatPoss += 2;
+                    }
+                    //boucle d'insertion aléatoire des matchs : choix de date aléatoire entre les 2 jours de WE et choix de match aléatoire dans la liste de matchs restants
+                    for (int i = 0; (i < maxMatchPerDay) && (matchLst.Count > 0);)
+                    {
+                        slctdDateIndex = tirage.Next(0, lstDatePerWE.Count);
+                        slctdMatchIndex = tirage.Next(0, matchLst.Count);
+                        tempMatch = matchLst[slctdMatchIndex];
+                        //si la liste est vide ou si l'id d'une équipe du match sélectionné n'est pas déjà présente dans la liste du week-end, insérer le match
+                        if ((tempMatchList.Count == 0) || (tempMatchList.FindIndex(match =>
+                                                               match.EqpDom_CoChmp_ID ==
+                                                               tempMatch.EqpDom_CoChmp_ID ||
+                                                               match.EqpDom_CoChmp_ID ==
+                                                               tempMatch.EqpVisit_CoChmp_ID ||
+                                                               match.EqpVisit_CoChmp_ID ==
+                                                               tempMatch.EqpDom_CoChmp_ID ||
+                                                               match.EqpVisit_CoChmp_ID ==
+                                                               tempMatch.EqpVisit_CoChmp_ID) == -1))
+                        {
+                            tempMatch.Date = lstDatePerWE[slctdDateIndex];
+                            tempMatchList.Add(tempMatch);
+                            matchLst.RemoveAt(slctdMatchIndex);
+                            i++;
+                        }
+                    }
+                    //insérer la liste du week-end dans la liste complète à retourner
+                    rtrnMatchList.AddRange(tempMatchList);
+                    tempMatchList.Clear();                            
+                    lstDatePerWE.Clear();
+
+                }
+                //une fois le passage en boucles fini, si il reste des matchs non insérés, s'assurer que leur date est vide, et insérer ces matchs dans la liste retour
+                if (matchLst.Count > 0)
+                {
+                    foreach (MdlMatchClndr match in matchLst)
+                    {
+                        match.Date=null;
+                    }
+                    rtrnMatchList.AddRange(matchLst);
+                }
+                return rtrnMatchList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //fonction générant un calendrier pour 1 saison donnée en paramètre
+        public List<MdlMatchClndr> GenererCalendrier_Saison(MdlSaison ssn)
+        {
+            try
+            {
+                List<MdlMatchClndr> undatedMatchList = new List<MdlMatchClndr>();
+                //if (ssn.GnrClndr.HasValue)
+                //    undatedMatchList = oldClndr;
+                if (ssn.FirstOrSecond == 1)
+                    undatedMatchList = CreateMatchs_FirstSsn(ssn.Id);
+                else
+                    undatedMatchList = CreateMatchs_SecondSsn(ssn.Id);
+                List<DateTime> lstPossibleDates = CreateSsnDateList_Ssn(ssn.Debut);
+                List<MdlMatchClndr> datedMatchList = new List<MdlMatchClndr>();
+                datedMatchList=GenererDates_MatchsListe(undatedMatchList,lstPossibleDates);
+
+                return datedMatchList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //régénérer un calendrier qui avait déjà été généré précédemment et enregistré dans la BD
+        public List<MdlMatchClndr> RegenererCalendrier_Saison(MdlSaison ssn,List<MdlMatchClndr> oldClndr)
+        {
+            try
+            {
+                List<DateTime> lstPossibleDates = CreateSsnDateList_Ssn(ssn.Debut);
+                List<MdlMatchClndr> datedMatchList = new List<MdlMatchClndr>();
+                datedMatchList=GenererDates_MatchsListe(oldClndr, lstPossibleDates);
+
+                return datedMatchList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //fonction générant un calendrier pour les 2 saisons
+            public List<MdlMatchClndr> GenererCalendrier_2Saisons(List<MdlSaison> ssnList)
+        {
+            try
+            {
+                List<MdlMatchClndr> fullList = new List<MdlMatchClndr>();
+                fullList = GenererCalendrier_Saison(ssnList[0]);
+                fullList.AddRange(GenererCalendrier_Saison(ssnList[1]));
+                return fullList;
             }
             catch (Exception ex)
             {

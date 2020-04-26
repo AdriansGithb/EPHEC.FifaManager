@@ -19,6 +19,7 @@ namespace BackEnd_UI.Calendrier
         private int slctdSsn;
         private MdlSaison frstSsn;
         private MdlSaison scndSsn;
+        //private bool clndrBDModif = false;
 
         public frmGnrCalendrier(List<MdlSaison> rcvdChampSsnList, int rcvdSlctdSsn, string nomChamp)
         {
@@ -94,8 +95,58 @@ namespace BackEnd_UI.Calendrier
 
         private void btnGnrClndr_Click(object sender, EventArgs e)
         {
-            CalendrierServices oServices = new CalendrierServices();
-            List<MdlMatchClndr> nwClndr = oServices.GenererCalendrier(champSsnList, slctdSsn);
+            try
+            {
+                List<MdlMatchClndr> nwClndr = new List<MdlMatchClndr>();
+                CalendrierServices oServices = new CalendrierServices();
+                if (slctdSsn == 12)
+                {
+                    if(frstSsn.GnrClndr is null && scndSsn.GnrClndr is null)
+                        nwClndr = oServices.GenererCalendrier_2Saisons(champSsnList);
+                    else
+                    {
+                        List<MdlMatchClndr> oldClndr = (List<MdlMatchClndr>)gridClndrDated.DataSource;
+                        oldClndr.AddRange((List<MdlMatchClndr>)gridClndrUndated.DataSource);
+                        List<MdlMatchClndr> oldClndrFirstSsn = oldClndr.FindAll(match=>match.Saison_Id==frstSsn.Id);
+                        List<MdlMatchClndr> oldClndrScndSsn = oldClndr.FindAll(match => match.Saison_Id == scndSsn.Id);
+                        if (frstSsn.GnrClndr.HasValue && scndSsn.GnrClndr.HasValue)
+                        {
+                            nwClndr = oServices.RegenererCalendrier_Saison(frstSsn, oldClndrFirstSsn);
+                            nwClndr.AddRange(oServices.RegenererCalendrier_Saison(scndSsn, oldClndrScndSsn));
+                        }
+                        else if (frstSsn.GnrClndr is null)
+                        {
+                            nwClndr = oServices.GenererCalendrier_Saison(frstSsn);
+                            nwClndr.AddRange(oServices.RegenererCalendrier_Saison(scndSsn,oldClndrScndSsn));
+                        }
+                        else
+                        {
+                            nwClndr = oServices.RegenererCalendrier_Saison(frstSsn,oldClndrFirstSsn);
+                            nwClndr.AddRange(oServices.GenererCalendrier_Saison(scndSsn));
+                        }
+                    }
+                }
+                else
+                {
+                    if (champSsnList.Find(ssn => ssn.FirstOrSecond == slctdSsn).GnrClndr.HasValue)
+                    {
+                        List<MdlMatchClndr> oldClndr = (List<MdlMatchClndr>) gridClndrDated.DataSource;
+                        oldClndr.AddRange((List<MdlMatchClndr>) gridClndrUndated.DataSource);
+                        nwClndr = oServices.RegenererCalendrier_Saison(
+                            champSsnList.Find(ssn => ssn.FirstOrSecond == slctdSsn), oldClndr);
+                    }
+                    else
+                        nwClndr = oServices.GenererCalendrier_Saison(champSsnList.Find(ssn =>
+                            ssn.FirstOrSecond == slctdSsn));
+                }
+                gridClndrDated.DataSource = nwClndr.FindAll(match => match.Date.HasValue);
+                gridClndrUndated.DataSource = nwClndr.FindAll(match => match.Date is null);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }
