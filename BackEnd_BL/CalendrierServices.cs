@@ -191,6 +191,65 @@ namespace BackEnd_BL
 
         }
 
+        //création d'une liste de matchs pour la saison 1
+        public List<MdlMatchClndr> CreateMatchs_FirstSsn(int ssn_id)
+        {
+            try
+            {
+                List<MdlEquipeClndr> eqpList = GetEqpList(ssn_id);
+                List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
+                int nbEqp = eqpList.Count;
+
+                for (int dom = 0; dom < (nbEqp - 1); dom++)
+                {
+                    for (int vst = dom + 1; vst < nbEqp; vst++)
+                    {
+                        MdlMatchClndr nwMatch = new MdlMatchClndr();
+                        nwMatch.EqpDom_CoChmp_ID = eqpList[dom].Id;
+                        nwMatch.Nom_EqpDom = eqpList[dom].Nom;
+                        nwMatch.EqpVisit_CoChmp_ID = eqpList[vst].Id;
+                        nwMatch.Nom_EqpVisit = eqpList[vst].Nom;
+                        nwMatch.Saison_Id = ssn_id;
+
+                        matchList.Add(nwMatch);
+                    }
+                }
+
+                return matchList;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //création d'une liste de matchs pour la saison 2
+        public List<MdlMatchClndr> CreateMatchs_SecondSsn(List<MdlMatchClndr> matchLstFrstSsn, int ssn2_id)
+        {
+            try
+            {
+                List<MdlMatchClndr> matchLstScndSsn = new List<MdlMatchClndr>();
+                foreach (MdlMatchClndr matchFrstSsn in matchLstFrstSsn)
+                {
+                    MdlMatchClndr nwMatch = new MdlMatchClndr();
+                    nwMatch.EqpDom_CoChmp_ID = matchFrstSsn.EqpVisit_CoChmp_ID;
+                    nwMatch.Nom_EqpDom = matchFrstSsn.Nom_EqpVisit;
+                    nwMatch.EqpVisit_CoChmp_ID = matchFrstSsn.EqpDom_CoChmp_ID;
+                    nwMatch.Nom_EqpVisit = matchFrstSsn.Nom_EqpDom;
+                    nwMatch.Saison_Id = ssn2_id;
+
+                    matchLstScndSsn.Add(nwMatch);
+                }
+
+                return matchLstScndSsn;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         //fonction générant des calendriers
         public List<MdlMatchClndr> GenererCalendrier(List<MdlSaison> lstSsnChamp, int slctdSsn)
         {
