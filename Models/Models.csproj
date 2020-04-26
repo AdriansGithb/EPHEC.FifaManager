@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MdlEquipeClndr.cs" />
     <Compile Include="MdlMatchClndr.cs" />
     <Compile Include="MdlChampionnat.cs" />
     <Compile Include="MdlClassement.cs" />
