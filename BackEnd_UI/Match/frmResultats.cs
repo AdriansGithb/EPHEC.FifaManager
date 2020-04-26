@@ -49,12 +49,7 @@ namespace BackEnd_UI.Match
             try
             {
                 //vérification du radiobutton sélectionné pour connaître la saison à afficher
-                int ssn;
-                if (rdbtnSeason1.Checked == true)
-                    ssn = 1;
-                else if (rdbtnSeason2.Checked == true)
-                    ssn = 2;
-                else ssn = 12;
+                int ssn = checkRdbtnSelection();
                 //récupération de l'ID championnat sélectionné
                 MdlChampionnat oChamp = new MdlChampionnat();
                 oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
@@ -91,5 +86,26 @@ namespace BackEnd_UI.Match
                 MessageBox.Show(oError.Message);
             }
         }
+
+        private int checkRdbtnSelection()
+        {
+            try
+            {
+                int slctdBtn;
+                //vérification du radiobutton sélectionné pour connaître la saison à afficher
+                if (rdbtnSeason1.Checked == true)
+                    slctdBtn = 1;
+                else if (rdbtnSeason2.Checked == true)
+                    slctdBtn = 2;
+                else slctdBtn = 12;
+                return slctdBtn;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
     }
 }

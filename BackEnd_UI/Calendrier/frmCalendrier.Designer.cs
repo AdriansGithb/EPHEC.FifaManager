@@ -195,6 +195,7 @@
             this.Controls.Add(this.gpbxClndrs);
             this.Name = "frmCalendrier";
             this.Text = "Gestion de calendrier";
+            this.Activated += new System.EventHandler(this.clndrGrids_Load);
             this.Load += new System.EventHandler(this.frmCalendrier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).EndInit();
             this.gpbxSlctChamp.ResumeLayout(false);

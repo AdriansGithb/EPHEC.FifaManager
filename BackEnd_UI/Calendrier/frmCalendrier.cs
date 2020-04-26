@@ -43,16 +43,11 @@ namespace BackEnd_UI.Calendrier
         {
             try
             {                
-                int slctdSsn;
                 //récupération de l'ID championnat sélectionné
                 MdlChampionnat oChamp = new MdlChampionnat();
                 oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
                 //vérification du radiobutton sélectionné pour connaître la saison à afficher
-                if (rdbtnSeason1.Checked == true)
-                    slctdSsn = 1;
-                else if (rdbtnSeason2.Checked == true)
-                    slctdSsn = 2;
-                else slctdSsn = 12;
+                int slctdSsn = checkRdbtnSelection();
                 //envoi de la requête pour charger les tableaux en fonction de la saison sélectionnée
                 CalendrierServices oService = new CalendrierServices();
                 gridClndrDated.DataSource=oService.GetClndrLists(oChamp.Id, slctdSsn)[0];
@@ -73,22 +68,17 @@ namespace BackEnd_UI.Calendrier
         {
             try
             {
-                int slctdSsn;
                 //récupération de l'ID championnat sélectionné
                 MdlChampionnat oChamp = new MdlChampionnat();
                 oChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
                 //vérification du radiobutton sélectionné pour connaître la saison à afficher
-                if (rdbtnSeason1.Checked == true)
-                    slctdSsn = 1;
-                else if (rdbtnSeason2.Checked == true)
-                    slctdSsn = 2;
-                else slctdSsn = 12;
+                int slctdSsn = checkRdbtnSelection();
                 //vérifier si le calendrier de la saison sélectionnée peut être (re)généré
                 CalendrierServices oServices = new CalendrierServices();
                 //si oui, ouvrir une fenêtre en mode Dialog, proposant la génération de championnat
                 if (oServices.GnrPossible(out int blckdSsn,oChamp.Id, slctdSsn))
                 {
-                    frmGnrCalendrier oFrm = new frmGnrCalendrier();
+                    frmGnrCalendrier oFrm = new frmGnrCalendrier(oServices.GetChampSaisons(oChamp.Id),slctdSsn);
                     oFrm.ShowDialog();
                     //si on a cliqué sur "Sauver"
                     if (oFrm.DialogResult == DialogResult.OK)
@@ -108,6 +98,26 @@ namespace BackEnd_UI.Calendrier
                 MessageBox.Show(oError.Message);
             }
 
+
+        }
+
+        private int checkRdbtnSelection()
+        {
+            try
+            {
+                int slctdBtn;
+                //vérification du radiobutton sélectionné pour connaître la saison à afficher
+                if (rdbtnSeason1.Checked == true)
+                    slctdBtn = 1;
+                else if (rdbtnSeason2.Checked == true)
+                    slctdBtn = 2;
+                else slctdBtn = 12;
+                return slctdBtn;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }                
 
         }
     }
