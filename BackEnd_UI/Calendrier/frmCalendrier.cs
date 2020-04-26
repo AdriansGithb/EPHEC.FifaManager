@@ -78,7 +78,7 @@ namespace BackEnd_UI.Calendrier
                 //si oui, ouvrir une fenêtre en mode Dialog, proposant la génération de championnat
                 if (oServices.GnrPossible(out int blckdSsn,oChamp.Id, slctdSsn))
                 {
-                    frmGnrCalendrier oFrm = new frmGnrCalendrier(oServices.GetChampSaisons(oChamp.Id),slctdSsn);
+                    frmGnrCalendrier oFrm = new frmGnrCalendrier(oServices.GetChampSaisons(oChamp.Id),slctdSsn, oChamp.NomString);
                     oFrm.ShowDialog();
                     //si on a cliqué sur "Sauver"
                     if (oFrm.DialogResult == DialogResult.OK)

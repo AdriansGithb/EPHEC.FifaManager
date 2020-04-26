@@ -162,6 +162,17 @@ namespace BackEnd_BL
             }
         }
 
-
+        //fonction générant des calendriers
+        public List<MdlMatchClndr> GenererCalendrier(List<MdlSaison> lstSsnChamp, int slctdSsn)
+        {
+            try
+            {
+                return new List<MdlMatchClndr>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

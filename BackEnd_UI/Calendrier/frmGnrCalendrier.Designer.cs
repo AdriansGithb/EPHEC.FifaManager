@@ -35,6 +35,7 @@
             this.lblUndatedClndr = new System.Windows.Forms.Label();
             this.gridClndrUndated = new System.Windows.Forms.DataGridView();
             this.lblDatedClndr = new System.Windows.Forms.Label();
+            this.lblChampSsn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrDated)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridClndrUndated)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +66,7 @@
             this.btnGnrClndr.TabIndex = 30;
             this.btnGnrClndr.Text = "(Re)Générer un calendrier";
             this.btnGnrClndr.UseVisualStyleBackColor = true;
+            this.btnGnrClndr.Click += new System.EventHandler(this.btnGnrClndr_Click);
             // 
             // gridClndrDated
             // 
@@ -113,11 +115,22 @@
             this.lblDatedClndr.TabIndex = 28;
             this.lblDatedClndr.Text = "Calendrier proposé :";
             // 
+            // lblChampSsn
+            // 
+            this.lblChampSsn.AutoSize = true;
+            this.lblChampSsn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChampSsn.Location = new System.Drawing.Point(12, 9);
+            this.lblChampSsn.Name = "lblChampSsn";
+            this.lblChampSsn.Size = new System.Drawing.Size(138, 16);
+            this.lblChampSsn.TabIndex = 31;
+            this.lblChampSsn.Text = "Nom_Championnat";
+            // 
             // frmGnrCalendrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 511);
+            this.Controls.Add(this.lblChampSsn);
             this.Controls.Add(this.btnGnrClndr);
             this.Controls.Add(this.gridClndrDated);
             this.Controls.Add(this.lblUndatedClndr);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.Label lblUndatedClndr;
         private System.Windows.Forms.DataGridView gridClndrUndated;
         private System.Windows.Forms.Label lblDatedClndr;
+        private System.Windows.Forms.Label lblChampSsn;
     }
 }
