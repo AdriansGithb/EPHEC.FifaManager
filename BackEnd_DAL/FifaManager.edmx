@@ -355,6 +355,9 @@
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SelectEqpPerSsn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="ssn_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
           <Parameter Name="ssn" Type="int" Mode="In" />
@@ -875,6 +878,9 @@
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
           <FunctionImport Name="SP_SelectCalendrier" ReturnType="Collection(Fifa_ManagerModel.SP_SelectCalendrier_Result)">
+          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectEqpPerSsn" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerSsn_Result)">
             <Parameter Name="ssn_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -968,6 +974,10 @@
           <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
           <Property Type="String" Name="EqpVst_Nom" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectEqpPerSsn_Result">
+          <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
+          <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1152,6 +1162,14 @@
                 <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
                 <ScalarProperty Name="EqpVst_Nom" ColumnName="EqpVst_Nom" />
                 <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectEqpPerSsn" FunctionName="Fifa_ManagerModel.Store.SP_SelectEqpPerSsn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectEqpPerSsn_Result">
+                <ScalarProperty Name="CoChmp_ID" ColumnName="CoChmp_ID" />
+                <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

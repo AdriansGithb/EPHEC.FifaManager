@@ -23,5 +23,13 @@ namespace BackEnd_DAL
             List<SP_SelectCalendrier_Result> lstClndr = ctx.SP_SelectCalendrier(ssn_id).ToList();
             return lstClndr;
         }
+
+        //procédure permettant de récupérer la liste des équipes inscrites à une saison envoyée en paramètre
+        public List<SP_SelectEqpPerSsn_Result> SP_SelectEqpPerSsn(int ssn_id)
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            List<SP_SelectEqpPerSsn_Result> lstEqp = ctx.SP_SelectEqpPerSsn(ssn_id).ToList();
+            return lstEqp;
+        }
     }
 }

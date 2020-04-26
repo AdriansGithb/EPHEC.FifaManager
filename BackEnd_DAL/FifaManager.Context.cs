@@ -126,5 +126,14 @@ namespace BackEnd_DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectCalendrier_Result>("SP_SelectCalendrier", ssn_idParameter);
         }
+    
+        public virtual ObjectResult<SP_SelectEqpPerSsn_Result> SP_SelectEqpPerSsn(Nullable<int> ssn_id)
+        {
+            var ssn_idParameter = ssn_id.HasValue ?
+                new ObjectParameter("ssn_id", ssn_id) :
+                new ObjectParameter("ssn_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectEqpPerSsn_Result>("SP_SelectEqpPerSsn", ssn_idParameter);
+        }
     }
 }

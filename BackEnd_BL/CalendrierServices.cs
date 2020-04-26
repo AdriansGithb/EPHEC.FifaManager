@@ -162,6 +162,35 @@ namespace BackEnd_BL
             }
         }
 
+        //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
+        public List<MdlEquipeClndr> GetEqpList(int ssn_id)
+        {
+            try
+            {
+                CalendrierData oData = new CalendrierData();
+                List<SP_SelectEqpPerSsn_Result> eqpList = oData.SP_SelectEqpPerSsn(ssn_id);
+                List<MdlEquipeClndr> rtrnList = new List<MdlEquipeClndr>();
+                foreach (SP_SelectEqpPerSsn_Result eqp in eqpList)
+                {
+                    MdlEquipeClndr oEqp = new MdlEquipeClndr();
+                    oEqp.Id = eqp.CoChmp_ID;
+                    oEqp.Nom = eqp.Eqp_Nom;
+
+                    rtrnList.Add(oEqp);
+                }
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         //fonction générant des calendriers
         public List<MdlMatchClndr> GenererCalendrier(List<MdlSaison> lstSsnChamp, int slctdSsn)
         {
