@@ -63,16 +63,18 @@ namespace BackEnd_UI.Calendrier
                 int champ_id = champSsnList[0].Champ_Id;
                 gridClndrDated.DataSource = oService.GetClndrLists(champ_id, slctdSsn)[0];
                 gridClndrDated.Columns[2].Visible = false;
-                gridClndrDated.Columns[4].Visible = false;
-                gridClndrDated.Columns[6].Visible = false;
-                gridClndrDated.Columns[3].HeaderText = "Equipe Domicile";
-                gridClndrDated.Columns[5].HeaderText = "Equipe Visiteuse";
+                gridClndrDated.Columns[3].Visible = false;
+                gridClndrDated.Columns[5].Visible = false;
+                gridClndrDated.Columns[7].Visible = false;
+                gridClndrDated.Columns[4].HeaderText = "Equipe Domicile";
+                gridClndrDated.Columns[6].HeaderText = "Equipe Visiteuse";
                 gridClndrUndated.DataSource = oService.GetClndrLists(champ_id, slctdSsn)[1];
                 gridClndrUndated.Columns[2].Visible = false; /*gridClndrUndated.Columns[1].Visible=false;*/
-                gridClndrUndated.Columns[4].Visible = false;
-                gridClndrUndated.Columns[6].Visible = false;
-                gridClndrUndated.Columns[3].HeaderText = "Equipe Domicile";
-                gridClndrUndated.Columns[5].HeaderText = "Equipe Visiteuse";
+                gridClndrUndated.Columns[3].Visible = false;
+                gridClndrUndated.Columns[5].Visible = false;
+                gridClndrUndated.Columns[7].Visible = false;
+                gridClndrUndated.Columns[4].HeaderText = "Equipe Domicile";
+                gridClndrUndated.Columns[6].HeaderText = "Equipe Visiteuse";
             }
             catch (Exception ex)
             {

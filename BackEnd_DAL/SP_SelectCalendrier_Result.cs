@@ -20,5 +20,6 @@ namespace BackEnd_DAL
         public int Mch_Eqp_Visit_ID { get; set; }
         public string EqpVst_Nom { get; set; }
         public System.DateTime Mch_LastUpdate { get; set; }
+        public int Mch_Ssn_ID { get; set; }
     }
 }

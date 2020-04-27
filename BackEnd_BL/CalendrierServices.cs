@@ -130,6 +130,7 @@ namespace BackEnd_BL
                     MdlMatchClndr oMatchClndr = new MdlMatchClndr();
                     oMatchClndr.Match_ID = match.Mch_ID;
                     oMatchClndr.Date = match.Mch_Date;
+                    oMatchClndr.Saison_Id = match.Mch_Ssn_ID;
                     oMatchClndr.EqpDom_CoChmp_ID = match.Mch_Eqp_Dom_ID;
                     oMatchClndr.Nom_EqpDom = match.EqpDom_Nom;
                     oMatchClndr.EqpVisit_CoChmp_ID = match.Mch_Eqp_Visit_ID;

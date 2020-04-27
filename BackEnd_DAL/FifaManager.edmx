@@ -974,6 +974,7 @@
           <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
           <Property Type="String" Name="EqpVst_Nom" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Mch_Ssn_ID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_SelectEqpPerSsn_Result">
           <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
@@ -1162,6 +1163,7 @@
                 <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
                 <ScalarProperty Name="EqpVst_Nom" ColumnName="EqpVst_Nom" />
                 <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+                <ScalarProperty Name="Mch_Ssn_ID" ColumnName="Mch_Ssn_ID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
