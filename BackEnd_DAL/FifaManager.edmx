@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Championnats">
           <Key>
             <PropertyRef Name="Champ_ID" />
@@ -72,8 +72,8 @@
           <Property Name="Mch_Eqp_Visit_ID" Type="int" Nullable="false" />
           <Property Name="Mch_Ssn_ID" Type="int" Nullable="false" />
           <Property Name="Mch_Date" Type="date" />
-          <Property Name="Mch_Res_ID_Dom" Type="int" />
-          <Property Name="Mch_Res_ID_Visit" Type="int" />
+          <Property Name="Mch_Res_ID_Dom" Type="int" Nullable="false" />
+          <Property Name="Mch_Res_ID_Visit" Type="int" Nullable="false" />
           <Property Name="Mch_LastUpdate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Saisons">
@@ -279,7 +279,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matchs_Types_Resultats_EqpDom">
-          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="0..1" />
+          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_Resultats">
@@ -291,7 +291,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matchs_Types_Resultats_EqpVisit">
-          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="0..1" />
+          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_Resultats">
@@ -338,6 +338,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_InsertNewMatchsClndrTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_ModifResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="match_id" Type="int" Mode="In" />
           <Parameter Name="tpResDomId" Type="int" Mode="In" />
@@ -362,6 +363,7 @@
           <Parameter Name="champ_id" Type="int" Mode="In" />
           <Parameter Name="ssn" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_UpdateMatchClndrTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
           <EntitySet Name="Championnats" EntityType="Self.Championnats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Constitution_Championnat" EntityType="Self.Constitution_Championnat" Schema="dbo" store:Type="Tables" />
@@ -449,7 +451,8 @@
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Fifa_ManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -462,7 +465,7 @@
           <Property Name="Champ_Annee" Type="Int16" Nullable="false" />
           <Property Name="Champ_Nb_Semn_Ssn" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Constitution_Championnat_Championnats" FromRole="Championnats" ToRole="Constitution_Championnat" />
-          <NavigationProperty Name="Saisons" Relationship="Fifa_ManagerModel.FK_Saisons_Championnats" FromRole="Championnats" ToRole="Saisons" />
+          <NavigationProperty Name="Saisons" Relationship="Self.FK_Saisons_Championnats" FromRole="Championnats" ToRole="Saisons" />
         </EntityType>
         <EntityType Name="Constitution_Championnat">
           <Key>
@@ -474,8 +477,8 @@
           <NavigationProperty Name="Championnats" Relationship="Self.FK_Constitution_Championnat_Championnats" FromRole="Constitution_Championnat" ToRole="Championnats" />
           <NavigationProperty Name="Equipes" Relationship="Self.FK_Constitution_Championnat_Equipes" FromRole="Constitution_Championnat" ToRole="Equipes" />
           <NavigationProperty Name="Constitution_Equipes" Relationship="Self.FK_Constitution_Equipes_Constitution_Championnat" FromRole="Constitution_Championnat" ToRole="Constitution_Equipes" />
-          <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Constitution_Championnat" FromRole="Constitution_Championnat" ToRole="Matchs" />
-          <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_Constitution_Championnat1" FromRole="Constitution_Championnat" ToRole="Matchs" />
+          <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Constitution_Championnat_EqpDom" FromRole="Constitution_Championnat" ToRole="Matchs" />
+          <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_Constitution_Championnat_EqpVisit" FromRole="Constitution_Championnat" ToRole="Matchs" />
         </EntityType>
         <EntityType Name="Constitution_Equipes">
           <Key>
@@ -487,8 +490,8 @@
           <Property Name="CEqp_Jr_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Constitution_Equipes_Constitution_Championnat" FromRole="Constitution_Equipes" ToRole="Constitution_Championnat" />
           <NavigationProperty Name="Joueurs" Relationship="Self.FK_Constitution_Equipes_Joueurs" FromRole="Constitution_Equipes" ToRole="Joueurs" />
+          <NavigationProperty Name="Saisons" Relationship="Self.FK_Constitution_Equipes_Saisons" FromRole="Constitution_Equipes" ToRole="Saisons" />
           <NavigationProperty Name="Inscription_Matchs" Relationship="Self.FK_Inscription_Matchs_Constitution_Equipes" FromRole="Constitution_Equipes" ToRole="Inscription_Matchs" />
-          <NavigationProperty Name="Saisons" Relationship="Fifa_ManagerModel.FK_Constitution_Equipes_Saisons" FromRole="Constitution_Equipes" ToRole="Saisons" />
         </EntityType>
         <EntityType Name="Equipes">
           <Key>
@@ -540,17 +543,30 @@
           <Property Name="Mch_Eqp_Visit_ID" Type="Int32" Nullable="false" />
           <Property Name="Mch_Ssn_ID" Type="Int32" Nullable="false" />
           <Property Name="Mch_Date" Type="DateTime" Precision="0" />
-          <Property Name="Mch_Res_ID_Dom" Type="Int32" />
-          <Property Name="Mch_Res_ID_Visit" Type="Int32" />
+          <Property Name="Mch_Res_ID_Dom" Type="Int32" Nullable="false" />
+          <Property Name="Mch_Res_ID_Visit" Type="Int32" Nullable="false" />
           <Property Name="Mch_LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Matchs_Constitution_Championnat" FromRole="Matchs" ToRole="Constitution_Championnat" />
-          <NavigationProperty Name="Constitution_Championnat1" Relationship="Self.FK_Matchs_Constitution_Championnat1" FromRole="Matchs" ToRole="Constitution_Championnat" />
+          <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Matchs_Constitution_Championnat_EqpDom" FromRole="Matchs" ToRole="Constitution_Championnat" />
+          <NavigationProperty Name="Constitution_Championnat1" Relationship="Self.FK_Matchs_Constitution_Championnat_EqpVisit" FromRole="Matchs" ToRole="Constitution_Championnat" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Events_Matchs" FromRole="Matchs" ToRole="Events" />
           <NavigationProperty Name="Inscription_Matchs" Relationship="Self.FK_Inscription_Matchs_Matchs" FromRole="Matchs" ToRole="Inscription_Matchs" />
-          <NavigationProperty Name="Types_Resultats" Relationship="Self.FK_Matchs_Types_Resultats" FromRole="Matchs" ToRole="Types_Resultats" />
-          <NavigationProperty Name="Types_Resultats1" Relationship="Self.FK_Matchs_Types_Resultats1" FromRole="Matchs" ToRole="Types_Resultats" />
+          <NavigationProperty Name="Saisons" Relationship="Self.FK_Matchs_Saisons" FromRole="Matchs" ToRole="Saisons" />
+          <NavigationProperty Name="Types_Resultats" Relationship="Self.FK_Matchs_Types_Resultats_EqpDom" FromRole="Matchs" ToRole="Types_Resultats" />
+          <NavigationProperty Name="Types_Resultats1" Relationship="Self.FK_Matchs_Types_Resultats_EqpVisit" FromRole="Matchs" ToRole="Types_Resultats" />
           <NavigationProperty Name="Suspensions" Relationship="Self.FK_Suspensions_Matchs" FromRole="Matchs" ToRole="Suspensions" />
-          <NavigationProperty Name="Saisons" Relationship="Fifa_ManagerModel.FK_Matchs_Saisons" FromRole="Matchs" ToRole="Saisons" />
+        </EntityType>
+        <EntityType Name="Saisons">
+          <Key>
+            <PropertyRef Name="Ssn_ID" />
+          </Key>
+          <Property Name="Ssn_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ssn_Champ_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ssn_Date_Debut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ssn_Num" Type="Int32" Nullable="false" />
+          <Property Name="Ssn_Date_Gnr_Clndr" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Championnats" Relationship="Self.FK_Saisons_Championnats" FromRole="Saisons" ToRole="Championnats" />
+          <NavigationProperty Name="Constitution_Equipes" Relationship="Self.FK_Constitution_Equipes_Saisons" FromRole="Saisons" ToRole="Constitution_Equipes" />
+          <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Saisons" FromRole="Saisons" ToRole="Matchs" />
         </EntityType>
         <EntityType Name="Suspensions">
           <Key>
@@ -590,8 +606,8 @@
           <Property Name="Res_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Res_Libelle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Res_Points" Type="Int16" />
-          <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Types_Resultats" FromRole="Types_Resultats" ToRole="Matchs" />
-          <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_Types_Resultats1" FromRole="Types_Resultats" ToRole="Matchs" />
+          <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_Types_Resultats_EqpDom" FromRole="Types_Resultats" ToRole="Matchs" />
+          <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_Types_Resultats_EqpVisit" FromRole="Types_Resultats" ToRole="Matchs" />
         </EntityType>
         <Association Name="FK_Constitution_Championnat_Championnats">
           <End Role="Championnats" Type="Self.Championnats" Multiplicity="1" />
@@ -602,6 +618,18 @@
             </Principal>
             <Dependent Role="Constitution_Championnat">
               <PropertyRef Name="CoChmp_Champ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saisons_Championnats">
+          <End Role="Championnats" Type="Self.Championnats" Multiplicity="1" />
+          <End Role="Saisons" Type="Self.Saisons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championnats">
+              <PropertyRef Name="Champ_ID" />
+            </Principal>
+            <Dependent Role="Saisons">
+              <PropertyRef Name="Ssn_Champ_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -629,7 +657,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matchs_Constitution_Championnat">
+        <Association Name="FK_Matchs_Constitution_Championnat_EqpDom">
           <End Role="Constitution_Championnat" Type="Self.Constitution_Championnat" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -641,7 +669,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matchs_Constitution_Championnat1">
+        <Association Name="FK_Matchs_Constitution_Championnat_EqpVisit">
           <End Role="Constitution_Championnat" Type="Self.Constitution_Championnat" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -662,6 +690,18 @@
             </Principal>
             <Dependent Role="Constitution_Equipes">
               <PropertyRef Name="CEqp_Jr_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Constitution_Equipes_Saisons">
+          <End Role="Saisons" Type="Self.Saisons" Multiplicity="1" />
+          <End Role="Constitution_Equipes" Type="Self.Constitution_Equipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saisons">
+              <PropertyRef Name="Ssn_ID" />
+            </Principal>
+            <Dependent Role="Constitution_Equipes">
+              <PropertyRef Name="CEqp_Ssn_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -737,8 +777,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matchs_Types_Resultats">
-          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="0..1" />
+        <Association Name="FK_Matchs_Saisons">
+          <End Role="Saisons" Type="Self.Saisons" Multiplicity="1" />
+          <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saisons">
+              <PropertyRef Name="Ssn_ID" />
+            </Principal>
+            <Dependent Role="Matchs">
+              <PropertyRef Name="Mch_Ssn_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matchs_Types_Resultats_EqpDom">
+          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_Resultats">
@@ -749,8 +801,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matchs_Types_Resultats1">
-          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="0..1" />
+        <Association Name="FK_Matchs_Types_Resultats_EqpVisit">
+          <End Role="Types_Resultats" Type="Self.Types_Resultats" Multiplicity="1" />
           <End Role="Matchs" Type="Self.Matchs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_Resultats">
@@ -782,6 +834,7 @@
           <EntitySet Name="Inscription_Matchs" EntityType="Self.Inscription_Matchs" />
           <EntitySet Name="Joueurs" EntityType="Self.Joueurs" />
           <EntitySet Name="Matchs" EntityType="Self.Matchs" />
+          <EntitySet Name="Saisons" EntityType="Self.Saisons" />
           <EntitySet Name="Suspensions" EntityType="Self.Suspensions" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Types_Events" EntityType="Self.Types_Events" />
@@ -789,6 +842,10 @@
           <AssociationSet Name="FK_Constitution_Championnat_Championnats" Association="Self.FK_Constitution_Championnat_Championnats">
             <End Role="Championnats" EntitySet="Championnats" />
             <End Role="Constitution_Championnat" EntitySet="Constitution_Championnat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saisons_Championnats" Association="Self.FK_Saisons_Championnats">
+            <End Role="Championnats" EntitySet="Championnats" />
+            <End Role="Saisons" EntitySet="Saisons" />
           </AssociationSet>
           <AssociationSet Name="FK_Constitution_Championnat_Equipes" Association="Self.FK_Constitution_Championnat_Equipes">
             <End Role="Equipes" EntitySet="Equipes" />
@@ -798,16 +855,20 @@
             <End Role="Constitution_Championnat" EntitySet="Constitution_Championnat" />
             <End Role="Constitution_Equipes" EntitySet="Constitution_Equipes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matchs_Constitution_Championnat" Association="Self.FK_Matchs_Constitution_Championnat">
+          <AssociationSet Name="FK_Matchs_Constitution_Championnat_EqpDom" Association="Self.FK_Matchs_Constitution_Championnat_EqpDom">
             <End Role="Constitution_Championnat" EntitySet="Constitution_Championnat" />
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matchs_Constitution_Championnat1" Association="Self.FK_Matchs_Constitution_Championnat1">
+          <AssociationSet Name="FK_Matchs_Constitution_Championnat_EqpVisit" Association="Self.FK_Matchs_Constitution_Championnat_EqpVisit">
             <End Role="Constitution_Championnat" EntitySet="Constitution_Championnat" />
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
           <AssociationSet Name="FK_Constitution_Equipes_Joueurs" Association="Self.FK_Constitution_Equipes_Joueurs">
             <End Role="Joueurs" EntitySet="Joueurs" />
+            <End Role="Constitution_Equipes" EntitySet="Constitution_Equipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Constitution_Equipes_Saisons" Association="Self.FK_Constitution_Equipes_Saisons">
+            <End Role="Saisons" EntitySet="Saisons" />
             <End Role="Constitution_Equipes" EntitySet="Constitution_Equipes" />
           </AssociationSet>
           <AssociationSet Name="FK_Inscription_Matchs_Constitution_Equipes" Association="Self.FK_Inscription_Matchs_Constitution_Equipes">
@@ -834,11 +895,15 @@
             <End Role="Matchs" EntitySet="Matchs" />
             <End Role="Inscription_Matchs" EntitySet="Inscription_Matchs" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matchs_Types_Resultats" Association="Self.FK_Matchs_Types_Resultats">
+          <AssociationSet Name="FK_Matchs_Saisons" Association="Self.FK_Matchs_Saisons">
+            <End Role="Saisons" EntitySet="Saisons" />
+            <End Role="Matchs" EntitySet="Matchs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matchs_Types_Resultats_EqpDom" Association="Self.FK_Matchs_Types_Resultats_EqpDom">
             <End Role="Types_Resultats" EntitySet="Types_Resultats" />
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matchs_Types_Resultats1" Association="Self.FK_Matchs_Types_Resultats1">
+          <AssociationSet Name="FK_Matchs_Types_Resultats_EqpVisit" Association="Self.FK_Matchs_Types_Resultats_EqpVisit">
             <End Role="Types_Resultats" EntitySet="Types_Resultats" />
             <End Role="Matchs" EntitySet="Matchs" />
           </AssociationSet>
@@ -846,6 +911,7 @@
             <End Role="Matchs" EntitySet="Matchs" />
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
+          <FunctionImport Name="SP_InsertNewMatchsClndrTable" />
           <FunctionImport Name="SP_ModifResult">
             <Parameter Name="match_id" Mode="In" Type="Int32" />
             <Parameter Name="tpResDomId" Mode="In" Type="Int32" />
@@ -853,36 +919,24 @@
             <Parameter Name="lstUpdt" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
+          <FunctionImport Name="SP_SelectAllSsn1Champ" EntitySet="Saisons" ReturnType="Collection(Fifa_ManagerModel.Saisons)">
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_SelectAllTypeResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeResults_Result)" />
+          <FunctionImport Name="SP_SelectCalendrier" ReturnType="Collection(Fifa_ManagerModel.SP_SelectCalendrier_Result)">
+            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
-          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectEqpPerSsn" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerSsn_Result)">
+            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectResults_Result)">
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_SelectAllSsn1Champ" EntitySet="Saisons" ReturnType="Collection(Fifa_ManagerModel.Saisons)">
-          <Parameter Name="champ_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="Saisons" EntityType="Fifa_ManagerModel.Saisons" />
-          <AssociationSet Name="FK_Saisons_Championnats" Association="Fifa_ManagerModel.FK_Saisons_Championnats">
-            <End Role="Championnats" EntitySet="Championnats" />
-            <End Role="Saisons" EntitySet="Saisons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Constitution_Equipes_Saisons" Association="Fifa_ManagerModel.FK_Constitution_Equipes_Saisons">
-            <End Role="Saisons" EntitySet="Saisons" />
-            <End Role="Constitution_Equipes" EntitySet="Constitution_Equipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Matchs_Saisons" Association="Fifa_ManagerModel.FK_Matchs_Saisons">
-            <End Role="Saisons" EntitySet="Saisons" />
-            <End Role="Matchs" EntitySet="Matchs" />
-          </AssociationSet>
-          <FunctionImport Name="SP_SelectCalendrier" ReturnType="Collection(Fifa_ManagerModel.SP_SelectCalendrier_Result)">
-          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_SelectEqpPerSsn" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerSsn_Result)">
-          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <FunctionImport Name="SP_UpdateMatchClndrTable" />
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -890,14 +944,35 @@
           <Property Type="Int16" Name="Champ_Annee" Nullable="false" />
           <Property Type="Int32" Name="Champ_Nb_Semn_Ssn" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="SP_SelectAllSsn1Champ_Result">
+          <Property Type="Int32" Name="Ssn_ID" Nullable="false" />
+          <Property Type="Int32" Name="Ssn_Champ_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Ssn_Date_Debut" Nullable="false" />
+          <Property Type="Int32" Name="Ssn_Num" Nullable="false" />
+          <Property Type="DateTime" Name="Ssn_Date_Gnr_Clndr" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="SP_SelectAllTypeResults_Result">
           <Property Type="Int32" Name="Res_ID" Nullable="false" />
           <Property Type="String" Name="Res_Libelle" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectCalendrier_Result">
+          <Property Type="Int32" Name="Mch_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Mch_Date" Nullable="true" />
+          <Property Type="Int32" Name="Mch_Ssn_ID" Nullable="false" />
+          <Property Type="Int32" Name="Mch_Eqp_Dom_ID" Nullable="false" />
+          <Property Type="String" Name="EqpDom_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
+          <Property Type="String" Name="EqpVst_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
         </ComplexType>
         <ComplexType Name="SP_SelectClassement_Result">
           <Property Type="Int32" Name="Eqp_ID" Nullable="true" />
           <Property Type="String" Name="Eqp_Nom" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Points" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectEqpPerSsn_Result">
+          <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
+          <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_SelectResults_Result">
           <Property Type="Int32" Name="Match_ID" Nullable="false" />
@@ -909,76 +984,6 @@
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="TypeResultIDVisiteur" Nullable="false" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="SP_SelectAllSsn1Champ_Result">
-          <Property Type="Int32" Name="Ssn_ID" Nullable="false" />
-          <Property Type="Int32" Name="Ssn_Champ_ID" Nullable="false" />
-          <Property Type="DateTime" Name="Ssn_Date_Debut" Nullable="false" />
-          <Property Type="Boolean" Name="Ssn_Num" Nullable="false" />
-          <Property Type="DateTime" Name="Ssn_Date_Gnr_Clndr" Nullable="true" Precision="23" />
-        </ComplexType>
-        <EntityType Name="Saisons">
-          <Key>
-            <PropertyRef Name="Ssn_ID" />
-          </Key>
-          <Property Name="Ssn_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ssn_Champ_ID" Type="Int32" Nullable="false" />
-          <Property Name="Ssn_Date_Debut" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Ssn_Num" Type="Int32" Nullable="false" />
-          <Property Name="Ssn_Date_Gnr_Clndr" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Championnats" Relationship="Fifa_ManagerModel.FK_Saisons_Championnats" FromRole="Saisons" ToRole="Championnats" />
-          <NavigationProperty Name="Constitution_Equipes" Relationship="Fifa_ManagerModel.FK_Constitution_Equipes_Saisons" FromRole="Saisons" ToRole="Constitution_Equipes" />
-          <NavigationProperty Name="Matchs" Relationship="Fifa_ManagerModel.FK_Matchs_Saisons" FromRole="Saisons" ToRole="Matchs" />
-        </EntityType>
-        <Association Name="FK_Saisons_Championnats">
-          <End Type="Fifa_ManagerModel.Championnats" Role="Championnats" Multiplicity="1" />
-          <End Type="Fifa_ManagerModel.Saisons" Role="Saisons" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Championnats">
-              <PropertyRef Name="Champ_ID" />
-            </Principal>
-            <Dependent Role="Saisons">
-              <PropertyRef Name="Ssn_Champ_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Constitution_Equipes_Saisons">
-          <End Type="Fifa_ManagerModel.Saisons" Role="Saisons" Multiplicity="1" />
-          <End Type="Fifa_ManagerModel.Constitution_Equipes" Role="Constitution_Equipes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Saisons">
-              <PropertyRef Name="Ssn_ID" />
-            </Principal>
-            <Dependent Role="Constitution_Equipes">
-              <PropertyRef Name="CEqp_Ssn_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Matchs_Saisons">
-          <End Type="Fifa_ManagerModel.Saisons" Role="Saisons" Multiplicity="1" />
-          <End Type="Fifa_ManagerModel.Matchs" Role="Matchs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Saisons">
-              <PropertyRef Name="Ssn_ID" />
-            </Principal>
-            <Dependent Role="Matchs">
-              <PropertyRef Name="Mch_Ssn_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="SP_SelectCalendrier_Result">
-          <Property Type="Int32" Name="Mch_ID" Nullable="false" />
-          <Property Type="DateTime" Name="Mch_Date" Nullable="true" />
-          <Property Type="Int32" Name="Mch_Eqp_Dom_ID" Nullable="false" />
-          <Property Type="String" Name="EqpDom_Nom" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
-          <Property Type="String" Name="EqpVst_Nom" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="Mch_Ssn_ID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_SelectEqpPerSsn_Result">
-          <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
-          <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1065,6 +1070,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Saisons">
+            <EntityTypeMapping TypeName="Fifa_ManagerModel.Saisons">
+              <MappingFragment StoreEntitySet="Saisons">
+                <ScalarProperty Name="Ssn_ID" ColumnName="Ssn_ID" />
+                <ScalarProperty Name="Ssn_Champ_ID" ColumnName="Ssn_Champ_ID" />
+                <ScalarProperty Name="Ssn_Date_Debut" ColumnName="Ssn_Date_Debut" />
+                <ScalarProperty Name="Ssn_Num" ColumnName="Ssn_Num" />
+                <ScalarProperty Name="Ssn_Date_Gnr_Clndr" ColumnName="Ssn_Date_Gnr_Clndr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Suspensions">
             <EntityTypeMapping TypeName="Fifa_ManagerModel.Suspensions">
               <MappingFragment StoreEntitySet="Suspensions">
@@ -1105,8 +1121,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertNewMatchsClndrTable" FunctionName="Fifa_ManagerModel.Store.SP_InsertNewMatchsClndrTable" />
           <FunctionImportMapping FunctionImportName="SP_ModifResult" FunctionName="Fifa_ManagerModel.Store.SP_ModifResult" />
           <FunctionImportMapping FunctionImportName="SP_SelectAllChampionnats" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllChampionnats">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllSsn1Champ" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllSsn1Champ">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_SelectAllTypeResults" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllTypeResults">
             <ResultMapping>
@@ -1116,12 +1135,34 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectCalendrier" FunctionName="Fifa_ManagerModel.Store.SP_SelectCalendrier">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectCalendrier_Result">
+                <ScalarProperty Name="Mch_ID" ColumnName="Mch_ID" />
+                <ScalarProperty Name="Mch_Date" ColumnName="Mch_Date" />
+                <ScalarProperty Name="Mch_Ssn_ID" ColumnName="Mch_Ssn_ID" />
+                <ScalarProperty Name="Mch_Eqp_Dom_ID" ColumnName="Mch_Eqp_Dom_ID" />
+                <ScalarProperty Name="EqpDom_Nom" ColumnName="EqpDom_Nom" />
+                <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
+                <ScalarProperty Name="EqpVst_Nom" ColumnName="EqpVst_Nom" />
+                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_SelectClassement" FunctionName="Fifa_ManagerModel.Store.SP_SelectClassement">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectClassement_Result">
                 <ScalarProperty Name="Eqp_ID" ColumnName="Eqp_ID" />
                 <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectEqpPerSsn" FunctionName="Fifa_ManagerModel.Store.SP_SelectEqpPerSsn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectEqpPerSsn_Result">
+                <ScalarProperty Name="CoChmp_ID" ColumnName="CoChmp_ID" />
+                <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1140,41 +1181,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_SelectAllSsn1Champ" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllSsn1Champ">
-          </FunctionImportMapping>
-          <EntitySetMapping Name="Saisons">
-            <EntityTypeMapping TypeName="Fifa_ManagerModel.Saisons">
-              <MappingFragment StoreEntitySet="Saisons">
-                <ScalarProperty Name="Ssn_Date_Gnr_Clndr" ColumnName="Ssn_Date_Gnr_Clndr" />
-                <ScalarProperty Name="Ssn_Num" ColumnName="Ssn_Num" />
-                <ScalarProperty Name="Ssn_Date_Debut" ColumnName="Ssn_Date_Debut" />
-                <ScalarProperty Name="Ssn_Champ_ID" ColumnName="Ssn_Champ_ID" />
-                <ScalarProperty Name="Ssn_ID" ColumnName="Ssn_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_SelectCalendrier" FunctionName="Fifa_ManagerModel.Store.SP_SelectCalendrier">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectCalendrier_Result">
-                <ScalarProperty Name="Mch_ID" ColumnName="Mch_ID" />
-                <ScalarProperty Name="Mch_Date" ColumnName="Mch_Date" />
-                <ScalarProperty Name="Mch_Eqp_Dom_ID" ColumnName="Mch_Eqp_Dom_ID" />
-                <ScalarProperty Name="EqpDom_Nom" ColumnName="EqpDom_Nom" />
-                <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
-                <ScalarProperty Name="EqpVst_Nom" ColumnName="EqpVst_Nom" />
-                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
-                <ScalarProperty Name="Mch_Ssn_ID" ColumnName="Mch_Ssn_ID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_SelectEqpPerSsn" FunctionName="Fifa_ManagerModel.Store.SP_SelectEqpPerSsn">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectEqpPerSsn_Result">
-                <ScalarProperty Name="CoChmp_ID" ColumnName="CoChmp_ID" />
-                <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UpdateMatchClndrTable" FunctionName="Fifa_ManagerModel.Store.SP_UpdateMatchClndrTable" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

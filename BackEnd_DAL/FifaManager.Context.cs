@@ -21,7 +21,6 @@ namespace BackEnd_DAL
             : base("name=Fifa_ManagerEntities")
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -37,11 +36,16 @@ namespace BackEnd_DAL
         public virtual DbSet<Inscription_Matchs> Inscription_Matchs { get; set; }
         public virtual DbSet<Joueurs> Joueurs { get; set; }
         public virtual DbSet<Matchs> Matchs { get; set; }
+        public virtual DbSet<Saisons> Saisons { get; set; }
         public virtual DbSet<Suspensions> Suspensions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Types_Events> Types_Events { get; set; }
         public virtual DbSet<Types_Resultats> Types_Resultats { get; set; }
-        public virtual DbSet<Saisons> Saisons { get; set; }
+    
+        public virtual int SP_InsertNewMatchsClndrTable()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertNewMatchsClndrTable");
+        }
     
         public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
         {
@@ -74,33 +78,6 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Championnats>("SP_SelectAllChampionnats", mergeOption);
         }
     
-        public virtual ObjectResult<SP_SelectAllTypeResults_Result> SP_SelectAllTypeResults()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllTypeResults_Result>("SP_SelectAllTypeResults");
-        }
-    
-        public virtual ObjectResult<SP_SelectClassement_Result> SP_SelectClassement(Nullable<int> champ_id)
-        {
-            var champ_idParameter = champ_id.HasValue ?
-                new ObjectParameter("champ_id", champ_id) :
-                new ObjectParameter("champ_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectClassement_Result>("SP_SelectClassement", champ_idParameter);
-        }
-    
-        public virtual ObjectResult<SP_SelectResults_Result> SP_SelectResults(Nullable<int> champ_id, Nullable<int> ssn)
-        {
-            var champ_idParameter = champ_id.HasValue ?
-                new ObjectParameter("champ_id", champ_id) :
-                new ObjectParameter("champ_id", typeof(int));
-    
-            var ssnParameter = ssn.HasValue ?
-                new ObjectParameter("ssn", ssn) :
-                new ObjectParameter("ssn", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
-        }
-    
         public virtual ObjectResult<Saisons> SP_SelectAllSsn1Champ(Nullable<int> champ_id)
         {
             var champ_idParameter = champ_id.HasValue ?
@@ -119,6 +96,11 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Saisons>("SP_SelectAllSsn1Champ", mergeOption, champ_idParameter);
         }
     
+        public virtual ObjectResult<SP_SelectAllTypeResults_Result> SP_SelectAllTypeResults()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllTypeResults_Result>("SP_SelectAllTypeResults");
+        }
+    
         public virtual ObjectResult<SP_SelectCalendrier_Result> SP_SelectCalendrier(Nullable<int> ssn_id)
         {
             var ssn_idParameter = ssn_id.HasValue ?
@@ -128,6 +110,15 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectCalendrier_Result>("SP_SelectCalendrier", ssn_idParameter);
         }
     
+        public virtual ObjectResult<SP_SelectClassement_Result> SP_SelectClassement(Nullable<int> champ_id)
+        {
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectClassement_Result>("SP_SelectClassement", champ_idParameter);
+        }
+    
         public virtual ObjectResult<SP_SelectEqpPerSsn_Result> SP_SelectEqpPerSsn(Nullable<int> ssn_id)
         {
             var ssn_idParameter = ssn_id.HasValue ?
@@ -135,6 +126,24 @@ namespace BackEnd_DAL
                 new ObjectParameter("ssn_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectEqpPerSsn_Result>("SP_SelectEqpPerSsn", ssn_idParameter);
+        }
+    
+        public virtual ObjectResult<SP_SelectResults_Result> SP_SelectResults(Nullable<int> champ_id, Nullable<int> ssn)
+        {
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
+    
+            var ssnParameter = ssn.HasValue ?
+                new ObjectParameter("ssn", ssn) :
+                new ObjectParameter("ssn", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
+        }
+    
+        public virtual int SP_UpdateMatchClndrTable()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateMatchClndrTable");
         }
     }
 }

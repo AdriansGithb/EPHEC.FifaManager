@@ -15,11 +15,11 @@ namespace BackEnd_DAL
     {
         public int Mch_ID { get; set; }
         public Nullable<System.DateTime> Mch_Date { get; set; }
+        public int Mch_Ssn_ID { get; set; }
         public int Mch_Eqp_Dom_ID { get; set; }
         public string EqpDom_Nom { get; set; }
         public int Mch_Eqp_Visit_ID { get; set; }
         public string EqpVst_Nom { get; set; }
         public System.DateTime Mch_LastUpdate { get; set; }
-        public int Mch_Ssn_ID { get; set; }
     }
 }
