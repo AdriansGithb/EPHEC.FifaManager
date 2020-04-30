@@ -19,8 +19,6 @@ namespace BackEnd_UI.Calendrier
         private int slctdSsn;
         private MdlSaison frstSsn;
         private MdlSaison scndSsn;
-        //private bool clndrBDModif = false;
-
         public frmGnrCalendrier(List<MdlSaison> rcvdChampSsnList, int rcvdSlctdSsn, string nomChamp)
         {
             InitializeComponent();
@@ -34,6 +32,7 @@ namespace BackEnd_UI.Calendrier
             try
             {
                 this.btnSave.DialogResult = DialogResult.OK;
+                this.btnSave.Enabled = false;
                 this.btnCancel.DialogResult = DialogResult.Cancel;
                 if (slctdSsn == 12)
                     lblChampSsn.Text += "1&2";
@@ -143,12 +142,22 @@ namespace BackEnd_UI.Calendrier
                 }
                 gridClndrDated.DataSource = nwClndr.FindAll(match => match.Date.HasValue);
                 gridClndrUndated.DataSource = nwClndr.FindAll(match => match.Date is null);
+                this.btnSave.Enabled = true;
             }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            CalendrierServices oServices = new CalendrierServices();
+            List<MdlMatchClndr> saveMatchClndrList = new List<MdlMatchClndr>();
+            saveMatchClndrList = (List<MdlMatchClndr>)gridClndrDated.DataSource;
+            saveMatchClndrList.AddRange((List<MdlMatchClndr>)gridClndrUndated.DataSource);
+            oServices.InsertUpdate_MtchClndr(saveMatchClndrList);
         }
     }
 }

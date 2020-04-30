@@ -90,23 +90,22 @@ namespace BackEnd_UI.Calendrier
                     oFrm.ShowDialog();
                     //si on a cliqué sur "Sauver"
                     if (oFrm.DialogResult == DialogResult.OK)
-                        MessageBox.Show("sauvé");
+                        MessageBox.Show("Nouveau calendrier sauvegardé");
                     else
-                        MessageBox.Show("annulé");
+                        MessageBox.Show("Modification annulée");
                 }
                 else
                 {
                     throw new Exception($"clndr Ssn {blckdSsn} non générable");
                 }
 
+                clndrGrids_Load(sender,e);
             }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
-
-
         }
 
         private int checkRdbtnSelection()

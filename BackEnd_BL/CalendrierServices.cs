@@ -408,7 +408,7 @@ namespace BackEnd_BL
         }
 
         //fonction générant un calendrier pour les 2 saisons
-            public List<MdlMatchClndr> GenererCalendrier_2Saisons(List<MdlSaison> ssnList)
+        public List<MdlMatchClndr> GenererCalendrier_2Saisons(List<MdlSaison> ssnList)
         {
             try
             {
@@ -416,6 +416,27 @@ namespace BackEnd_BL
                 fullList = GenererCalendrier_Saison(ssnList[0]);
                 fullList.AddRange(GenererCalendrier_Saison(ssnList[1]));
                 return fullList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //fonction permettant d'envoyer une liste de matchs dans la BD
+        public void InsertUpdate_MtchClndr(List<MdlMatchClndr> mchList)
+        {
+            try
+            {
+                CalendrierData oData = new CalendrierData();
+                foreach (MdlMatchClndr match in mchList)
+                {
+                    oData.SP_InsertUpdateMtchClndr(match.Match_ID,match.Date,match.Saison_Id,match.EqpDom_CoChmp_ID, match.EqpVisit_CoChmp_ID, match.LastUpdate);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
             }
             catch (Exception ex)
             {
