@@ -42,9 +42,33 @@ namespace BackEnd_DAL
         public virtual DbSet<Types_Events> Types_Events { get; set; }
         public virtual DbSet<Types_Resultats> Types_Resultats { get; set; }
     
-        public virtual int SP_InsertNewMatchsClndrTable()
+        public virtual int SP_InsertUpdateMatchClndr(Nullable<int> rcvd_mch_id, Nullable<int> rcvd_ssnID, Nullable<System.DateTime> rcvd_MchDate, Nullable<int> rcvd_EqpDom_CoChmp_ID, Nullable<int> rcvd_EqpVisit_CoChmp_ID, Nullable<System.DateTime> rcvd_mch_lstupdt)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertNewMatchsClndrTable");
+            var rcvd_mch_idParameter = rcvd_mch_id.HasValue ?
+                new ObjectParameter("rcvd_mch_id", rcvd_mch_id) :
+                new ObjectParameter("rcvd_mch_id", typeof(int));
+    
+            var rcvd_ssnIDParameter = rcvd_ssnID.HasValue ?
+                new ObjectParameter("rcvd_ssnID", rcvd_ssnID) :
+                new ObjectParameter("rcvd_ssnID", typeof(int));
+    
+            var rcvd_MchDateParameter = rcvd_MchDate.HasValue ?
+                new ObjectParameter("rcvd_MchDate", rcvd_MchDate) :
+                new ObjectParameter("rcvd_MchDate", typeof(System.DateTime));
+    
+            var rcvd_EqpDom_CoChmp_IDParameter = rcvd_EqpDom_CoChmp_ID.HasValue ?
+                new ObjectParameter("rcvd_EqpDom_CoChmp_ID", rcvd_EqpDom_CoChmp_ID) :
+                new ObjectParameter("rcvd_EqpDom_CoChmp_ID", typeof(int));
+    
+            var rcvd_EqpVisit_CoChmp_IDParameter = rcvd_EqpVisit_CoChmp_ID.HasValue ?
+                new ObjectParameter("rcvd_EqpVisit_CoChmp_ID", rcvd_EqpVisit_CoChmp_ID) :
+                new ObjectParameter("rcvd_EqpVisit_CoChmp_ID", typeof(int));
+    
+            var rcvd_mch_lstupdtParameter = rcvd_mch_lstupdt.HasValue ?
+                new ObjectParameter("rcvd_mch_lstupdt", rcvd_mch_lstupdt) :
+                new ObjectParameter("rcvd_mch_lstupdt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertUpdateMatchClndr", rcvd_mch_idParameter, rcvd_ssnIDParameter, rcvd_MchDateParameter, rcvd_EqpDom_CoChmp_IDParameter, rcvd_EqpVisit_CoChmp_IDParameter, rcvd_mch_lstupdtParameter);
         }
     
         public virtual int SP_ModifResult(Nullable<int> match_id, Nullable<int> tpResDomId, Nullable<int> tpResVisId, Nullable<System.DateTime> lstUpdt)
@@ -139,11 +163,6 @@ namespace BackEnd_DAL
                 new ObjectParameter("ssn", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
-        }
-    
-        public virtual int SP_UpdateMatchClndrTable()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateMatchClndrTable");
         }
     }
 }

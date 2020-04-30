@@ -338,7 +338,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="SP_InsertNewMatchsClndrTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_InsertUpdateMatchClndr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="rcvd_mch_id" Type="int" Mode="In" />
+          <Parameter Name="rcvd_ssnID" Type="int" Mode="In" />
+          <Parameter Name="rcvd_MchDate" Type="datetime" Mode="In" />
+          <Parameter Name="rcvd_EqpDom_CoChmp_ID" Type="int" Mode="In" />
+          <Parameter Name="rcvd_EqpVisit_CoChmp_ID" Type="int" Mode="In" />
+          <Parameter Name="rcvd_mch_lstupdt" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="SP_ModifResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="match_id" Type="int" Mode="In" />
           <Parameter Name="tpResDomId" Type="int" Mode="In" />
@@ -363,7 +370,6 @@
           <Parameter Name="champ_id" Type="int" Mode="In" />
           <Parameter Name="ssn" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_UpdateMatchClndrTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
           <EntitySet Name="Championnats" EntityType="Self.Championnats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Constitution_Championnat" EntityType="Self.Constitution_Championnat" Schema="dbo" store:Type="Tables" />
@@ -911,7 +917,14 @@
             <End Role="Matchs" EntitySet="Matchs" />
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
-          <FunctionImport Name="SP_InsertNewMatchsClndrTable" />
+          <FunctionImport Name="SP_InsertUpdateMatchClndr">
+            <Parameter Name="rcvd_mch_id" Mode="In" Type="Int32" />
+            <Parameter Name="rcvd_ssnID" Mode="In" Type="Int32" />
+            <Parameter Name="rcvd_MchDate" Mode="In" Type="DateTime" />
+            <Parameter Name="rcvd_EqpDom_CoChmp_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rcvd_EqpVisit_CoChmp_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rcvd_mch_lstupdt" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="SP_ModifResult">
             <Parameter Name="match_id" Mode="In" Type="Int32" />
             <Parameter Name="tpResDomId" Mode="In" Type="Int32" />
@@ -936,7 +949,6 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_UpdateMatchClndrTable" />
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1121,7 +1133,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_InsertNewMatchsClndrTable" FunctionName="Fifa_ManagerModel.Store.SP_InsertNewMatchsClndrTable" />
+          <FunctionImportMapping FunctionImportName="SP_InsertUpdateMatchClndr" FunctionName="Fifa_ManagerModel.Store.SP_InsertUpdateMatchClndr" />
           <FunctionImportMapping FunctionImportName="SP_ModifResult" FunctionName="Fifa_ManagerModel.Store.SP_ModifResult" />
           <FunctionImportMapping FunctionImportName="SP_SelectAllChampionnats" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllChampionnats">
           </FunctionImportMapping>
@@ -1181,7 +1193,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_UpdateMatchClndrTable" FunctionName="Fifa_ManagerModel.Store.SP_UpdateMatchClndrTable" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
