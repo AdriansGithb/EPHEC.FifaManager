@@ -269,7 +269,7 @@ namespace BackEnd_BL
         {
             try
             {
-                DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks*7);
+                DateTime EndDate = GetEndSsnDate(beginDate);
                 List<DateTime> rtrnLst = new List<DateTime>();
                 for (DateTime begin = beginDate; EndDate.CompareTo(begin)>=0; begin=begin.AddDays(1))
                 {
@@ -447,6 +447,13 @@ namespace BackEnd_BL
         {
             CalendrierData oData = new CalendrierData();
             oData.SP_SetDateGnrClndr_Ssn(ssn_id);
+        }
+
+        //obtenir la date de fin d'une saison
+        public DateTime GetEndSsnDate(DateTime beginDate)
+        {
+            DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks * 7);
+            return EndDate;
         }
     }
 }
