@@ -372,8 +372,6 @@ namespace BackEnd_BL
             try
             {
                 List<MdlMatchClndr> undatedMatchList = new List<MdlMatchClndr>();
-                //if (ssn.GnrClndr.HasValue)
-                //    undatedMatchList = oldClndr;
                 if (ssn.FirstOrSecond == 1)
                     undatedMatchList = CreateMatchs_FirstSsn(ssn.Id);
                 else

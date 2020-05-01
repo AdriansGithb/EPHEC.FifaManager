@@ -24,7 +24,6 @@ namespace BackEnd_DAL
         public int Champ_ID { get; set; }
         public string Champ_Nom { get; set; }
         public short Champ_Annee { get; set; }
-        public int Champ_Nb_Semn_Ssn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Constitution_Championnat> Constitution_Championnat { get; set; }

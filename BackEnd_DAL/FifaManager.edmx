@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Fifa_ManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Championnats">
           <Key>
             <PropertyRef Name="Champ_ID" />
@@ -12,7 +12,6 @@
           <Property Name="Champ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Champ_Nom" Type="varchar" MaxLength="50" />
           <Property Name="Champ_Annee" Type="smallint" Nullable="false" />
-          <Property Name="Champ_Nb_Semn_Ssn" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Constitution_Championnat">
           <Key>
@@ -457,8 +456,7 @@
             <End Role="Suspensions" EntitySet="Suspensions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Fifa_ManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -469,7 +467,6 @@
           <Property Name="Champ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Champ_Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Champ_Annee" Type="Int16" Nullable="false" />
-          <Property Name="Champ_Nb_Semn_Ssn" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Constitution_Championnat" Relationship="Self.FK_Constitution_Championnat_Championnats" FromRole="Championnats" ToRole="Constitution_Championnat" />
           <NavigationProperty Name="Saisons" Relationship="Self.FK_Saisons_Championnats" FromRole="Championnats" ToRole="Saisons" />
         </EntityType>
@@ -933,17 +930,17 @@
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllChampionnats" EntitySet="Championnats" ReturnType="Collection(Fifa_ManagerModel.Championnats)" />
           <FunctionImport Name="SP_SelectAllSsn1Champ" EntitySet="Saisons" ReturnType="Collection(Fifa_ManagerModel.Saisons)">
-            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllTypeResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeResults_Result)" />
           <FunctionImport Name="SP_SelectCalendrier" ReturnType="Collection(Fifa_ManagerModel.SP_SelectCalendrier_Result)">
-            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectClassement" ReturnType="Collection(Fifa_ManagerModel.SP_SelectClassement_Result)">
-            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectEqpPerSsn" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerSsn_Result)">
-            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectResults" ReturnType="Collection(Fifa_ManagerModel.SP_SelectResults_Result)">
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
@@ -1009,7 +1006,6 @@
                 <ScalarProperty Name="Champ_ID" ColumnName="Champ_ID" />
                 <ScalarProperty Name="Champ_Nom" ColumnName="Champ_Nom" />
                 <ScalarProperty Name="Champ_Annee" ColumnName="Champ_Annee" />
-                <ScalarProperty Name="Champ_Nb_Semn_Ssn" ColumnName="Champ_Nb_Semn_Ssn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
