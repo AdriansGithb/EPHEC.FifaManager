@@ -441,5 +441,12 @@ namespace BackEnd_BL
                 throw new Exception(ex.Message);
             }
         }
+
+        //fonction permettant de mettre à jour la date de génération de calendrier
+        public void SetDateGnrClndr_Ssn(int ssn_id)
+        {
+            CalendrierData oData = new CalendrierData();
+            oData.SP_SetDateGnrClndr_Ssn(ssn_id);
+        }
     }
 }

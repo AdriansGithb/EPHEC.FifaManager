@@ -154,10 +154,20 @@ namespace BackEnd_UI.Calendrier
         private void btnSave_Click(object sender, EventArgs e)
         {
             CalendrierServices oServices = new CalendrierServices();
-            List<MdlMatchClndr> saveMatchClndrList = new List<MdlMatchClndr>();
-            saveMatchClndrList = (List<MdlMatchClndr>)gridClndrDated.DataSource;
+            List<MdlMatchClndr> saveMatchClndrList = (List<MdlMatchClndr>)gridClndrDated.DataSource;
             saveMatchClndrList.AddRange((List<MdlMatchClndr>)gridClndrUndated.DataSource);
             oServices.InsertUpdate_MtchClndr(saveMatchClndrList);
+            switch (slctdSsn)
+            {
+                case 1: oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
+                    break;
+                case 2: oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
+                    break;
+                case 12: oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
+                    oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
+                    break;
+                default: break;
+            }
         }
     }
 }

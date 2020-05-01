@@ -39,5 +39,12 @@ namespace BackEnd_DAL
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities(); 
             ctx.SP_InsertUpdateMatchClndr(mch_ID, ssn_Id, mch_date, mch_EqpDom_CoChmp_ID, mch_EqpVisit_CoChmp_ID, mch_LastUpdate);
         }
+
+        //procédure permettant de mettre à jour la date de génération d'une saison
+        public void SP_SetDateGnrClndr_Ssn(int ssn_id)
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            ctx.SP_SetDateGnrClndr_Ssn(ssn_id);
+        }
     }
 }
