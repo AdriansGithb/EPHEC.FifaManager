@@ -61,19 +61,35 @@ namespace BackEnd_UI.Calendrier
                 CalendrierServices oService = new CalendrierServices();
                 int champ_id = champSsnList[0].Champ_Id;
                 gridClndrDated.DataSource = oService.GetClndrLists(champ_id, slctdSsn)[0];
+                gridClndrUndated.DataSource = oService.GetClndrLists(champ_id, slctdSsn)[1];
+                clndrGrids_CacherColonnes(false);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private void clndrGrids_CacherColonnes(bool noMatchId)
+        {
+            try
+            {
                 gridClndrDated.Columns[2].Visible = false;
                 gridClndrDated.Columns[3].Visible = false;
                 gridClndrDated.Columns[5].Visible = false;
                 gridClndrDated.Columns[7].Visible = false;
                 gridClndrDated.Columns[4].HeaderText = "Equipe Domicile";
                 gridClndrDated.Columns[6].HeaderText = "Equipe Visiteuse";
-                gridClndrUndated.DataSource = oService.GetClndrLists(champ_id, slctdSsn)[1];
-                gridClndrUndated.Columns[2].Visible = false; /*gridClndrUndated.Columns[1].Visible=false;*/
+                gridClndrUndated.Columns[2].Visible = false;
                 gridClndrUndated.Columns[3].Visible = false;
                 gridClndrUndated.Columns[5].Visible = false;
                 gridClndrUndated.Columns[7].Visible = false;
                 gridClndrUndated.Columns[4].HeaderText = "Equipe Domicile";
                 gridClndrUndated.Columns[6].HeaderText = "Equipe Visiteuse";
+                if (noMatchId)
+                {
+                    gridClndrDated.Columns[0].Visible = false;
+                    gridClndrUndated.Columns[0].Visible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -100,10 +116,14 @@ namespace BackEnd_UI.Calendrier
             {
                 List<MdlMatchClndr> nwClndr = new List<MdlMatchClndr>();
                 CalendrierServices oServices = new CalendrierServices();
+                bool noMatchId = false;
                 if (slctdSsn == 12)
                 {
-                    if(frstSsn.GnrClndr is null && scndSsn.GnrClndr is null)
+                    if (frstSsn.GnrClndr is null && scndSsn.GnrClndr is null)
+                    {
                         nwClndr = oServices.GenererCalendrier_2Saisons(champSsnList);
+                        noMatchId = true;
+                    }
                     else
                     {
                         List<MdlMatchClndr> oldClndr = (List<MdlMatchClndr>)gridClndrDated.DataSource;
@@ -137,11 +157,15 @@ namespace BackEnd_UI.Calendrier
                             champSsnList.Find(ssn => ssn.FirstOrSecond == slctdSsn), oldClndr);
                     }
                     else
+                    { 
                         nwClndr = oServices.GenererCalendrier_Saison(champSsnList.Find(ssn =>
                             ssn.FirstOrSecond == slctdSsn));
+                        noMatchId = true;
+                    }
                 }
                 gridClndrDated.DataSource = nwClndr.FindAll(match => match.Date.HasValue);
                 gridClndrUndated.DataSource = nwClndr.FindAll(match => match.Date is null);
+                clndrGrids_CacherColonnes(noMatchId);
                 this.btnSave.Enabled = true;
             }
             catch (Exception ex)
