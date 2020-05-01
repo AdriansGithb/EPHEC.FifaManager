@@ -30,6 +30,10 @@ namespace Errors
                     _Message =
                         "Les 2 saisons sélectionnées ont déjà commencé. Le calendrier ne peut donc être (re)généré.";
                     break;
+                case "Date match non modifiée":
+                    _Message =
+                        "La date sélectionnée est identique à la date prévue intialement. Aucun changement n'est effectué et sauvegardé.";
+                    break;
                 //default:
                 //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 default:

@@ -4,6 +4,7 @@ using Errors;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -445,15 +446,54 @@ namespace BackEnd_BL
         //fonction permettant de mettre à jour la date de génération de calendrier
         public void SetDateGnrClndr_Ssn(int ssn_id)
         {
-            CalendrierData oData = new CalendrierData();
-            oData.SP_SetDateGnrClndr_Ssn(ssn_id);
+            try
+            {
+                CalendrierData oData = new CalendrierData();
+                oData.SP_SetDateGnrClndr_Ssn(ssn_id);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //obtenir la date de fin d'une saison
         public DateTime GetEndSsnDate(DateTime beginDate)
         {
-            DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks * 7);
-            return EndDate;
+            try
+            {
+                DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks * 7);
+                return EndDate;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //savoir si une date est sélectionnable pour un match
+        public bool SelectedDateMatchPossible(DateTime slctdDate, MdlMatchClndr slctdMatch)
+        {
+            try
+            {
+                CalendrierData oData = new CalendrierData();
+                resList = oData.SP_CheckDateMatchPossible(slctdDate, slctdMatch.EqpDom_CoChmp_ID, slctdMatch.EqpVisit_CoChmp_ID);
+                if (resList.Count > 0)
+                    return false;
+                else return true;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

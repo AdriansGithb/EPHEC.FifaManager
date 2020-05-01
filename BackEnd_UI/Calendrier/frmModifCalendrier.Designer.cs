@@ -47,6 +47,7 @@
             this.dtTmPckrMatch.Name = "dtTmPckrMatch";
             this.dtTmPckrMatch.Size = new System.Drawing.Size(200, 20);
             this.dtTmPckrMatch.TabIndex = 0;
+            this.dtTmPckrMatch.CloseUp += new System.EventHandler(this.dtTmPckrMatch_CheckValue);
             // 
             // lblChampionnat
             // 
@@ -127,6 +128,7 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Sauver";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblNwDate
             // 
@@ -166,6 +168,7 @@
             this.Controls.Add(this.dtTmPckrMatch);
             this.Name = "frmModifCalendrier";
             this.Text = "Modification calendrier";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmModifCalendrier_FormClosing);
             this.Load += new System.EventHandler(this.frmModifCalendrier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
