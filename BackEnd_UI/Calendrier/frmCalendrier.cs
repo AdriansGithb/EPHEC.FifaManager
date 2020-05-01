@@ -20,6 +20,7 @@ namespace BackEnd_UI.Calendrier
             InitializeComponent();
         }
 
+        //chargement des objets de la Form
         private void frmCalendrier_Load(object sender, EventArgs e)
         {
             try
@@ -39,6 +40,7 @@ namespace BackEnd_UI.Calendrier
 
         }
 
+        //chargement des datagrids
         private void clndrGrids_Load(object sender, EventArgs e)
         {
             try
@@ -72,6 +74,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //ouverture de la fenêtre génération de calendrier, lors d'un clic sur le bouton de génération
         private void btnGnrClndr_Click(object sender, EventArgs e)
         {
             try
@@ -108,6 +111,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //savoir quel radiobutton est sélectionné
         private int checkRdbtnSelection()
         {
             try
@@ -128,21 +132,27 @@ namespace BackEnd_UI.Calendrier
 
         }
 
+        //ouverture de la fenêtre de modification de date du match sélectionné dans un des datagrids
         private void gridClndr_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-               CalendrierServices oServices = new CalendrierServices();
-               DataGridView slctdDatagrid = (DataGridView) sender;
+                DataGridView slctdDatagrid = (DataGridView) sender;
                 MdlMatchClndr oMatch = (MdlMatchClndr) slctdDatagrid.CurrentRow.DataBoundItem;
-                MdlChampionnat oChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
-                MdlSaison oSsn = (oServices.GetChampSaisons(oChamp.Id)).Find(ssn => ssn.Id == oMatch.Saison_Id);
-                frmModifCalendrier oFrm = new frmModifCalendrier(oMatch, oChamp, oSsn);
-                oFrm.ShowDialog();
-                if (oFrm.DialogResult == DialogResult.OK)
-                    MessageBox.Show("Nouvelle date sauvegardée");
-                else
-                    MessageBox.Show("Modification annulée");
+                if (oMatch.Date > DateTime.Today)
+                {
+                    CalendrierServices oServices = new CalendrierServices();
+                    MdlChampionnat oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
+                    MdlSaison oSsn = (oServices.GetChampSaisons(oChamp.Id)).Find(ssn => ssn.Id == oMatch.Saison_Id);
+                    frmModifCalendrier oFrm = new frmModifCalendrier(oMatch, oChamp, oSsn);
+                    oFrm.ShowDialog();
+                    if (oFrm.DialogResult == DialogResult.OK)
+                        MessageBox.Show("Nouvelle date sauvegardée");
+                    else
+                        MessageBox.Show("Modification annulée");
+                }
+                else throw new BusinessErrors("Le match est joué");                    
+                clndrGrids_Load(sender, e);
             }
             catch (Exception ex)
             {

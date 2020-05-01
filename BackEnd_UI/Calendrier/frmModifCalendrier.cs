@@ -27,6 +27,7 @@ namespace BackEnd_UI
             this.oSsn = oSsn;
         }
 
+        //chargement des différents objets de la form
         private void frmModifCalendrier_Load(object sender, EventArgs e)
         {
             try
@@ -68,6 +69,7 @@ namespace BackEnd_UI
             }
         }
 
+        //vérification rapide de la date sélectionnée : pas un jour de WE, et pas un jour où une des équipes a déjà un autre match du même championnat
         private void dtTmPckrMatch_CheckValue(object sender, EventArgs e)
         {
             try
@@ -105,6 +107,7 @@ namespace BackEnd_UI
             }
         }
 
+        //sauvegarde de la nouvelle date
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -127,9 +130,10 @@ namespace BackEnd_UI
             }
         }
 
+        //action en cas de fermeture sans avoir sauvé une modification de date
         private void frmModifCalendrier_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (btnSave.Enabled)
+            if (slctdMatch.Date!=dtTmPckrMatch.Value)
             {
                 DialogResult oAnswr = MessageBox.Show(
                     "Attention, vous avez sélectionné une nouvelle date valide sans sauvegarder votre changement. Cliquez sur OK pour quitter sans sauver, ou sur Cancel puis Sauver pour sauvegarder votre modification.",

@@ -34,6 +34,11 @@ namespace Errors
                     _Message =
                         "La date sélectionnée est identique à la date prévue intialement. Aucun changement n'est effectué et sauvegardé.";
                     break;
+                case "An error occurred while executing the command definition. See the inner exception for details.":
+                    _Message = "Erreur d'exécution dans la BD. Contactez un administrateur.";
+                    break;
+                case "Le match est joué": _Message = "Le match a déjà été joué. La date n'est plus modifiable.";
+                    break;
                 //default:
                 //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 default:

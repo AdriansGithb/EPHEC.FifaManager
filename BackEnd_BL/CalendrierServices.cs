@@ -481,7 +481,7 @@ namespace BackEnd_BL
             try
             {
                 CalendrierData oData = new CalendrierData();
-                resList = oData.SP_CheckDateMatchPossible(slctdDate, slctdMatch.EqpDom_CoChmp_ID, slctdMatch.EqpVisit_CoChmp_ID);
+                List<SP_CheckDateMatchPossible_Result>resList = oData.SP_CheckDateMatchPossible(slctdDate, slctdMatch.EqpDom_CoChmp_ID, slctdMatch.EqpVisit_CoChmp_ID);
                 if (resList.Count > 0)
                     return false;
                 else return true;

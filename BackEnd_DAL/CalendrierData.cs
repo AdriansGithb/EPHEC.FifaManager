@@ -46,5 +46,14 @@ namespace BackEnd_DAL
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
             ctx.SP_SetDateGnrClndr_Ssn(ssn_id);
         }
+
+        //procédure permettant de recevoir la liste des matchs des équipes passées en paramètre, à la date donnée en paramètre
+        public List<SP_CheckDateMatchPossible_Result> SP_CheckDateMatchPossible(DateTime slctdDate, int eqpDom_CoChmp_ID, int eqpVisit_CoChmp_ID)
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            List<SP_CheckDateMatchPossible_Result> rtrnList =
+                ctx.SP_CheckDateMatchPossible(slctdDate, eqpDom_CoChmp_ID, eqpVisit_CoChmp_ID).ToList();
+            return rtrnList;
+        }
     }
 }
