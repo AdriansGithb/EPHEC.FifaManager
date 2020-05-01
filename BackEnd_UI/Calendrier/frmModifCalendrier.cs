@@ -15,12 +15,14 @@ namespace BackEnd_UI
     public partial class frmModifCalendrier : Form
     {
         private MdlMatchClndr slctdMatch;
-        public frmModifCalendrier(MdlMatchClndr oMatch, string oChamp, string oSsn)
+        private MdlSaison oSsn;
+        private MdlChampionnat oChamp;
+        public frmModifCalendrier(MdlMatchClndr oMatch, MdlChampionnat oChamp, MdlSaison oSsn)
         {
             InitializeComponent();
-            slctdMatch = oMatch;
-            lblChampionnat.Text = oChamp;
-            lblSsn.Text = oSsn;
+            this.slctdMatch = oMatch;
+            this.oChamp = oChamp;
+            this.oSsn = oSsn;
         }
 
         private void frmModifCalendrier_Load(object sender, EventArgs e)
@@ -28,6 +30,8 @@ namespace BackEnd_UI
             try
             {
                 this.btnSave.DialogResult = DialogResult.OK;
+                lblChampionnat.Text = oChamp.NomString;
+                lblSsn.Text = "Saison " + oSsn.FirstOrSecond;
                 lblNomEqpDom.Text = slctdMatch.Nom_EqpDom;
                 lblNomEqpVst.Text = slctdMatch.Nom_EqpVisit;
                 if (slctdMatch.Date != null)

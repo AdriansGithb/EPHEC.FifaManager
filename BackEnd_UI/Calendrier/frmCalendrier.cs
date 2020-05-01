@@ -130,16 +130,25 @@ namespace BackEnd_UI.Calendrier
 
         private void gridClndr_DoubleClick(object sender, EventArgs e)
         {
-            DataGridView oDatagrid = (DataGridView) sender;
-            MdlMatchClndr oMatch = (MdlMatchClndr) oDatagrid.CurrentRow.DataBoundItem;
-            string oChamp = boxChampSelection.SelectedText;
-            string oSsn = "Saison(s) " + checkRdbtnSelection();
-            frmModifCalendrier oFrm = new frmModifCalendrier(oMatch, oChamp, oSsn);
-            oFrm.ShowDialog();
-            if (oFrm.DialogResult == DialogResult.OK)
-                MessageBox.Show("Nouvelle date sauvegardée");
-            else
-                MessageBox.Show("Modification annulée");
+            try
+            {
+               CalendrierServices oServices = new CalendrierServices();
+               DataGridView slctdDatagrid = (DataGridView) sender;
+                MdlMatchClndr oMatch = (MdlMatchClndr) slctdDatagrid.CurrentRow.DataBoundItem;
+                MdlChampionnat oChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
+                MdlSaison oSsn = (oServices.GetChampSaisons(oChamp.Id)).Find(ssn => ssn.Id == oMatch.Saison_Id);
+                frmModifCalendrier oFrm = new frmModifCalendrier(oMatch, oChamp, oSsn);
+                oFrm.ShowDialog();
+                if (oFrm.DialogResult == DialogResult.OK)
+                    MessageBox.Show("Nouvelle date sauvegardée");
+                else
+                    MessageBox.Show("Modification annulée");
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
 
     }
