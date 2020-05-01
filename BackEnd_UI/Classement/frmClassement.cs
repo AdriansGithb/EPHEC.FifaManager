@@ -57,7 +57,7 @@ namespace BackEnd_UI
 
                 gridClassement.DataSource = classmnt;
                 gridClassement.Columns[2].HeaderText = "Equipe";
-                gridClassement.Columns[3].HeaderText = "Equipe ID";
+                gridClassement.Columns[3].HeaderText = "Equipe ID (/Championnat)";
             }
             catch (Exception ex)
             {

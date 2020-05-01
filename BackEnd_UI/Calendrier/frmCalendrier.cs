@@ -139,7 +139,7 @@ namespace BackEnd_UI.Calendrier
             {
                 DataGridView slctdDatagrid = (DataGridView) sender;
                 MdlMatchClndr oMatch = (MdlMatchClndr) slctdDatagrid.CurrentRow.DataBoundItem;
-                if (oMatch.Date > DateTime.Today)
+                if ((oMatch.Date > DateTime.Today)||(oMatch.Date is null))
                 {
                     CalendrierServices oServices = new CalendrierServices();
                     MdlChampionnat oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;

@@ -57,7 +57,11 @@ namespace BackEnd_UI
                     lblPrevDate.Text = ((DateTime)slctdMatch.Date).ToString("D", new CultureInfo("fr-FR"));
                     dtTmPckrMatch.Value = (DateTime)slctdMatch.Date;
                 }
-                else dtTmPckrMatch.Value = oSsn.Debut;
+                else
+                {
+                    dtTmPckrMatch.Value = oSsn.Debut;
+                    lblPrevDate.Text = ("Aucune");
+                }
                 //baliser la sélection de date entre le début et la fin de la saison
                 CalendrierServices oServices = new CalendrierServices();
                 dtTmPckrMatch.MinDate = oSsn.Debut;

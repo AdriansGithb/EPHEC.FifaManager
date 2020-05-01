@@ -162,6 +162,7 @@
             this.gridClndrUndated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClndrUndated.Size = new System.Drawing.Size(436, 315);
             this.gridClndrUndated.TabIndex = 16;
+            this.gridClndrUndated.DoubleClick += new System.EventHandler(this.gridClndr_DoubleClick);
             // 
             // gpbxGnrClndr
             // 
