@@ -59,6 +59,7 @@
             this.gridClndrDated.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClndrDated.Size = new System.Drawing.Size(436, 315);
             this.gridClndrDated.TabIndex = 14;
+            this.gridClndrDated.DoubleClick += new System.EventHandler(this.gridClndr_DoubleClick);
             // 
             // boxChampSelection
             // 

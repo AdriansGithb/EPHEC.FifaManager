@@ -70,6 +70,12 @@
     <Compile Include="frmBE_HomePage.Designer.cs">
       <DependentUpon>frmBE_HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calendrier\frmModifCalendrier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendrier\frmModifCalendrier.Designer.cs">
+      <DependentUpon>frmModifCalendrier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Match\frmModifResult.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calendrier\frmGnrCalendrier.resx">
       <DependentUpon>frmGnrCalendrier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendrier\frmModifCalendrier.resx">
+      <DependentUpon>frmModifCalendrier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classement\frmClassement.resx">
       <DependentUpon>frmClassement.cs</DependentUpon>
