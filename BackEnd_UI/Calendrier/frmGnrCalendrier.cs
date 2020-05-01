@@ -27,6 +27,7 @@ namespace BackEnd_UI.Calendrier
             lblChampSsn.Text = $"{nomChamp}, saison(s) ";
         }
 
+        //chargement des différents contrôles
         private void frmGnrCalendrier_Load(object sender, EventArgs e)
         {
             try
@@ -53,6 +54,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //chargement des datagrids
         private void clndrGrids_Load()
         {
             try
@@ -69,6 +71,8 @@ namespace BackEnd_UI.Calendrier
                 throw new Exception(ex.Message);
             }
         }
+
+        //cacher les colonnes inutiles des objets MAtch_Calender
         private void clndrGrids_CacherColonnes(bool noMatchId)
         {
             try
@@ -97,6 +101,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //diviser une liste commune des datagrids en 2 listes classées par saison
         private void splitChampSsnList()
         {
             try
@@ -110,6 +115,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //déclencher une génération automatique de calendrier
         private void btnGnrClndr_Click(object sender, EventArgs e)
         {
             try
@@ -175,6 +181,7 @@ namespace BackEnd_UI.Calendrier
             }
         }
 
+        //sauver le calendrier généré
         private void btnSave_Click(object sender, EventArgs e)
         {
             CalendrierServices oServices = new CalendrierServices();
