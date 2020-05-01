@@ -164,5 +164,14 @@ namespace BackEnd_DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectResults_Result>("SP_SelectResults", champ_idParameter, ssnParameter);
         }
+    
+        public virtual int SP_SetDateGnrClndr_Ssn(Nullable<int> ssn_id)
+        {
+            var ssn_idParameter = ssn_id.HasValue ?
+                new ObjectParameter("ssn_id", ssn_id) :
+                new ObjectParameter("ssn_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SetDateGnrClndr_Ssn", ssn_idParameter);
+        }
     }
 }

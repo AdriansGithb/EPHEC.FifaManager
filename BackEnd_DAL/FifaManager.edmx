@@ -369,6 +369,9 @@
           <Parameter Name="champ_id" Type="int" Mode="In" />
           <Parameter Name="ssn" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SetDateGnrClndr_Ssn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="ssn_id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
           <EntitySet Name="Championnats" EntityType="Self.Championnats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Constitution_Championnat" EntityType="Self.Constitution_Championnat" Schema="dbo" store:Type="Tables" />
@@ -946,6 +949,9 @@
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_SetDateGnrClndr_Ssn">
+            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1189,6 +1195,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SetDateGnrClndr_Ssn" FunctionName="Fifa_ManagerModel.Store.SP_SetDateGnrClndr_Ssn" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
