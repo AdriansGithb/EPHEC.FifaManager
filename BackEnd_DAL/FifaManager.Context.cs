@@ -173,5 +173,22 @@ namespace BackEnd_DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SetDateGnrClndr_Ssn", ssn_idParameter);
         }
+    
+        public virtual ObjectResult<SP_CheckDateMatchPossible_Result> SP_CheckDateMatchPossible(Nullable<System.DateTime> slctdDate, Nullable<int> eqpDom_CoChmp_ID, Nullable<int> eqpVisit_CoChmp_ID)
+        {
+            var slctdDateParameter = slctdDate.HasValue ?
+                new ObjectParameter("slctdDate", slctdDate) :
+                new ObjectParameter("slctdDate", typeof(System.DateTime));
+    
+            var eqpDom_CoChmp_IDParameter = eqpDom_CoChmp_ID.HasValue ?
+                new ObjectParameter("EqpDom_CoChmp_ID", eqpDom_CoChmp_ID) :
+                new ObjectParameter("EqpDom_CoChmp_ID", typeof(int));
+    
+            var eqpVisit_CoChmp_IDParameter = eqpVisit_CoChmp_ID.HasValue ?
+                new ObjectParameter("EqpVisit_CoChmp_ID", eqpVisit_CoChmp_ID) :
+                new ObjectParameter("EqpVisit_CoChmp_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CheckDateMatchPossible_Result>("SP_CheckDateMatchPossible", slctdDateParameter, eqpDom_CoChmp_IDParameter, eqpVisit_CoChmp_IDParameter);
+        }
     }
 }

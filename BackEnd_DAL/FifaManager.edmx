@@ -337,6 +337,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_CheckDateMatchPossible" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="slctdDate" Type="datetime" Mode="In" />
+          <Parameter Name="EqpDom_CoChmp_ID" Type="int" Mode="In" />
+          <Parameter Name="EqpVisit_CoChmp_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_InsertUpdateMatchClndr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="rcvd_mch_id" Type="int" Mode="In" />
           <Parameter Name="rcvd_ssnID" Type="int" Mode="In" />
@@ -950,7 +955,12 @@
             <Parameter Name="ssn" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SetDateGnrClndr_Ssn">
-            <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          <Parameter Name="ssn_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CheckDateMatchPossible" ReturnType="Collection(Fifa_ManagerModel.SP_CheckDateMatchPossible_Result)">
+            <Parameter Name="slctdDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EqpDom_CoChmp_ID" Mode="In" Type="Int32" />
+            <Parameter Name="EqpVisit_CoChmp_ID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
@@ -998,6 +1008,16 @@
           <Property Type="Int32" Name="TypeResultIDDomicile" Nullable="false" />
           <Property Type="String" Name="Resultat_Visiteur" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="TypeResultIDVisiteur" Nullable="false" />
+          <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_CheckDateMatchPossible_Result">
+          <Property Type="Int32" Name="Mch_ID" Nullable="false" />
+          <Property Type="Int32" Name="Mch_Eqp_Dom_ID" Nullable="false" />
+          <Property Type="Int32" Name="Mch_Eqp_Visit_ID" Nullable="false" />
+          <Property Type="Int32" Name="Mch_Ssn_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Mch_Date" Nullable="true" />
+          <Property Type="Int32" Name="Mch_Res_ID_Dom" Nullable="false" />
+          <Property Type="Int32" Name="Mch_Res_ID_Visit" Nullable="false" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
         </ComplexType>
       </Schema>
@@ -1196,6 +1216,20 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_SetDateGnrClndr_Ssn" FunctionName="Fifa_ManagerModel.Store.SP_SetDateGnrClndr_Ssn" />
+          <FunctionImportMapping FunctionImportName="SP_CheckDateMatchPossible" FunctionName="Fifa_ManagerModel.Store.SP_CheckDateMatchPossible">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_CheckDateMatchPossible_Result">
+                <ScalarProperty Name="Mch_ID" ColumnName="Mch_ID" />
+                <ScalarProperty Name="Mch_Eqp_Dom_ID" ColumnName="Mch_Eqp_Dom_ID" />
+                <ScalarProperty Name="Mch_Eqp_Visit_ID" ColumnName="Mch_Eqp_Visit_ID" />
+                <ScalarProperty Name="Mch_Ssn_ID" ColumnName="Mch_Ssn_ID" />
+                <ScalarProperty Name="Mch_Date" ColumnName="Mch_Date" />
+                <ScalarProperty Name="Mch_Res_ID_Dom" ColumnName="Mch_Res_ID_Dom" />
+                <ScalarProperty Name="Mch_Res_ID_Visit" ColumnName="Mch_Res_ID_Visit" />
+                <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
