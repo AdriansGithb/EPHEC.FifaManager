@@ -9,14 +9,6 @@ namespace BackEnd_DAL
 {
     public class CalendrierData
     {
-        //procédure permettant de récupérer les données des 2 saisons d'un championnat déterminé
-        public List<Saisons> SP_SelectAllSsn1Champ(int champ_id)
-        {
-            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
-            List<Saisons> lstSsn = ctx.SP_SelectAllSsn1Champ(champ_id).ToList();
-            return lstSsn;
-        }
-
         //procédure permettant de récupérer la liste des matchs d'une saison déterminée
         public List<SP_SelectCalendrier_Result> SP_SelectCalendrier(int ssn_id)
         {

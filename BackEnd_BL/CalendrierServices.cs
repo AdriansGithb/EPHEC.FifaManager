@@ -16,40 +16,6 @@ namespace BackEnd_BL
 {
     public class CalendrierServices
     {
-        //fonction permettant d'appeler la DAL pour obtenir les 2 saisons d'un championnat déterminé
-        public List<MdlSaison> GetChampSaisons(int champ_id)
-        {
-            try
-            {
-                //appel de la procédure via la DAL
-                CalendrierData oData = new CalendrierData();
-                List<Saisons> lstSsn = oData.SP_SelectAllSsn1Champ(champ_id);
-                //insertion des résultats dans une liste
-                List<MdlSaison> rtrnLst = new List<MdlSaison>();
-                foreach (Saisons ssn in lstSsn)
-                {
-                    MdlSaison oSsn = new MdlSaison();
-                    oSsn.Id = ssn.Ssn_ID;
-                    oSsn.Champ_Id = ssn.Ssn_Champ_ID;
-                    oSsn.Debut = ssn.Ssn_Date_Debut;
-                    oSsn.FirstOrSecond = ssn.Ssn_Num;
-                    oSsn.GnrClndr = ssn.Ssn_Date_Gnr_Clndr;
-
-                    rtrnLst.Add(oSsn);
-                }
-
-                return rtrnLst;
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         //fonction pour vérifier la possibilité ou non de générer/modifier le calendrier du championnat sélectionné
         public bool GnrPossible(out int blckdSsn, int champ_id, int slctdSsn)
         {
@@ -58,7 +24,8 @@ namespace BackEnd_BL
                 bool possible = false;
                 blckdSsn = -1;
                 //récupération des saisons du championnats sélectionné
-                List<MdlSaison> lstSsnChamp = GetChampSaisons(champ_id);
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlSaison> lstSsnChamp = oServices.GetChampSaisons(champ_id);
                 //si une seule saison est sélectionnée
                 if (slctdSsn != 12)
                 {
@@ -106,7 +73,8 @@ namespace BackEnd_BL
             try
             {
                 List<SP_SelectCalendrier_Result> clndrBdList = new List<SP_SelectCalendrier_Result>();
-                List<MdlSaison> oSsnLst = GetChampSaisons(champ_id);
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlSaison> oSsnLst = oServices.GetChampSaisons(champ_id);
                 List<MdlMatchClndr> fullMatchList = new List<MdlMatchClndr>();
                 //chargement des listes de matchs en fonction de la saison sélectionnée
                 CalendrierData oData = new CalendrierData();

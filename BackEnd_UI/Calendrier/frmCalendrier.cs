@@ -85,11 +85,12 @@ namespace BackEnd_UI.Calendrier
                 //vérification du radiobutton sélectionné pour connaître la saison à afficher
                 int slctdSsn = checkRdbtnSelection();
                 //vérifier si le calendrier de la saison sélectionnée peut être (re)généré
-                CalendrierServices oServices = new CalendrierServices();
+                CalendrierServices oClndrServ = new CalendrierServices();
                 //si oui, ouvrir une fenêtre en mode Dialog, proposant la génération de championnat
-                if (oServices.GnrPossible(out int blckdSsn,oChamp.Id, slctdSsn))
-                {
-                    frmGnrCalendrier oFrm = new frmGnrCalendrier(oServices.GetChampSaisons(oChamp.Id),slctdSsn, oChamp.NomString);
+                if (oClndrServ.GnrPossible(out int blckdSsn,oChamp.Id, slctdSsn))
+                {                
+                    ChampionnatsServices oChampServ = new ChampionnatsServices();
+                    frmGnrCalendrier oFrm = new frmGnrCalendrier(oChampServ.GetChampSaisons(oChamp.Id),slctdSsn, oChamp.NomString);
                     oFrm.ShowDialog();
                     //si on a cliqué sur "Sauver"
                     if (oFrm.DialogResult == DialogResult.OK)
@@ -141,7 +142,7 @@ namespace BackEnd_UI.Calendrier
                 MdlMatchClndr oMatch = (MdlMatchClndr) slctdDatagrid.CurrentRow.DataBoundItem;
                 if ((oMatch.Date > DateTime.Today)||(oMatch.Date is null))
                 {
-                    CalendrierServices oServices = new CalendrierServices();
+                    ChampionnatsServices oServices = new ChampionnatsServices();
                     MdlChampionnat oChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
                     MdlSaison oSsn = (oServices.GetChampSaisons(oChamp.Id)).Find(ssn => ssn.Id == oMatch.Saison_Id);
                     frmModifCalendrier oFrm = new frmModifCalendrier(oMatch, oChamp, oSsn);
