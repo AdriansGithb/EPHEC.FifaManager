@@ -80,6 +80,37 @@ namespace BackEnd_BL
             }
         }
 
+        //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
+        public List<MdlEquipeChamp> GetEqpList(int ssn_id)
+        {
+            try
+            {
+                ChampionnatsData oData = new ChampionnatsData();
+                List<SP_SelectEqpPerSsn_Result> eqpList = oData.SP_SelectEqpPerSsn(ssn_id);
+                List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
+                foreach (SP_SelectEqpPerSsn_Result eqp in eqpList)
+                {
+                    MdlEquipeChamp oEqp = new MdlEquipeChamp();
+                    oEqp.Id = eqp.CoChmp_ID;
+                    oEqp.Nom = eqp.Eqp_Nom;
+
+                    rtrnList.Add(oEqp);
+                }
+
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+
         // obtenir la liste des championnats non débutés
         public List<MdlChampionnat> GetNotStartedChampionnats()
         {

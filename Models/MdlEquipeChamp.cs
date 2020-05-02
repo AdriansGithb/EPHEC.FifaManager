@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class MdlEquipeClndr
+    public class MdlEquipeChamp
     {
         public int Id { get; set; }
         public string Nom { get; set; }

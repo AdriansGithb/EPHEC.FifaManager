@@ -137,42 +137,13 @@ namespace BackEnd_BL
             }
         }
 
-        //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
-        public List<MdlEquipeClndr> GetEqpList(int ssn_id)
-        {
-            try
-            {
-                CalendrierData oData = new CalendrierData();
-                List<SP_SelectEqpPerSsn_Result> eqpList = oData.SP_SelectEqpPerSsn(ssn_id);
-                List<MdlEquipeClndr> rtrnList = new List<MdlEquipeClndr>();
-                foreach (SP_SelectEqpPerSsn_Result eqp in eqpList)
-                {
-                    MdlEquipeClndr oEqp = new MdlEquipeClndr();
-                    oEqp.Id = eqp.CoChmp_ID;
-                    oEqp.Nom = eqp.Eqp_Nom;
-
-                    rtrnList.Add(oEqp);
-                }
-
-                return rtrnList;
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-        }
-
         //création d'une liste de matchs pour la saison 1
         public List<MdlMatchClndr> CreateMatchs_FirstSsn(int ssn1_id)
         {
             try
             {
-                List<MdlEquipeClndr> eqpList = GetEqpList(ssn1_id);
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlEquipeChamp> eqpList = oServices.GetEqpList(ssn1_id);
                 List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
                 int nbEqp = eqpList.Count;
 
@@ -205,7 +176,8 @@ namespace BackEnd_BL
         {
             try
             {
-                List<MdlEquipeClndr> eqpList = GetEqpList(ssn2_id);
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlEquipeChamp> eqpList = oServices.GetEqpList(ssn2_id);
                 List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
                 int nbEqp = eqpList.Count;
 

@@ -17,14 +17,6 @@ namespace BackEnd_DAL
             return lstClndr;
         }
 
-        //procédure permettant de récupérer la liste des équipes inscrites à une saison envoyée en paramètre
-        public List<SP_SelectEqpPerSsn_Result> SP_SelectEqpPerSsn(int ssn_id)
-        {
-            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
-            List<SP_SelectEqpPerSsn_Result> lstEqp = ctx.SP_SelectEqpPerSsn(ssn_id).ToList();
-            return lstEqp;
-        }
-
         //procédure permettant d'insérer ou mettre à jour un match dans la BD
         public void SP_InsertUpdateMtchClndr(int mch_ID, DateTime? mch_date, int ssn_Id, int mch_EqpDom_CoChmp_ID, int mch_EqpVisit_CoChmp_ID, DateTime? mch_LastUpdate)
         {
