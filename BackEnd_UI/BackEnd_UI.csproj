@@ -76,6 +76,12 @@
     <Compile Include="Calendrier\frmModifCalendrier.Designer.cs">
       <DependentUpon>frmModifCalendrier.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionEquipe\frmInscriptionJoueurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionEquipe\frmInscriptionJoueurs.Designer.cs">
+      <DependentUpon>frmInscriptionJoueurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Match\frmModifResult.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBE_HomePage.resx">
       <DependentUpon>frmBE_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionEquipe\frmInscriptionJoueurs.resx">
+      <DependentUpon>frmInscriptionJoueurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Match\frmModifResult.resx">
       <DependentUpon>frmModifResult.cs</DependentUpon>
@@ -149,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cartons\" />
-    <Folder Include="GstnEqp\" />
     <Folder Include="Joueurs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
