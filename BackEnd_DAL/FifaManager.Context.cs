@@ -22,7 +22,7 @@ namespace BackEnd_DAL
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -189,6 +189,15 @@ namespace BackEnd_DAL
                 new ObjectParameter("EqpVisit_CoChmp_ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CheckDateMatchPossible_Result>("SP_CheckDateMatchPossible", slctdDateParameter, eqpDom_CoChmp_IDParameter, eqpVisit_CoChmp_IDParameter);
+        }
+    
+        public virtual ObjectResult<SP_SelectEqpPerChamp_Result> SP_SelectEqpPerChamp(Nullable<int> champ_id)
+        {
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectEqpPerChamp_Result>("SP_SelectEqpPerChamp", champ_idParameter);
         }
     }
 }

@@ -81,7 +81,7 @@ namespace BackEnd_BL
         }
 
         //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
-        public List<MdlEquipeChamp> GetEqpList(int ssn_id)
+        public List<MdlEquipeChamp> GetEqpList_bySsn(int ssn_id)
         {
             try
             {
@@ -110,6 +110,35 @@ namespace BackEnd_BL
 
         }
 
+        //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
+        public List<MdlEquipeChamp> GetEqpList_byChamp(int champ_id)
+        {
+            try
+            {
+                ChampionnatsData oData = new ChampionnatsData();
+                List<SP_SelectEqpPerChamp_Result> eqpList = oData.SP_SelectEqpPerChamp(champ_id);
+                List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
+                foreach (SP_SelectEqpPerChamp_Result eqp in eqpList)
+                {
+                    MdlEquipeChamp oEqp = new MdlEquipeChamp();
+                    oEqp.Id = eqp.CoChmp_ID;
+                    oEqp.Nom = eqp.Eqp_Nom;
+
+                    rtrnList.Add(oEqp);
+                }
+
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         // obtenir la liste des championnats non débutés
         public List<MdlChampionnat> GetNotStartedChampionnats()

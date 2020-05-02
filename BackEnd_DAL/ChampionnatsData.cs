@@ -32,6 +32,13 @@ namespace BackEnd_DAL
             return lstEqp;
         }
 
+        //procédure permettant de récupérer la liste des équipes inscrites à un championnat envoyé en paramètre
+        public List<SP_SelectEqpPerChamp_Result> SP_SelectEqpPerChamp(int champ_id)
+        {
+            Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+            List<SP_SelectEqpPerChamp_Result> lstEqp = ctx.SP_SelectEqpPerChamp(champ_id).ToList();
+            return lstEqp;
+        }
 
     }
 }

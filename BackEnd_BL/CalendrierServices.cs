@@ -143,7 +143,7 @@ namespace BackEnd_BL
             try
             {
                 ChampionnatsServices oServices = new ChampionnatsServices();
-                List<MdlEquipeChamp> eqpList = oServices.GetEqpList(ssn1_id);
+                List<MdlEquipeChamp> eqpList = oServices.GetEqpList_bySsn(ssn1_id);
                 List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
                 int nbEqp = eqpList.Count;
 
@@ -177,7 +177,7 @@ namespace BackEnd_BL
             try
             {
                 ChampionnatsServices oServices = new ChampionnatsServices();
-                List<MdlEquipeChamp> eqpList = oServices.GetEqpList(ssn2_id);
+                List<MdlEquipeChamp> eqpList = oServices.GetEqpList_bySsn(ssn2_id);
                 List<MdlMatchClndr> matchList = new List<MdlMatchClndr>();
                 int nbEqp = eqpList.Count;
 

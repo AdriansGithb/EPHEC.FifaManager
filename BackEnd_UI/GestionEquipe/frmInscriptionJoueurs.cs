@@ -56,7 +56,12 @@ namespace BackEnd_UI.GestionEquipe
         //au changement de sélection de championnat, recharger la liste des équipes
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //récupération du championnat sélectionné
+            MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
+            //récupération de la liste des équipes inscrites au championnat
+            ChampionnatsServices oServices = new ChampionnatsServices();
+            List<MdlEquipeChamp> eqpList = oServices.GetEqpList_bySsn(slctdChamp.Id);
+            //mise en place de la liste des équipes inscrites dans la box
         }
     }
     }

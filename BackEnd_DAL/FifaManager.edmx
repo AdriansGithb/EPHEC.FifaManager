@@ -70,7 +70,7 @@
           <Property Name="Mch_Eqp_Dom_ID" Type="int" Nullable="false" />
           <Property Name="Mch_Eqp_Visit_ID" Type="int" Nullable="false" />
           <Property Name="Mch_Ssn_ID" Type="int" Nullable="false" />
-          <Property Name="Mch_Date" Type="date" />
+          <Property Name="Mch_Date" Type="datetime" />
           <Property Name="Mch_Res_ID_Dom" Type="int" Nullable="false" />
           <Property Name="Mch_Res_ID_Visit" Type="int" Nullable="false" />
           <Property Name="Mch_LastUpdate" Type="datetime" Nullable="false" />
@@ -367,6 +367,9 @@
         <Function Name="SP_SelectClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SelectEqpPerChamp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="champ_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectEqpPerSsn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="ssn_id" Type="int" Mode="In" />
         </Function>
@@ -553,7 +556,7 @@
           <Property Name="Mch_Eqp_Dom_ID" Type="Int32" Nullable="false" />
           <Property Name="Mch_Eqp_Visit_ID" Type="Int32" Nullable="false" />
           <Property Name="Mch_Ssn_ID" Type="Int32" Nullable="false" />
-          <Property Name="Mch_Date" Type="DateTime" Precision="0" />
+          <Property Name="Mch_Date" Type="DateTime" Precision="3" />
           <Property Name="Mch_Res_ID_Dom" Type="Int32" Nullable="false" />
           <Property Name="Mch_Res_ID_Visit" Type="Int32" Nullable="false" />
           <Property Name="Mch_LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
@@ -962,6 +965,9 @@
             <Parameter Name="EqpDom_CoChmp_ID" Mode="In" Type="Int32" />
             <Parameter Name="EqpVisit_CoChmp_ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_SelectEqpPerChamp" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerChamp_Result)">
+            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1019,6 +1025,10 @@
           <Property Type="Int32" Name="Mch_Res_ID_Dom" Nullable="false" />
           <Property Type="Int32" Name="Mch_Res_ID_Visit" Nullable="false" />
           <Property Type="DateTime" Name="Mch_LastUpdate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectEqpPerChamp_Result">
+          <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
+          <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1227,6 +1237,14 @@
                 <ScalarProperty Name="Mch_Res_ID_Dom" ColumnName="Mch_Res_ID_Dom" />
                 <ScalarProperty Name="Mch_Res_ID_Visit" ColumnName="Mch_Res_ID_Visit" />
                 <ScalarProperty Name="Mch_LastUpdate" ColumnName="Mch_LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectEqpPerChamp" FunctionName="Fifa_ManagerModel.Store.SP_SelectEqpPerChamp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectEqpPerChamp_Result">
+                <ScalarProperty Name="CoChmp_ID" ColumnName="CoChmp_ID" />
+                <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
