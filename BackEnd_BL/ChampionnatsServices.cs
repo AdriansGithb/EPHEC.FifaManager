@@ -45,5 +45,37 @@ namespace BackEnd_BL
                 throw new Exception(ex.Message);
             }
         }
+
+        // obtenir la liste des championnats non débutés
+        public List<MdlChampionnat> GetNotStartedChampionnats()
+        {
+            try
+            {
+                //création liste avec tous les championnats
+                List<MdlChampionnat> allChampList = GetChampionnats();
+                //et d'une liste à renvoyer qui recevra tous les championnats dont la date de début de 1ere saison n'a pas été dépassée
+                List<MdlChampionnat> rtrnList = new List<MdlChampionnat>();
+                CalendrierData oData = new CalendrierData();
+                //pour chaque championnat, vérifier si la date de début de 1e saison est antérieure à aujourd'hui
+                foreach (MdlChampionnat champ in allChampList)
+                {
+                    List<Saisons> ssnList = oData.SP_SelectAllSsn1Champ(champ.Id);
+                    Saisons frstSsn = ssnList.Find(ssn => ssn.Ssn_Num == 1);
+                    //si la date est postérieure à aujourd'hui,ajouter le championnat dans la liste à retourner
+                    if(frstSsn.Ssn_Date_Debut>DateTime.Today)
+                        rtrnList.Add(champ);
+                }
+
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

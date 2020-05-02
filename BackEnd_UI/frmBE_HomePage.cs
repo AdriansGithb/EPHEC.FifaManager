@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BackEnd_UI.Calendrier;
+using BackEnd_UI.GestionEquipe;
 using BackEnd_UI.Match;
 using Errors;
 
@@ -35,7 +36,7 @@ namespace BackEnd_UI
             }
         }
 
-        private void mnResults_Click(object sender, EventArgs e)
+        private void mn_Results_Click(object sender, EventArgs e)
         {
             try
             {
@@ -50,7 +51,7 @@ namespace BackEnd_UI
             }
         }
 
-        private void mn_gnrClndr_Click(object sender, EventArgs e)
+        private void mn_GnrClndr_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,9 +66,20 @@ namespace BackEnd_UI
             }
         }
 
-        private void inscrireTransférerUnJoueurToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
+        private void mn_InscrireJoueurs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmInscriptionJoueurs frmInscript = new frmInscriptionJoueurs();
+                frmInscript.MdiParent = this;
+                frmInscript.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }
