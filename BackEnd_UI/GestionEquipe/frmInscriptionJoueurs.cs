@@ -24,7 +24,7 @@ namespace BackEnd_UI.GestionEquipe
         {
             try
             {
-                bxChampSelection_Load();
+                boxChampSelection_Load();
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace BackEnd_UI.GestionEquipe
         }
 
         //charger la liste des championnats dont la date de début de première saison n'a pas commencé
-        private void bxChampSelection_Load()
+        private void boxChampSelection_Load()
         {
             try
             {
@@ -56,12 +56,22 @@ namespace BackEnd_UI.GestionEquipe
         //au changement de sélection de championnat, recharger la liste des équipes
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //récupération du championnat sélectionné
-            MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
-            //récupération de la liste des équipes inscrites au championnat
-            ChampionnatsServices oServices = new ChampionnatsServices();
-            List<MdlEquipeChamp> eqpList = oServices.GetEqpList_bySsn(slctdChamp.Id);
-            //mise en place de la liste des équipes inscrites dans la box
+            try
+            {
+                //récupération du championnat sélectionné
+                MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
+                //récupération de la liste des équipes inscrites au championnat
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlEquipeChamp> eqpList = oServices.GetEqpList_byChamp(slctdChamp.Id);
+                //mise en place de la liste des équipes inscrites dans la box
+                boxEqpSelection.DataSource = eqpList;
+                boxEqpSelection.DisplayMember = "Nom";
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
-    }
+}
