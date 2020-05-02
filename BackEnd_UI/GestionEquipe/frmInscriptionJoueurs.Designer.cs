@@ -84,6 +84,7 @@
             this.boxEqpSelection.Name = "boxEqpSelection";
             this.boxEqpSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpSelection.TabIndex = 5;
+            this.boxEqpSelection.SelectedIndexChanged += new System.EventHandler(this.boxEqpSelection_SelectedIndexChanged);
             // 
             // chckdlstbxJoueursDispo
             // 
@@ -127,6 +128,7 @@
             this.btnInscrire.TabIndex = 22;
             this.btnInscrire.Text = "Inscrire les joueurs sélectionnés dans l\'équipe";
             this.btnInscrire.UseVisualStyleBackColor = true;
+            this.btnInscrire.Click += new System.EventHandler(this.btnInscrire_Click);
             // 
             // btnSave
             // 
@@ -145,6 +147,7 @@
             this.btnReset.TabIndex = 25;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnDesinscrire
             // 
@@ -154,6 +157,7 @@
             this.btnDesinscrire.TabIndex = 26;
             this.btnDesinscrire.Text = "Désinscrire de l\'équipe les joueurs sélectionnés ";
             this.btnDesinscrire.UseVisualStyleBackColor = true;
+            this.btnDesinscrire.Click += new System.EventHandler(this.btnDesinscrire_Click);
             // 
             // frmInscriptionJoueurs
             // 
@@ -171,7 +175,7 @@
             this.Controls.Add(this.gpbxSlctEqp);
             this.Controls.Add(this.gpbxSlctChamp);
             this.Name = "frmInscriptionJoueurs";
-            this.Text = "Inscription joueur(s)";
+            this.Text = "Inscription joueur(s) à une équipe pour un championnat";
             this.Load += new System.EventHandler(this.frmInscriptionJoueurs_Load);
             this.gpbxSlctChamp.ResumeLayout(false);
             this.gpbxSlctEqp.ResumeLayout(false);

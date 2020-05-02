@@ -15,6 +15,7 @@ namespace BackEnd_UI.GestionEquipe
 {
     public partial class frmInscriptionJoueurs : Form
     {
+        private bool change;
         public frmInscriptionJoueurs()
         {
             InitializeComponent();
@@ -72,6 +73,40 @@ namespace BackEnd_UI.GestionEquipe
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+        }
+
+        //chargement de la liste des joueurs disponibles (non inscrits dans une équipe)
+        private void chckdlstbxJoueursDispo_Load()
+        {
+
+        }
+
+        //chargement de la liste des joueurs de l'équipe (inscrits dans l'équipe sélectionnée)
+        private void chckdlstbxJoueursEqp_Load()
+        {
+            chckdlstbxJoueursDispo
+        }
+
+        //au changement de sélection d'équipe, charger les tableaux des joueurs
+        private void boxEqpSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chckdlstbxJoueursDispo_Load();
+            chckdlstbxJoueursEqp_Load();
+        }
+
+        private void btnInscrire_Click(object sender, EventArgs e)
+        {
+            change = true;
+        }
+
+        private void btnDesinscrire_Click(object sender, EventArgs e)
+        {
+            change = true;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            change = false;
         }
     }
 }
