@@ -52,5 +52,11 @@ namespace BackEnd_UI.GestionEquipe
             }
 
         }
+
+        //au changement de sélection de championnat, recharger la liste des équipes
+        private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
