@@ -64,5 +64,10 @@ namespace BackEnd_UI
                 MessageBox.Show(oError.Message);
             }
         }
+
+        private void inscrireTransférerUnJoueurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

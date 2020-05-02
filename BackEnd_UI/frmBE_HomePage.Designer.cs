@@ -37,6 +37,7 @@
             this.générerUnCalendrierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDéquipesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscrireTransférerUnJoueurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transférerUnJoueurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.joueursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.voirLhistoriqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cartonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,7 +108,8 @@
             // gestionDéquipesToolStripMenuItem
             // 
             this.gestionDéquipesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inscrireTransférerUnJoueurToolStripMenuItem});
+            this.inscrireTransférerUnJoueurToolStripMenuItem,
+            this.transférerUnJoueurToolStripMenuItem});
             this.gestionDéquipesToolStripMenuItem.Name = "gestionDéquipesToolStripMenuItem";
             this.gestionDéquipesToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.gestionDéquipesToolStripMenuItem.Text = "Gestion d\'équipes";
@@ -115,8 +117,14 @@
             // inscrireTransférerUnJoueurToolStripMenuItem
             // 
             this.inscrireTransférerUnJoueurToolStripMenuItem.Name = "inscrireTransférerUnJoueurToolStripMenuItem";
-            this.inscrireTransférerUnJoueurToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.inscrireTransférerUnJoueurToolStripMenuItem.Text = "Inscrire/Transférer un joueur";
+            this.inscrireTransférerUnJoueurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inscrireTransférerUnJoueurToolStripMenuItem.Text = "Inscrire  joueur(s)";
+            // 
+            // transférerUnJoueurToolStripMenuItem
+            // 
+            this.transférerUnJoueurToolStripMenuItem.Name = "transférerUnJoueurToolStripMenuItem";
+            this.transférerUnJoueurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transférerUnJoueurToolStripMenuItem.Text = "Transférer un joueur";
             // 
             // joueursToolStripMenuItem
             // 
@@ -179,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem voirLhistoriqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cartonsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voirLesCartonsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transférerUnJoueurToolStripMenuItem;
     }
 }
 
