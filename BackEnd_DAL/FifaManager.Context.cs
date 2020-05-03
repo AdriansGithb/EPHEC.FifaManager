@@ -22,7 +22,7 @@ namespace BackEnd_DAL
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -198,6 +198,42 @@ namespace BackEnd_DAL
                 new ObjectParameter("champ_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectEqpPerChamp_Result>("SP_SelectEqpPerChamp", champ_idParameter);
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueursByEqp(Nullable<int> eqp_cochmp_id)
+        {
+            var eqp_cochmp_idParameter = eqp_cochmp_id.HasValue ?
+                new ObjectParameter("eqp_cochmp_id", eqp_cochmp_id) :
+                new ObjectParameter("eqp_cochmp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueursByEqp", eqp_cochmp_idParameter);
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueursByEqp(Nullable<int> eqp_cochmp_id, MergeOption mergeOption)
+        {
+            var eqp_cochmp_idParameter = eqp_cochmp_id.HasValue ?
+                new ObjectParameter("eqp_cochmp_id", eqp_cochmp_id) :
+                new ObjectParameter("eqp_cochmp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueursByEqp", mergeOption, eqp_cochmp_idParameter);
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueursDispoByChamp(Nullable<int> champ_id)
+        {
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueursDispoByChamp", champ_idParameter);
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueursDispoByChamp(Nullable<int> champ_id, MergeOption mergeOption)
+        {
+            var champ_idParameter = champ_id.HasValue ?
+                new ObjectParameter("champ_id", champ_id) :
+                new ObjectParameter("champ_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueursDispoByChamp", mergeOption, champ_idParameter);
         }
     }
 }

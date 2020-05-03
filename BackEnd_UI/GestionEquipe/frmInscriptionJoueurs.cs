@@ -76,22 +76,44 @@ namespace BackEnd_UI.GestionEquipe
         }
 
         //chargement de la liste des joueurs disponibles (non inscrits dans une équipe)
-        private void chckdlstbxJoueursDispo_Load()
+        private void lstbxJoueursDispo_Load()
         {
-
+            try
+            {
+                JoueursServices oServices = new JoueursServices();
+                int champ_id = ((MdlChampionnat) boxChampSelection.SelectedItem).Id;
+                lstbxJoueursDispo.DataSource = oServices.GetJoueursDispo_byChamp(champ_id);
+                lstbxJoueursDispo.DisplayMember = "NomPrenom";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //chargement de la liste des joueurs de l'équipe (inscrits dans l'équipe sélectionnée)
-        private void chckdlstbxJoueursEqp_Load()
+        private void lstbxJoueursEqp_Load()
         {
-            chckdlstbxJoueursDispo
+            try
+            {
+                JoueursServices oServices = new JoueursServices();
+                int eqp_cochamp_id = ((MdlEquipeChamp)boxEqpSelection.SelectedItem).Id;
+                lstbxJoueursEqp.DataSource = oServices.GetJoueursEqpList(eqp_cochamp_id);
+                lstbxJoueursEqp.DisplayMember = "NomPrenom";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //au changement de sélection d'équipe, charger les tableaux des joueurs
         private void boxEqpSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chckdlstbxJoueursDispo_Load();
-            chckdlstbxJoueursEqp_Load();
+            lstbxJoueursDispo_Load();
+            lstbxJoueursDispo.SelectedIndex = -1;
+            lstbxJoueursEqp_Load();
+            lstbxJoueursEqp.SelectedIndex = -1;
         }
 
         private void btnInscrire_Click(object sender, EventArgs e)

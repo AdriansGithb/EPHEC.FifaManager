@@ -24,6 +24,7 @@ namespace BackEnd_DAL
         public int CEqp_CoChmp_ID { get; set; }
         public int CEqp_Ssn_ID { get; set; }
         public int CEqp_Jr_ID { get; set; }
+        public System.DateTime CEqp_LastUpdate { get; set; }
     
         public virtual Constitution_Championnat Constitution_Championnat { get; set; }
         public virtual Joueurs Joueurs { get; set; }

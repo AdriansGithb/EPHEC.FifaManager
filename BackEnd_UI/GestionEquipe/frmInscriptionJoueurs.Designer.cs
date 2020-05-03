@@ -32,14 +32,14 @@
             this.gpbxSlctChamp = new System.Windows.Forms.GroupBox();
             this.gpbxSlctEqp = new System.Windows.Forms.GroupBox();
             this.boxEqpSelection = new System.Windows.Forms.ComboBox();
-            this.chckdlstbxJoueursDispo = new System.Windows.Forms.CheckedListBox();
-            this.chckdlstbxJoueursEqp = new System.Windows.Forms.CheckedListBox();
             this.lblJoueursLibres = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnInscrire = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnDesinscrire = new System.Windows.Forms.Button();
+            this.lstbxJoueursDispo = new System.Windows.Forms.ListBox();
+            this.lstbxJoueursEqp = new System.Windows.Forms.ListBox();
             this.gpbxSlctChamp.SuspendLayout();
             this.gpbxSlctEqp.SuspendLayout();
             this.SuspendLayout();
@@ -85,22 +85,6 @@
             this.boxEqpSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpSelection.TabIndex = 5;
             this.boxEqpSelection.SelectedIndexChanged += new System.EventHandler(this.boxEqpSelection_SelectedIndexChanged);
-            // 
-            // chckdlstbxJoueursDispo
-            // 
-            this.chckdlstbxJoueursDispo.FormattingEnabled = true;
-            this.chckdlstbxJoueursDispo.Location = new System.Drawing.Point(70, 99);
-            this.chckdlstbxJoueursDispo.Name = "chckdlstbxJoueursDispo";
-            this.chckdlstbxJoueursDispo.Size = new System.Drawing.Size(225, 289);
-            this.chckdlstbxJoueursDispo.TabIndex = 18;
-            // 
-            // chckdlstbxJoueursEqp
-            // 
-            this.chckdlstbxJoueursEqp.FormattingEnabled = true;
-            this.chckdlstbxJoueursEqp.Location = new System.Drawing.Point(359, 99);
-            this.chckdlstbxJoueursEqp.Name = "chckdlstbxJoueursEqp";
-            this.chckdlstbxJoueursEqp.Size = new System.Drawing.Size(225, 289);
-            this.chckdlstbxJoueursEqp.TabIndex = 19;
             // 
             // lblJoueursLibres
             // 
@@ -159,19 +143,37 @@
             this.btnDesinscrire.UseVisualStyleBackColor = true;
             this.btnDesinscrire.Click += new System.EventHandler(this.btnDesinscrire_Click);
             // 
+            // lstbxJoueursDispo
+            // 
+            this.lstbxJoueursDispo.FormattingEnabled = true;
+            this.lstbxJoueursDispo.Location = new System.Drawing.Point(70, 99);
+            this.lstbxJoueursDispo.Name = "lstbxJoueursDispo";
+            this.lstbxJoueursDispo.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstbxJoueursDispo.Size = new System.Drawing.Size(225, 290);
+            this.lstbxJoueursDispo.TabIndex = 27;
+            // 
+            // lstbxJoueursEqp
+            // 
+            this.lstbxJoueursEqp.FormattingEnabled = true;
+            this.lstbxJoueursEqp.Location = new System.Drawing.Point(359, 99);
+            this.lstbxJoueursEqp.Name = "lstbxJoueursEqp";
+            this.lstbxJoueursEqp.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstbxJoueursEqp.Size = new System.Drawing.Size(225, 290);
+            this.lstbxJoueursEqp.TabIndex = 28;
+            // 
             // frmInscriptionJoueurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lstbxJoueursEqp);
+            this.Controls.Add(this.lstbxJoueursDispo);
             this.Controls.Add(this.btnDesinscrire);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnInscrire);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblJoueursLibres);
-            this.Controls.Add(this.chckdlstbxJoueursEqp);
-            this.Controls.Add(this.chckdlstbxJoueursDispo);
             this.Controls.Add(this.gpbxSlctEqp);
             this.Controls.Add(this.gpbxSlctChamp);
             this.Name = "frmInscriptionJoueurs";
@@ -190,13 +192,13 @@
         private System.Windows.Forms.GroupBox gpbxSlctChamp;
         private System.Windows.Forms.GroupBox gpbxSlctEqp;
         private System.Windows.Forms.ComboBox boxEqpSelection;
-        private System.Windows.Forms.CheckedListBox chckdlstbxJoueursDispo;
-        private System.Windows.Forms.CheckedListBox chckdlstbxJoueursEqp;
         private System.Windows.Forms.Label lblJoueursLibres;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnInscrire;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnDesinscrire;
+        private System.Windows.Forms.ListBox lstbxJoueursDispo;
+        private System.Windows.Forms.ListBox lstbxJoueursEqp;
     }
 }

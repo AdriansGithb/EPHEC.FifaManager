@@ -68,6 +68,7 @@
     <Compile Include="Equipes.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="JoueursData.cs" />
     <Compile Include="Events.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
@@ -104,6 +105,12 @@
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
     <Compile Include="SP_SelectAllChampionnats_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_SelectAllJoueursByEqp_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_SelectAllJoueursDispoByChamp_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
     <Compile Include="SP_SelectAllSsn1Champ_Result.cs">

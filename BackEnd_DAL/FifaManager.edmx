@@ -29,6 +29,7 @@
           <Property Name="CEqp_CoChmp_ID" Type="int" Nullable="false" />
           <Property Name="CEqp_Ssn_ID" Type="int" Nullable="false" />
           <Property Name="CEqp_Jr_ID" Type="int" Nullable="false" />
+          <Property Name="CEqp_LastUpdate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipes">
           <Key>
@@ -357,6 +358,12 @@
           <Parameter Name="lstUpdt" Type="datetime" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_SelectAllJoueursByEqp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SelectAllJoueursDispoByChamp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="champ_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectAllSsn1Champ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
@@ -506,6 +513,7 @@
           <NavigationProperty Name="Joueurs" Relationship="Self.FK_Constitution_Equipes_Joueurs" FromRole="Constitution_Equipes" ToRole="Joueurs" />
           <NavigationProperty Name="Saisons" Relationship="Self.FK_Constitution_Equipes_Saisons" FromRole="Constitution_Equipes" ToRole="Saisons" />
           <NavigationProperty Name="Inscription_Matchs" Relationship="Self.FK_Inscription_Matchs_Constitution_Equipes" FromRole="Constitution_Equipes" ToRole="Inscription_Matchs" />
+          <Property Name="CEqp_LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Equipes">
           <Key>
@@ -966,6 +974,12 @@
             <Parameter Name="EqpVisit_CoChmp_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectEqpPerChamp" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPerChamp_Result)">
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectAllJoueursByEqp" EntitySet="Joueurs" ReturnType="Collection(Fifa_ManagerModel.Joueurs)">
+            <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectAllJoueursDispoByChamp" EntitySet="Joueurs" ReturnType="Collection(Fifa_ManagerModel.Joueurs)">
             <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -1030,6 +1044,16 @@
           <Property Type="Int32" Name="CoChmp_ID" Nullable="false" />
           <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="SP_SelectAllJoueursByEqp_Result">
+          <Property Type="Int32" Name="Jr_ID" Nullable="false" />
+          <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllJoueursDispoByChamp_Result">
+          <Property Type="Int32" Name="Jr_ID" Nullable="false" />
+          <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1057,6 +1081,7 @@
           <EntitySetMapping Name="Constitution_Equipes">
             <EntityTypeMapping TypeName="Fifa_ManagerModel.Constitution_Equipes">
               <MappingFragment StoreEntitySet="Constitution_Equipes">
+                <ScalarProperty Name="CEqp_LastUpdate" ColumnName="CEqp_LastUpdate" />
                 <ScalarProperty Name="CEqp_ID" ColumnName="CEqp_ID" />
                 <ScalarProperty Name="CEqp_CoChmp_ID" ColumnName="CEqp_CoChmp_ID" />
                 <ScalarProperty Name="CEqp_Ssn_ID" ColumnName="CEqp_Ssn_ID" />
@@ -1247,6 +1272,10 @@
                 <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
               </ComplexTypeMapping>
             </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllJoueursByEqp" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueursByEqp">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllJoueursDispoByChamp" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueursDispoByChamp">
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
