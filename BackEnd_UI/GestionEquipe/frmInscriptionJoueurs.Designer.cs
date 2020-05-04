@@ -160,6 +160,7 @@
             this.btnSave.TabIndex = 29;
             this.btnSave.Text = "Sauver modifications";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmInscriptionJoueurs
             // 

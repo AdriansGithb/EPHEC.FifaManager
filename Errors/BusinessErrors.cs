@@ -14,6 +14,18 @@ namespace Errors
         {
             switch (erMsg)
             {
+                case "Aucune modification d'équipe":
+                    _Message =
+                        "Aucune modification n'a été effectuée sur la formation de l'équipe, aucune modification n'a donc été sauvegardée.";
+                    break;
+                case "Trop de joueurs à désinscrire":
+                    _Message =
+                        "Trop de joueurs ont été sélectionnés pour désinscription.Une équipe ne peut contenir que 5 joueurs minimum. Veuillez en désélectionner.";
+                    break;
+                case "Trop de joueurs à inscrire":
+                    _Message =
+                        "Trop de joueurs ont été sélectionnés pour inscription. Une équipe ne peut contenir que 10 joueurs maximum. Veuillez en désélectionner.";
+                    break;
                 case "Aucun joueur sélectionné pour (dés)inscription":
                     _Message = "Il n'y a aucun joueur sélectionné pour (dés)inscription.";
                     break;

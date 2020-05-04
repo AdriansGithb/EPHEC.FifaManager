@@ -15,6 +15,7 @@ namespace BackEnd_UI.GestionEquipe
 {
     public partial class frmInscriptionJoueurs : Form
     {
+        private List<MdlJoueurs> joueursEqpOrigineList;
         public frmInscriptionJoueurs()
         {
             InitializeComponent();
@@ -53,7 +54,7 @@ namespace BackEnd_UI.GestionEquipe
 
         }
 
-        //au changement de sélection de championnat, (re)charger la liste des équipes
+        //au changement de sélection de championnat, (re)charger la liste des équipes + sauvegarde liste d'origine
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -107,6 +108,8 @@ namespace BackEnd_UI.GestionEquipe
                 foreach (MdlJoueurs joueur in jrList)
                     lstbxJoueursEqp.Items.Add(joueur);
                 lstbxJoueursEqp.DisplayMember = "NomPrenom";
+                //sauvegarde de la liste d'origine
+                joueursEqpOrigineList=jrList;
             }
             catch (Exception ex)
             {
@@ -130,6 +133,7 @@ namespace BackEnd_UI.GestionEquipe
             }
         }
 
+        //inscription de joueur dans l'équipe
         private void btnInscrire_Click(object sender, EventArgs e)
         {
             try
@@ -137,20 +141,31 @@ namespace BackEnd_UI.GestionEquipe
                 //si un joueur minimum est sélectionné
                 if (lstbxJoueursDispo.SelectedIndices.Count > 0)
                 {
-                    //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs dispos
-                    List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
-                    foreach (MdlJoueurs oJoueur in lstbxJoueursDispo.SelectedItems)
+                    int nbSlctdJoueurs = lstbxJoueursDispo.SelectedItems.Count;
+                    int nbJoueursInscrits = lstbxJoueursEqp.Items.Count;
+                    EquipesServices oServices = new EquipesServices();
+                    bool conforme = oServices.SeuilMaxJoueurs_OK(nbSlctdJoueurs, nbJoueursInscrits);
+                    //si le nombre de joueurs total de l'équipe ne dépasse pas le seuil max 
+                    if (conforme)
                     {
-                        lstbxJoueursEqp.Items.Add(oJoueur);
-                        tmpList.Add(oJoueur);
+                        //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs dispos
+                        List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
+                        foreach (MdlJoueurs oJoueur in lstbxJoueursDispo.SelectedItems)
+                        {
+                            lstbxJoueursEqp.Items.Add(oJoueur);
+                            tmpList.Add(oJoueur);
+                        }
+
+                        //suppression des joueurs de la liste des joueurs dispos
+                        foreach (MdlJoueurs oJoueur in tmpList)
+                        {
+                            lstbxJoueursDispo.Items.Remove(oJoueur);
+                        }
                     }
-                    //suppression des joueurs de la liste des joueurs dispos
-                    foreach (MdlJoueurs oJoueur in tmpList)
-                    {
-                        lstbxJoueursDispo.Items.Remove(oJoueur);
-                    }
+                    //si pas conforme
+                    else throw new Exception("Trop de joueurs à inscrire");
                 }
-                //sinon
+                //si aucun joueur sélectionné
                 else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
             }
             catch (Exception ex)
@@ -160,25 +175,39 @@ namespace BackEnd_UI.GestionEquipe
             }
         }
 
+        //désinscription de joueurs de l'équipe
         private void btnDesinscrire_Click(object sender, EventArgs e)
         {
             try
             {
-                //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs inscrits dans l'équipe
+                //si un joueur minimum est sélectionné
                 if (lstbxJoueursEqp.SelectedIndices.Count > 0)
                 {
-                    List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
-                    foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.SelectedItems)
-                    {
-                        lstbxJoueursDispo.Items.Add(oJoueur);
-                        tmpList.Add(oJoueur);
+                    int nbSlctdJoueurs = lstbxJoueursEqp.SelectedItems.Count;
+                    int nbJoueursEqp = lstbxJoueursEqp.Items.Count;
+                    EquipesServices oServices = new EquipesServices();
+                    bool conforme = oServices.SeuilMinJoueurs_OK(nbSlctdJoueurs, nbJoueursEqp);
+                    //si le nombre de joueurs total de l'équipe ne dépasse pas le seuil min une fois les joueurs désinscrits 
+                    if (conforme)
+                    {                
+                        //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs inscrits dans l'équipe
+                        List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
+                        foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.SelectedItems)
+                        {
+                            lstbxJoueursDispo.Items.Add(oJoueur);
+                            tmpList.Add(oJoueur);
+                        }
+
+                        //suppression des joueurs de la liste des joueurs inscrits dans l'équipe
+                        foreach (MdlJoueurs oJoueur in tmpList)
+                        {
+                            lstbxJoueursEqp.Items.Remove(oJoueur);
+                        }
                     }
-                    //suppression des joueurs de la liste des joueurs inscrits dans l'équipe
-                    foreach (MdlJoueurs oJoueur in tmpList)
-                    {
-                        lstbxJoueursEqp.Items.Remove(oJoueur);
-                    }
+                    //si pas conforme
+                    else throw new Exception("Trop de joueurs à désinscrire");
                 }
+                //si aucun joueur sélectionné
                 else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
             }
             catch (Exception ex)
@@ -188,6 +217,7 @@ namespace BackEnd_UI.GestionEquipe
             }
         }
 
+        //décocher tout
         private void btnUncheckAll_Click(object sender, EventArgs e)
         {
             try
@@ -200,6 +230,33 @@ namespace BackEnd_UI.GestionEquipe
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+        }
+
+        //sauver les changements effectués
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //récupération des joueurs inscrits dans l'équipe après modifications
+                List<MdlJoueurs> nwEqpList = new List<MdlJoueurs>();
+                foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.Items)
+                {
+                    nwEqpList.Add(oJoueur);
+                }
+                //récupération de l'équipe sélectionnée
+                MdlEquipeChamp eqp = (MdlEquipeChamp)boxEqpSelection.SelectedItem;
+                EquipesServices oServices = new EquipesServices();
+                //envoi des objets pour sauvegarde des modifications
+                oServices.SaveModifications(nwEqpList,joueursEqpOrigineList,eqp);
+                //rechargement des tableaux après sauvegarde
+                boxEqpSelection_SelectedIndexChanged(sender,e);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+
         }
     }
 }
