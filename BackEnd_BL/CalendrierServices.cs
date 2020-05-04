@@ -261,8 +261,11 @@ namespace BackEnd_BL
                         lstDatePerWE.Add(datesPossibles[(indexDatPoss+1)]);
                         indexDatPoss += 2;
                     }
+
+                    bool sortie = false;
                     //boucle d'insertion aléatoire des matchs : choix de date aléatoire entre les 2 jours de WE et choix de match aléatoire dans la liste de matchs restants
-                    for (int i = 0; (i < maxMatchPerDay) && (matchLst.Count > 0);)
+                    //boucle par un w-e de la liste des dates possibles
+                    for (int max = 0; (tempMatchList.Count < maxMatchPerDay) && (matchLst.Count > 0) && (sortie==false);)
                     {
                         slctdDateIndex = tirage.Next(0, lstDatePerWE.Count);
                         slctdMatchIndex = tirage.Next(0, matchLst.Count);
@@ -281,8 +284,43 @@ namespace BackEnd_BL
                             tempMatch.Date = lstDatePerWE[slctdDateIndex];
                             tempMatchList.Add(tempMatch);
                             matchLst.RemoveAt(slctdMatchIndex);
-                            i++;
+                            max = 0;
                         }
+                        //sinon, augmenter le compteur max (qui permet de vérifier qu'on n'entre pas dans une boucle infinie car aucun match ne rentre dans les conditions de remplissage)
+                        else
+                        {
+                            max++;
+                            //si max équivaut au nb de match sans dates restants : parcourir toute la liste restante un par un
+                            //afin de vérifier si un match peut encore être inséré
+                            if (max == matchLst.Count)
+                            {
+                                //sortir si le parcours de la liste ne permet pas de trouver un match respectant les conditions
+                                sortie = true;
+                                for (int j = 0; (j < matchLst.Count)&&(sortie==true); j++)
+                                {
+                                    tempMatch = matchLst[j];
+                                    //si un match de la liste des matchs à insérer peut encore entrer dans le calendrier en respectant les conditions
+                                    if (tempMatchList.FindIndex(match =>
+                                            match.EqpDom_CoChmp_ID ==
+                                            tempMatch.EqpDom_CoChmp_ID ||
+                                            match.EqpDom_CoChmp_ID ==
+                                            tempMatch.EqpVisit_CoChmp_ID ||
+                                            match.EqpVisit_CoChmp_ID ==
+                                            tempMatch.EqpDom_CoChmp_ID ||
+                                            match.EqpVisit_CoChmp_ID ==
+                                            tempMatch.EqpVisit_CoChmp_ID) == -1)
+                                    {
+                                        //alors ne pas sortir, insérer le match dans le calendrier auto, incrémenter i (compteur de la liste temp)
+                                        tempMatch.Date = lstDatePerWE[slctdDateIndex];
+                                        tempMatchList.Add(tempMatch);
+                                        matchLst.RemoveAt(j);
+                                        sortie = false;                                
+                                        max = 0;
+                                    }
+                                }                                        
+                            }
+                        }
+                            
                     }
                     //insérer la liste du week-end dans la liste complète à retourner
                     rtrnMatchList.AddRange(tempMatchList);

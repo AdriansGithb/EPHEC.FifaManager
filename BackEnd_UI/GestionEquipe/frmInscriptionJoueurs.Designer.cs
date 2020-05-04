@@ -33,13 +33,13 @@
             this.gpbxSlctEqp = new System.Windows.Forms.GroupBox();
             this.boxEqpSelection = new System.Windows.Forms.ComboBox();
             this.lblJoueursLibres = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblJoueursEqp = new System.Windows.Forms.Label();
             this.btnInscrire = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.btnUncheckAll = new System.Windows.Forms.Button();
             this.btnDesinscrire = new System.Windows.Forms.Button();
             this.lstbxJoueursDispo = new System.Windows.Forms.ListBox();
             this.lstbxJoueursEqp = new System.Windows.Forms.ListBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.gpbxSlctChamp.SuspendLayout();
             this.gpbxSlctEqp.SuspendLayout();
             this.SuspendLayout();
@@ -95,51 +95,42 @@
             this.lblJoueursLibres.TabIndex = 20;
             this.lblJoueursLibres.Text = "Joueurs disponibles";
             // 
-            // label2
+            // lblJoueursEqp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Equipe : ";
+            this.lblJoueursEqp.AutoSize = true;
+            this.lblJoueursEqp.Location = new System.Drawing.Point(446, 80);
+            this.lblJoueursEqp.Name = "lblJoueursEqp";
+            this.lblJoueursEqp.Size = new System.Drawing.Size(150, 13);
+            this.lblJoueursEqp.TabIndex = 21;
+            this.lblJoueursEqp.Text = "Joueurs inscrits dans l\'équipe :";
             // 
             // btnInscrire
             // 
-            this.btnInscrire.Location = new System.Drawing.Point(70, 394);
+            this.btnInscrire.Location = new System.Drawing.Point(301, 99);
             this.btnInscrire.Name = "btnInscrire";
-            this.btnInscrire.Size = new System.Drawing.Size(225, 38);
+            this.btnInscrire.Size = new System.Drawing.Size(142, 58);
             this.btnInscrire.TabIndex = 22;
-            this.btnInscrire.Text = "Inscrire les joueurs sélectionnés dans l\'équipe";
+            this.btnInscrire.Text = ">\r\nInscrire les joueurs sélectionnés dans l\'équipe";
             this.btnInscrire.UseVisualStyleBackColor = true;
             this.btnInscrire.Click += new System.EventHandler(this.btnInscrire_Click);
             // 
-            // btnSave
+            // btnUncheckAll
             // 
-            this.btnSave.Location = new System.Drawing.Point(624, 126);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(142, 101);
-            this.btnSave.TabIndex = 24;
-            this.btnSave.Text = "Sauver";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(624, 269);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(142, 101);
-            this.btnReset.TabIndex = 25;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnUncheckAll.Location = new System.Drawing.Point(301, 245);
+            this.btnUncheckAll.Name = "btnUncheckAll";
+            this.btnUncheckAll.Size = new System.Drawing.Size(142, 58);
+            this.btnUncheckAll.TabIndex = 25;
+            this.btnUncheckAll.Text = "Décocher tout";
+            this.btnUncheckAll.UseVisualStyleBackColor = true;
+            this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
             // 
             // btnDesinscrire
             // 
-            this.btnDesinscrire.Location = new System.Drawing.Point(359, 394);
+            this.btnDesinscrire.Location = new System.Drawing.Point(301, 163);
             this.btnDesinscrire.Name = "btnDesinscrire";
-            this.btnDesinscrire.Size = new System.Drawing.Size(225, 38);
+            this.btnDesinscrire.Size = new System.Drawing.Size(142, 58);
             this.btnDesinscrire.TabIndex = 26;
-            this.btnDesinscrire.Text = "Désinscrire de l\'équipe les joueurs sélectionnés ";
+            this.btnDesinscrire.Text = "Désinscrire de l\'équipe les joueurs sélectionnés \r\n<";
             this.btnDesinscrire.UseVisualStyleBackColor = true;
             this.btnDesinscrire.Click += new System.EventHandler(this.btnDesinscrire_Click);
             // 
@@ -155,24 +146,33 @@
             // lstbxJoueursEqp
             // 
             this.lstbxJoueursEqp.FormattingEnabled = true;
-            this.lstbxJoueursEqp.Location = new System.Drawing.Point(359, 99);
+            this.lstbxJoueursEqp.Location = new System.Drawing.Point(449, 99);
             this.lstbxJoueursEqp.Name = "lstbxJoueursEqp";
             this.lstbxJoueursEqp.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstbxJoueursEqp.Size = new System.Drawing.Size(225, 290);
             this.lstbxJoueursEqp.TabIndex = 28;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(301, 331);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(142, 58);
+            this.btnSave.TabIndex = 29;
+            this.btnSave.Text = "Sauver modifications";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
             // frmInscriptionJoueurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 408);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lstbxJoueursEqp);
             this.Controls.Add(this.lstbxJoueursDispo);
             this.Controls.Add(this.btnDesinscrire);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnInscrire);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblJoueursEqp);
             this.Controls.Add(this.lblJoueursLibres);
             this.Controls.Add(this.gpbxSlctEqp);
             this.Controls.Add(this.gpbxSlctChamp);
@@ -193,12 +193,12 @@
         private System.Windows.Forms.GroupBox gpbxSlctEqp;
         private System.Windows.Forms.ComboBox boxEqpSelection;
         private System.Windows.Forms.Label lblJoueursLibres;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblJoueursEqp;
         private System.Windows.Forms.Button btnInscrire;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnUncheckAll;
         private System.Windows.Forms.Button btnDesinscrire;
         private System.Windows.Forms.ListBox lstbxJoueursDispo;
         private System.Windows.Forms.ListBox lstbxJoueursEqp;
+        private System.Windows.Forms.Button btnSave;
     }
 }

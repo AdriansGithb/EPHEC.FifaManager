@@ -14,6 +14,9 @@ namespace Errors
         {
             switch (erMsg)
             {
+                case "Aucun joueur sélectionné pour (dés)inscription":
+                    _Message = "Il n'y a aucun joueur sélectionné pour (dés)inscription.";
+                    break;
                 case "NewResultRecordInDB":
                    _Message = "Les données ont été modifiées entre-temps. Veuillez recommencer la procédure";
                     break;

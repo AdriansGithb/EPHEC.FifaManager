@@ -15,7 +15,6 @@ namespace BackEnd_UI.GestionEquipe
 {
     public partial class frmInscriptionJoueurs : Form
     {
-        private bool change;
         public frmInscriptionJoueurs()
         {
             InitializeComponent();
@@ -54,7 +53,7 @@ namespace BackEnd_UI.GestionEquipe
 
         }
 
-        //au changement de sélection de championnat, recharger la liste des équipes
+        //au changement de sélection de championnat, (re)charger la liste des équipes
         private void boxChampSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -80,9 +79,13 @@ namespace BackEnd_UI.GestionEquipe
         {
             try
             {
+                lstbxJoueursDispo.Items.Clear();
                 JoueursServices oServices = new JoueursServices();
                 int champ_id = ((MdlChampionnat) boxChampSelection.SelectedItem).Id;
-                lstbxJoueursDispo.DataSource = oServices.GetJoueursDispo_byChamp(champ_id);
+                List<MdlJoueurs> jrList = oServices.GetJoueursDispo_byChamp(champ_id);
+                //insérer chaque joueur dans la listbox
+                foreach (MdlJoueurs joueur in jrList)
+                    lstbxJoueursDispo.Items.Add(joueur);
                 lstbxJoueursDispo.DisplayMember = "NomPrenom";
             }
             catch (Exception ex)
@@ -96,9 +99,13 @@ namespace BackEnd_UI.GestionEquipe
         {
             try
             {
+                lstbxJoueursEqp.Items.Clear();
                 JoueursServices oServices = new JoueursServices();
                 int eqp_cochamp_id = ((MdlEquipeChamp)boxEqpSelection.SelectedItem).Id;
-                lstbxJoueursEqp.DataSource = oServices.GetJoueursEqpList(eqp_cochamp_id);
+                List<MdlJoueurs> jrList = oServices.GetJoueursEqpList(eqp_cochamp_id);
+                //insérer chaque joueur dans la listbox
+                foreach (MdlJoueurs joueur in jrList)
+                    lstbxJoueursEqp.Items.Add(joueur);
                 lstbxJoueursEqp.DisplayMember = "NomPrenom";
             }
             catch (Exception ex)
@@ -110,25 +117,89 @@ namespace BackEnd_UI.GestionEquipe
         //au changement de sélection d'équipe, charger les tableaux des joueurs
         private void boxEqpSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstbxJoueursDispo_Load();
-            lstbxJoueursDispo.SelectedIndex = -1;
-            lstbxJoueursEqp_Load();
-            lstbxJoueursEqp.SelectedIndex = -1;
+            try
+            {
+                lstbxJoueursDispo_Load();
+                lstbxJoueursEqp_Load();
+                btnUncheckAll_Click(sender,e);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
 
         private void btnInscrire_Click(object sender, EventArgs e)
         {
-            change = true;
+            try
+            {
+                //si un joueur minimum est sélectionné
+                if (lstbxJoueursDispo.SelectedIndices.Count > 0)
+                {
+                    //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs dispos
+                    List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
+                    foreach (MdlJoueurs oJoueur in lstbxJoueursDispo.SelectedItems)
+                    {
+                        lstbxJoueursEqp.Items.Add(oJoueur);
+                        tmpList.Add(oJoueur);
+                    }
+                    //suppression des joueurs de la liste des joueurs dispos
+                    foreach (MdlJoueurs oJoueur in tmpList)
+                    {
+                        lstbxJoueursDispo.Items.Remove(oJoueur);
+                    }
+                }
+                //sinon
+                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
 
         private void btnDesinscrire_Click(object sender, EventArgs e)
         {
-            change = true;
+            try
+            {
+                //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs inscrits dans l'équipe
+                if (lstbxJoueursEqp.SelectedIndices.Count > 0)
+                {
+                    List<MdlJoueurs> tmpList = new List<MdlJoueurs>();
+                    foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.SelectedItems)
+                    {
+                        lstbxJoueursDispo.Items.Add(oJoueur);
+                        tmpList.Add(oJoueur);
+                    }
+                    //suppression des joueurs de la liste des joueurs inscrits dans l'équipe
+                    foreach (MdlJoueurs oJoueur in tmpList)
+                    {
+                        lstbxJoueursEqp.Items.Remove(oJoueur);
+                    }
+                }
+                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void btnUncheckAll_Click(object sender, EventArgs e)
         {
-            change = false;
+            try
+            {
+                lstbxJoueursDispo.ClearSelected();
+                lstbxJoueursEqp.ClearSelected();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }
