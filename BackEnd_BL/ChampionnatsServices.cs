@@ -152,10 +152,10 @@ namespace BackEnd_BL
                 //pour chaque championnat, vérifier si la date de début de 1e saison est antérieure à aujourd'hui
                 foreach (MdlChampionnat champ in allChampList)
                 {
-                    List<MdlSaison> ssnList = GetChampSaisons(champ.Id);
-                    MdlSaison frstSsn = ssnList.Find(ssn => ssn.FirstOrSecond == 1);
-                    //si la date est postérieure à aujourd'hui,ajouter le championnat dans la liste à retourner
-                    if(frstSsn.Debut>DateTime.Today)
+                    //List<MdlSaison> ssnList = GetChampSaisons(champ.Id);
+                    //MdlSaison frstSsn = ssnList.Find(ssn => ssn.FirstOrSecond == 1);
+                    ////si la date est postérieure à aujourd'hui,ajouter le championnat dans la liste à retourner
+                    //if(frstSsn.Debut>DateTime.Today)
                         rtrnList.Add(champ);
                 }
 

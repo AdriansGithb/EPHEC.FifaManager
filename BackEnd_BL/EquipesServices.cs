@@ -19,13 +19,12 @@ namespace BackEnd_BL
         public void SaveModifications(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList, MdlEquipeChamp eqp)
         {
             try
-            {
-                //obtenir une liste d'inscriptions et une liste de désinscriptions à réaliser
+            {                //obtenir une liste d'inscriptions et une liste de désinscriptions à réaliser
                 List<List<MdlJoueurs>> triLists = TrierInscriptions_Desinscriptions_Joueurs(nwEqpList, oldEqpList);
                 List<MdlJoueurs> inscriptionList = triLists[0];
                 List<MdlJoueurs> desinscriptionList = triLists[1];
                 //si les 2 listes sont vides, l'utilisateur a sauvé sans qu'aucun changement n'ait réellement été fait sur la composition d'équipe
-                if(inscriptionList.Count==0 && desinscriptionList.Count==0)
+                if (inscriptionList.Count == 0 && desinscriptionList.Count == 0)
                     throw new Exception("Aucune modification d'équipe");
                 //sinon, si au moins une des 2 contient des objets
                 else
@@ -46,6 +45,23 @@ namespace BackEnd_BL
             {
                 throw ex;
             }
+        }
+
+        //vérifier si il y a eu des modifications dans la liste de l'équipe
+        //renvoit true si il y a eu des modifs, et false sinon
+        public bool CheckIfModification(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList)
+        {
+            bool modif=false;
+            if (nwEqpList.Count == oldEqpList.Count)
+            {
+                foreach (MdlJoueurs oJoueur in nwEqpList)
+                {
+                    if (oldEqpList.Contains(oJoueur) == false)
+                        modif = true;
+                }
+            }
+            else modif = true;
+            return modif;
         }
 
         //trier la nouvelle liste et l'ancienne liste : renvoi  à l'index .. :la liste de ...

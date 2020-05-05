@@ -118,7 +118,7 @@ namespace BackEnd_UI.GestionEquipe
         }
 
         //au changement de sélection d'équipe, charger les tableaux des joueurs
-        private void boxEqpSelection_SelectedIndexChanged(object sender, EventArgs e)
+        private void listboxsData_Load(object sender, EventArgs e)
         {
             try
             {
@@ -238,26 +238,70 @@ namespace BackEnd_UI.GestionEquipe
             try
             {
                 //récupération des joueurs inscrits dans l'équipe après modifications
-                List<MdlJoueurs> nwEqpList = new List<MdlJoueurs>();
-                foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.Items)
-                {
-                    nwEqpList.Add(oJoueur);
-                }
+                List<MdlJoueurs> nwEqpList = lstbxJoueursEqpItems_ToMdlJoueursList();
+
                 //récupération de l'équipe sélectionnée
-                MdlEquipeChamp eqp = (MdlEquipeChamp)boxEqpSelection.SelectedItem;
+                MdlEquipeChamp eqp = (MdlEquipeChamp) boxEqpSelection.SelectedItem;
                 EquipesServices oServices = new EquipesServices();
                 //envoi des objets pour sauvegarde des modifications
-                oServices.SaveModifications(nwEqpList,joueursEqpOrigineList,eqp);
+                oServices.SaveModifications(nwEqpList, joueursEqpOrigineList, eqp);
                 MessageBox.Show("Enregistrement des modifications effectué");
                 //rechargement des tableaux après sauvegarde
-                boxEqpSelection_SelectedIndexChanged(sender,e);
             }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
+
+            }
+            finally
+            {
+                listboxsData_Load(sender, e);
             }
 
         }
+
+        //vérifier si changement non sauvegardé avant de fermer
+        private void frmInscriptionJoueurs_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                EquipesServices oServices = new EquipesServices();
+                if (oServices.CheckIfModification(lstbxJoueursEqpItems_ToMdlJoueursList(), joueursEqpOrigineList))
+                {
+                    DialogResult res = MessageBox.Show(
+                        "Des changements ont été effectués sans être sauvegardés. OK pour quitter sans sauver, Cancel puis Sauver pour annuler et sauver les changements. ",
+                        "changements non sauvegardés", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (res == DialogResult.Cancel)
+                        e.Cancel = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                throw oError;
+            }
+        }
+
+        //obtenir la liste des joueurs dans lstbxJoueursEqp
+        private List<MdlJoueurs> lstbxJoueursEqpItems_ToMdlJoueursList()
+        {
+            try
+            {
+                List<MdlJoueurs> tempList = new List<MdlJoueurs>();
+                foreach (MdlJoueurs oJoueur in lstbxJoueursEqp.Items)
+                {
+                    tempList.Add(oJoueur);
+                }
+
+                return tempList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

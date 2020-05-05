@@ -84,7 +84,7 @@
             this.boxEqpSelection.Name = "boxEqpSelection";
             this.boxEqpSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpSelection.TabIndex = 5;
-            this.boxEqpSelection.SelectedIndexChanged += new System.EventHandler(this.boxEqpSelection_SelectedIndexChanged);
+            this.boxEqpSelection.SelectedIndexChanged += new System.EventHandler(this.listboxsData_Load);
             // 
             // lblJoueursLibres
             // 
@@ -180,6 +180,7 @@
             this.Controls.Add(this.gpbxSlctChamp);
             this.Name = "frmInscriptionJoueurs";
             this.Text = "Inscription joueur(s) à une équipe pour un championnat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInscriptionJoueurs_FormClosing);
             this.Load += new System.EventHandler(this.frmInscriptionJoueurs_Load);
             this.gpbxSlctChamp.ResumeLayout(false);
             this.gpbxSlctEqp.ResumeLayout(false);
