@@ -21,8 +21,9 @@ namespace BackEnd_DAL
             : base("name=Fifa_ManagerEntities")
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -234,6 +235,40 @@ namespace BackEnd_DAL
                 new ObjectParameter("champ_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueursDispoByChamp", mergeOption, champ_idParameter);
+        }
+    
+        public virtual int SP_DeleteJoueur_Eqp(Nullable<int> jr_id, Nullable<int> eqp_id)
+        {
+            var jr_idParameter = jr_id.HasValue ?
+                new ObjectParameter("jr_id", jr_id) :
+                new ObjectParameter("jr_id", typeof(int));
+    
+            var eqp_idParameter = eqp_id.HasValue ?
+                new ObjectParameter("eqp_id", eqp_id) :
+                new ObjectParameter("eqp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteJoueur_Eqp", jr_idParameter, eqp_idParameter);
+        }
+    
+        public virtual int SP_InsertJoueur_Eqp(Nullable<int> jr_id, Nullable<int> eqp_id, Nullable<int> frstssn_id, Nullable<int> scndssn_id)
+        {
+            var jr_idParameter = jr_id.HasValue ?
+                new ObjectParameter("jr_id", jr_id) :
+                new ObjectParameter("jr_id", typeof(int));
+    
+            var eqp_idParameter = eqp_id.HasValue ?
+                new ObjectParameter("eqp_id", eqp_id) :
+                new ObjectParameter("eqp_id", typeof(int));
+    
+            var frstssn_idParameter = frstssn_id.HasValue ?
+                new ObjectParameter("frstssn_id", frstssn_id) :
+                new ObjectParameter("frstssn_id", typeof(int));
+    
+            var scndssn_idParameter = scndssn_id.HasValue ?
+                new ObjectParameter("scndssn_id", scndssn_id) :
+                new ObjectParameter("scndssn_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertJoueur_Eqp", jr_idParameter, eqp_idParameter, frstssn_idParameter, scndssn_idParameter);
         }
     }
 }
