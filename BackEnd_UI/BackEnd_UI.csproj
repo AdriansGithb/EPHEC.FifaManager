@@ -82,6 +82,12 @@
     <Compile Include="GestionEquipe\frmInscriptionJoueurs.Designer.cs">
       <DependentUpon>frmInscriptionJoueurs.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionEquipe\frmTransfertJoueur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionEquipe\frmTransfertJoueur.Designer.cs">
+      <DependentUpon>frmTransfertJoueur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Match\frmModifResult.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionEquipe\frmInscriptionJoueurs.resx">
       <DependentUpon>frmInscriptionJoueurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionEquipe\frmTransfertJoueur.resx">
+      <DependentUpon>frmTransfertJoueur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Match\frmModifResult.resx">
       <DependentUpon>frmModifResult.cs</DependentUpon>

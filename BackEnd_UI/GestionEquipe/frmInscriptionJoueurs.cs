@@ -266,6 +266,7 @@ namespace BackEnd_UI.GestionEquipe
         {
             try
             {
+                //vérification d'un changement éventuel dans la liste des joueurs de l'équipe
                 EquipesServices oServices = new EquipesServices();
                 if (oServices.CheckIfModification(lstbxJoueursEqpItems_ToMdlJoueursList(), joueursEqpOrigineList))
                 {

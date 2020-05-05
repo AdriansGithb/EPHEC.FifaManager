@@ -171,6 +171,11 @@ namespace BackEnd_BL
             }
         }
 
+        //obtenir la liste du/des championnat(s) actuellement en intersaison
+        public List<MdlChampionnat> GetInInterssnChampionnats()
+        {
+
+        }
 
 
     }

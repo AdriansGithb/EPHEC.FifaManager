@@ -120,8 +120,7 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
-
-
+        
         //désinscrire dans l'équipe envoyée en paramètre, la liste de joueurs envoyée en paramètre
         public void DesinscrireJoueurs_Eqp(List<MdlJoueurs> desinscriptJrsList, MdlEquipeChamp eqp)
         {
@@ -142,8 +141,7 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
-
-
+        
         //vérifier le nb max de joueurs inscrits possible, renvoit true si seuil pas atteint
         public bool SeuilMaxJoueurs_OK(int nbJoueursAjoutes, int nbJoueursInscrits)
         {
