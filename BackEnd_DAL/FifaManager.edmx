@@ -349,9 +349,7 @@
         </Function>
         <Function Name="SP_InsertJoueur_Eqp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="jr_id" Type="int" Mode="In" />
-          <Parameter Name="eqp_id" Type="int" Mode="In" />
-          <Parameter Name="frstssn_id" Type="int" Mode="In" />
-          <Parameter Name="scndssn_id" Type="int" Mode="In" />
+          <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertUpdateMatchClndr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="rcvd_mch_id" Type="int" Mode="In" />
@@ -998,9 +996,7 @@
           </FunctionImport>
           <FunctionImport Name="SP_InsertJoueur_Eqp">
             <Parameter Name="jr_id" Mode="In" Type="Int32" />
-            <Parameter Name="eqp_id" Mode="In" Type="Int32" />
-            <Parameter Name="frstssn_id" Mode="In" Type="Int32" />
-            <Parameter Name="scndssn_id" Mode="In" Type="Int32" />
+            <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">

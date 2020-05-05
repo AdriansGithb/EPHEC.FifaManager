@@ -120,7 +120,7 @@
             this.btnUncheckAll.Name = "btnUncheckAll";
             this.btnUncheckAll.Size = new System.Drawing.Size(142, 58);
             this.btnUncheckAll.TabIndex = 25;
-            this.btnUncheckAll.Text = "Décocher tout";
+            this.btnUncheckAll.Text = "Désélectionner tout";
             this.btnUncheckAll.UseVisualStyleBackColor = true;
             this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
             // 
@@ -154,6 +154,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(301, 331);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(142, 58);

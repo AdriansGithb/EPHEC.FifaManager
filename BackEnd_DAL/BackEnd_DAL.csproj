@@ -68,6 +68,7 @@
     <Compile Include="Equipes.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="EquipesData.cs" />
     <Compile Include="JoueursData.cs" />
     <Compile Include="Events.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>

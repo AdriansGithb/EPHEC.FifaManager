@@ -11,9 +11,9 @@ namespace BackEnd_BL
 {
     public class EquipesServices
     {
-        public static int nbJoueursMin = 5;
+        public static int NbJoueursMin = 5;
 
-        public static int nbJoueursMax = 10;
+        public static int NbJoueursMax = 10;
 
         //inscription de la liste sélectionnée (reçoit la sélection de joueurs à inscrire, l'équipe dans laquelle il faut les inscrire, le nb de joueurs inscrits dans l'équipe)
         public void SaveModifications(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList, MdlEquipeChamp eqp)
@@ -89,7 +89,11 @@ namespace BackEnd_BL
         {
             try
             {
-
+                EquipesData oData = new EquipesData();
+                foreach (MdlJoueurs oJoueur in inscriptJrsList)
+                {
+                    oData.SP_InsertJoueur_Eqp(oJoueur.Id,eqp.Id);
+                }
             }
             catch (SqlException ex)
             {
@@ -107,7 +111,11 @@ namespace BackEnd_BL
         {
             try
             {
-
+                EquipesData oData = new EquipesData();
+                foreach (MdlJoueurs oJoueur in desinscriptJrsList)
+                {
+                    oData.SP_DeleteJoueur_Eqp(oJoueur.Id, eqp.Id);
+                }
             }
             catch (SqlException ex)
             {
@@ -126,7 +134,7 @@ namespace BackEnd_BL
             try
             {
                 int nwTotal = nbJoueursAjoutes + nbJoueursInscrits;
-                if (nwTotal <= nbJoueursMax)
+                if (nwTotal <= NbJoueursMax)
                     return true;
                 else return false;
             }
@@ -141,7 +149,7 @@ namespace BackEnd_BL
             try
             {
                 int nwTotal = nbJoueursTotal - nbJoueursEnMoins;
-                if (nwTotal >= 5)
+                if (nwTotal >= NbJoueursMin)
                     return true;
                 else return false;
             }

@@ -248,6 +248,7 @@ namespace BackEnd_UI.GestionEquipe
                 EquipesServices oServices = new EquipesServices();
                 //envoi des objets pour sauvegarde des modifications
                 oServices.SaveModifications(nwEqpList,joueursEqpOrigineList,eqp);
+                MessageBox.Show("Enregistrement des modifications effectué");
                 //rechargement des tableaux après sauvegarde
                 boxEqpSelection_SelectedIndexChanged(sender,e);
             }

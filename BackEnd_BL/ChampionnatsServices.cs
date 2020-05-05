@@ -110,7 +110,7 @@ namespace BackEnd_BL
 
         }
 
-        //récupération de la liste d'équipes inscrites à une saison donnée en paramètre
+        //récupération de la liste d'équipes inscrites à un championnat donnée en paramètre
         public List<MdlEquipeChamp> GetEqpList_byChamp(int champ_id)
         {
             try

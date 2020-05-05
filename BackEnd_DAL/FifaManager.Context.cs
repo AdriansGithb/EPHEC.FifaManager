@@ -250,25 +250,17 @@ namespace BackEnd_DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteJoueur_Eqp", jr_idParameter, eqp_idParameter);
         }
     
-        public virtual int SP_InsertJoueur_Eqp(Nullable<int> jr_id, Nullable<int> eqp_id, Nullable<int> frstssn_id, Nullable<int> scndssn_id)
+        public virtual int SP_InsertJoueur_Eqp(Nullable<int> jr_id, Nullable<int> eqp_cochmp_id)
         {
             var jr_idParameter = jr_id.HasValue ?
                 new ObjectParameter("jr_id", jr_id) :
                 new ObjectParameter("jr_id", typeof(int));
     
-            var eqp_idParameter = eqp_id.HasValue ?
-                new ObjectParameter("eqp_id", eqp_id) :
-                new ObjectParameter("eqp_id", typeof(int));
+            var eqp_cochmp_idParameter = eqp_cochmp_id.HasValue ?
+                new ObjectParameter("eqp_cochmp_id", eqp_cochmp_id) :
+                new ObjectParameter("eqp_cochmp_id", typeof(int));
     
-            var frstssn_idParameter = frstssn_id.HasValue ?
-                new ObjectParameter("frstssn_id", frstssn_id) :
-                new ObjectParameter("frstssn_id", typeof(int));
-    
-            var scndssn_idParameter = scndssn_id.HasValue ?
-                new ObjectParameter("scndssn_id", scndssn_id) :
-                new ObjectParameter("scndssn_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertJoueur_Eqp", jr_idParameter, eqp_idParameter, frstssn_idParameter, scndssn_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertJoueur_Eqp", jr_idParameter, eqp_cochmp_idParameter);
         }
     }
 }
