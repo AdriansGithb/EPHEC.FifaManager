@@ -81,5 +81,20 @@ namespace BackEnd_UI
                 MessageBox.Show(oError.Message);
             }
         }
+
+        private void mn_TransfererJoueur_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmTransfertJoueur frmTransfert = new frmTransfertJoueur();
+                frmTransfert.MdiParent = this;
+                frmTransfert.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
     }
 }

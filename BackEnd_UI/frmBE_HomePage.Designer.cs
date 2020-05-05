@@ -71,7 +71,7 @@
             // mnItem_VoirClssmnt
             // 
             this.mnItem_VoirClssmnt.Name = "mnItem_VoirClssmnt";
-            this.mnItem_VoirClssmnt.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_VoirClssmnt.Size = new System.Drawing.Size(168, 22);
             this.mnItem_VoirClssmnt.Text = "Voir le classement";
             this.mnItem_VoirClssmnt.Click += new System.EventHandler(this.mn_VoirClassement_Click);
             // 
@@ -126,6 +126,7 @@
             this.mnItem_TransfererJoueur.Name = "mnItem_TransfererJoueur";
             this.mnItem_TransfererJoueur.Size = new System.Drawing.Size(180, 22);
             this.mnItem_TransfererJoueur.Text = "Transférer un joueur";
+            this.mnItem_TransfererJoueur.Click += new System.EventHandler(this.mn_TransfererJoueur_Click);
             // 
             // joueursToolStripMenuItem
             // 
@@ -138,7 +139,7 @@
             // mnItem_HistoriqueJoueur
             // 
             this.mnItem_HistoriqueJoueur.Name = "mnItem_HistoriqueJoueur";
-            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(156, 22);
             this.mnItem_HistoriqueJoueur.Text = "Voir l\'historique";
             // 
             // cartonsToolStripMenuItem
@@ -152,7 +153,7 @@
             // mnItem_Cartons
             // 
             this.mnItem_Cartons.Name = "mnItem_Cartons";
-            this.mnItem_Cartons.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_Cartons.Size = new System.Drawing.Size(153, 22);
             this.mnItem_Cartons.Text = "Voir les cartons";
             // 
             // frmBE_HomePage

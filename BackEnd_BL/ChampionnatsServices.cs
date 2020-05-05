@@ -174,7 +174,38 @@ namespace BackEnd_BL
         //obtenir la liste du/des championnat(s) actuellement en intersaison
         public List<MdlChampionnat> GetInInterssnChampionnats()
         {
+            try
+            {
+                //création liste avec tous les championnats
+                List<MdlChampionnat> allChampList = GetChampionnats();
+                //et d'une liste à renvoyer qui recevra tous les championnats dont l'intersaison est en cours
+                List<MdlChampionnat> rtrnList = new List<MdlChampionnat>();
+                //pour chaque championnat, vérifier si la date du jour se situe entre
+                //la date fin de 1e saison et la date de début de la 2e saison
+                foreach (MdlChampionnat champ in allChampList)
+                {
+                    //trouver la date de fin de la 1ere saison du championnat = début de l'intersaison
+                    List<MdlSaison> ssnList = GetChampSaisons(champ.Id);
+                    MdlSaison frstSsn = ssnList.Find(ssn => ssn.FirstOrSecond == 1);
+                    DateTime debutInterSsn = frstSsn.Debut.AddDays((MdlChampionnat.SsnWeeks * 7));
+                    //trouver la date de début de la 2e saison = fin de l'intersaison
+                    MdlSaison scndSsn = ssnList.Find(ssn => ssn.FirstOrSecond == 2);
+                    DateTime finInterSsn = scndSsn.Debut;
+                    //si la date d'aujourd'hui est postérieure au début de l'intersaison, et antérieure à la fin de l'intersaison
+                    if ((debutInterSsn < DateTime.Today) && (DateTime.Today < finInterSsn))
+                        rtrnList.Add(champ);
+                }
 
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
 

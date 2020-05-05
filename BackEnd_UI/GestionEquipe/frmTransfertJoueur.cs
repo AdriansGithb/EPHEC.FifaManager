@@ -38,7 +38,7 @@ namespace BackEnd_UI.GestionEquipe
         {
             try
             {
-                //chargement de la liste des championnats non débutés
+                //chargement de la liste des championnats en cours d'intersaison
                 ChampionnatsServices oService = new ChampionnatsServices();
                 List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
                 lstChamp = oService.GetInInterssnChampionnats();
