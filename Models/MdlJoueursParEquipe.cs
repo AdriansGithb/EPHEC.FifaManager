@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class MdlJoueurs
+    public class MdlJoueursParEquipe
     {
-        public int Id { get; set; }
+        public int CEqp_Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string NomPrenom { get; set; }
+        public DateTime LastUpdate { get; set; }
 
-        public MdlJoueurs()
+        public MdlJoueursParEquipe()
         {
 
         }
 
-        public MdlJoueurs(int id, string nom, string prenom)
+        public MdlJoueursParEquipe(int id, string nom, string prenom)
         {
-            this.Id = id;
+            this.CEqp_Id = id;
             this.Nom = nom;
             this.Prenom = prenom;
             this.NomPrenom = $"{nom} {prenom}";

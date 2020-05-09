@@ -14,6 +14,8 @@ namespace Errors
         {
             switch (erMsg)
             {
+                case "Plus de 10 joueurs": _Message = "Une équipe ne peut avoir plus de 10 joueurs.";
+                    break;
                 case "Aucune modification d'équipe":
                     _Message =
                         "Aucune modification n'a été effectuée sur la formation de l'équipe, aucune modification n'a donc été sauvegardée.";

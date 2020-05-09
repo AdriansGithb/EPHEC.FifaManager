@@ -72,6 +72,7 @@
             this.lstbxJoueursEqpOrgn.Name = "lstbxJoueursEqpOrgn";
             this.lstbxJoueursEqpOrgn.Size = new System.Drawing.Size(225, 212);
             this.lstbxJoueursEqpOrgn.TabIndex = 28;
+            this.lstbxJoueursEqpOrgn.SelectedIndexChanged += new System.EventHandler(this.lstbxJoueursEqpOrgn_SelectedIndexChanged);
             // 
             // boxEqpOrgnSelection
             // 
@@ -144,6 +145,7 @@
             this.btnTransferer.TabIndex = 21;
             this.btnTransferer.Text = "Transférer";
             this.btnTransferer.UseVisualStyleBackColor = true;
+            this.btnTransferer.Click += new System.EventHandler(this.btnTransferer_Click);
             // 
             // frmTransfertJoueur
             // 

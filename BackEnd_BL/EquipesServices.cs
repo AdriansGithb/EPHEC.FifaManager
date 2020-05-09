@@ -245,6 +245,62 @@ namespace BackEnd_BL
             }
         }
 
+        //vérifier si l'équipe cible du transfert risque d'être l'équipe d'origine du transfert également
+        public int CheckIfSlctdEqpOrgn_IsInEqpTrnsfrtList(MdlEquipeChamp slctdEqpOrgn,
+            List<MdlEquipeChamp> eqpTrnsfrtList)
+        {
+            try
+            {
+                //si la liste des équipes cibles comprend l'équipe passée en paramètre
+                if (eqpTrnsfrtList.Find(eqp => eqp.Id == slctdEqpOrgn.Id)!=null)
+                {
+                    //renvoyer l'index de la liste où se trouve l'équipe
+                    return eqpTrnsfrtList.FindIndex(eqp => eqp.Id == slctdEqpOrgn.Id);
+                }
+                //sinon, renvoyer -1
+                else return -1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        //vérifier si l'équipe recevant le joueur comptera plus de 10 joueurs après transfert
+        //renvoit true si possible
+        public bool NbJoueursApresTansfert_OK(int nbJoueurs)
+        {
+            try
+            {
+                //si le nombre de joueurs inscrits dans l'équipe cible dépasse 10, transfert pas permis
+                if (nbJoueurs + 1 > 10)
+                    return false;
+                else return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //transférer un joueur sélectionné vers une autre équipe
+        public void TransfererJoueur(MdlJoueursParEquipe jrATransferer, MdlEquipeChamp nvlEqp)
+        {
+            try
+            {
+                //vérifier que l'équipe ne dépassera pas 10 joueurs après transfert
+                JoueursData oJrData = new JoueursData();
+                int nbJrsInscrits = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(nvlEqp.Id).Count;
+                if (NbJoueursApresTansfert_OK(nbJrsInscrits))
+                {
+
+                }
+                else throw new Exception("Plus de 10 joueurs");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

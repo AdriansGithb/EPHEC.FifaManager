@@ -21,6 +21,7 @@ namespace BackEnd_DAL
             : base("name=Fifa_ManagerEntities")
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

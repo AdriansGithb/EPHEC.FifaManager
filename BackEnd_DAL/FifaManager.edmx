@@ -1087,10 +1087,10 @@
           <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_SelectAllJoueursByEqp_ForSsn2_Result">
-          <Property Type="Int32" Name="Jr_ID" Nullable="false" />
           <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="CEqp_LastUpdate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CEqp_ID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1328,10 +1328,10 @@
           <FunctionImportMapping FunctionImportName="SP_SelectAllJoueursByEqp_ForSsn2" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueursByEqp_ForSsn2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectAllJoueursByEqp_ForSsn2_Result">
-                <ScalarProperty Name="Jr_ID" ColumnName="Jr_ID" />
                 <ScalarProperty Name="Jr_Nom" ColumnName="Jr_Nom" />
                 <ScalarProperty Name="Jr_Prenom" ColumnName="Jr_Prenom" />
                 <ScalarProperty Name="CEqp_LastUpdate" ColumnName="CEqp_LastUpdate" />
+                <ScalarProperty Name="CEqp_ID" ColumnName="CEqp_ID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
