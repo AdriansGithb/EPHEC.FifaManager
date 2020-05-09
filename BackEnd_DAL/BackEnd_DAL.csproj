@@ -108,6 +108,9 @@
     <Compile Include="SP_SelectAllChampionnats_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_SelectAllJoueursByEqp_ForSsn2_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_SelectAllJoueursByEqp_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>

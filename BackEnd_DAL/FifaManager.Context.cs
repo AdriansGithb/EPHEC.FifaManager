@@ -270,5 +270,14 @@ namespace BackEnd_DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result>("SP_SelectEqpPlus5Joueurs_Ssn2_byChamp", champ_idParameter);
         }
+    
+        public virtual ObjectResult<SP_SelectAllJoueursByEqp_ForSsn2_Result> SP_SelectAllJoueursByEqp_ForSsn2(Nullable<int> eqp_cochmp_id)
+        {
+            var eqp_cochmp_idParameter = eqp_cochmp_id.HasValue ?
+                new ObjectParameter("eqp_cochmp_id", eqp_cochmp_id) :
+                new ObjectParameter("eqp_cochmp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllJoueursByEqp_ForSsn2_Result>("SP_SelectAllJoueursByEqp_ForSsn2", eqp_cochmp_idParameter);
+        }
     }
 }

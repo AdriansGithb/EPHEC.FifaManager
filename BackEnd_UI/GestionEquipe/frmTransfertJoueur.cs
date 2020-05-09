@@ -70,7 +70,6 @@ namespace BackEnd_UI.GestionEquipe
             }
         }
 
-
         //charger la liste des équipes pouvant transférer un joueur vers une autre équipe
         private void boxEqpOrgnSelection_Load(MdlChampionnat oChamp)
         {
@@ -99,6 +98,18 @@ namespace BackEnd_UI.GestionEquipe
             {
                 throw ex;
             }
+        }
+
+        //charger la liste des joueurs de l'équipe d'origine sélectionnée du joueur à transférer
+        private void lstbxJoueursEqpOrgn_Load()
+        {
+
+        }
+
+        //charger la liste des joueurs de l'équipe dans laquelle le joueur devra être transféré
+        private void lstbxJoueursEqpTrnsfrt_Load()
+        {
+
         }
 
     }

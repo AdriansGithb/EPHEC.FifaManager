@@ -12,6 +12,7 @@ namespace Models
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string NomPrenom { get; set; }
+        public DateTime LastUpdate { get; set; }
 
         public MdlJoueurs()
         {

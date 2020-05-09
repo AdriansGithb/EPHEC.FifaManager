@@ -369,6 +369,9 @@
         <Function Name="SP_SelectAllJoueursByEqp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SelectAllJoueursByEqp_ForSsn2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SelectAllJoueursDispoByChamp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
@@ -1002,7 +1005,10 @@
             <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectEqpPlus5Joueurs_Ssn2_byChamp" ReturnType="Collection(Fifa_ManagerModel.SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result)">
-            <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          <Parameter Name="champ_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectAllJoueursByEqp_ForSsn2" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllJoueursByEqp_ForSsn2_Result)">
+            <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
@@ -1079,6 +1085,12 @@
         <ComplexType Name="SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result">
           <Property Type="Int32" Name="EqpId" Nullable="false" />
           <Property Type="String" Name="Eqp_Nom" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllJoueursByEqp_ForSsn2_Result">
+          <Property Type="Int32" Name="Jr_ID" Nullable="false" />
+          <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CEqp_LastUpdate" Nullable="false" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1310,6 +1322,16 @@
               <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result">
                 <ScalarProperty Name="EqpId" ColumnName="EqpId" />
                 <ScalarProperty Name="Eqp_Nom" ColumnName="Eqp_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllJoueursByEqp_ForSsn2" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueursByEqp_ForSsn2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectAllJoueursByEqp_ForSsn2_Result">
+                <ScalarProperty Name="Jr_ID" ColumnName="Jr_ID" />
+                <ScalarProperty Name="Jr_Nom" ColumnName="Jr_Nom" />
+                <ScalarProperty Name="Jr_Prenom" ColumnName="Jr_Prenom" />
+                <ScalarProperty Name="CEqp_LastUpdate" ColumnName="CEqp_LastUpdate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
