@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +23,20 @@ namespace BackEnd_DAL
             ctx.SP_DeleteJoueur_Eqp(jr_id, eqp_cochmp_id);
         }
 
+        //obtenir la liste des équipes ayant plus de 5 joueurs inscrits pour la saison 2
+        public List<SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result> SP_SelectEqpPlus5Joueurs_Ssn2_byChamp(int champ_id)
+        {
+            try
+            {
+                Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+                List<SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result> rtrnList =
+                    ctx.SP_SelectEqpPlus5Joueurs_Ssn2_byChamp(champ_id).ToList();
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
     }
 }

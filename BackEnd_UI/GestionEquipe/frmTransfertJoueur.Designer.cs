@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.gpbxSlctEqpOrgn = new System.Windows.Forms.GroupBox();
+            this.gpbxSlctJoueur = new System.Windows.Forms.GroupBox();
+            this.lstbxJoueursEqpOrgn = new System.Windows.Forms.ListBox();
             this.boxEqpOrgnSelection = new System.Windows.Forms.ComboBox();
             this.gpbxSlctChamp = new System.Windows.Forms.GroupBox();
             this.boxChampSelection = new System.Windows.Forms.ComboBox();
             this.gpbxSlctEqpTrnsfrt = new System.Windows.Forms.GroupBox();
-            this.boxEqpTrnsfrtSelection = new System.Windows.Forms.ComboBox();
-            this.gpbxSlctJoueur = new System.Windows.Forms.GroupBox();
-            this.btnTransferer = new System.Windows.Forms.Button();
-            this.lstbxJoueursEqpOrgn = new System.Windows.Forms.ListBox();
             this.lstbxJoueursEqpTrnsfrt = new System.Windows.Forms.ListBox();
+            this.boxEqpTrnsfrtSelection = new System.Windows.Forms.ComboBox();
+            this.btnTransferer = new System.Windows.Forms.Button();
             this.gpbxSlctEqpOrgn.SuspendLayout();
+            this.gpbxSlctJoueur.SuspendLayout();
             this.gpbxSlctChamp.SuspendLayout();
             this.gpbxSlctEqpTrnsfrt.SuspendLayout();
-            this.gpbxSlctJoueur.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbxSlctEqpOrgn
@@ -54,6 +54,24 @@
             this.gpbxSlctEqpOrgn.TabIndex = 19;
             this.gpbxSlctEqpOrgn.TabStop = false;
             this.gpbxSlctEqpOrgn.Text = "2. Sélectionner l\'équipe du joueur à transférer";
+            // 
+            // gpbxSlctJoueur
+            // 
+            this.gpbxSlctJoueur.Controls.Add(this.lstbxJoueursEqpOrgn);
+            this.gpbxSlctJoueur.Location = new System.Drawing.Point(6, 46);
+            this.gpbxSlctJoueur.Name = "gpbxSlctJoueur";
+            this.gpbxSlctJoueur.Size = new System.Drawing.Size(240, 255);
+            this.gpbxSlctJoueur.TabIndex = 20;
+            this.gpbxSlctJoueur.TabStop = false;
+            this.gpbxSlctJoueur.Text = "Sélectionner le joueur à transférer";
+            // 
+            // lstbxJoueursEqpOrgn
+            // 
+            this.lstbxJoueursEqpOrgn.FormattingEnabled = true;
+            this.lstbxJoueursEqpOrgn.Location = new System.Drawing.Point(6, 19);
+            this.lstbxJoueursEqpOrgn.Name = "lstbxJoueursEqpOrgn";
+            this.lstbxJoueursEqpOrgn.Size = new System.Drawing.Size(225, 212);
+            this.lstbxJoueursEqpOrgn.TabIndex = 28;
             // 
             // boxEqpOrgnSelection
             // 
@@ -84,6 +102,7 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(337, 21);
             this.boxChampSelection.TabIndex = 5;
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.boxChampSelection_SelectedIndexChanged);
             // 
             // gpbxSlctEqpTrnsfrt
             // 
@@ -96,6 +115,15 @@
             this.gpbxSlctEqpTrnsfrt.TabStop = false;
             this.gpbxSlctEqpTrnsfrt.Text = "3. Sélectionner l\'équipe du joueur à transférer";
             // 
+            // lstbxJoueursEqpTrnsfrt
+            // 
+            this.lstbxJoueursEqpTrnsfrt.FormattingEnabled = true;
+            this.lstbxJoueursEqpTrnsfrt.Location = new System.Drawing.Point(62, 65);
+            this.lstbxJoueursEqpTrnsfrt.Name = "lstbxJoueursEqpTrnsfrt";
+            this.lstbxJoueursEqpTrnsfrt.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lstbxJoueursEqpTrnsfrt.Size = new System.Drawing.Size(225, 212);
+            this.lstbxJoueursEqpTrnsfrt.TabIndex = 29;
+            // 
             // boxEqpTrnsfrtSelection
             // 
             this.boxEqpTrnsfrtSelection.BackColor = System.Drawing.SystemColors.Window;
@@ -106,16 +134,6 @@
             this.boxEqpTrnsfrtSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpTrnsfrtSelection.TabIndex = 5;
             // 
-            // gpbxSlctJoueur
-            // 
-            this.gpbxSlctJoueur.Controls.Add(this.lstbxJoueursEqpOrgn);
-            this.gpbxSlctJoueur.Location = new System.Drawing.Point(6, 46);
-            this.gpbxSlctJoueur.Name = "gpbxSlctJoueur";
-            this.gpbxSlctJoueur.Size = new System.Drawing.Size(240, 255);
-            this.gpbxSlctJoueur.TabIndex = 20;
-            this.gpbxSlctJoueur.TabStop = false;
-            this.gpbxSlctJoueur.Text = "Sélectionner le joueur à transférer";
-            // 
             // btnTransferer
             // 
             this.btnTransferer.Location = new System.Drawing.Point(485, 21);
@@ -124,23 +142,6 @@
             this.btnTransferer.TabIndex = 21;
             this.btnTransferer.Text = "Transférer";
             this.btnTransferer.UseVisualStyleBackColor = true;
-            // 
-            // lstbxJoueursEqpOrgn
-            // 
-            this.lstbxJoueursEqpOrgn.FormattingEnabled = true;
-            this.lstbxJoueursEqpOrgn.Location = new System.Drawing.Point(6, 19);
-            this.lstbxJoueursEqpOrgn.Name = "lstbxJoueursEqpOrgn";
-            this.lstbxJoueursEqpOrgn.Size = new System.Drawing.Size(225, 212);
-            this.lstbxJoueursEqpOrgn.TabIndex = 28;
-            // 
-            // lstbxJoueursEqpTrnsfrt
-            // 
-            this.lstbxJoueursEqpTrnsfrt.FormattingEnabled = true;
-            this.lstbxJoueursEqpTrnsfrt.Location = new System.Drawing.Point(62, 65);
-            this.lstbxJoueursEqpTrnsfrt.Name = "lstbxJoueursEqpTrnsfrt";
-            this.lstbxJoueursEqpTrnsfrt.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lstbxJoueursEqpTrnsfrt.Size = new System.Drawing.Size(225, 212);
-            this.lstbxJoueursEqpTrnsfrt.TabIndex = 29;
             // 
             // frmTransfertJoueur
             // 
@@ -155,9 +156,9 @@
             this.Text = "Transfert de joueur";
             this.Load += new System.EventHandler(this.frmTransfertJoueur_Load);
             this.gpbxSlctEqpOrgn.ResumeLayout(false);
+            this.gpbxSlctJoueur.ResumeLayout(false);
             this.gpbxSlctChamp.ResumeLayout(false);
             this.gpbxSlctEqpTrnsfrt.ResumeLayout(false);
-            this.gpbxSlctJoueur.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

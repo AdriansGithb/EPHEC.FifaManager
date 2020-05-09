@@ -157,6 +157,7 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
+        
         //vérifier le nb min de joueurs inscrits dans l'équipe, renvoit true si seuil pas atteint
         public bool SeuilMinJoueurs_OK(int nbJoueursEnMoins, int nbJoueursTotal)
         {
@@ -172,6 +173,76 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
-        //utiliser les 2 dans la fonction de sauvegarde vers la BD
+
+        //obtenir la liste des équipes remplissant les conditions de transfert vers une autre équipe
+        public List<MdlEquipeChamp> GetEqpPouvantTransferer(int champ_id)
+        {
+            try
+            {
+                EquipesData oData = new EquipesData();
+                List<SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result> oResList =
+                    oData.SP_SelectEqpPlus5Joueurs_Ssn2_byChamp(champ_id);
+                List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
+                foreach (SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result eqp in oResList)
+                {
+                    MdlEquipeChamp oEqp = new MdlEquipeChamp();
+                    oEqp.Id = eqp.EqpId;
+                    oEqp.Nom = eqp.Eqp_Nom;
+
+                    rtrnList.Add(oEqp);
+                }
+
+                return rtrnList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //obtenir la liste des équipes remplissant les conditions pour recevoir un joueur lors d'un transfert depuis une autre équipe
+        public List<MdlEquipeChamp> GetEqpPouvantRecevoirTrnsfrt(int champ_id)
+        {
+            try
+            {
+                //l'équipe doit être dans les 3 dernières du classement
+                ClassementServices oClassmntServices = new ClassementServices();
+                //prendre le classement du championnat
+                List<MdlClassement> oClassement = oClassmntServices.GetClassement(champ_id);
+                //créer une liste recevant les équipes dans les 3 dernières positions du classement
+                List<MdlEquipeChamp> eqpList = new List<MdlEquipeChamp>();
+                //prendre le dernier index de la liste
+                int indexLastEqp = (oClassement.Count) - 1;
+                //parcourir la liste du classement par la fin, pour prendre les 3 dernières équipes
+                for (int i = 0; i < 3 && indexLastEqp >= 0; i++, indexLastEqp--)
+                {
+                    MdlEquipeChamp oEqp = new MdlEquipeChamp();
+                    oEqp.Id = oClassement[indexLastEqp].EquipeID;
+                    oEqp.Nom = oClassement[indexLastEqp].EquipeNom;
+                    eqpList.Add(oEqp);
+                }
+
+                //vérifier qu'il n'y a pas d'égalité de points entre la dernière équipe -2 et sa/ses précédentes
+                //si oui, les ajouter à la liste car elles sont à la même position du classement
+                if ((indexLastEqp >= 0) && (oClassement[indexLastEqp].Points == oClassement[indexLastEqp + 1].Points))
+                {
+                    while ((indexLastEqp >= 0) &&
+                           (oClassement[indexLastEqp].Points == oClassement[indexLastEqp + 1].Points))
+                    {
+                        MdlEquipeChamp oEqp = new MdlEquipeChamp();
+                        oEqp.Id = oClassement[indexLastEqp].EquipeID;
+                        oEqp.Nom = oClassement[indexLastEqp].EquipeNom;
+                        eqpList.Add(oEqp);
+                        indexLastEqp--;
+                    }
+                }
+
+                return eqpList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

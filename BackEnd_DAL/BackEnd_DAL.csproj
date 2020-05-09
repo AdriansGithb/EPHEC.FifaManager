@@ -132,6 +132,9 @@
     <Compile Include="SP_SelectEqpPerSsn_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_SelectResults_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
