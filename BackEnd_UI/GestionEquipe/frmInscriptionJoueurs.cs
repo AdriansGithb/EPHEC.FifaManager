@@ -103,7 +103,7 @@ namespace BackEnd_UI.GestionEquipe
                 lstbxJoueursEqp.Items.Clear();
                 JoueursServices oServices = new JoueursServices();
                 int eqp_cochamp_id = ((MdlEquipeChamp)boxEqpSelection.SelectedItem).Id;
-                List<MdlJoueurs> jrList = oServices.GetJoueursEqpList(eqp_cochamp_id);
+                List<MdlJoueurs> jrList = oServices.GetJoueursEqpList_AllSsn(eqp_cochamp_id);
                 //insérer chaque joueur dans la listbox
                 foreach (MdlJoueurs joueur in jrList)
                     lstbxJoueursEqp.Items.Add(joueur);

@@ -52,8 +52,8 @@ namespace BackEnd_BL
             }
         }
 
-        //obtenir la liste des joueurs inscrits dans une équipe (donnée en paramètre) pour un championnat 
-        public List<MdlJoueurs> GetJoueursEqpList(int eqp_cochamp_id)
+        //obtenir la liste des joueurs inscrits dans une équipe (donnée en paramètre) pour les 2 saisons d'un championnat 
+        public List<MdlJoueurs> GetJoueursEqpList_AllSsn(int eqp_cochamp_id)
         {
             try
             {
@@ -71,6 +71,32 @@ namespace BackEnd_BL
                 throw ex;
             }
 
+        }
+
+        //obtenir la liste des joueurs inscrits dans une équipe (donnée en paramètre) pour la 2e saison d'un championnat
+        public List<MdlJoueurs> GetJoueursEqpList_Ssn2(int eqp_cochamp_id)
+        {
+            try
+            {
+                JoueursData oData = new JoueursData();
+                List<SP_SelectAllJoueursByEqp_ForSsn2_Result> rcvdList =
+                    oData.SP_SelectAllJoueursByEqp_ForSsn2(eqp_cochamp_id);
+                List<MdlJoueurs> rtrnList = new List<MdlJoueurs>();
+                foreach (SP_SelectAllJoueursByEqp_ForSsn2_Result joueur in rcvdList)
+                {
+                    MdlJoueurs oJoueur = new MdlJoueurs(joueur.Jr_ID,joueur.Jr_Nom,joueur.Jr_Prenom);
+                    oJoueur.LastUpdate = joueur.CEqp_LastUpdate;
+
+                    rtrnList.Add(oJoueur);
+                }
+
+                return rtrnList;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

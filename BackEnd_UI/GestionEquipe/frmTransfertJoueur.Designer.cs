@@ -82,6 +82,7 @@
             this.boxEqpOrgnSelection.Name = "boxEqpOrgnSelection";
             this.boxEqpOrgnSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpOrgnSelection.TabIndex = 5;
+            this.boxEqpOrgnSelection.SelectedIndexChanged += new System.EventHandler(this.boxEqpOrgnSelection_SelectedIndexChanged);
             // 
             // gpbxSlctChamp
             // 
@@ -113,7 +114,7 @@
             this.gpbxSlctEqpTrnsfrt.Size = new System.Drawing.Size(365, 307);
             this.gpbxSlctEqpTrnsfrt.TabIndex = 20;
             this.gpbxSlctEqpTrnsfrt.TabStop = false;
-            this.gpbxSlctEqpTrnsfrt.Text = "3. Sélectionner l\'équipe du joueur à transférer";
+            this.gpbxSlctEqpTrnsfrt.Text = "3. Sélectionner l\'équipe vers laquelle transférer le joueur sélectionné";
             // 
             // lstbxJoueursEqpTrnsfrt
             // 
@@ -133,6 +134,7 @@
             this.boxEqpTrnsfrtSelection.Name = "boxEqpTrnsfrtSelection";
             this.boxEqpTrnsfrtSelection.Size = new System.Drawing.Size(337, 21);
             this.boxEqpTrnsfrtSelection.TabIndex = 5;
+            this.boxEqpTrnsfrtSelection.SelectedIndexChanged += new System.EventHandler(this.boxEqpTrnsfrtSelection_SelectedIndexChanged);
             // 
             // btnTransferer
             // 

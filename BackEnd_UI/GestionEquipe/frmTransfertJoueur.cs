@@ -103,14 +103,73 @@ namespace BackEnd_UI.GestionEquipe
         //charger la liste des joueurs de l'équipe d'origine sélectionnée du joueur à transférer
         private void lstbxJoueursEqpOrgn_Load()
         {
+            try
+            {
+                MdlEquipeChamp slctdEqp = (MdlEquipeChamp) boxEqpOrgnSelection.SelectedItem;
+                JoueursServices oServices = new JoueursServices();
+                List<MdlJoueurs> jrList = oServices.GetJoueursEqpList_Ssn2(slctdEqp.Id);
+                foreach (MdlJoueurs joueur in jrList)
+                {
+                    lstbxJoueursEqpOrgn.Items.Add(joueur);
+                }
 
+                lstbxJoueursEqpOrgn.DisplayMember = "NomPrenom";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //charger la liste des joueurs de l'équipe dans laquelle le joueur devra être transféré
         private void lstbxJoueursEqpTrnsfrt_Load()
         {
+            try
+            {
+                MdlEquipeChamp slctdEqp = (MdlEquipeChamp)boxEqpTrnsfrtSelection.SelectedItem;
+                JoueursServices oServices = new JoueursServices();
+                List<MdlJoueurs> jrList = oServices.GetJoueursEqpList_Ssn2(slctdEqp.Id);
+                foreach (MdlJoueurs joueur in jrList)
+                {
+                    lstbxJoueursEqpTrnsfrt.Items.Add(joueur);
+                }
+                lstbxJoueursEqpTrnsfrt.DisplayMember = "NomPrenom";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
 
+        //(re)charger la liste d'objets joueurs dans la listbox equipe d'origine en cas de changement d'index dans la combobox eqp origine
+        private void boxEqpOrgnSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lstbxJoueursEqpOrgn.Items.Clear();
+                lstbxJoueursEqpOrgn_Load();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        //(re)charger la liste d'objets joueurs dans la listbox equipe cible en cas de changement d'index dans la combobox eqp cible du transfert
+        private void boxEqpTrnsfrtSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lstbxJoueursEqpTrnsfrt.Items.Clear();
+                lstbxJoueursEqpTrnsfrt_Load();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
     }
 }
