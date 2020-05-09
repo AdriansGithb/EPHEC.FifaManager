@@ -14,6 +14,15 @@ namespace Errors
         {
             switch (erMsg)
             {
+                case "Moins de 5 joueurs":
+                    _Message = "Une équipe ne peut avoir moins de 5 joueurs.";
+                    break;
+                case "Moins de 5 joueurs\r\nThe transaction ended in the trigger. The batch has been aborted.": 
+                    _Message="Une équipe ne peut avoir moins de 5 joueurs.";
+                    break;
+                case "Plus de 10 joueurs\r\nThe transaction ended in the trigger. The batch has been aborted.":
+                    _Message = "Une équipe ne peut avoir plus de 10 joueurs.";
+                    break;
                 case "Plus de 10 joueurs": _Message = "Une équipe ne peut avoir plus de 10 joueurs.";
                     break;
                 case "Aucune modification d'équipe":

@@ -38,5 +38,19 @@ namespace BackEnd_DAL
                 throw new Exception(ex.InnerException.Message);
             }
         }
+
+        //transferer un joueur
+        public void SP_TransfererJoueur(int ceqp_id_jrATransferer, int cochmpId_nvlEqp, DateTime lstupdt )
+        {
+            try
+            {
+                Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+                ctx.SP_TransfererJoueur(ceqp_id_jrATransferer, cochmpId_nvlEqp, lstupdt);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
     }
 }

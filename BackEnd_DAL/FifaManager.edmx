@@ -401,6 +401,11 @@
         <Function Name="SP_SetDateGnrClndr_Ssn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="ssn_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_TransfererJoueur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="CEqp_Id_jrATransferer" Type="int" Mode="In" />
+          <Parameter Name="Cochmp_EqpId_nvlEqp" Type="int" Mode="In" />
+          <Parameter Name="rcvd_ceqp_lstupdt" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="Fifa_ManagerModelStoreContainer">
           <EntitySet Name="Championnats" EntityType="Self.Championnats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Constitution_Championnat" EntityType="Self.Constitution_Championnat" Schema="dbo" store:Type="Tables" />
@@ -1008,7 +1013,12 @@
           <Parameter Name="champ_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllJoueursByEqp_ForSsn2" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllJoueursByEqp_ForSsn2_Result)">
-            <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
+          <Parameter Name="eqp_cochmp_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TransfererJoueur">
+            <Parameter Name="CEqp_Id_jrATransferer" Mode="In" Type="Int32" />
+            <Parameter Name="Cochmp_EqpId_nvlEqp" Mode="In" Type="Int32" />
+            <Parameter Name="rcvd_ceqp_lstupdt" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
@@ -1335,6 +1345,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TransfererJoueur" FunctionName="Fifa_ManagerModel.Store.SP_TransfererJoueur" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

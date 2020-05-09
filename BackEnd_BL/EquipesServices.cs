@@ -268,7 +268,7 @@ namespace BackEnd_BL
 
         //vérifier si l'équipe recevant le joueur comptera plus de 10 joueurs après transfert
         //renvoit true si possible
-        public bool NbJoueursApresTansfert_OK(int nbJoueurs)
+        public bool NbJoueursMaxApresTansfert_OK(int nbJoueurs)
         {
             try
             {
@@ -283,18 +283,43 @@ namespace BackEnd_BL
             }
         }
 
-        //transférer un joueur sélectionné vers une autre équipe
-        public void TransfererJoueur(MdlJoueursParEquipe jrATransferer, MdlEquipeChamp nvlEqp)
+        //vérifier si l'équipe donnant le joueur comptera min 5 joueurs après transfert
+        //renvoit true si possible
+        public bool NbJoueursMinApresTansfert_OK(int nbJoueurs)
         {
             try
             {
-                //vérifier que l'équipe ne dépassera pas 10 joueurs après transfert
-                JoueursData oJrData = new JoueursData();
-                int nbJrsInscrits = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(nvlEqp.Id).Count;
-                if (NbJoueursApresTansfert_OK(nbJrsInscrits))
-                {
+                //si le nombre de joueurs inscrits dans l'équipe cible est égal à 5, transfert pas permis
+                if (nbJoueurs <= 5)
+                    return false;
+                else return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+
+        //transférer un joueur sélectionné vers une autre équipe
+        public void TransfererJoueur(MdlJoueursParEquipe jrATransferer, MdlEquipeChamp prevEqp,MdlEquipeChamp nvlEqp)
+        {
+            try
+            {
+                JoueursData oJrData = new JoueursData();
+                //vérifier que l'ancienne équipe n'aura pas moins de 5 joueurs après transfert
+                int nbJrsPrevEqp = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(prevEqp.Id).Count;
+                //vérifier que la nouvelle équipe ne dépassera pas 10 joueurs après transfert
+                int nbJrsNvlEqp = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(nvlEqp.Id).Count;
+                //si le nb de joueurs dans les 2 équipes est valide après transfert, envoyer le transfert dans la BD
+                if (NbJoueursMaxApresTansfert_OK(nbJrsNvlEqp) && NbJoueursMinApresTansfert_OK(nbJrsPrevEqp))
+                {
+                    EquipesData oEqpData = new EquipesData();
+                    oEqpData.SP_TransfererJoueur(jrATransferer.CEqp_Id, nvlEqp.Id, jrATransferer.LastUpdate);
                 }
+                //sinon
+                else if(NbJoueursMinApresTansfert_OK(nbJrsPrevEqp)==false)
+                    throw new Exception("Moins de 5 joueurs");
                 else throw new Exception("Plus de 10 joueurs");
             }
             catch (Exception ex)

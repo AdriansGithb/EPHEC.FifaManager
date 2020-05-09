@@ -212,22 +212,32 @@ namespace BackEnd_UI.GestionEquipe
             else btnTransferer.Enabled = false;
         }
 
+        //transferer le joueur sélectionné
         private void btnTransferer_Click(object sender, EventArgs e)
         {
             try
             {
                 //récupérer le joueur sélectionné
                 MdlJoueursParEquipe slctdJoueur = (MdlJoueursParEquipe) lstbxJoueursEqpOrgn.SelectedItem;
+                //récupérer l'ancienne équipe du joueur
+                MdlEquipeChamp prevEqp = (MdlEquipeChamp) boxEqpOrgnSelection.SelectedItem;
                 //récupérer l'équipe vers laquelle le joueur est transféré
                 MdlEquipeChamp nvlEqp = (MdlEquipeChamp) boxEqpTrnsfrtSelection.SelectedItem;
                 //transferer le joueur
                 EquipesServices oServices = new EquipesServices();
-                oServices.TransfererJoueur(slctdJoueur, nvlEqp);
+                oServices.TransfererJoueur(slctdJoueur, prevEqp ,nvlEqp);
+                MessageBox.Show("Transfert validé et sauvegardé");
             }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
+            }
+            finally
+            {
+                boxEqpOrgnSelection_Load((MdlChampionnat)boxChampSelection.SelectedItem);
+                boxEqpOrgnSelection_SelectedIndexChanged(sender,e);
+                boxEqpTrnsfrtSelection_SelectedIndexChanged(sender,e);
             }
         }
 

@@ -21,7 +21,6 @@ namespace BackEnd_DAL
             : base("name=Fifa_ManagerEntities")
         {
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -279,6 +278,23 @@ namespace BackEnd_DAL
                 new ObjectParameter("eqp_cochmp_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllJoueursByEqp_ForSsn2_Result>("SP_SelectAllJoueursByEqp_ForSsn2", eqp_cochmp_idParameter);
+        }
+    
+        public virtual int SP_TransfererJoueur(Nullable<int> cEqp_Id_jrATransferer, Nullable<int> cochmp_EqpId_nvlEqp, Nullable<System.DateTime> rcvd_ceqp_lstupdt)
+        {
+            var cEqp_Id_jrATransfererParameter = cEqp_Id_jrATransferer.HasValue ?
+                new ObjectParameter("CEqp_Id_jrATransferer", cEqp_Id_jrATransferer) :
+                new ObjectParameter("CEqp_Id_jrATransferer", typeof(int));
+    
+            var cochmp_EqpId_nvlEqpParameter = cochmp_EqpId_nvlEqp.HasValue ?
+                new ObjectParameter("Cochmp_EqpId_nvlEqp", cochmp_EqpId_nvlEqp) :
+                new ObjectParameter("Cochmp_EqpId_nvlEqp", typeof(int));
+    
+            var rcvd_ceqp_lstupdtParameter = rcvd_ceqp_lstupdt.HasValue ?
+                new ObjectParameter("rcvd_ceqp_lstupdt", rcvd_ceqp_lstupdt) :
+                new ObjectParameter("rcvd_ceqp_lstupdt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_TransfererJoueur", cEqp_Id_jrATransfererParameter, cochmp_EqpId_nvlEqpParameter, rcvd_ceqp_lstupdtParameter);
         }
     }
 }
