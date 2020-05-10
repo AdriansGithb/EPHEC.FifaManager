@@ -57,6 +57,7 @@
             // 
             // boxCartSelection
             // 
+            this.boxCartSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxCartSelection.FormattingEnabled = true;
             this.boxCartSelection.Location = new System.Drawing.Point(340, 80);
             this.boxCartSelection.Name = "boxCartSelection";
@@ -103,6 +104,7 @@
             this.Controls.Add(this.gpbxFiltrer);
             this.Name = "frmCartons";
             this.Text = "Liste des cartons";
+            this.Load += new System.EventHandler(this.frmCartons_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdCartons)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

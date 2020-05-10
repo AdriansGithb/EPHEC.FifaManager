@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MdlTypeCarton.cs" />
     <Compile Include="MdlEquipeChamp.cs" />
     <Compile Include="MdlJoueurHistorique.cs" />
     <Compile Include="MdlJoueursParEquipe.cs" />

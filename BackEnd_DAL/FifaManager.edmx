@@ -382,6 +382,7 @@
         <Function Name="SP_SelectAllSsn1Champ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="champ_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SelectAllTypeCartons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectAllTypeResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectCalendrier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="ssn_id" Type="int" Mode="In" />
@@ -1025,9 +1026,10 @@
             <Parameter Name="rcvd_ceqp_lstupdt" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_HistoriqueJoueur" ReturnType="Collection(Fifa_ManagerModel.SP_HistoriqueJoueur_Result)">
-            <Parameter Name="jr_id" Mode="In" Type="Int32" />
+          <Parameter Name="jr_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_SelectAllJoueurs" EntitySet="Joueurs" ReturnType="Collection(Fifa_ManagerModel.Joueurs)" />
+          <FunctionImport Name="SP_SelectAllTypeCartons" ReturnType="Collection(Fifa_ManagerModel.SP_SelectAllTypeCartons_Result)" />
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1123,6 +1125,10 @@
           <Property Type="Int32" Name="Jr_ID" Nullable="false" />
           <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllTypeCartons_Result">
+          <Property Type="Int32" Name="TEvnt_ID" Nullable="false" />
+          <Property Type="String" Name="TEvnt_Libelle" Nullable="false" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1382,6 +1388,14 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_SelectAllJoueurs" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueurs">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllTypeCartons" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllTypeCartons">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_SelectAllTypeCartons_Result">
+                <ScalarProperty Name="TEvnt_ID" ColumnName="TEvnt_ID" />
+                <ScalarProperty Name="TEvnt_Libelle" ColumnName="TEvnt_Libelle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>

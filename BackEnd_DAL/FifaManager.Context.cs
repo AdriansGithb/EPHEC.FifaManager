@@ -315,5 +315,10 @@ namespace BackEnd_DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueurs", mergeOption);
         }
+    
+        public virtual ObjectResult<SP_SelectAllTypeCartons_Result> SP_SelectAllTypeCartons()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllTypeCartons_Result>("SP_SelectAllTypeCartons");
+        }
     }
 }
