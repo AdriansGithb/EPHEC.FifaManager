@@ -26,6 +26,8 @@ namespace BackEnd_UI.Cartons
             {
                 boxChampSelection_Load();
                 boxCartSelection_Load();
+                dtgrdCartons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dtgrdCartons_Load();
             }
             catch (Exception ex)
             {
@@ -64,6 +66,36 @@ namespace BackEnd_UI.Cartons
             //insertion de la liste dans la combobox
             boxCartSelection.DataSource = lstCartTypes;
             boxCartSelection.DisplayMember = "Libelle";
+        }
+
+        //chargement du datagridCartons en fonction des filtres sélectionnés
+        public void dtgrdCartons_Load()
+        {
+                try
+                {
+                    MdlChampionnat slctdChamp = (MdlChampionnat)boxChampSelection.SelectedItem;
+                    MdlTypeCarton slctdTypeCarton = (MdlTypeCarton)boxCartSelection.SelectedItem;
+                    CartonsServices oServices = new CartonsServices();
+                    dtgrdCartons.DataSource = oServices.GetFilteredCartonsList(slctdChamp, slctdTypeCarton);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+        }
+
+        //click sur filtrer : filtrer le datagrid en fonction de la sélection des filtres
+        private void btnFiltrer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgrdCartons_Load();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }

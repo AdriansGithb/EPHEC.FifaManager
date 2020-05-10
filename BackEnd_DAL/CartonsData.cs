@@ -24,5 +24,20 @@ namespace BackEnd_DAL
                 throw new Exception(ex.InnerException.Message);
             }
         }
+
+        //récupérer la liste de tous les cartons enregistrés dans la BD
+        public List<SP_SelectAllCartons_Result> SelectAllCartons()
+        {
+            try
+            {
+                Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+                List<SP_SelectAllCartons_Result> rtrnList = ctx.SP_SelectAllCartons().ToList();
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
     }
 }

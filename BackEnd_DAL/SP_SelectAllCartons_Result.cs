@@ -10,15 +10,16 @@
 namespace BackEnd_DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Suspensions
+    public partial class SP_SelectAllCartons_Result
     {
-        public int Susp_ID { get; set; }
-        public Nullable<int> Susp_Mch_ID { get; set; }
-        public int Susp_Evnt_ID { get; set; }
-    
-        public virtual Events Events { get; set; }
-        public virtual Matchs Matchs { get; set; }
+        public string Championnat { get; set; }
+        public int Carton_ID { get; set; }
+        public string Carton_Type { get; set; }
+        public int Jr_ID { get; set; }
+        public string Jr_Nom { get; set; }
+        public string Jr_Prenom { get; set; }
+        public int MatchID_Event { get; set; }
+        public Nullable<int> MatchID_Suspension_effectuée { get; set; }
     }
 }

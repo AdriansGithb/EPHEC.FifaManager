@@ -320,5 +320,10 @@ namespace BackEnd_DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllTypeCartons_Result>("SP_SelectAllTypeCartons");
         }
+    
+        public virtual ObjectResult<SP_SelectAllCartons_Result> SP_SelectAllCartons()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SelectAllCartons_Result>("SP_SelectAllCartons");
+        }
     }
 }

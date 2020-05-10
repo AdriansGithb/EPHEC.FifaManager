@@ -34,14 +34,19 @@
             this.lblChampSelect = new System.Windows.Forms.Label();
             this.lblCartSelect = new System.Windows.Forms.Label();
             this.gpbxFiltrer = new System.Windows.Forms.GroupBox();
+            this.btnFiltrer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdCartons)).BeginInit();
+            this.gpbxFiltrer.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgrdCartons
             // 
             this.dtgrdCartons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdCartons.Location = new System.Drawing.Point(12, 123);
+            this.dtgrdCartons.MultiSelect = false;
             this.dtgrdCartons.Name = "dtgrdCartons";
+            this.dtgrdCartons.ReadOnly = true;
+            this.dtgrdCartons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgrdCartons.Size = new System.Drawing.Size(776, 315);
             this.dtgrdCartons.TabIndex = 0;
             // 
@@ -84,12 +89,23 @@
             // 
             // gpbxFiltrer
             // 
+            this.gpbxFiltrer.Controls.Add(this.btnFiltrer);
             this.gpbxFiltrer.Location = new System.Drawing.Point(12, 12);
             this.gpbxFiltrer.Name = "gpbxFiltrer";
             this.gpbxFiltrer.Size = new System.Drawing.Size(776, 100);
             this.gpbxFiltrer.TabIndex = 9;
             this.gpbxFiltrer.TabStop = false;
             this.gpbxFiltrer.Text = "Filtrer";
+            // 
+            // btnFiltrer
+            // 
+            this.btnFiltrer.Location = new System.Drawing.Point(641, 23);
+            this.btnFiltrer.Name = "btnFiltrer";
+            this.btnFiltrer.Size = new System.Drawing.Size(119, 66);
+            this.btnFiltrer.TabIndex = 0;
+            this.btnFiltrer.Text = "Filtrer";
+            this.btnFiltrer.UseVisualStyleBackColor = true;
+            this.btnFiltrer.Click += new System.EventHandler(this.btnFiltrer_Click);
             // 
             // frmCartons
             // 
@@ -106,6 +122,7 @@
             this.Text = "Liste des cartons";
             this.Load += new System.EventHandler(this.frmCartons_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdCartons)).EndInit();
+            this.gpbxFiltrer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +136,6 @@
         private System.Windows.Forms.Label lblChampSelect;
         private System.Windows.Forms.Label lblCartSelect;
         private System.Windows.Forms.GroupBox gpbxFiltrer;
+        private System.Windows.Forms.Button btnFiltrer;
     }
 }

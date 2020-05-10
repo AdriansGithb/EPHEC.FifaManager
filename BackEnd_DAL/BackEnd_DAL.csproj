@@ -109,6 +109,9 @@
     <Compile Include="SP_HistoriqueJoueur_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_SelectAllCartons_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_SelectAllChampionnats_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
