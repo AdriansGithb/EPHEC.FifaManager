@@ -43,6 +43,7 @@
             this.lstbxJoueurs.Name = "lstbxJoueurs";
             this.lstbxJoueurs.Size = new System.Drawing.Size(225, 407);
             this.lstbxJoueurs.TabIndex = 28;
+            this.lstbxJoueurs.SelectedIndexChanged += new System.EventHandler(this.lstbxJoueurs_SelectedIndexChanged);
             // 
             // datagridHisto
             // 
@@ -51,7 +52,7 @@
             this.datagridHisto.Name = "datagridHisto";
             this.datagridHisto.ReadOnly = true;
             this.datagridHisto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridHisto.Size = new System.Drawing.Size(529, 407);
+            this.datagridHisto.Size = new System.Drawing.Size(709, 407);
             this.datagridHisto.TabIndex = 29;
             // 
             // lblJoueur
@@ -66,7 +67,7 @@
             // lblHisto
             // 
             this.lblHisto.AutoSize = true;
-            this.lblHisto.Location = new System.Drawing.Point(404, 13);
+            this.lblHisto.Location = new System.Drawing.Point(256, 13);
             this.lblHisto.Name = "lblHisto";
             this.lblHisto.Size = new System.Drawing.Size(110, 13);
             this.lblHisto.TabIndex = 31;
@@ -76,7 +77,7 @@
             // 
             this.lblSlctdJoueur.AutoSize = true;
             this.lblSlctdJoueur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlctdJoueur.Location = new System.Drawing.Point(520, 13);
+            this.lblSlctdJoueur.Location = new System.Drawing.Point(538, 13);
             this.lblSlctdJoueur.Name = "lblSlctdJoueur";
             this.lblSlctdJoueur.Size = new System.Drawing.Size(72, 13);
             this.lblSlctdJoueur.TabIndex = 32;
@@ -86,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(980, 450);
             this.Controls.Add(this.lblSlctdJoueur);
             this.Controls.Add(this.lblHisto);
             this.Controls.Add(this.lblJoueur);

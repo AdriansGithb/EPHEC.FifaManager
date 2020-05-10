@@ -18,6 +18,7 @@ namespace BackEnd_UI.Joueurs
         public frmHistoJoueur()
         {
             InitializeComponent();
+            datagridHisto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void frmHistoJoueur_Load(object sender, EventArgs e)
@@ -25,6 +26,7 @@ namespace BackEnd_UI.Joueurs
             try
             {
                 lstbxJoueurs_Load();
+                lstbxJoueurs.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -33,6 +35,7 @@ namespace BackEnd_UI.Joueurs
             }
         }
 
+        //chargement de la listbox avec la liste des joueurs
         private void lstbxJoueurs_Load()
         {
             try
@@ -49,6 +52,51 @@ namespace BackEnd_UI.Joueurs
             {
                 throw ex;
             }
+        }
+
+        //au changement de la sélection d'un joueur, charger le datagrid et le label du joueur sélectionné
+        private void lstbxJoueurs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MdlJoueurs slctdJoueur = (MdlJoueurs) lstbxJoueurs.SelectedItem;
+                lblSlctdJoueur_Load(slctdJoueur);
+                datagridHisto_Load(slctdJoueur);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        //charger le datagrid en fonction du joueur sélectionné
+        private void datagridHisto_Load(MdlJoueurs slctdJoueur)
+        {
+            try
+            {
+                JoueursServices oServices = new JoueursServices();
+                datagridHisto.DataSource = oServices.GetHistorique_Joueur(slctdJoueur);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        //charger le label en fonction du joueur sélectionné
+        private void lblSlctdJoueur_Load(MdlJoueurs slctdJoueur)
+        {
+            try
+            {
+                lblSlctdJoueur.Text = $"{slctdJoueur.NomPrenom}  - {slctdJoueur.Id} -";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MdlEquipeChamp.cs" />
+    <Compile Include="MdlJoueurHistorique.cs" />
     <Compile Include="MdlJoueursParEquipe.cs" />
     <Compile Include="MdlJoueurs.cs" />
     <Compile Include="MdlMatchClndr.cs" />

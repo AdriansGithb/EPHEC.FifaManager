@@ -120,5 +120,35 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
+
+        //obtenir l'historique d'un joueur
+        public List<MdlJoueurHistorique> GetHistorique_Joueur(MdlJoueurs slctdJoueur)
+        {
+            try
+            {
+                JoueursData oData = new JoueursData();
+                List<SP_HistoriqueJoueur_Result> rcvdList = oData.SelectHistoriqueJoueur(slctdJoueur.Id);
+                List<MdlJoueurHistorique> rtrnList = new List<MdlJoueurHistorique>();
+                foreach (SP_HistoriqueJoueur_Result histJr in rcvdList)
+                {
+                    MdlJoueurHistorique oHist = new MdlJoueurHistorique();
+                    oHist.Championnat = histJr.Championnat;
+                    oHist.Saison=histJr.Saison;
+                    oHist.Equipe_Joueur = histJr.Equipe_Joueur;
+                    oHist.Match_ID = histJr.Match_ID;
+                    oHist.Match_Date = histJr.Match_Date;
+                    oHist.Resultat = histJr.Resultat;
+                    oHist.Equipe_Adverse = histJr.Equipe_Adverse;
+
+                    rtrnList.Add(oHist);
+                }
+
+                return rtrnList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
