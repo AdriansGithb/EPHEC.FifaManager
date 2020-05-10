@@ -139,8 +139,9 @@
             // mnItem_HistoriqueJoueur
             // 
             this.mnItem_HistoriqueJoueur.Name = "mnItem_HistoriqueJoueur";
-            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(156, 22);
+            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(180, 22);
             this.mnItem_HistoriqueJoueur.Text = "Voir l\'historique";
+            this.mnItem_HistoriqueJoueur.Click += new System.EventHandler(this.mn_HistoriqueJoueur_Click);
             // 
             // cartonsToolStripMenuItem
             // 

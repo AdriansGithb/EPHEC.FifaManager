@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BackEnd_UI.Calendrier;
 using BackEnd_UI.GestionEquipe;
+using BackEnd_UI.Joueurs;
 using BackEnd_UI.Match;
 using Errors;
 
@@ -89,6 +90,21 @@ namespace BackEnd_UI
                 frmTransfertJoueur frmTransfert = new frmTransfertJoueur();
                 frmTransfert.MdiParent = this;
                 frmTransfert.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        private void mn_HistoriqueJoueur_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmHistoJoueur frmHisto = new frmHistoJoueur();
+                frmHisto.MdiParent = this;
+                frmHisto.Show();
             }
             catch (Exception ex)
             {
