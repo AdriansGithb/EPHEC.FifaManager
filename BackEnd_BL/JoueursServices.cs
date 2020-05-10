@@ -38,7 +38,7 @@ namespace BackEnd_BL
             try
             {
                 JoueursData oData = new JoueursData();
-                List<Joueurs> tempList = oData.SP_SelectAllJoueursDispoByChamp(champ_id);
+                List<Joueurs> tempList = oData.SelectAllJoueursDispoByChamp(champ_id);
                 List<MdlJoueurs> rtrnList = ToMdlJoueurs(tempList);
                 return rtrnList;
             }
@@ -58,7 +58,7 @@ namespace BackEnd_BL
             try
             {
                 JoueursData oData = new JoueursData();
-                List<Joueurs> tempList = oData.SP_SelectAllJoueursByEqp(eqp_cochamp_id);
+                List<Joueurs> tempList = oData.SelectAllJoueursByEqp(eqp_cochamp_id);
                 List<MdlJoueurs> rtrnList = ToMdlJoueurs(tempList);
                 return rtrnList;
             }
@@ -80,7 +80,7 @@ namespace BackEnd_BL
             {
                 JoueursData oData = new JoueursData();
                 List<SP_SelectAllJoueursByEqp_ForSsn2_Result> rcvdList =
-                    oData.SP_SelectAllJoueursByEqp_ForSsn2(eqp_cochamp_id);
+                    oData.SelectAllJoueursByEqp_ForSsn2(eqp_cochamp_id);
                 List<MdlJoueursParEquipe> rtrnList = new List<MdlJoueursParEquipe>();
                 foreach (SP_SelectAllJoueursByEqp_ForSsn2_Result joueur in rcvdList)
                 {

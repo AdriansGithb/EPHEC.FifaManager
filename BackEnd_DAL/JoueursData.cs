@@ -10,7 +10,7 @@ namespace BackEnd_DAL
     public class JoueursData
     {
         //récupération des joueurs non inscrits à une équipe dans un championnat envoyé en paramètre
-        public List<Joueurs> SP_SelectAllJoueursDispoByChamp(int champ_id)
+        public List<Joueurs> SelectAllJoueursDispoByChamp(int champ_id)
         {
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
             List<Joueurs> rtrnList =
@@ -19,7 +19,7 @@ namespace BackEnd_DAL
         }
 
         //récupération des joueurs inscrits dans une équipe envoyée en paramètre
-        public List<Joueurs> SP_SelectAllJoueursByEqp(int eqp_cochamp_id)
+        public List<Joueurs> SelectAllJoueursByEqp(int eqp_cochamp_id)
         {
             Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
             List<Joueurs> rtrnList =
@@ -28,7 +28,7 @@ namespace BackEnd_DAL
         }
 
         //récupération des joueurs inscrits pour la saison 2 d'un championnat, dans une équipe envoyée en paramètre
-        public List<SP_SelectAllJoueursByEqp_ForSsn2_Result> SP_SelectAllJoueursByEqp_ForSsn2(int eqp_cochamp_id)
+        public List<SP_SelectAllJoueursByEqp_ForSsn2_Result> SelectAllJoueursByEqp_ForSsn2(int eqp_cochamp_id)
         {
             try
             {

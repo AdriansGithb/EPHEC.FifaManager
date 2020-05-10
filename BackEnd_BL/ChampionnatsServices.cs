@@ -53,7 +53,7 @@ namespace BackEnd_BL
             {
                 //appel de la procédure via la DAL
                 ChampionnatsData oData = new ChampionnatsData();
-                List<Saisons> lstSsn = oData.SP_SelectAllSsn1Champ(champ_id);
+                List<Saisons> lstSsn = oData.SelectAllSsn1Champ(champ_id);
                 //insertion des résultats dans une liste
                 List<MdlSaison> rtrnLst = new List<MdlSaison>();
                 foreach (Saisons ssn in lstSsn)
@@ -86,7 +86,7 @@ namespace BackEnd_BL
             try
             {
                 ChampionnatsData oData = new ChampionnatsData();
-                List<SP_SelectEqpPerSsn_Result> eqpList = oData.SP_SelectEqpPerSsn(ssn_id);
+                List<SP_SelectEqpPerSsn_Result> eqpList = oData.SelectEqpPerSsn(ssn_id);
                 List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
                 foreach (SP_SelectEqpPerSsn_Result eqp in eqpList)
                 {
@@ -116,7 +116,7 @@ namespace BackEnd_BL
             try
             {
                 ChampionnatsData oData = new ChampionnatsData();
-                List<SP_SelectEqpPerChamp_Result> eqpList = oData.SP_SelectEqpPerChamp(champ_id);
+                List<SP_SelectEqpPerChamp_Result> eqpList = oData.SelectEqpPerChamp(champ_id);
                 List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
                 foreach (SP_SelectEqpPerChamp_Result eqp in eqpList)
                 {

@@ -108,7 +108,7 @@ namespace BackEnd_BL
                 EquipesData oData = new EquipesData();
                 foreach (MdlJoueurs oJoueur in inscriptJrsList)
                 {
-                    oData.SP_InsertJoueur_Eqp(oJoueur.Id,eqp.Id);
+                    oData.InsertJoueur_Eqp(oJoueur.Id,eqp.Id);
                 }
             }
             catch (SqlException ex)
@@ -129,7 +129,7 @@ namespace BackEnd_BL
                 EquipesData oData = new EquipesData();
                 foreach (MdlJoueurs oJoueur in desinscriptJrsList)
                 {
-                    oData.SP_DeleteJoueur_Eqp(oJoueur.Id, eqp.Id);
+                    oData.DeleteJoueur_Eqp(oJoueur.Id, eqp.Id);
                 }
             }
             catch (SqlException ex)
@@ -181,7 +181,7 @@ namespace BackEnd_BL
             {
                 EquipesData oData = new EquipesData();
                 List<SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result> oResList =
-                    oData.SP_SelectEqpPlus5Joueurs_Ssn2_byChamp(champ_id);
+                    oData.SelectEqpPlus5Joueurs_Ssn2_byChamp(champ_id);
                 List<MdlEquipeChamp> rtrnList = new List<MdlEquipeChamp>();
                 foreach (SP_SelectEqpPlus5Joueurs_Ssn2_byChamp_Result eqp in oResList)
                 {
@@ -308,14 +308,14 @@ namespace BackEnd_BL
             {
                 JoueursData oJrData = new JoueursData();
                 //vérifier que l'ancienne équipe n'aura pas moins de 5 joueurs après transfert
-                int nbJrsPrevEqp = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(prevEqp.Id).Count;
+                int nbJrsPrevEqp = oJrData.SelectAllJoueursByEqp_ForSsn2(prevEqp.Id).Count;
                 //vérifier que la nouvelle équipe ne dépassera pas 10 joueurs après transfert
-                int nbJrsNvlEqp = oJrData.SP_SelectAllJoueursByEqp_ForSsn2(nvlEqp.Id).Count;
+                int nbJrsNvlEqp = oJrData.SelectAllJoueursByEqp_ForSsn2(nvlEqp.Id).Count;
                 //si le nb de joueurs dans les 2 équipes est valide après transfert, envoyer le transfert dans la BD
                 if (NbJoueursMaxApresTansfert_OK(nbJrsNvlEqp) && NbJoueursMinApresTansfert_OK(nbJrsPrevEqp))
                 {
                     EquipesData oEqpData = new EquipesData();
-                    oEqpData.SP_TransfererJoueur(jrATransferer.CEqp_Id, nvlEqp.Id, jrATransferer.LastUpdate);
+                    oEqpData.TransfererJoueur(jrATransferer.CEqp_Id, nvlEqp.Id, jrATransferer.LastUpdate);
                 }
                 //sinon
                 else if(NbJoueursMinApresTansfert_OK(nbJrsPrevEqp)==false)

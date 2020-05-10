@@ -82,15 +82,15 @@ namespace BackEnd_BL
                 if (slctdSsn == 1 || slctdSsn == 2)
                 {
                     MdlSaison oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == slctdSsn);
-                    clndrBdList = oData.SP_SelectCalendrier(oSsn.Id);
+                    clndrBdList = oData.SelectCalendrier(oSsn.Id);
                 }
                 //sinon (les 2 saisons sont demandées)
                 else
                 {
                     MdlSaison oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == 1);
-                    clndrBdList = oData.SP_SelectCalendrier(oSsn.Id);
+                    clndrBdList = oData.SelectCalendrier(oSsn.Id);
                     oSsn = oSsnLst.Find(ssn => ssn.FirstOrSecond == 2);
-                    clndrBdList.AddRange(oData.SP_SelectCalendrier(oSsn.Id));
+                    clndrBdList.AddRange(oData.SelectCalendrier(oSsn.Id));
                 }
 
                 //transformation des objets en MdlMatchClndr
@@ -408,7 +408,7 @@ namespace BackEnd_BL
                 CalendrierData oData = new CalendrierData();
                 foreach (MdlMatchClndr match in mchList)
                 {
-                    oData.SP_InsertUpdateMtchClndr(match.Match_ID,match.Date,match.Saison_Id,match.EqpDom_CoChmp_ID, match.EqpVisit_CoChmp_ID, match.LastUpdate);
+                    oData.InsertUpdateMtchClndr(match.Match_ID,match.Date,match.Saison_Id,match.EqpDom_CoChmp_ID, match.EqpVisit_CoChmp_ID, match.LastUpdate);
                 }
             }
             catch (SqlException ex)
@@ -427,7 +427,7 @@ namespace BackEnd_BL
             try
             {
                 CalendrierData oData = new CalendrierData();
-                oData.SP_SetDateGnrClndr_Ssn(ssn_id);
+                oData.SetDateGnrClndr_Ssn(ssn_id);
             }
             catch (SqlException ex)
             {
@@ -459,7 +459,7 @@ namespace BackEnd_BL
             try
             {
                 CalendrierData oData = new CalendrierData();
-                List<SP_CheckDateMatchPossible_Result>resList = oData.SP_CheckDateMatchPossible(slctdDate, slctdMatch.EqpDom_CoChmp_ID, slctdMatch.EqpVisit_CoChmp_ID);
+                List<SP_CheckDateMatchPossible_Result>resList = oData.CheckDateMatchPossible(slctdDate, slctdMatch.EqpDom_CoChmp_ID, slctdMatch.EqpVisit_CoChmp_ID);
                 if (resList.Count > 0)
                     return false;
                 else return true;
