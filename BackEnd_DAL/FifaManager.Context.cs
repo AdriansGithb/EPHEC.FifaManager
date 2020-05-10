@@ -296,5 +296,24 @@ namespace BackEnd_DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_TransfererJoueur", cEqp_Id_jrATransfererParameter, cochmp_EqpId_nvlEqpParameter, rcvd_ceqp_lstupdtParameter);
         }
+    
+        public virtual ObjectResult<SP_HistoriqueJoueur_Result> SP_HistoriqueJoueur(Nullable<int> jr_id)
+        {
+            var jr_idParameter = jr_id.HasValue ?
+                new ObjectParameter("jr_id", jr_id) :
+                new ObjectParameter("jr_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HistoriqueJoueur_Result>("SP_HistoriqueJoueur", jr_idParameter);
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueurs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueurs");
+        }
+    
+        public virtual ObjectResult<Joueurs> SP_SelectAllJoueurs(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Joueurs>("SP_SelectAllJoueurs", mergeOption);
+        }
     }
 }

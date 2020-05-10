@@ -105,6 +105,9 @@
     <Compile Include="SP_CheckDateMatchPossible_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_HistoriqueJoueur_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_SelectAllChampionnats_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
     <Compile Include="SP_SelectAllJoueursDispoByChamp_Result.cs">
+      <DependentUpon>FifaManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_SelectAllJoueurs_Result.cs">
       <DependentUpon>FifaManager.tt</DependentUpon>
     </Compile>
     <Compile Include="SP_SelectAllSsn1Champ_Result.cs">

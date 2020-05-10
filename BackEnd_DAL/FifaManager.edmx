@@ -347,6 +347,9 @@
           <Parameter Name="jr_id" Type="int" Mode="In" />
           <Parameter Name="eqp_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_HistoriqueJoueur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
+          <Parameter Name="jr_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_InsertJoueur_Eqp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="jr_id" Type="int" Mode="In" />
           <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
@@ -366,6 +369,7 @@
           <Parameter Name="lstUpdt" Type="datetime" Mode="In" />
         </Function>
         <Function Name="SP_SelectAllChampionnats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
+        <Function Name="SP_SelectAllJoueurs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd" />
         <Function Name="SP_SelectAllJoueursByEqp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sch_BackEnd">
           <Parameter Name="eqp_cochmp_id" Type="int" Mode="In" />
         </Function>
@@ -1020,6 +1024,10 @@
             <Parameter Name="Cochmp_EqpId_nvlEqp" Mode="In" Type="Int32" />
             <Parameter Name="rcvd_ceqp_lstupdt" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="SP_HistoriqueJoueur" ReturnType="Collection(Fifa_ManagerModel.SP_HistoriqueJoueur_Result)">
+            <Parameter Name="jr_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectAllJoueurs" EntitySet="Joueurs" ReturnType="Collection(Fifa_ManagerModel.Joueurs)" />
         </EntityContainer>
         <ComplexType Name="SP_SelectAllChampionnats_Result">
           <Property Type="Int32" Name="Champ_ID" Nullable="false" />
@@ -1101,6 +1109,20 @@
           <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="CEqp_LastUpdate" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="CEqp_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_HistoriqueJoueur_Result">
+          <Property Type="String" Name="Championnat" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Saison" Nullable="false" />
+          <Property Type="String" Name="Equipe_Joueur" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Match_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Match_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Resultat" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Equipe_Adverse" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectAllJoueurs_Result">
+          <Property Type="Int32" Name="Jr_ID" Nullable="false" />
+          <Property Type="String" Name="Jr_Nom" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Jr_Prenom" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1346,6 +1368,21 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_TransfererJoueur" FunctionName="Fifa_ManagerModel.Store.SP_TransfererJoueur" />
+          <FunctionImportMapping FunctionImportName="SP_HistoriqueJoueur" FunctionName="Fifa_ManagerModel.Store.SP_HistoriqueJoueur">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fifa_ManagerModel.SP_HistoriqueJoueur_Result">
+                <ScalarProperty Name="Championnat" ColumnName="Championnat" />
+                <ScalarProperty Name="Saison" ColumnName="Saison" />
+                <ScalarProperty Name="Equipe_Joueur" ColumnName="Equipe_Joueur" />
+                <ScalarProperty Name="Match_ID" ColumnName="Match_ID" />
+                <ScalarProperty Name="Match_Date" ColumnName="Match_Date" />
+                <ScalarProperty Name="Resultat" ColumnName="Resultat" />
+                <ScalarProperty Name="Equipe_Adverse" ColumnName="Equipe_Adverse" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SelectAllJoueurs" FunctionName="Fifa_ManagerModel.Store.SP_SelectAllJoueurs">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
