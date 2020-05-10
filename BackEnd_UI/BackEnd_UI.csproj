@@ -58,6 +58,12 @@
     <Compile Include="Calendrier\frmGnrCalendrier.Designer.cs">
       <DependentUpon>frmGnrCalendrier.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cartons\frmCartons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cartons\frmCartons.Designer.cs">
+      <DependentUpon>frmCartons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classement\frmClassement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <EmbeddedResource Include="Calendrier\frmModifCalendrier.resx">
       <DependentUpon>frmModifCalendrier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cartons\frmCartons.resx">
+      <DependentUpon>frmCartons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Classement\frmClassement.resx">
       <DependentUpon>frmClassement.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,8 +183,6 @@
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cartons\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

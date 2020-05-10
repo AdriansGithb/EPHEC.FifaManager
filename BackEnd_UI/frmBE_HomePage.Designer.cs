@@ -117,14 +117,14 @@
             // mnItem_InscrireJoueurs
             // 
             this.mnItem_InscrireJoueurs.Name = "mnItem_InscrireJoueurs";
-            this.mnItem_InscrireJoueurs.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_InscrireJoueurs.Size = new System.Drawing.Size(179, 22);
             this.mnItem_InscrireJoueurs.Text = "Inscrire  joueur(s)";
             this.mnItem_InscrireJoueurs.Click += new System.EventHandler(this.mn_InscrireJoueurs_Click);
             // 
             // mnItem_TransfererJoueur
             // 
             this.mnItem_TransfererJoueur.Name = "mnItem_TransfererJoueur";
-            this.mnItem_TransfererJoueur.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_TransfererJoueur.Size = new System.Drawing.Size(179, 22);
             this.mnItem_TransfererJoueur.Text = "Transférer un joueur";
             this.mnItem_TransfererJoueur.Click += new System.EventHandler(this.mn_TransfererJoueur_Click);
             // 
@@ -139,7 +139,7 @@
             // mnItem_HistoriqueJoueur
             // 
             this.mnItem_HistoriqueJoueur.Name = "mnItem_HistoriqueJoueur";
-            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(180, 22);
+            this.mnItem_HistoriqueJoueur.Size = new System.Drawing.Size(156, 22);
             this.mnItem_HistoriqueJoueur.Text = "Voir l\'historique";
             this.mnItem_HistoriqueJoueur.Click += new System.EventHandler(this.mn_HistoriqueJoueur_Click);
             // 
@@ -154,8 +154,9 @@
             // mnItem_Cartons
             // 
             this.mnItem_Cartons.Name = "mnItem_Cartons";
-            this.mnItem_Cartons.Size = new System.Drawing.Size(153, 22);
+            this.mnItem_Cartons.Size = new System.Drawing.Size(180, 22);
             this.mnItem_Cartons.Text = "Voir les cartons";
+            this.mnItem_Cartons.Click += new System.EventHandler(this.mn_Cartons_Click);
             // 
             // frmBE_HomePage
             // 

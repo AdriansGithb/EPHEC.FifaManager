@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BackEnd_UI.Calendrier;
+using BackEnd_UI.Cartons;
 using BackEnd_UI.GestionEquipe;
 using BackEnd_UI.Joueurs;
 using BackEnd_UI.Match;
@@ -105,6 +106,21 @@ namespace BackEnd_UI
                 frmHistoJoueur frmHisto = new frmHistoJoueur();
                 frmHisto.MdiParent = this;
                 frmHisto.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        private void mn_Cartons_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmCartons frmCart = new frmCartons();
+                frmCart.MdiParent = this;
+                frmCart.Show();
             }
             catch (Exception ex)
             {
