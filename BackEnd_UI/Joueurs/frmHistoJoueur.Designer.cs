@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstbxJoueursDispo = new System.Windows.Forms.ListBox();
+            this.lstbxJoueurs = new System.Windows.Forms.ListBox();
             this.datagridHisto = new System.Windows.Forms.DataGridView();
             this.lblJoueur = new System.Windows.Forms.Label();
             this.lblHisto = new System.Windows.Forms.Label();
@@ -36,14 +36,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.datagridHisto)).BeginInit();
             this.SuspendLayout();
             // 
-            // lstbxJoueursDispo
+            // lstbxJoueurs
             // 
-            this.lstbxJoueursDispo.FormattingEnabled = true;
-            this.lstbxJoueursDispo.Location = new System.Drawing.Point(12, 31);
-            this.lstbxJoueursDispo.Name = "lstbxJoueursDispo";
-            this.lstbxJoueursDispo.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstbxJoueursDispo.Size = new System.Drawing.Size(225, 407);
-            this.lstbxJoueursDispo.TabIndex = 28;
+            this.lstbxJoueurs.FormattingEnabled = true;
+            this.lstbxJoueurs.Location = new System.Drawing.Point(12, 31);
+            this.lstbxJoueurs.Name = "lstbxJoueurs";
+            this.lstbxJoueurs.Size = new System.Drawing.Size(225, 407);
+            this.lstbxJoueurs.TabIndex = 28;
             // 
             // datagridHisto
             // 
@@ -92,9 +91,10 @@
             this.Controls.Add(this.lblHisto);
             this.Controls.Add(this.lblJoueur);
             this.Controls.Add(this.datagridHisto);
-            this.Controls.Add(this.lstbxJoueursDispo);
+            this.Controls.Add(this.lstbxJoueurs);
             this.Name = "frmHistoJoueur";
             this.Text = "Historique des joueurs";
+            this.Load += new System.EventHandler(this.frmHistoJoueur_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridHisto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,7 +103,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstbxJoueursDispo;
+        private System.Windows.Forms.ListBox lstbxJoueurs;
         private System.Windows.Forms.DataGridView datagridHisto;
         private System.Windows.Forms.Label lblJoueur;
         private System.Windows.Forms.Label lblHisto;

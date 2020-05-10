@@ -98,5 +98,27 @@ namespace BackEnd_BL
                 throw ex;
             }
         }
+
+        //obtenir la liste de tous les joueurs inscrits dans la BD
+        public List<MdlJoueurs> GetAllJoueursList()
+        {
+            try
+            {
+                JoueursData oData = new JoueursData();
+                List<Joueurs> rcvdList = oData.SelectAllJoueurs();
+                List<MdlJoueurs> rtrnList = new List<MdlJoueurs>();
+                foreach (Joueurs jr in rcvdList)
+                {
+                    MdlJoueurs oJoueur = new MdlJoueurs(jr.Jr_ID, jr.Jr_Nom, jr.Jr_Prenom);
+                    rtrnList.Add(oJoueur);
+                }
+
+                return rtrnList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

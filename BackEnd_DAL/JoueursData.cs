@@ -42,5 +42,35 @@ namespace BackEnd_DAL
                 throw new Exception(ex.InnerException.Message);
             }
         }
+
+        //récupération de tous les joueurs inscrits dans la BD
+        public List<Joueurs> SelectAllJoueurs()
+        {
+            try
+            {
+                Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+                List<Joueurs> rtrnList = ctx.SP_SelectAllJoueurs().ToList();
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
+
+        //récupération de l'historique d'un joueur dont l'id est donné en paramètre
+        public List<SP_HistoriqueJoueur_Result> SelectHistoriqueJoueur(int jr_id)
+        {
+            try
+            {
+                Fifa_ManagerEntities ctx = new Fifa_ManagerEntities();
+                List<SP_HistoriqueJoueur_Result> rtrnList = ctx.SP_HistoriqueJoueur(jr_id).ToList();
+                return rtrnList;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
     }
 }
