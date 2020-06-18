@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BackEnd_DAL;
+using Errors;
 using Models;
 
 namespace BackEnd_BL
@@ -37,13 +38,13 @@ namespace BackEnd_BL
                         DesinscrireJoueurs_Eqp(desinscriptionList,eqp);
                 }
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -51,17 +52,25 @@ namespace BackEnd_BL
         //renvoit true si il y a eu des modifs, et false sinon
         public bool CheckIfModification(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList)
         {
-            bool modif=false;
-            if (nwEqpList.Count == oldEqpList.Count)
+            try
             {
-                foreach (MdlJoueurs oJoueur in nwEqpList)
+                bool modif = false;
+                if (nwEqpList.Count == oldEqpList.Count)
                 {
-                    if (oldEqpList.Contains(oJoueur) == false)
-                        modif = true;
+                    foreach (MdlJoueurs oJoueur in nwEqpList)
+                    {
+                        if (oldEqpList.Contains(oJoueur) == false)
+                            modif = true;
+                    }
                 }
+                else modif = true;
+
+                return modif;
             }
-            else modif = true;
-            return modif;
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //trier la nouvelle liste et l'ancienne liste : renvoi  à l'index .. :la liste de ...
@@ -94,9 +103,13 @@ namespace BackEnd_BL
                 rtrnList.Add(jrDesinscritsList);
                 return rtrnList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -111,13 +124,13 @@ namespace BackEnd_BL
                     oData.InsertJoueur_Eqp(oJoueur.Id,eqp.Id);
                 }
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
         
@@ -132,13 +145,13 @@ namespace BackEnd_BL
                     oData.DeleteJoueur_Eqp(oJoueur.Id, eqp.Id);
                 }
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
         
@@ -152,9 +165,13 @@ namespace BackEnd_BL
                     return true;
                 else return false;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
         
@@ -168,9 +185,13 @@ namespace BackEnd_BL
                     return true;
                 else return false;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -194,9 +215,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -239,9 +264,13 @@ namespace BackEnd_BL
 
                 return eqpList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -260,9 +289,13 @@ namespace BackEnd_BL
                 //sinon, renvoyer -1
                 else return -1;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -277,9 +310,13 @@ namespace BackEnd_BL
                     return false;
                 else return true;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -294,9 +331,13 @@ namespace BackEnd_BL
                     return false;
                 else return true;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -322,9 +363,13 @@ namespace BackEnd_BL
                     throw new Exception("Moins de 5 joueurs");
                 else throw new Exception("Plus de 10 joueurs");
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
     }

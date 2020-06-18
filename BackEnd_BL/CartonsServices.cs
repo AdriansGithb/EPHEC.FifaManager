@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BackEnd_DAL;
+using Errors;
 using Models;
 
 namespace BackEnd_BL
@@ -30,9 +31,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -64,9 +69,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -105,9 +114,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -128,9 +141,13 @@ namespace BackEnd_BL
                     return rtrnList;
                 }
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
     }

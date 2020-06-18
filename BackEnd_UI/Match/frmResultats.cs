@@ -36,6 +36,10 @@ namespace BackEnd_UI.Match
                 boxChampSelection.DataSource = lstChamp;
                 boxChampSelection.DisplayMember = "NomString";
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -62,6 +66,10 @@ namespace BackEnd_UI.Match
                 gridResults.Columns[7].Visible = false;
                 gridResults.Columns[8].Visible = false;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -79,6 +87,10 @@ namespace BackEnd_UI.Match
                 frmModifResult oFrmModifResult = new frmModifResult(slctdRes);
                 oFrmModifResult.MdiParent = this.MdiParent;
                 oFrmModifResult.Show();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -102,7 +114,7 @@ namespace BackEnd_UI.Match
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
 
         }

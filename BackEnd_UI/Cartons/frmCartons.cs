@@ -29,43 +29,62 @@ namespace BackEnd_UI.Cartons
                 dtgrdCartons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dtgrdCartons_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //chargement de la liste des championnats
         public void boxChampSelection_Load()
         {
-            ChampionnatsServices oService = new ChampionnatsServices();
-            List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
-            //insertion d'une sélection de tous les championnats
-            MdlChampionnat oAllChamps = new MdlChampionnat(-1,"Tous", 0);
-            lstChamp.Add(oAllChamps);
-            //insertion de la liste des championnats
-            lstChamp.AddRange(oService.GetChampionnats());
-            //insertion de la liste dans la combobox
-            boxChampSelection.DataSource = lstChamp;
-            boxChampSelection.DisplayMember = "NomString";
+            try
+            {
+                ChampionnatsServices oService = new ChampionnatsServices();
+                List<MdlChampionnat> lstChamp = new List<MdlChampionnat>();
+                //insertion d'une sélection de tous les championnats
+                MdlChampionnat oAllChamps = new MdlChampionnat(-1, "Tous", 0);
+                lstChamp.Add(oAllChamps);
+                //insertion de la liste des championnats
+                lstChamp.AddRange(oService.GetChampionnats());
+                //insertion de la liste dans la combobox
+                boxChampSelection.DataSource = lstChamp;
+                boxChampSelection.DisplayMember = "NomString";
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //chargement de la liste des types de cartons
         public void boxCartSelection_Load()
         {
-            CartonsServices oService = new CartonsServices();
-            List<MdlTypeCarton> lstCartTypes = new List<MdlTypeCarton>();
-            //insertion d'une sélection de tous les types de cartons
-            MdlTypeCarton oAllCarts = new MdlTypeCarton();
-            oAllCarts.Id = -1;
-            oAllCarts.Libelle = "Tous";
-            lstCartTypes.Add(oAllCarts);
-            //insertion de la liste des types de cartons
-            lstCartTypes.AddRange(oService.GetAllTypesCartons());
-            //insertion de la liste dans la combobox
-            boxCartSelection.DataSource = lstCartTypes;
-            boxCartSelection.DisplayMember = "Libelle";
+            try
+            {
+                CartonsServices oService = new CartonsServices();
+                List<MdlTypeCarton> lstCartTypes = new List<MdlTypeCarton>();
+                //insertion d'une sélection de tous les types de cartons
+                MdlTypeCarton oAllCarts = new MdlTypeCarton();
+                oAllCarts.Id = -1;
+                oAllCarts.Libelle = "Tous";
+                lstCartTypes.Add(oAllCarts);
+                //insertion de la liste des types de cartons
+                lstCartTypes.AddRange(oService.GetAllTypesCartons());
+                //insertion de la liste dans la combobox
+                boxCartSelection.DataSource = lstCartTypes;
+                boxCartSelection.DisplayMember = "Libelle";
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //chargement du datagridCartons en fonction des filtres sélectionnés
@@ -80,7 +99,7 @@ namespace BackEnd_UI.Cartons
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new BusinessErrors(ex.Message);
                 }
         }
 
@@ -91,11 +110,16 @@ namespace BackEnd_UI.Cartons
             {
                 dtgrdCartons_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
     }
 }

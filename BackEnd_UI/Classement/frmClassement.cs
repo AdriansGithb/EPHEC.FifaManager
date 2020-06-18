@@ -36,11 +36,16 @@ namespace BackEnd_UI
                 boxChampSelection.DisplayMember = "NomString";
                 boxChampSelection.SelectedIndex = 0;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //changement du tableau de classement lorsque l'on change de championnat sélectionné
@@ -59,11 +64,16 @@ namespace BackEnd_UI
                 gridClassement.Columns[2].HeaderText = "Equipe";
                 gridClassement.Columns[3].HeaderText = "Equipe ID (/Championnat)";
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
     }
 }

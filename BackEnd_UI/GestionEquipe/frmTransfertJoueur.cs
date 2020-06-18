@@ -27,13 +27,18 @@ namespace BackEnd_UI.GestionEquipe
             {
                 boxChampSelection_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
-        
+
         //charger la liste des championnats dont l'intersaison est en cours
         private void boxChampSelection_Load()
         {
@@ -49,7 +54,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
 
         }
@@ -63,6 +68,10 @@ namespace BackEnd_UI.GestionEquipe
                 MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
                 boxEqpOrgnSelection_Load(slctdChamp);
                 boxEqpTrnsfrtSelection_Load(slctdChamp);
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -82,7 +91,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -97,7 +106,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -118,7 +127,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -138,7 +147,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
 
         }
@@ -152,6 +161,10 @@ namespace BackEnd_UI.GestionEquipe
                 lstbxJoueursEqpOrgn_Load();
                 CheckIfSlctdEqpOrgnIsAlsoInEqpTrnsfrt();
                 EnablingOrDisabling_BtnTransferer();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -168,6 +181,10 @@ namespace BackEnd_UI.GestionEquipe
                 lstbxJoueursEqpTrnsfrt.Items.Clear();
                 lstbxJoueursEqpTrnsfrt_Load();
                 EnablingOrDisabling_BtnTransferer();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -197,7 +214,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -206,10 +223,18 @@ namespace BackEnd_UI.GestionEquipe
         //un joueur est sélectionné pour le transfert
         private void EnablingOrDisabling_BtnTransferer()
         {
-            //si l'équipe sélectionnée est celle de l'index inutilisable, désactiver le bouton Transférer, sinon le garder actif
-            if (lstbxJoueursEqpOrgn.SelectedItems.Count==1 && boxEqpTrnsfrtSelection.SelectedIndex != disabledIndex)
-                btnTransferer.Enabled = true;
-            else btnTransferer.Enabled = false;
+            try
+            {
+                //si l'équipe sélectionnée est celle de l'index inutilisable, désactiver le bouton Transférer, sinon le garder actif
+                if (lstbxJoueursEqpOrgn.SelectedItems.Count == 1 &&
+                    boxEqpTrnsfrtSelection.SelectedIndex != disabledIndex)
+                    btnTransferer.Enabled = true;
+                else btnTransferer.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //transferer le joueur sélectionné
@@ -228,6 +253,10 @@ namespace BackEnd_UI.GestionEquipe
                 oServices.TransfererJoueur(slctdJoueur, prevEqp ,nvlEqp);
                 MessageBox.Show("Transfert validé et sauvegardé");
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -244,7 +273,14 @@ namespace BackEnd_UI.GestionEquipe
         //lors de la sélection d'un joueur dans la liste d'équipe origine, vérifier la validité des objets sélectionner pour activation du bouton transferer
         private void lstbxJoueursEqpOrgn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EnablingOrDisabling_BtnTransferer();
+            try
+            {
+                EnablingOrDisabling_BtnTransferer();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

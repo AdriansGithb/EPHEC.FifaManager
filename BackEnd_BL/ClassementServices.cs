@@ -36,13 +36,13 @@ namespace BackEnd_BL
 
                 return returnLst;
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
     }

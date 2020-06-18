@@ -193,6 +193,12 @@
       <LastGenOutput>FifaManager.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Errors\Errors.csproj">
+      <Project>{abbc0fdb-85dc-474c-9455-f03021a63e76}</Project>
+      <Name>Errors</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

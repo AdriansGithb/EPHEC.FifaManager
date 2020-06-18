@@ -47,11 +47,16 @@ namespace BackEnd_UI.Calendrier
                     || (slctdSsn == 12 && (frstSsn.GnrClndr.HasValue || scndSsn.GnrClndr.HasValue)))
                     clndrGrids_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //chargement des datagrids
@@ -68,7 +73,7 @@ namespace BackEnd_UI.Calendrier
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -97,7 +102,7 @@ namespace BackEnd_UI.Calendrier
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -111,7 +116,7 @@ namespace BackEnd_UI.Calendrier
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -174,30 +179,50 @@ namespace BackEnd_UI.Calendrier
                 clndrGrids_CacherColonnes(noMatchId);
                 this.btnSave.Enabled = true;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //sauver le calendrier généré
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CalendrierServices oServices = new CalendrierServices();
-            List<MdlMatchClndr> saveMatchClndrList = (List<MdlMatchClndr>)gridClndrDated.DataSource;
-            saveMatchClndrList.AddRange((List<MdlMatchClndr>)gridClndrUndated.DataSource);
-            oServices.InsertUpdate_MtchClndr(saveMatchClndrList);
-            switch (slctdSsn)
+            try
             {
-                case 1: oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
-                    break;
-                case 2: oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
-                    break;
-                case 12: oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
-                    oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
-                    break;
-                default: break;
+                CalendrierServices oServices = new CalendrierServices();
+                List<MdlMatchClndr> saveMatchClndrList = (List<MdlMatchClndr>) gridClndrDated.DataSource;
+                saveMatchClndrList.AddRange((List<MdlMatchClndr>) gridClndrUndated.DataSource);
+                oServices.InsertUpdate_MtchClndr(saveMatchClndrList);
+                switch (slctdSsn)
+                {
+                    case 1:
+                        oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
+                        break;
+                    case 2:
+                        oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
+                        break;
+                    case 12:
+                        oServices.SetDateGnrClndr_Ssn(frstSsn.Id);
+                        oServices.SetDateGnrClndr_Ssn(scndSsn.Id);
+                        break;
+                    default: break;
+                }
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
             }
         }
     }

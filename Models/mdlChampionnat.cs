@@ -29,11 +29,6 @@ namespace Models
             this.NomString = $"{this.Annee} - {this.Nom}";
         }
         
-        // A SUPPRIMER SI UTILISATION CONSTRUCTEUR = OK
-        //public override string ToString()
-        //{
-        //    return (this.Annee + " - " + this.Nom);
-        //}
     }
 
 

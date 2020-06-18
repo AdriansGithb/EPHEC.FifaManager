@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Errors;
 
 namespace BackEnd_DAL
 {
@@ -21,7 +22,11 @@ namespace BackEnd_DAL
             }
             catch (SqlException ex)
             {
-                throw new Exception(ex.InnerException.Message);
+                throw new BusinessErrors(ex.InnerException.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -36,7 +41,11 @@ namespace BackEnd_DAL
             }
             catch (SqlException ex)
             {
-                throw new Exception(ex.InnerException.Message);
+                throw new BusinessErrors(ex.InnerException.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
     }

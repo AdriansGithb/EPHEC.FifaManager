@@ -28,6 +28,10 @@ namespace BackEnd_UI.Joueurs
                 lstbxJoueurs_Load();
                 lstbxJoueurs.SelectedIndex = 0;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -50,7 +54,7 @@ namespace BackEnd_UI.Joueurs
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -62,6 +66,10 @@ namespace BackEnd_UI.Joueurs
                 MdlJoueurs slctdJoueur = (MdlJoueurs) lstbxJoueurs.SelectedItem;
                 lblSlctdJoueur_Load(slctdJoueur);
                 datagridHisto_Load(slctdJoueur);
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -80,7 +88,7 @@ namespace BackEnd_UI.Joueurs
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
 
         }
@@ -94,7 +102,7 @@ namespace BackEnd_UI.Joueurs
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
 
         }

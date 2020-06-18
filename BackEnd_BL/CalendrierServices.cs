@@ -57,13 +57,13 @@ namespace BackEnd_BL
 
                 return possible;
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -127,13 +127,13 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -165,9 +165,13 @@ namespace BackEnd_BL
                 return matchList;
 
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -199,9 +203,13 @@ namespace BackEnd_BL
                 return matchList;
 
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -220,9 +228,13 @@ namespace BackEnd_BL
 
                 return rtrnLst;
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
 
         }
@@ -339,9 +351,13 @@ namespace BackEnd_BL
                 }
                 return rtrnMatchList;
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -361,9 +377,13 @@ namespace BackEnd_BL
 
                 return datedMatchList;
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -378,9 +398,13 @@ namespace BackEnd_BL
 
                 return datedMatchList;
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -394,9 +418,13 @@ namespace BackEnd_BL
                 fullList.AddRange(GenererCalendrier_Saison(ssnList[1]));
                 return fullList;
             }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -411,13 +439,13 @@ namespace BackEnd_BL
                     oData.InsertUpdateMtchClndr(match.Match_ID,match.Date,match.Saison_Id,match.EqpDom_CoChmp_ID, match.EqpVisit_CoChmp_ID, match.LastUpdate);
                 }
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -429,13 +457,13 @@ namespace BackEnd_BL
                 CalendrierData oData = new CalendrierData();
                 oData.SetDateGnrClndr_Ssn(ssn_id);
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -447,9 +475,13 @@ namespace BackEnd_BL
                 DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks * 7);
                 return EndDate;
             }
-            catch (Exception ex)
+            catch (BusinessErrors ex)
             {
                 throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -464,13 +496,13 @@ namespace BackEnd_BL
                     return false;
                 else return true;
             }
-            catch (SqlException ex)
+            catch (BusinessErrors ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
     }

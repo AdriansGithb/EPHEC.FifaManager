@@ -48,6 +48,10 @@ namespace BackEnd_UI.Match
                 //sélection par défaut du résultat de départ
                 lstbxResEqpVis.SelectedValue = resAModifier.ResVstTypeID;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -92,6 +96,10 @@ namespace BackEnd_UI.Match
                 {
                     MessageBox.Show("Vous n'avez pas effectué de modification à sauvegarder");
                 }
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {

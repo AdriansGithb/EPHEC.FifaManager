@@ -31,6 +31,10 @@ namespace BackEnd_UI
                 FrmClas.MdiParent = this;
                 FrmClas.Show();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -46,6 +50,10 @@ namespace BackEnd_UI
                 frmRes.MdiParent = this;
                 frmRes.Show();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -60,6 +68,10 @@ namespace BackEnd_UI
                 frmCalendrier frmClndr = new frmCalendrier();
                 frmClndr.MdiParent = this;
                 frmClndr.Show();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -77,6 +89,10 @@ namespace BackEnd_UI
                 frmInscript.MdiParent = this;
                 frmInscript.Show();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -91,6 +107,10 @@ namespace BackEnd_UI
                 frmTransfertJoueur frmTransfert = new frmTransfertJoueur();
                 frmTransfert.MdiParent = this;
                 frmTransfert.Show();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -107,6 +127,10 @@ namespace BackEnd_UI
                 frmHisto.MdiParent = this;
                 frmHisto.Show();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -121,6 +145,10 @@ namespace BackEnd_UI
                 frmCartons frmCart = new frmCartons();
                 frmCart.MdiParent = this;
                 frmCart.Show();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {

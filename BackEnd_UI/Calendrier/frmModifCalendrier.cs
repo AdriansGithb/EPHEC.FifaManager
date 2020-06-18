@@ -39,6 +39,10 @@ namespace BackEnd_UI
                 lblNomEqpVst.Text = slctdMatch.Nom_EqpVisit;
                 dtTmPckrMatch_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -69,7 +73,7 @@ namespace BackEnd_UI
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -104,6 +108,10 @@ namespace BackEnd_UI
                 }
                 else this.btnSave.Enabled = false;
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -127,24 +135,38 @@ namespace BackEnd_UI
                     oServices.InsertUpdate_MtchClndr(matchAsList);
                 }
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //action en cas de fermeture sans avoir sauvé une modification de date
         private void frmModifCalendrier_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (slctdMatch.Date!=dtTmPckrMatch.Value)
+            try
             {
-                DialogResult oAnswr = MessageBox.Show(
-                    "Attention, vous avez sélectionné une nouvelle date valide sans sauvegarder votre changement. Cliquez sur OK pour quitter sans sauver, ou sur Cancel puis Sauver pour sauvegarder votre modification.",
-                    "Fermeture sans sauvegarde", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (oAnswr == DialogResult.Cancel)
-                    e.Cancel = true;
+                if (slctdMatch.Date != dtTmPckrMatch.Value)
+                {
+                    DialogResult oAnswr = MessageBox.Show(
+                        "Attention, vous avez sélectionné une nouvelle date valide sans sauvegarder votre changement. Cliquez sur OK pour quitter sans sauver, ou sur Cancel puis Sauver pour sauvegarder votre modification.",
+                        "Fermeture sans sauvegarde", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (oAnswr == DialogResult.Cancel)
+                        e.Cancel = true;
+                }
             }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+
         }
     }
 }

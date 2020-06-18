@@ -32,11 +32,16 @@ namespace BackEnd_UI.Calendrier
                 boxChampSelection.DataSource = lstChamp;
                 boxChampSelection.DisplayMember = "NomString";
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
 
         }
 
@@ -67,11 +72,16 @@ namespace BackEnd_UI.Calendrier
                 gridClndrUndated.Columns[4].HeaderText = "Equipe Domicile"; 
                 gridClndrUndated.Columns[6].HeaderText = "Equipe Visiteuse";
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //ouverture de la fenêtre génération de calendrier, lors d'un clic sur le bouton de génération
@@ -105,11 +115,16 @@ namespace BackEnd_UI.Calendrier
 
                 clndrGrids_Load(sender,e);
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
         //savoir quel radiobutton est sélectionné
@@ -128,7 +143,7 @@ namespace BackEnd_UI.Calendrier
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new BusinessErrors(ex.Message);
             }                
 
         }
@@ -155,11 +170,16 @@ namespace BackEnd_UI.Calendrier
                 else throw new BusinessErrors("Le match est joué");                    
                 clndrGrids_Load(sender, e);
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
 
     }

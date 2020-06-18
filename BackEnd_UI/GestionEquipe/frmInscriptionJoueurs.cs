@@ -27,6 +27,10 @@ namespace BackEnd_UI.GestionEquipe
             {
                 boxChampSelection_Load();
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -49,7 +53,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
 
         }
@@ -67,6 +71,10 @@ namespace BackEnd_UI.GestionEquipe
                 //mise en place de la liste des équipes inscrites dans la box
                 boxEqpSelection.DataSource = eqpList;
                 boxEqpSelection.DisplayMember = "Nom";
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -91,7 +99,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -113,7 +121,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
@@ -125,6 +133,10 @@ namespace BackEnd_UI.GestionEquipe
                 lstbxJoueursDispo_Load();
                 lstbxJoueursEqp_Load();
                 btnUncheckAll_Click(sender,e);
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -168,6 +180,10 @@ namespace BackEnd_UI.GestionEquipe
                 //si aucun joueur sélectionné
                 else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -210,6 +226,10 @@ namespace BackEnd_UI.GestionEquipe
                 //si aucun joueur sélectionné
                 else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -224,6 +244,10 @@ namespace BackEnd_UI.GestionEquipe
             {
                 lstbxJoueursDispo.ClearSelected();
                 lstbxJoueursEqp.ClearSelected();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -247,6 +271,10 @@ namespace BackEnd_UI.GestionEquipe
                 oServices.SaveModifications(nwEqpList, joueursEqpOrigineList, eqp);
                 MessageBox.Show("Enregistrement des modifications effectué");
                 //rechargement des tableaux après sauvegarde
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -277,6 +305,10 @@ namespace BackEnd_UI.GestionEquipe
                         e.Cancel = true;
                 }
             }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
@@ -299,7 +331,7 @@ namespace BackEnd_UI.GestionEquipe
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
