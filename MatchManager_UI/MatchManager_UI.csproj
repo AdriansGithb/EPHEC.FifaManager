@@ -84,6 +84,10 @@
       <Project>{abbc0fdb-85dc-474c-9455-f03021a63e76}</Project>
       <Name>Errors</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MatchManager_BL\MatchManager_BL.csproj">
+      <Project>{d0923d3b-141e-4c25-9651-b346e4e3e67c}</Project>
+      <Name>MatchManager_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{74ad7e1f-928a-4d4a-8d97-106e7c87425a}</Project>
       <Name>Models</Name>

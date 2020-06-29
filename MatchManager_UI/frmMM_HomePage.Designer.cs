@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbBx_Champs = new System.Windows.Forms.ComboBox();
-            this.cmbBx_Matchs = new System.Windows.Forms.ComboBox();
+            this.boxChampSelection = new System.Windows.Forms.ComboBox();
+            this.boxMatchSelection = new System.Windows.Forms.ComboBox();
             this.rdBtn_Ssn1 = new System.Windows.Forms.RadioButton();
             this.rdBtn_Ssn2 = new System.Windows.Forms.RadioButton();
             this.rdBtn_Ssn12 = new System.Windows.Forms.RadioButton();
@@ -40,21 +40,22 @@
             this.gpBx_Champ.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cmbBx_Champs
+            // boxChampSelection
             // 
-            this.cmbBx_Champs.FormattingEnabled = true;
-            this.cmbBx_Champs.Location = new System.Drawing.Point(10, 17);
-            this.cmbBx_Champs.Name = "cmbBx_Champs";
-            this.cmbBx_Champs.Size = new System.Drawing.Size(404, 21);
-            this.cmbBx_Champs.TabIndex = 0;
+            this.boxChampSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxChampSelection.FormattingEnabled = true;
+            this.boxChampSelection.Location = new System.Drawing.Point(10, 17);
+            this.boxChampSelection.Name = "boxChampSelection";
+            this.boxChampSelection.Size = new System.Drawing.Size(404, 21);
+            this.boxChampSelection.TabIndex = 0;
             // 
-            // cmbBx_Matchs
+            // boxMatchSelection
             // 
-            this.cmbBx_Matchs.FormattingEnabled = true;
-            this.cmbBx_Matchs.Location = new System.Drawing.Point(33, 126);
-            this.cmbBx_Matchs.Name = "cmbBx_Matchs";
-            this.cmbBx_Matchs.Size = new System.Drawing.Size(404, 21);
-            this.cmbBx_Matchs.TabIndex = 1;
+            this.boxMatchSelection.FormattingEnabled = true;
+            this.boxMatchSelection.Location = new System.Drawing.Point(33, 126);
+            this.boxMatchSelection.Name = "boxMatchSelection";
+            this.boxMatchSelection.Size = new System.Drawing.Size(404, 21);
+            this.boxMatchSelection.TabIndex = 1;
             // 
             // rdBtn_Ssn1
             // 
@@ -115,7 +116,7 @@
             this.gpBx_Champ.Controls.Add(this.rdBtn_Ssn12);
             this.gpBx_Champ.Controls.Add(this.rdBtn_Ssn2);
             this.gpBx_Champ.Controls.Add(this.rdBtn_Ssn1);
-            this.gpBx_Champ.Controls.Add(this.cmbBx_Champs);
+            this.gpBx_Champ.Controls.Add(this.boxChampSelection);
             this.gpBx_Champ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpBx_Champ.Location = new System.Drawing.Point(23, 26);
             this.gpBx_Champ.Name = "gpBx_Champ";
@@ -141,7 +142,7 @@
             this.Controls.Add(this.gpBx_Champ);
             this.Controls.Add(this.btn_FeuilleDeMatch);
             this.Controls.Add(this.btn_InscrireJoueurs);
-            this.Controls.Add(this.cmbBx_Matchs);
+            this.Controls.Add(this.boxMatchSelection);
             this.Controls.Add(this.gpBx_Matchs);
             this.Name = "frmMM_HomePage";
             this.Text = "MatchManagement";
@@ -154,8 +155,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmbBx_Champs;
-        private System.Windows.Forms.ComboBox cmbBx_Matchs;
+        private System.Windows.Forms.ComboBox boxChampSelection;
+        private System.Windows.Forms.ComboBox boxMatchSelection;
         private System.Windows.Forms.RadioButton rdBtn_Ssn1;
         private System.Windows.Forms.RadioButton rdBtn_Ssn2;
         private System.Windows.Forms.RadioButton rdBtn_Ssn12;

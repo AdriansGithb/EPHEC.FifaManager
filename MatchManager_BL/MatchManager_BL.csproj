@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ChampionnatsServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,10 +52,6 @@
     <ProjectReference Include="..\MatchManager_DAL\MatchManager_DAL.csproj">
       <Project>{ed03167d-365a-4530-a701-f4443f2c66eb}</Project>
       <Name>MatchManager_DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MatchManager_UI\MatchManager_UI.csproj">
-      <Project>{e6368757-0587-4cc1-b10e-6fb50df5f21b}</Project>
-      <Name>MatchManager_UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{74ad7e1f-928a-4d4a-8d97-106e7c87425a}</Project>
