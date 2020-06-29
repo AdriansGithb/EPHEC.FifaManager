@@ -56,13 +56,18 @@ namespace MatchManager_UI
         }
 
         //remplir la combobox de sélection d'un match
-        public void Load_MatchList()
+        public void Load_MatchList(object sender, EventArgs e)
         {
             try
             {
                 //récupérer l'id du championnat sélectionné
                 MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
-                int slctSsn = checkRdbtnSelection();
+                int slctdSsn = checkRdbtnSelection();
+                //récupérer la liste de la sélection
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                boxMatchSelection.DataSource = oServices.GetMatchList(slctdChamp.Id, slctdSsn);
+                boxMatchSelection.DisplayMember = "NomString";
+                boxMatchSelection.SelectedItem = 0;
             }
             catch (BusinessErrors ex)
             {
@@ -95,5 +100,7 @@ namespace MatchManager_UI
             }
 
         }
+
+
     }
 }

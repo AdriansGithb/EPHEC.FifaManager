@@ -37,7 +37,9 @@
             this.btn_FeuilleDeMatch = new System.Windows.Forms.Button();
             this.gpBx_Champ = new System.Windows.Forms.GroupBox();
             this.gpBx_Matchs = new System.Windows.Forms.GroupBox();
+            this.lblMatchList = new System.Windows.Forms.Label();
             this.gpBx_Champ.SuspendLayout();
+            this.gpBx_Matchs.SuspendLayout();
             this.SuspendLayout();
             // 
             // boxChampSelection
@@ -48,11 +50,13 @@
             this.boxChampSelection.Name = "boxChampSelection";
             this.boxChampSelection.Size = new System.Drawing.Size(404, 21);
             this.boxChampSelection.TabIndex = 0;
+            this.boxChampSelection.SelectedIndexChanged += new System.EventHandler(this.Load_MatchList);
             // 
             // boxMatchSelection
             // 
+            this.boxMatchSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxMatchSelection.FormattingEnabled = true;
-            this.boxMatchSelection.Location = new System.Drawing.Point(33, 126);
+            this.boxMatchSelection.Location = new System.Drawing.Point(10, 35);
             this.boxMatchSelection.Name = "boxMatchSelection";
             this.boxMatchSelection.Size = new System.Drawing.Size(404, 21);
             this.boxMatchSelection.TabIndex = 1;
@@ -66,6 +70,7 @@
             this.rdBtn_Ssn1.TabIndex = 2;
             this.rdBtn_Ssn1.Text = "Saison 1";
             this.rdBtn_Ssn1.UseVisualStyleBackColor = true;
+            this.rdBtn_Ssn1.Click += new System.EventHandler(this.Load_MatchList);
             // 
             // rdBtn_Ssn2
             // 
@@ -76,6 +81,7 @@
             this.rdBtn_Ssn2.TabIndex = 3;
             this.rdBtn_Ssn2.Text = "Saison 2";
             this.rdBtn_Ssn2.UseVisualStyleBackColor = true;
+            this.rdBtn_Ssn2.Click += new System.EventHandler(this.Load_MatchList);
             // 
             // rdBtn_Ssn12
             // 
@@ -88,6 +94,7 @@
             this.rdBtn_Ssn12.TabStop = true;
             this.rdBtn_Ssn12.Text = "Saisons 1+2";
             this.rdBtn_Ssn12.UseVisualStyleBackColor = true;
+            this.rdBtn_Ssn12.Click += new System.EventHandler(this.Load_MatchList);
             // 
             // btn_InscrireJoueurs
             // 
@@ -127,12 +134,25 @@
             // 
             // gpBx_Matchs
             // 
+            this.gpBx_Matchs.Controls.Add(this.lblMatchList);
+            this.gpBx_Matchs.Controls.Add(this.boxMatchSelection);
             this.gpBx_Matchs.Location = new System.Drawing.Point(23, 103);
             this.gpBx_Matchs.Name = "gpBx_Matchs";
             this.gpBx_Matchs.Size = new System.Drawing.Size(426, 71);
             this.gpBx_Matchs.TabIndex = 8;
             this.gpBx_Matchs.TabStop = false;
             this.gpBx_Matchs.Text = "2. Sélectionner le match";
+            // 
+            // lblMatchList
+            // 
+            this.lblMatchList.AutoSize = true;
+            this.lblMatchList.Enabled = false;
+            this.lblMatchList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatchList.Location = new System.Drawing.Point(10, 16);
+            this.lblMatchList.Name = "lblMatchList";
+            this.lblMatchList.Size = new System.Drawing.Size(221, 13);
+            this.lblMatchList.TabIndex = 2;
+            this.lblMatchList.Text = "Date   | Saison | #Match |   Domicile><Visiteur";
             // 
             // frmMM_HomePage
             // 
@@ -142,13 +162,14 @@
             this.Controls.Add(this.gpBx_Champ);
             this.Controls.Add(this.btn_FeuilleDeMatch);
             this.Controls.Add(this.btn_InscrireJoueurs);
-            this.Controls.Add(this.boxMatchSelection);
             this.Controls.Add(this.gpBx_Matchs);
             this.Name = "frmMM_HomePage";
             this.Text = "MatchManagement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gpBx_Champ.ResumeLayout(false);
             this.gpBx_Champ.PerformLayout();
+            this.gpBx_Matchs.ResumeLayout(false);
+            this.gpBx_Matchs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -164,6 +185,7 @@
         private System.Windows.Forms.Button btn_FeuilleDeMatch;
         private System.Windows.Forms.GroupBox gpBx_Champ;
         private System.Windows.Forms.GroupBox gpBx_Matchs;
+        private System.Windows.Forms.Label lblMatchList;
     }
 }
 
