@@ -90,6 +90,7 @@
             // 
             // btn_InscrireJoueurs
             // 
+            this.btn_InscrireJoueurs.Enabled = false;
             this.btn_InscrireJoueurs.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_InscrireJoueurs.Location = new System.Drawing.Point(33, 195);
             this.btn_InscrireJoueurs.Name = "btn_InscrireJoueurs";
@@ -100,6 +101,7 @@
             // 
             // btn_FeuilleDeMatch
             // 
+            this.btn_FeuilleDeMatch.Enabled = false;
             this.btn_FeuilleDeMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_FeuilleDeMatch.Location = new System.Drawing.Point(255, 195);
             this.btn_FeuilleDeMatch.Name = "btn_FeuilleDeMatch";
