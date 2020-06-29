@@ -39,11 +39,10 @@ namespace MatchManager_BL
             }
             catch (Exception ex)
             {
-                BusinessErrors oError = new BusinessErrors(ex.Message);
-                throw oError;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
-
+        
 }
 }

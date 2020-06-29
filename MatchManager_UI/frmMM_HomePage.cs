@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Errors;
 using MatchManager_BL;
+using Models;
 
 namespace MatchManager_UI
 {
@@ -19,6 +20,7 @@ namespace MatchManager_UI
             try
             {
                 InitializeComponent();
+                //remplir la box de sélection de championnat
                 Load_ChampList();
             }
             catch (BusinessErrors ex)
@@ -49,11 +51,49 @@ namespace MatchManager_UI
             }
             catch (Exception ex)
             {
-                BusinessErrors oError = new BusinessErrors(ex.Message);
-                throw oError;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
+        //remplir la combobox de sélection d'un match
+        public void Load_MatchList()
+        {
+            try
+            {
+                //récupérer l'id du championnat sélectionné
+                MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
+                int slctSsn = checkRdbtnSelection();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
 
+        //savoir quel radiobutton est sélectionné
+        private int checkRdbtnSelection()
+        {
+            try
+            {
+                int slctdBtn;
+                //vérification du radiobutton sélectionné pour connaître la saison à afficher
+                if (rdBtn_Ssn1.Checked == true)
+                    slctdBtn = 1;
+                else if (rdBtn_Ssn2.Checked == true)
+                    slctdBtn = 2;
+                else slctdBtn = 12;
+                return slctdBtn;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+
+        }
     }
 }

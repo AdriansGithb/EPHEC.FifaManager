@@ -42,13 +42,11 @@ namespace MatchManager_DAL
             }
             catch (SqlException ex)
             {
-                BusinessErrors oError = new BusinessErrors(ex.Message);
-                throw oError;
+                throw new BusinessErrors(ex.Message);
             }
             catch (Exception ex)
             {
-                BusinessErrors oError=new BusinessErrors(ex.Message);
-                throw oError;
+                throw new BusinessErrors(ex.Message);
             }
         }
 
