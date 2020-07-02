@@ -76,9 +76,9 @@
             this.lblChampEnCoursTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChampEnCoursTxt.Location = new System.Drawing.Point(72, 16);
             this.lblChampEnCoursTxt.Name = "lblChampEnCoursTxt";
-            this.lblChampEnCoursTxt.Size = new System.Drawing.Size(119, 13);
+            this.lblChampEnCoursTxt.Size = new System.Drawing.Size(127, 13);
             this.lblChampEnCoursTxt.TabIndex = 1;
-            this.lblChampEnCoursTxt.Text = "Championnat en cours :";
+            this.lblChampEnCoursTxt.Text = "Championnat de l\'année :";
             this.lblChampEnCoursTxt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // boxMatchSelection
@@ -110,6 +110,7 @@
             this.Controls.Add(this.gpbxMatchSelection);
             this.Name = "frmChoixFeuilleMatch";
             this.Text = "Sélection du match à éditer";
+            this.Load += new System.EventHandler(this.frmChoixFeuilleMatch_Load);
             this.gpbxMatchSelection.ResumeLayout(false);
             this.gpbxMatchSelection.PerformLayout();
             this.ResumeLayout(false);

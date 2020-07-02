@@ -1,15 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Errors;
+using MatchManager_DAL;
 using Models;
 
 namespace MatchManager_BL
 {
     public class MatchServices
     {
+        //obtenir la liste du/des matchs du jour
+        public List<MdlMatchList> GetMatchsOfTheDay()
+        {
+            try
+            {
+                 MatchsData oData = new MatchsData();
+                 List<MdlMatchList> matchLst = new List<MdlMatchList>();
+                 string dateString;
+                 // réception de la datatable contenant les matchs
+                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now.AddDays(2));
+                 DataTableReader oReader = oTab.CreateDataReader();
+                 // transformation des objets de la datatable en liste de modèles matchs
+                 while (oReader.Read())
+                 {
+                     MdlMatchList oMatch;
+
+                     dateString = oReader.GetDateTime(1).ToShortDateString();
+                     oMatch =
+                         new MdlMatchList(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3), oReader.GetString(4));
+                     
+                     matchLst.Add(oMatch);
+                 }
+
+                 return matchLst;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
         //renvoit une liste de matchs pour lesquels l'inscription des joueurs est encore modifiable
         public List<MdlMatchList> GetPlayersInscription_StillEditable_MatchList(int champ_id, int slctdSsn)
         {

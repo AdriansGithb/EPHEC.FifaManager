@@ -13,6 +13,19 @@ namespace MatchManager_BL
 {
     public class ChampionnatsServices
     {
+        //renvoit le championnat de l'année en cours
+                //si pas de championnat durant l'année en cours : renvoit un championnat avec NomString vide
+        public MdlChampionnat GetChampOfThisYear()
+        {
+            List<MdlChampionnat> fullList = GetAllChampionnats();
+            MdlChampionnat rtrnChamp = new MdlChampionnat();
+            if (fullList.Exists(champ => champ.Annee == DateTime.Now.Year))
+                rtrnChamp = fullList.Find(champ => champ.Annee == DateTime.Now.Year);
+            else rtrnChamp.NomString = "";
+
+            return rtrnChamp;
+        }
+
         //renvoit une liste contenant les championnats de l'année en cours, ou futures
         public List<MdlChampionnat> GetChampsOfThisYearAndFuture()
         {
