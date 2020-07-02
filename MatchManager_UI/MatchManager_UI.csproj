@@ -64,6 +64,12 @@
     <Compile Include="Inscription\frmInscriptions.Designer.cs">
       <DependentUpon>frmInscriptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inscription\frmTeamSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscription\frmTeamSelection.Designer.cs">
+      <DependentUpon>frmTeamSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FeuilleDeMatch\frmChoixFeuilleMatch.resx">
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inscription\frmInscriptions.resx">
       <DependentUpon>frmInscriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription\frmTeamSelection.resx">
+      <DependentUpon>frmTeamSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

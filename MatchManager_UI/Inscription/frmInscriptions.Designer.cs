@@ -59,7 +59,6 @@
             this.boxMatchSelection.Name = "boxMatchSelection";
             this.boxMatchSelection.Size = new System.Drawing.Size(404, 21);
             this.boxMatchSelection.TabIndex = 1;
-            this.boxMatchSelection.SelectedIndexChanged += new System.EventHandler(this.boxMatchSelection_SelectedIndexChanged);
             // 
             // rdBtn_Ssn1
             // 
@@ -105,6 +104,7 @@
             this.btn_InscrireJoueurs.TabIndex = 5;
             this.btn_InscrireJoueurs.Text = "Inscrire les joueurs pour ce match";
             this.btn_InscrireJoueurs.UseVisualStyleBackColor = true;
+            this.btn_InscrireJoueurs.Click += new System.EventHandler(this.btn_InscrireJoueurs_Click);
             // 
             // gpBx_Champ
             // 

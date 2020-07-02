@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Errors;
 using MatchManager_BL;
+using MatchManager_UI.Inscription;
 using Models;
 
 namespace MatchManager_UI
@@ -106,9 +107,19 @@ namespace MatchManager_UI
 
         }
 
-        private void boxMatchSelection_SelectedIndexChanged(object sender, EventArgs e)
+        private void btn_InscrireJoueurs_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                MdlMatchList slctdMatch = (MdlMatchList)boxMatchSelection.SelectedItem;
+                frmTeamSelection oFrmTeamSel = new frmTeamSelection(slctdMatch);
+                oFrmTeamSel.Show();
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
         }
     }
 }
