@@ -27,9 +27,9 @@ namespace BackEnd_UI
         {
             try
             {
-                frmClassement FrmClas = new frmClassement();
-                FrmClas.MdiParent = this;
-                FrmClas.Show();
+                frmClassement frmClas = new frmClassement();
+                frmClas.MdiParent = this;
+                frmClas.Show();
             }
             catch (BusinessErrors ex)
             {

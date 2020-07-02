@@ -52,10 +52,19 @@
     <Compile Include="frmMM_HomePage.Designer.cs">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inscription\frmInscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscription\frmInscriptions.Designer.cs">
+      <DependentUpon>frmInscriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMM_HomePage.resx">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription\frmInscriptions.resx">
+      <DependentUpon>frmInscriptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FeuilleDeMatch\" />
-    <Folder Include="Inscription\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
