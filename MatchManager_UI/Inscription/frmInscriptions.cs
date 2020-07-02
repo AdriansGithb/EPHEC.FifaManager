@@ -41,7 +41,7 @@ namespace MatchManager_UI
             {
                 ChampionnatsServices oServices = new ChampionnatsServices();
                 //remplissage de la liste par la liste des championnats
-                boxChampSelection.DataSource = oServices.GetAllChampionnats();
+                boxChampSelection.DataSource = oServices.GetChampsOfThisYearAndFuture();
                 boxChampSelection.DisplayMember = "NomString";
                 boxChampSelection.SelectedIndex = 0;
             }
@@ -56,6 +56,7 @@ namespace MatchManager_UI
         }
 
         //remplir la combobox de sélection d'un match
+        //activer/désactiver le bouton inscrire si la liste de matchs est vide
         public void Load_MatchList(object sender, EventArgs e)
         {
             try
@@ -63,11 +64,15 @@ namespace MatchManager_UI
                 //récupérer l'id du championnat sélectionné
                 MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
                 int slctdSsn = checkRdbtnSelection();
-                //récupérer la liste de la sélection
+                //récupérer la liste des matchs du championnat sélectionné, pour lesquels l'inscription est encore modifiable
                 MatchServices oServices = new MatchServices();
                 boxMatchSelection.DataSource = oServices.GetPlayersInscription_StillEditable_MatchList(slctdChamp.Id, slctdSsn);
                 boxMatchSelection.DisplayMember = "NomString";
                 boxMatchSelection.SelectedItem = 0;
+                //activer/désactiver le bouton inscrire si la liste de matchs est vide
+                if (boxMatchSelection.Items.Count > 0)
+                    btn_InscrireJoueurs.Enabled = true;
+                else btn_InscrireJoueurs.Enabled = false;
             }
             catch (BusinessErrors ex)
             {
@@ -101,5 +106,9 @@ namespace MatchManager_UI
 
         }
 
+        private void boxMatchSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

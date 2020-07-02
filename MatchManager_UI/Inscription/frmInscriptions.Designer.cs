@@ -59,6 +59,7 @@
             this.boxMatchSelection.Name = "boxMatchSelection";
             this.boxMatchSelection.Size = new System.Drawing.Size(404, 21);
             this.boxMatchSelection.TabIndex = 1;
+            this.boxMatchSelection.SelectedIndexChanged += new System.EventHandler(this.boxMatchSelection_SelectedIndexChanged);
             // 
             // rdBtn_Ssn1
             // 

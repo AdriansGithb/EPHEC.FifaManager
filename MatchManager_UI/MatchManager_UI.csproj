@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeuilleDeMatch\frmChoixFeuilleMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeuilleDeMatch\frmChoixFeuilleMatch.Designer.cs">
+      <DependentUpon>frmChoixFeuilleMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMM_HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FeuilleDeMatch\frmChoixFeuilleMatch.resx">
+      <DependentUpon>frmChoixFeuilleMatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMM_HomePage.resx">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,8 +111,6 @@
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FeuilleDeMatch\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

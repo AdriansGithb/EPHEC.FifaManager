@@ -57,6 +57,7 @@
             this.feuillesDeMatchToolStripMenuItem.Name = "feuillesDeMatchToolStripMenuItem";
             this.feuillesDeMatchToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.feuillesDeMatchToolStripMenuItem.Text = "Feuilles de match";
+            this.feuillesDeMatchToolStripMenuItem.Click += new System.EventHandler(this.feuillesDeMatchToolStripMenuItem_Click);
             // 
             // frmMM_HomePage
             // 

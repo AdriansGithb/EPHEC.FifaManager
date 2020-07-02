@@ -15,9 +15,11 @@ namespace MatchManager_BL
         {
             try
             {
+                //récupération de la liste complète des matchs du championnat sélectionné
                 ChampionnatsServices oServices = new ChampionnatsServices();
                 List<MdlMatchList> fullMatchList = oServices.GetFullMatchList(champ_id, slctdSsn);
 
+                //tri de la liste complète : création d'une liste ne comprenant que les matchs dont la date est postérieure à la date du jour
                 List<MdlMatchList> rtrnList = new List<MdlMatchList>();
 
                 foreach (MdlMatchList oMatch in fullMatchList)

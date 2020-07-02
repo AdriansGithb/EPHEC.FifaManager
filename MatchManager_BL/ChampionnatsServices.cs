@@ -13,6 +13,33 @@ namespace MatchManager_BL
 {
     public class ChampionnatsServices
     {
+        //renvoit une liste contenant les championnats de l'année en cours, ou futures
+        public List<MdlChampionnat> GetChampsOfThisYearAndFuture()
+        {
+            try
+            {
+                List<MdlChampionnat> toSortList = GetAllChampionnats();
+                List<MdlChampionnat> sortedList = new List<MdlChampionnat>();
+
+                foreach (MdlChampionnat oChamp in toSortList)
+                {
+                    //si l'année du championnat est égale ou supérieure à l'année du jour : l'ajouter à la liste
+                    if (oChamp.Annee >= DateTime.Now.Year)
+                        sortedList.Add(oChamp);
+                }
+
+                return sortedList;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
         // renvoit une liste contenant tous les championnats
         public List<MdlChampionnat> GetAllChampionnats()
         {
