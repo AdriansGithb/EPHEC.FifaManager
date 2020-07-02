@@ -64,8 +64,8 @@ namespace MatchManager_UI
                 MdlChampionnat slctdChamp = (MdlChampionnat) boxChampSelection.SelectedItem;
                 int slctdSsn = checkRdbtnSelection();
                 //récupérer la liste de la sélection
-                ChampionnatsServices oServices = new ChampionnatsServices();
-                boxMatchSelection.DataSource = oServices.GetMatchList(slctdChamp.Id, slctdSsn);
+                MatchServices oServices = new MatchServices();
+                boxMatchSelection.DataSource = oServices.GetPlayersInscription_StillEditable_MatchList(slctdChamp.Id, slctdSsn);
                 boxMatchSelection.DisplayMember = "NomString";
                 boxMatchSelection.SelectedItem = 0;
             }
@@ -101,44 +101,5 @@ namespace MatchManager_UI
 
         }
 
-        //choix d'un match, vérification des boutons actifs ou non
-        private void boxMatchSelection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //bool isEarlier, isNull = false;
-                //MatchServices oServices = new MatchServices();
-
-                //MdlMatchList oMatch = (MdlMatchList) boxMatchSelection.SelectedItem;
-                //isEarlier = oServices.IsEarlierThanToday(out isNull, oMatch.Date);
-                //// si le match n'a pas de date, aucun bouton actif
-                //if (isNull)
-                //{
-                //    btn_InscrireJoueurs.Enabled = false;
-                //}
-                ////sinon, si la date du match est antérieure à la date du jour
-                ////permission d'inscrire des joueurs pour le match, mais pas d'accès à la feuille de match
-                //else if (isEarlier)
-                //{
-                //    btn_InscrireJoueurs.Enabled = true;
-                //}
-                ////sinon, la date du match est égale ou postérieure à la date du jour
-                ////permission de remplir la feuille de match
-                //else
-                //{
-                //    btn_InscrireJoueurs.Enabled = false;
-                //}
-
-            }
-            catch (BusinessErrors ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                BusinessErrors oError = new BusinessErrors(ex.Message);
-                MessageBox.Show(oError.Message);
-            }
-        }
     }
 }

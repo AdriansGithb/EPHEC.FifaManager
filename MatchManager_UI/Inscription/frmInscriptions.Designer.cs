@@ -59,7 +59,6 @@
             this.boxMatchSelection.Name = "boxMatchSelection";
             this.boxMatchSelection.Size = new System.Drawing.Size(404, 21);
             this.boxMatchSelection.TabIndex = 1;
-            this.boxMatchSelection.SelectedIndexChanged += new System.EventHandler(this.boxMatchSelection_SelectedIndexChanged);
             // 
             // rdBtn_Ssn1
             // 
@@ -98,7 +97,6 @@
             // 
             // btn_InscrireJoueurs
             // 
-            this.btn_InscrireJoueurs.Enabled = false;
             this.btn_InscrireJoueurs.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_InscrireJoueurs.Location = new System.Drawing.Point(23, 200);
             this.btn_InscrireJoueurs.Name = "btn_InscrireJoueurs";

@@ -4,35 +4,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Errors;
+using Models;
 
 namespace MatchManager_BL
 {
     public class MatchServices
     {
-        //renvoit un bool pour dire si la date donnée en param est antérieure à la date du jour
-        //renvoit également un bool pour dire si la date donnée est nulle
-            public bool IsEarlierThanToday(out bool isNull,DateTime? dateToCompare)
+        //renvoit une liste de matchs pour lesquels l'inscription des joueurs est encore modifiable
+        public List<MdlMatchList> GetPlayersInscription_StillEditable_MatchList(int champ_id, int slctdSsn)
         {
             try
             {
-                bool isEarlier = isNull = false;
-                //si la date reçue en paramètre est nulle
-                if (!dateToCompare.HasValue)
+                ChampionnatsServices oServices = new ChampionnatsServices();
+                List<MdlMatchList> fullMatchList = oServices.GetFullMatchList(champ_id, slctdSsn);
+
+                List<MdlMatchList> rtrnList = new List<MdlMatchList>();
+
+                foreach (MdlMatchList oMatch in fullMatchList)
                 {
-                    isNull = true;
+                    bool isLaterThanToday = IsLaterThanToday(oMatch.Date);
+                    if (isLaterThanToday)
+                        rtrnList.Add(oMatch);
                 }
-                else
+
+                return rtrnList;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+        //renvoit un bool pour dire si la date donnée en param est postérieure à la date du jour
+        //renvoit false si la date en param est nulle
+            public bool IsLaterThanToday(DateTime? dateToCompare)
+        {
+            try
+            {
+                bool isLater = false;
+                if (dateToCompare.HasValue)
                 {
                     //transformer la date non nulle en objet Datetime utilisable
-                    DateTime oDate = (DateTime) dateToCompare;
+                    DateTime matchDate = (DateTime) dateToCompare;
                     //comparer les jours des 2 dates: donne
-                        // <0 si la date reçue est antérieure a la date du jour
-                        // >=0 si la date reçue est égale ou postérieure à la date du jour
-                    int resComparison = oDate.Day.CompareTo(DateTime.Today);
+                        // <0 si la date du jour est antérieure a la date du match
+                        // >=0 si la date du jour est égale ou postérieure à la date du match
+                    int resComparison = DateTime.Now.Date.CompareTo(matchDate.Date);
                     if (resComparison < 0)
-                        isEarlier = true;
+                        isLater = true;
                 }
-                return isEarlier;
+                return isLater;
             }
             catch (Exception ex)
             {

@@ -44,7 +44,7 @@ namespace MatchManager_BL
         }
 
         // renvoit une liste contenant tous les matchs d'une / des saison(s) d'un championnat
-        public List<MdlMatchList> GetMatchList(int champ_id, int slctdSsn)
+        public List<MdlMatchList> GetFullMatchList(int champ_id, int slctdSsn)
         {
             try
             {
