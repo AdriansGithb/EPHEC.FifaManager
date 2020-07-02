@@ -10,6 +10,7 @@ namespace Models
     public class MdlMatchList
     {
         public int Match_ID { get; set; }
+        public DateTime? Date { get; set; }
         public string DateString { get; set; }
         public int Saison_num { get; set; }
         public string Nom_EqpDom { get; set; }
@@ -21,9 +22,10 @@ namespace Models
 
         }
 
-        public MdlMatchList(int matchId, string dateString, int ssnNum, string nomEqpDom, string nomEqpVisit)
+        public MdlMatchList(int matchId, DateTime? date, string dateString, int ssnNum, string nomEqpDom, string nomEqpVisit)
         {
             this.Match_ID = matchId;
+            this.Date = date;
             this.DateString = dateString;
             this.Saison_num = ssnNum;
             this.Nom_EqpDom = nomEqpDom;

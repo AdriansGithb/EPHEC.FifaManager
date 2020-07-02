@@ -57,14 +57,20 @@ namespace MatchManager_BL
                 // transformation des objets de la datatable en liste de modèles matchs
                 while (oReader.Read())
                 {
+                    MdlMatchList oMatch;
                     // pour récupération de la date pouvant être nulle, vérifier si elle l'est ou non
                     if (oReader.IsDBNull(1))
-                        dateString = "NoDate";
-                    else dateString = oReader.GetDateTime(1).ToShortDateString();
-
-                    MdlMatchList oMatch = 
-                        new MdlMatchList(oReader.GetInt32(0),dateString,oReader.GetInt32(2),oReader.GetString(3),oReader.GetString(4));
-
+                    {
+                        dateString = "NoDate";                    
+                        oMatch = 
+                            new MdlMatchList(oReader.GetInt32(0), null,dateString,oReader.GetInt32(2),oReader.GetString(3),oReader.GetString(4));
+                    }
+                    else
+                    {
+                        dateString = oReader.GetDateTime(1).ToShortDateString();
+                        oMatch =
+                            new MdlMatchList(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3), oReader.GetString(4));
+                    }
                     matchLst.Add(oMatch);
                 }
 

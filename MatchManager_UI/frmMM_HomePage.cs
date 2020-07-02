@@ -101,6 +101,10 @@ namespace MatchManager_UI
 
         }
 
+        //choix d'un match, vérification des boutons actifs ou non
+        private void boxMatchSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
