@@ -65,6 +65,10 @@ namespace Errors
                     break;
                 case "Le match est joué": _Message = "Le match a déjà été joué. La date n'est plus modifiable.";
                     break;
+                case "Trop de joueurs à inscrire au match":
+                    _Message =
+                        "Trop de joueurs ont été sélectionnés pour inscription. Une équipe ne peut inscrire que 7 joueurs maximum pour un match. Veuillez en désélectionner.";
+                    break;
                 //default:
                 //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 default:

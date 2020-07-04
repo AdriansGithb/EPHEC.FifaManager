@@ -77,6 +77,7 @@
             this.btnDesinscrire.TabIndex = 36;
             this.btnDesinscrire.Text = "Désinscrire du match les joueurs sélectionnés \r\n<";
             this.btnDesinscrire.UseVisualStyleBackColor = true;
+            this.btnDesinscrire.Click += new System.EventHandler(this.btnDesinscrire_Click);
             // 
             // btnUncheckAll
             // 
@@ -96,6 +97,7 @@
             this.btnInscrire.TabIndex = 34;
             this.btnInscrire.Text = ">\r\nInscrire les joueurs sélectionnés dans l\'équipe du match";
             this.btnInscrire.UseVisualStyleBackColor = true;
+            this.btnInscrire.Click += new System.EventHandler(this.btnInscrire_Click);
             // 
             // lblJoueursInscrits
             // 
@@ -163,6 +165,7 @@
             this.Controls.Add(this.lblJoueursDispos);
             this.Name = "frmInscription";
             this.Text = "Inscrire des joueurs pour le match";
+            this.Load += new System.EventHandler(this.frmInscription_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

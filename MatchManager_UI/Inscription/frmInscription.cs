@@ -43,10 +43,6 @@ namespace MatchManager_UI.Inscription
                     }
                         break;
                 }
-
-                loadFields();
-                lstbxJoueursDispo_Load();
-                lstbxJoueursInscrits_Load();
             }
             catch (BusinessErrors ex)
             {
@@ -58,6 +54,24 @@ namespace MatchManager_UI.Inscription
                 MessageBox.Show(oError.Message);
             }
         }
+        private void frmInscription_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                loadFields();
+                loadListboxesData();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+
+        }
 
         //charger les labels de la form
         public void loadFields()
@@ -68,6 +82,24 @@ namespace MatchManager_UI.Inscription
                 this.lblEqp.Text = slctdEqp.Nom;
             }
             catch(Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+        //charger les datas des listboxs
+        public void loadListboxesData()
+        {
+            try
+            {
+                lstbxJoueursInscrits_Load();
+                lstbxJoueursDispo_Load();
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 throw new BusinessErrors(ex.Message);
             }
@@ -123,6 +155,88 @@ namespace MatchManager_UI.Inscription
             }
         }
 
+        //inscription de joueur dans l'équipe
+        private void btnInscrire_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //si un joueur minimum est sélectionné
+                if (lstbxJoueursDispo.SelectedIndices.Count > 0)
+                {
+                    int nbSlctdJoueurs = lstbxJoueursDispo.SelectedItems.Count;
+                    int nbJoueursInscrits = lstbxJoueursMatch.Items.Count;
+                    EquipesServices oServices = new EquipesServices();
+                    bool conforme = oServices.SeuilMaxJoueurs_OK(nbSlctdJoueurs, nbJoueursInscrits);
+                    //si le nombre de joueurs total de l'équipe ne dépasse pas le seuil max 
+                    if (conforme)
+                    {
+                        //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs dispos
+                        List<MdlJoueursParEquipe> tmpList = new List<MdlJoueursParEquipe>();
+                        foreach (MdlJoueursParEquipe oJoueur in lstbxJoueursDispo.SelectedItems)
+                        {
+                            lstbxJoueursMatch.Items.Add(oJoueur);
+                            tmpList.Add(oJoueur);
+                        }
+
+                        //suppression des joueurs de la liste des joueurs dispos
+                        foreach (MdlJoueursParEquipe oJoueur in tmpList)
+                        {
+                            lstbxJoueursDispo.Items.Remove(oJoueur);
+                        }
+                    }
+                    //si pas conforme
+                    else throw new Exception("Trop de joueurs à inscrire au match");
+                }
+                //si aucun joueur sélectionné
+                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        //désinscription de joueurs de l'équipe
+        private void btnDesinscrire_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //si un joueur minimum est sélectionné
+                if (lstbxJoueursMatch.SelectedIndices.Count > 0)
+                {
+                        //liste temporaire pour récupérer les objets MdlJoueurs à supprimer dans la liste des joueurs inscrits au match
+                        List<MdlJoueursParEquipe> tmpList = new List<MdlJoueursParEquipe>();
+                        foreach (MdlJoueursParEquipe oJoueur in lstbxJoueursMatch.SelectedItems)
+                        {
+                            lstbxJoueursDispo.Items.Add(oJoueur);
+                            tmpList.Add(oJoueur);
+                        }
+
+                        //suppression des joueurs de la liste des joueurs inscrits dans l'équipe
+                        foreach (MdlJoueursParEquipe oJoueur in tmpList)
+                        {
+                            lstbxJoueursMatch.Items.Remove(oJoueur);
+                        }
+                }
+                //si aucun joueur sélectionné
+                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
 
         //désélectionner tout
         private void btnUncheckAll_Click(object sender, EventArgs e)
@@ -143,5 +257,6 @@ namespace MatchManager_UI.Inscription
             }
 
         }
+
     }
 }
