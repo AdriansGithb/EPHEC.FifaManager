@@ -175,10 +175,10 @@ namespace BackEnd_UI.GestionEquipe
                         }
                     }
                     //si pas conforme
-                    else throw new Exception("Trop de joueurs à inscrire");
+                    else throw new BusinessErrors("Trop de joueurs à inscrire");
                 }
                 //si aucun joueur sélectionné
-                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+                else throw new BusinessErrors("Aucun joueur sélectionné pour (dés)inscription");
             }
             catch (BusinessErrors ex)
             {
@@ -221,10 +221,10 @@ namespace BackEnd_UI.GestionEquipe
                         }
                     }
                     //si pas conforme
-                    else throw new Exception("Trop de joueurs à désinscrire");
+                    else throw new BusinessErrors("Trop de joueurs à désinscrire");
                 }
                 //si aucun joueur sélectionné
-                else throw new Exception("Aucun joueur sélectionné pour (dés)inscription");
+                else throw new BusinessErrors("Aucun joueur sélectionné pour (dés)inscription");
             }
             catch (BusinessErrors ex)
             {
@@ -312,7 +312,7 @@ namespace BackEnd_UI.GestionEquipe
             catch (Exception ex)
             {
                 BusinessErrors oError = new BusinessErrors(ex.Message);
-                throw oError;
+                MessageBox.Show(oError.Message);
             }
         }
 

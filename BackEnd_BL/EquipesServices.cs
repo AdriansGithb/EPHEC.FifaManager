@@ -26,7 +26,7 @@ namespace BackEnd_BL
                 List<MdlJoueurs> desinscriptionList = triLists[1];
                 //si les 2 listes sont vides, l'utilisateur a sauvé sans qu'aucun changement n'ait réellement été fait sur la composition d'équipe
                 if (inscriptionList.Count == 0 && desinscriptionList.Count == 0)
-                    throw new Exception("Aucune modification d'équipe");
+                    throw new BusinessErrors("Aucune modification d'équipe");
                 //sinon, si au moins une des 2 contient des objets
                 else
                 {                

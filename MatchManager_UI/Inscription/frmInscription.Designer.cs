@@ -50,6 +50,7 @@
             this.btnSave.TabIndex = 39;
             this.btnSave.Text = "Sauver modifications";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lstbxJoueursMatch
             // 
@@ -166,6 +167,7 @@
             this.Controls.Add(this.lblJoueursDispos);
             this.Name = "frmInscription";
             this.Text = "Inscrire des joueurs pour le match";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInscription_FormClosing);
             this.Load += new System.EventHandler(this.frmInscription_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
