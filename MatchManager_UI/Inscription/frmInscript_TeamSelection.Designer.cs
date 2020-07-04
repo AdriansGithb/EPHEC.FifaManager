@@ -44,6 +44,7 @@
             this.btnEqpDom.TabIndex = 0;
             this.btnEqpDom.Text = "Nom Eqp Domicile";
             this.btnEqpDom.UseVisualStyleBackColor = true;
+            this.btnEqpDom.Click += new System.EventHandler(this.btnEqpDom_Click);
             // 
             // btnEqpVisit
             // 
@@ -54,6 +55,7 @@
             this.btnEqpVisit.TabIndex = 1;
             this.btnEqpVisit.Text = "Nom Eqp Visiteuse";
             this.btnEqpVisit.UseVisualStyleBackColor = true;
+            this.btnEqpVisit.Click += new System.EventHandler(this.btnEqpVisit_Click);
             // 
             // lblDom
             // 
@@ -85,7 +87,7 @@
             this.lblMatch.TabIndex = 4;
             this.lblMatch.Text = "Match";
             // 
-            // frmTeamSelection
+            // frmInscript_TeamSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

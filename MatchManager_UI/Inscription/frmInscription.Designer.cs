@@ -128,7 +128,7 @@
             // 
             this.lblEqp.AutoSize = true;
             this.lblEqp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEqp.Location = new System.Drawing.Point(19, 9);
+            this.lblEqp.Location = new System.Drawing.Point(300, 37);
             this.lblEqp.Name = "lblEqp";
             this.lblEqp.Size = new System.Drawing.Size(58, 17);
             this.lblEqp.TabIndex = 42;
@@ -138,7 +138,7 @@
             // 
             this.lblMatch.AutoSize = true;
             this.lblMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatch.Location = new System.Drawing.Point(308, 9);
+            this.lblMatch.Location = new System.Drawing.Point(12, 9);
             this.lblMatch.Name = "lblMatch";
             this.lblMatch.Size = new System.Drawing.Size(46, 17);
             this.lblMatch.TabIndex = 43;
