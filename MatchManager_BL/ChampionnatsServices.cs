@@ -84,11 +84,11 @@ namespace MatchManager_BL
         }
 
         // renvoit une liste contenant tous les matchs d'une / des saison(s) d'un championnat
-        public List<MdlMatchList> GetFullMatchList(int champ_id, int slctdSsn)
+        public List<MdlMatchMM> GetFullMatchList(int champ_id, int slctdSsn)
         {
             try
             {
-                List<MdlMatchList> matchLst = new List<MdlMatchList>();
+                List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
                 ChampionnatsData oData = new ChampionnatsData();
                 string dateString;
                 // réception de la datatable contenant les matchs
@@ -97,19 +97,19 @@ namespace MatchManager_BL
                 // transformation des objets de la datatable en liste de modèles matchs
                 while (oReader.Read())
                 {
-                    MdlMatchList oMatch;
+                    MdlMatchMM oMatch;
                     // pour récupération de la date pouvant être nulle, vérifier si elle l'est ou non
                     if (oReader.IsDBNull(1))
                     {
                         dateString = "NoDate";                    
                         oMatch = 
-                            new MdlMatchList(oReader.GetInt32(0), null,dateString,oReader.GetInt32(2),oReader.GetString(3),oReader.GetString(4));
+                            new MdlMatchMM(oReader.GetInt32(0), null,dateString,oReader.GetInt32(2),oReader.GetString(3),oReader.GetInt32(4),oReader.GetString(5),oReader.GetInt32(6));
                     }
                     else
                     {
                         dateString = oReader.GetDateTime(1).ToShortDateString();
                         oMatch =
-                            new MdlMatchList(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3), oReader.GetString(4));
+                            new MdlMatchMM(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3),oReader.GetInt32(4), oReader.GetString(5),oReader.GetInt32(6));
                     }
                     matchLst.Add(oMatch);
                 }

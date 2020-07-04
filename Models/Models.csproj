@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MdlCartons.cs" />
-    <Compile Include="MdlMatchList.cs" />
+    <Compile Include="MdlMatchMM.cs" />
     <Compile Include="MdlTypeCarton.cs" />
     <Compile Include="MdlEquipeChamp.cs" />
     <Compile Include="MdlJoueurHistorique.cs" />

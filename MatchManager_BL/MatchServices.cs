@@ -13,24 +13,24 @@ namespace MatchManager_BL
     public class MatchServices
     {
         //obtenir la liste du/des matchs du jour
-        public List<MdlMatchList> GetMatchsOfTheDay()
+        public List<MdlMatchMM> GetMatchsOfTheDay()
         {
             try
             {
                  MatchsData oData = new MatchsData();
-                 List<MdlMatchList> matchLst = new List<MdlMatchList>();
+                 List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
                  string dateString;
                  // réception de la datatable contenant les matchs
-                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now.AddDays(2));
+                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now);
                  DataTableReader oReader = oTab.CreateDataReader();
                  // transformation des objets de la datatable en liste de modèles matchs
                  while (oReader.Read())
                  {
-                     MdlMatchList oMatch;
+                     MdlMatchMM oMatch;
 
                      dateString = oReader.GetDateTime(1).ToShortDateString();
                      oMatch =
-                         new MdlMatchList(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3), oReader.GetString(4));
+                         new MdlMatchMM(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3),oReader.GetInt32(4), oReader.GetString(5), oReader.GetInt32(6));
                      
                      matchLst.Add(oMatch);
                  }
@@ -48,18 +48,18 @@ namespace MatchManager_BL
         }
 
         //renvoit une liste de matchs pour lesquels l'inscription des joueurs est encore modifiable
-        public List<MdlMatchList> GetPlayersInscription_StillEditable_MatchList(int champ_id, int slctdSsn)
+        public List<MdlMatchMM> GetPlayersInscription_StillEditable_MatchList(int champ_id, int slctdSsn)
         {
             try
             {
                 //récupération de la liste complète des matchs du championnat sélectionné
                 ChampionnatsServices oServices = new ChampionnatsServices();
-                List<MdlMatchList> fullMatchList = oServices.GetFullMatchList(champ_id, slctdSsn);
+                List<MdlMatchMM> fullMatchList = oServices.GetFullMatchList(champ_id, slctdSsn);
 
                 //tri de la liste complète : création d'une liste ne comprenant que les matchs dont la date est postérieure à la date du jour
-                List<MdlMatchList> rtrnList = new List<MdlMatchList>();
+                List<MdlMatchMM> rtrnList = new List<MdlMatchMM>();
 
-                foreach (MdlMatchList oMatch in fullMatchList)
+                foreach (MdlMatchMM oMatch in fullMatchList)
                 {
                     bool isLaterThanToday = IsLaterThanToday(oMatch.Date);
                     if (isLaterThanToday)

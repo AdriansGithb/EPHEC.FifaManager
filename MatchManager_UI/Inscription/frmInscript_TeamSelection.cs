@@ -13,8 +13,8 @@ namespace MatchManager_UI.Inscription
 {
     public partial class frmInscript_TeamSelection : Form
     {
-        private MdlMatchList slctdMatch;
-        public frmInscript_TeamSelection(MdlMatchList slctdMatch)
+        private MdlMatchMM slctdMatch;
+        public frmInscript_TeamSelection(MdlMatchMM slctdMatch)
         {
             InitializeComponent();
             this.slctdMatch = slctdMatch;

@@ -111,7 +111,7 @@ namespace MatchManager_UI
         {
             try
             {
-                MdlMatchList slctdMatch = (MdlMatchList)boxMatchSelection.SelectedItem;
+                MdlMatchMM slctdMatch = (MdlMatchMM)boxMatchSelection.SelectedItem;
                 frmInscript_TeamSelection oFrmTeamSel = new frmInscript_TeamSelection(slctdMatch);
                 oFrmTeamSel.Show();
             }
