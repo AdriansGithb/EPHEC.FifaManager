@@ -86,6 +86,7 @@
             this.btnUncheckAll.TabIndex = 35;
             this.btnUncheckAll.Text = "Désélectionner tout";
             this.btnUncheckAll.UseVisualStyleBackColor = true;
+            this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
             // 
             // btnInscrire
             // 

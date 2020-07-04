@@ -89,8 +89,7 @@ namespace BackEnd_BL
                 List<MdlJoueursParEquipe> rtrnList = new List<MdlJoueursParEquipe>();
                 foreach (SP_SelectAllJoueursByEqp_ForSsn2_Result joueur in rcvdList)
                 {
-                    MdlJoueursParEquipe oJoueur = new MdlJoueursParEquipe(joueur.CEqp_ID,joueur.Jr_Nom,joueur.Jr_Prenom);
-                    oJoueur.LastUpdate = joueur.CEqp_LastUpdate;
+                    MdlJoueursParEquipe oJoueur = new MdlJoueursParEquipe(joueur.CEqp_ID,joueur.Jr_Nom,joueur.Jr_Prenom,joueur.CEqp_LastUpdate);
 
                     rtrnList.Add(oJoueur);
                 }

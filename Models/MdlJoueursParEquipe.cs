@@ -19,12 +19,13 @@ namespace Models
 
         }
 
-        public MdlJoueursParEquipe(int id, string nom, string prenom)
+        public MdlJoueursParEquipe(int id, string nom, string prenom, DateTime lastUpdate)
         {
             this.CEqp_Id = id;
             this.Nom = nom;
             this.Prenom = prenom;
             this.NomPrenom = $"{nom} {prenom}";
+            this.LastUpdate = lastUpdate;
         }
     }
 }
