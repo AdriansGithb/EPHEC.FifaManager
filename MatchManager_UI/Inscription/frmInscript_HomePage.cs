@@ -14,9 +14,9 @@ using Models;
 
 namespace MatchManager_UI
 {
-    public partial class frmInscriptions : Form
+    public partial class frmInscript_HomePage : Form
     {
-        public frmInscriptions()
+        public frmInscript_HomePage()
         {
             try
             {
@@ -112,7 +112,7 @@ namespace MatchManager_UI
             try
             {
                 MdlMatchList slctdMatch = (MdlMatchList)boxMatchSelection.SelectedItem;
-                frmTeamSelection oFrmTeamSel = new frmTeamSelection(slctdMatch);
+                frmInscript_TeamSelection oFrmTeamSel = new frmInscript_TeamSelection(slctdMatch);
                 oFrmTeamSel.Show();
             }
             catch (Exception ex)

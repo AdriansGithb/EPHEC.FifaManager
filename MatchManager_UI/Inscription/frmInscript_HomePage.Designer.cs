@@ -1,6 +1,6 @@
 ﻿namespace MatchManager_UI
 {
-    partial class frmInscriptions
+    partial class frmInscript_HomePage
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@
             this.lblMatchList.TabIndex = 2;
             this.lblMatchList.Text = "Date   | Saison | #Match |   Domicile><Visiteur";
             // 
-            // frmInscriptions
+            // frmInscript_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,7 +150,7 @@
             this.Controls.Add(this.gpBx_Champ);
             this.Controls.Add(this.btn_InscrireJoueurs);
             this.Controls.Add(this.gpBx_Matchs);
-            this.Name = "frmInscriptions";
+            this.Name = "frmInscript_HomePage";
             this.Text = "Inscrire des joueurs à un match";
             this.gpBx_Champ.ResumeLayout(false);
             this.gpBx_Champ.PerformLayout();

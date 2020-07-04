@@ -1,6 +1,6 @@
 ﻿namespace MatchManager_UI.Inscription
 {
-    partial class frmTeamSelection
+    partial class frmInscript_TeamSelection
     {
         /// <summary>
         /// Required designer variable.
@@ -95,7 +95,7 @@
             this.Controls.Add(this.lblDom);
             this.Controls.Add(this.btnEqpVisit);
             this.Controls.Add(this.btnEqpDom);
-            this.Name = "frmTeamSelection";
+            this.Name = "frmInscript_TeamSelection";
             this.Text = "Sélectionner l\'équipe désirée";
             this.ResumeLayout(false);
             this.PerformLayout();

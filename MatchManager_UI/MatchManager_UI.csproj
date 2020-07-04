@@ -58,17 +58,23 @@
     <Compile Include="frmMM_HomePage.Designer.cs">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inscription\frmInscriptions.cs">
+    <Compile Include="Inscription\frmInscription.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inscription\frmInscriptions.Designer.cs">
-      <DependentUpon>frmInscriptions.cs</DependentUpon>
+    <Compile Include="Inscription\frmInscription.Designer.cs">
+      <DependentUpon>frmInscription.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inscription\frmTeamSelection.cs">
+    <Compile Include="Inscription\frmInscript_HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inscription\frmTeamSelection.Designer.cs">
-      <DependentUpon>frmTeamSelection.cs</DependentUpon>
+    <Compile Include="Inscription\frmInscript_HomePage.Designer.cs">
+      <DependentUpon>frmInscript_HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscription\frmInscript_TeamSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscription\frmInscript_TeamSelection.Designer.cs">
+      <DependentUpon>frmInscript_TeamSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,11 +84,14 @@
     <EmbeddedResource Include="frmMM_HomePage.resx">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inscription\frmInscriptions.resx">
-      <DependentUpon>frmInscriptions.cs</DependentUpon>
+    <EmbeddedResource Include="Inscription\frmInscription.resx">
+      <DependentUpon>frmInscription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inscription\frmTeamSelection.resx">
-      <DependentUpon>frmTeamSelection.cs</DependentUpon>
+    <EmbeddedResource Include="Inscription\frmInscript_HomePage.resx">
+      <DependentUpon>frmInscript_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription\frmInscript_TeamSelection.resx">
+      <DependentUpon>frmInscript_TeamSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

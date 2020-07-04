@@ -23,7 +23,7 @@ namespace MatchManager_UI
         {
             try
             {
-                frmInscriptions frmInscript = new frmInscriptions();
+                frmInscript_HomePage frmInscript = new frmInscript_HomePage();
                 frmInscript.MdiParent = this;
                 frmInscript.Show();
             }

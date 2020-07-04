@@ -11,10 +11,10 @@ using Models;
 
 namespace MatchManager_UI.Inscription
 {
-    public partial class frmTeamSelection : Form
+    public partial class frmInscript_TeamSelection : Form
     {
         private MdlMatchList slctdMatch;
-        public frmTeamSelection(MdlMatchList slctdMatch)
+        public frmInscript_TeamSelection(MdlMatchList slctdMatch)
         {
             InitializeComponent();
             this.slctdMatch = slctdMatch;
