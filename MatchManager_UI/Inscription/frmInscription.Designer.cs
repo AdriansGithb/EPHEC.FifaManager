@@ -126,6 +126,7 @@
             this.btnCancel.TabIndex = 41;
             this.btnCancel.Text = "Annuler modifications";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblEqp
             // 

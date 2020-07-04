@@ -237,7 +237,6 @@ namespace MatchManager_UI.Inscription
             }
         }
 
-
         //désélectionner tout
         private void btnUncheckAll_Click(object sender, EventArgs e)
         {
@@ -258,5 +257,23 @@ namespace MatchManager_UI.Inscription
 
         }
 
+        //annuler les modifications en cours
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnUncheckAll_Click(sender, e);
+                loadListboxesData();
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
     }
 }
