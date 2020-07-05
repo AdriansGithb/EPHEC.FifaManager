@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Errors;
 using MatchManager_BL;
+using Models;
 
 namespace MatchManager_UI.FeuilleDeMatch
 {
@@ -35,6 +36,25 @@ namespace MatchManager_UI.FeuilleDeMatch
                 //activer/désactiver le bouton inscrire si la liste de matchs est vide
                 if (boxMatchSelection.Items.Count > 0)
                     btnSelect.Enabled = true;
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MdlMatchMM slctdMatch = (MdlMatchMM) boxMatchSelection.SelectedItem;
+                frmFeuilleMatch oFeuilleMatch = new frmFeuilleMatch(slctdMatch);
+                oFeuilleMatch.Show();
             }
             catch (BusinessErrors ex)
             {

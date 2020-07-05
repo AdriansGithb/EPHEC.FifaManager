@@ -52,6 +52,12 @@
     <Compile Include="FeuilleDeMatch\frmChoixFeuilleMatch.Designer.cs">
       <DependentUpon>frmChoixFeuilleMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="FeuilleDeMatch\frmFeuilleMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeuilleDeMatch\frmFeuilleMatch.Designer.cs">
+      <DependentUpon>frmFeuilleMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMM_HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FeuilleDeMatch\frmChoixFeuilleMatch.resx">
       <DependentUpon>frmChoixFeuilleMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeuilleDeMatch\frmFeuilleMatch.resx">
+      <DependentUpon>frmFeuilleMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMM_HomePage.resx">
       <DependentUpon>frmMM_HomePage.cs</DependentUpon>

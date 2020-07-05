@@ -100,6 +100,7 @@
             this.btnSelect.TabIndex = 1;
             this.btnSelect.Text = "Editer la feuille de match";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // frmChoixFeuilleMatch
             // 
