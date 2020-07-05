@@ -35,6 +35,7 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxEquipes_Load();
                 boxNbEvent_Load();
                 lblScores_Load();
+                boxResults_DefaultSelection();
             }
             catch (BusinessErrors ex)
             {
@@ -46,6 +47,40 @@ namespace MatchManager_UI.FeuilleDeMatch
                 MessageBox.Show(oError.Message);
             }
 
+        }
+
+        //sélectionner valeurs par defaut des boxResult
+        public void boxResults_DefaultSelection()
+        {
+            try
+            {
+                int scoreDom = int.Parse(lblGoalsDom.Text);
+                int scoreVisit = int.Parse(lblGoalsVisit.Text);
+                if (scoreDom > scoreVisit)
+                {
+                    boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Gagné");
+                    boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Perdu");
+                }
+                else if (scoreDom < scoreVisit) 
+                {
+                    boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Perdu");
+                    boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Gagné");
+                }
+                else
+                {
+                    boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Nul");
+                    boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Nul");
+                }
+
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //charger les scores
