@@ -53,6 +53,7 @@
     <Compile Include="MdlClassement.cs" />
     <Compile Include="MdlResultats.cs" />
     <Compile Include="MdlSaison.cs" />
+    <Compile Include="MdlTypeEvent.cs" />
     <Compile Include="MdlTypeResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
