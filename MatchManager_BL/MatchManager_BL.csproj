@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ChampionnatsServices.cs" />
     <Compile Include="EqpMatchServices.cs" />
+    <Compile Include="EventsServices.cs" />
     <Compile Include="JoueursServices.cs" />
     <Compile Include="MatchServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

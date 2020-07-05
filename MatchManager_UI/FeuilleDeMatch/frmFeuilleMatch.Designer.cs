@@ -128,6 +128,7 @@
             this.btnEventSave.TabIndex = 3;
             this.btnEventSave.Text = "Sauver l\'événement";
             this.btnEventSave.UseVisualStyleBackColor = true;
+            this.btnEventSave.Click += new System.EventHandler(this.btnEventSave_Click);
             // 
             // boxJoueurs
             // 

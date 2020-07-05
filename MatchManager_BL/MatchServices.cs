@@ -195,5 +195,40 @@ namespace MatchManager_BL
                 throw new BusinessErrors(ex.Message);
             }
         }
+
+        //renvoit la liste des matchs restants après une date de match de début de comparaison
+        public List<MdlMatchMM> GetMatchsRestantsList(int ceqp_id, DateTime date_debut )
+        {
+            try
+            {
+                MatchsData oData = new MatchsData();
+                List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
+                string dateString;
+                // réception de la datatable contenant les matchs
+                DataTable oTab = oData.LoadMatchsRestantData(ceqp_id,date_debut);
+                DataTableReader oReader = oTab.CreateDataReader();
+                // transformation des objets de la datatable en liste de modèles matchs
+                while (oReader.Read())
+                {
+                    MdlMatchMM oMatch;
+
+                    dateString = oReader.GetDateTime(1).ToShortDateString();
+                    oMatch =
+                        new MdlMatchMM(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3), oReader.GetInt32(4), oReader.GetString(5), oReader.GetInt32(6));
+
+                    matchLst.Add(oMatch);
+                }
+                oReader.Close();
+                return matchLst;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
     }
 }

@@ -69,6 +69,9 @@ namespace Errors
                     _Message =
                         "Trop de joueurs ont été sélectionnés pour inscription. Une équipe ne peut inscrire que 7 joueurs maximum pour un match. Veuillez en désélectionner.";
                     break;
+                case "Nombre de matchs de suspension sélectionnés erroné":
+                    _Message = "Le nombre de matchs sélectionnés ne correspond pas au nombre de matchs de suspension à enregistrer. Veuillez modifier la sélection pour pouvoir sauver.";
+                    break;
                 //default:
                 //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 default:

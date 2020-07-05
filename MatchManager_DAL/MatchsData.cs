@@ -93,6 +93,47 @@ namespace MatchManager_DAL
             }
         }
 
+        //renvoit une datatable contenant la liste des matchs restants d'une équipe après une date donnée, pour la même saison
+        public DataTable LoadMatchsRestantData(int ceqp_id, DateTime date_debut)
+        {
+            try
+            {
+                using (SqlConnection oCon = new SqlConnection())
+                {
+                    oCon.ConnectionString = _Connection;
+                    DataTable oTab = new DataTable();
+
+                    oCon.Open();
+                    //appel de la procédure stockée
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "[sch_MatchManagement].SP_SelectMatchRestantsEqp";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = oCon;
+
+                    SqlParameter oPrmtrCeqp = new SqlParameter("@ceqp_id", ceqp_id);
+                    cmd.Parameters.Add(oPrmtrCeqp);
+                    SqlParameter oPrmtrDate = new SqlParameter("@date_debut", date_debut);
+                    cmd.Parameters.Add(oPrmtrDate);
+
+                    //remplissage de la datatable
+                    SqlDataAdapter oAdapter = new SqlDataAdapter(cmd);
+                    oAdapter.Fill(oTab);
+
+                    oCon.Close();
+                    oAdapter.Dispose();
+
+                    return oTab;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
 
     }
 }

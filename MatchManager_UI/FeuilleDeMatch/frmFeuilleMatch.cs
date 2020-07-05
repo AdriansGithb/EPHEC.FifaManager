@@ -73,10 +73,6 @@ namespace MatchManager_UI.FeuilleDeMatch
                 }
 
             }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
-            }
             catch (Exception ex)
             {
                 throw new BusinessErrors(ex.Message);
@@ -210,5 +206,35 @@ namespace MatchManager_UI.FeuilleDeMatch
             }
         }
 
+        //sauver l'événement encodé
+        private void btnEventSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MdlTypeEvent slctdEvent = (MdlTypeEvent) boxEvent.SelectedItem;
+                MdlEquipeChamp slctdEquipe = (MdlEquipeChamp) boxEquipes.SelectedItem;
+                MdlJoueursParEquipe slctdJoueur = (MdlJoueursParEquipe) boxJoueurs.SelectedItem;
+                int nbEvent = (int) boxNbEvent.SelectedItem;
+
+                if (slctdEvent.Libelle.Equals("Carton jaune")|| slctdEvent.Libelle.Equals("Carton rouge"))
+                {
+                    frmSuspensions oFrmSuspensions = new frmSuspensions(slctdMatch ,slctdEvent,slctdEquipe,slctdJoueur, nbEvent );
+                    oFrmSuspensions.ShowDialog();
+                }
+                else
+                {
+
+                }
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
     }
 }
