@@ -54,7 +54,7 @@ namespace MatchManager_UI.FeuilleDeMatch
             {
                 MdlMatchMM slctdMatch = (MdlMatchMM) boxMatchSelection.SelectedItem;
                 frmFeuilleMatch oFeuilleMatch = new frmFeuilleMatch(slctdMatch);
-                oFeuilleMatch.Show();
+                oFeuilleMatch.ShowDialog();
             }
             catch (BusinessErrors ex)
             {

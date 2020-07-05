@@ -104,7 +104,6 @@
             this.gpbxJoueur.Controls.Add(this.txtbxOccurences);
             this.gpbxJoueur.Controls.Add(this.boxJoueurs);
             this.gpbxJoueur.Controls.Add(this.boxEquipes);
-            this.gpbxJoueur.Enabled = false;
             this.gpbxJoueur.Location = new System.Drawing.Point(6, 57);
             this.gpbxJoueur.Name = "gpbxJoueur";
             this.gpbxJoueur.Size = new System.Drawing.Size(764, 100);
@@ -129,6 +128,7 @@
             this.boxEquipes.Name = "boxEquipes";
             this.boxEquipes.Size = new System.Drawing.Size(162, 21);
             this.boxEquipes.TabIndex = 0;
+            this.boxEquipes.SelectedIndexChanged += new System.EventHandler(this.boxJoueurs_Load);
             // 
             // boxJoueurs
             // 
