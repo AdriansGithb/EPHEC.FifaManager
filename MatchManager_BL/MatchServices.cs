@@ -80,7 +80,7 @@ namespace MatchManager_BL
 
         //renvoit un bool pour dire si la date donnée en param est postérieure à la date du jour
         //renvoit false si la date en param est nulle
-            public bool IsLaterThanToday(DateTime? dateToCompare)
+        public bool IsLaterThanToday(DateTime? dateToCompare)
         {
             try
             {
@@ -103,5 +103,7 @@ namespace MatchManager_BL
                 throw new BusinessErrors(ex.Message);
             }
         }
+
+        //
     }
 }

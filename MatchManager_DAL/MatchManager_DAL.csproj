@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChampionnatsData.cs" />
+    <Compile Include="EventData.cs" />
     <Compile Include="InscriptMatchData.cs" />
     <Compile Include="JoueursData.cs" />
     <Compile Include="MatchsData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Errors\Errors.csproj">
