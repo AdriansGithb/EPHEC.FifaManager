@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Errors;
+using MatchManager_BL;
 using Models;
 
 namespace MatchManager_UI.FeuilleDeMatch
@@ -28,6 +29,8 @@ namespace MatchManager_UI.FeuilleDeMatch
                 lblMatch.Text = slctdMatch.NomString;
                 lblNomEqpDom.Text = slctdMatch.Nom_EqpDom;
                 lblNomEqpVisit.Text = slctdMatch.Nom_EqpVisit;
+                boxEvents_Load();
+                boxResults_Load();
             }
             catch (BusinessErrors ex)
             {
@@ -40,5 +43,48 @@ namespace MatchManager_UI.FeuilleDeMatch
             }
 
         }
+
+        //charger les boxs des types de résultats
+        public void boxResults_Load()
+        {
+            try
+            {
+                MatchServices oServices = new MatchServices();
+                List<MdlTypeResult> resList = oServices.GetResultTypes();
+                boxResultDom.DataSource = resList;
+                boxResultDom.DisplayMember = "Libelle";
+
+                boxResultVisit.DataSource = resList;
+                boxResultVisit.DisplayMember = "Libelle";
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+        //charger la box des types d'événements
+        public void boxEvents_Load()
+        {
+            try
+            {
+                MatchServices oServices = new MatchServices();
+                boxEvent.DataSource = oServices.GetEventTypes();
+                boxEvent.DisplayMember = "Libelle";
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
     }
 }

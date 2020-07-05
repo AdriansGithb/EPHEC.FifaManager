@@ -104,6 +104,73 @@ namespace MatchManager_BL
             }
         }
 
-        //
+        //renvoit la liste complète des types de résultats
+        public List<MdlTypeResult> GetResultTypes()
+        {
+            try
+            {
+                ResultData oData = new ResultData();
+                List<MdlTypeResult> rtrnList = new List<MdlTypeResult>();
+
+                DataTable oTab = oData.LoadResultTypeData();
+                DataTableReader oReader = oTab.CreateDataReader();
+
+                while (oReader.Read())
+                {
+                    MdlTypeResult oType = new MdlTypeResult();
+                    oType.Id = oReader.GetInt32(0);
+                    oType.Libelle = oReader.GetString(1);
+
+                    rtrnList.Add(oType);
+                }
+
+                return rtrnList;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+        //renvoit la liste complète des types d'événements
+        public List<MdlTypeEvent> GetEventTypes()
+        {
+            try
+            {
+                EventData oData = new EventData();
+                List<MdlTypeEvent> rtrnList = new List<MdlTypeEvent>();
+
+                DataTable oTab = oData.LoadEventTypeData();
+                DataTableReader oReader = oTab.CreateDataReader();
+
+                while (oReader.Read())
+                {
+                    MdlTypeEvent oType = new MdlTypeEvent();
+                    oType.Id = oReader.GetInt32(0);
+                    oType.Libelle = oReader.GetString(1);
+                    if (oReader.IsDBNull(2) == false)
+                    {
+                        oType.Nb_Jours_Suspension = oReader.GetInt16(2);
+                        oType.Susp_Next_Match = oReader.GetBoolean(3);
+                    }
+                    rtrnList.Add(oType);
+                }
+
+                return rtrnList;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
     }
 }
