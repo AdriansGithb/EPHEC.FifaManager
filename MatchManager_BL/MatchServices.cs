@@ -34,7 +34,7 @@ namespace MatchManager_BL
                      
                      matchLst.Add(oMatch);
                  }
-
+                 oReader.Close();
                  return matchLst;
             }
             catch (BusinessErrors ex)
@@ -123,7 +123,7 @@ namespace MatchManager_BL
 
                     rtrnList.Add(oType);
                 }
-
+                oReader.Close();
                 return rtrnList;
             }
             catch (BusinessErrors ex)
@@ -159,7 +159,7 @@ namespace MatchManager_BL
                     }
                     rtrnList.Add(oType);
                 }
-
+                oReader.Close();
                 return rtrnList;
             }
             catch (BusinessErrors ex)
@@ -172,5 +172,28 @@ namespace MatchManager_BL
             }
         }
 
+        //renvoit le score d'un match
+        public void GetMatchScore(out int scoreDom, out int scoreVisit, int match_id)
+        {
+            try
+            {
+                MatchsData oData = new MatchsData();
+                DataRow scoreRow = oData.LoadMatchScores(match_id);
+                scoreDom = (int)scoreRow[0];
+                scoreVisit = (int)scoreRow[1];
+                if (scoreDom < 0)
+                    scoreDom = 0;
+                if (scoreVisit < 0)
+                    scoreVisit = 0;
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
     }
 }

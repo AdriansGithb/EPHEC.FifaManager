@@ -33,6 +33,8 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxEvents_Load();
                 boxResults_Load();
                 boxEquipes_Load();
+                boxNbEvent_Load();
+                lblScores_Load();
             }
             catch (BusinessErrors ex)
             {
@@ -45,6 +47,42 @@ namespace MatchManager_UI.FeuilleDeMatch
             }
 
         }
+
+        //charger les scores
+        public void lblScores_Load()
+        {
+            try
+            {
+                int scoreDom, scoreVisit;
+                MatchServices oServices = new MatchServices();
+                oServices.GetMatchScore(out scoreDom, out scoreVisit, slctdMatch.Match_ID);
+                lblGoalsDom.Text = scoreDom.ToString();
+                lblGoalsVisit.Text = scoreVisit.ToString();
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+        //charger la boxNbEvent
+        public void boxNbEvent_Load()
+        {
+            try
+            {
+                boxNbEvent.Items.AddRange(Enumerable.Range(1, 50).Select(i => (object)i).ToArray());
+                boxNbEvent.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
         //charger la liste des joueurs de l'équipe
         public void boxJoueurs_Load(object sender, EventArgs e)
         {
@@ -101,11 +139,11 @@ namespace MatchManager_UI.FeuilleDeMatch
             try
             {
                 MatchServices oServices = new MatchServices();
-                List<MdlTypeResult> resList = oServices.GetResultTypes();
-                boxResultDom.DataSource = resList;
+                 
+                boxResultDom.DataSource = oServices.GetResultTypes(); 
                 boxResultDom.DisplayMember = "Libelle";
 
-                boxResultVisit.DataSource = resList;
+                boxResultVisit.DataSource = oServices.GetResultTypes();
                 boxResultVisit.DisplayMember = "Libelle";
             }
             catch (BusinessErrors ex)

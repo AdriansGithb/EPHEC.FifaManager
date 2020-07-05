@@ -71,6 +71,7 @@ namespace MatchManager_BL
                     lstChamps.Add(oChamp);
                 }
 
+                oReader.Close();
                 return lstChamps;
             }
             catch (BusinessErrors ex)
@@ -113,7 +114,7 @@ namespace MatchManager_BL
                     }
                     matchLst.Add(oMatch);
                 }
-
+                oReader.Close();
                 return matchLst;
             }
             catch (BusinessErrors ex)

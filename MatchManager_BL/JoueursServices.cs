@@ -32,7 +32,7 @@ namespace MatchManager_BL
 
                     jrList.Add(oJoueur);
                 }
-
+                oReader.Close();
                 return jrList;
             }
             catch (BusinessErrors ex)
@@ -65,7 +65,7 @@ namespace MatchManager_BL
 
                     jrList.Add(oJoueur);
                 }
-
+                oReader.Close();
                 return jrList;
             }
             catch (BusinessErrors ex)
