@@ -21,7 +21,7 @@ namespace MatchManager_BL
                  List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
                  string dateString;
                  // réception de la datatable contenant les matchs
-                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now.AddDays(6));
+                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now.AddDays(4));
                  DataTableReader oReader = oTab.CreateDataReader();
                  // transformation des objets de la datatable en liste de modèles matchs
                  while (oReader.Read())

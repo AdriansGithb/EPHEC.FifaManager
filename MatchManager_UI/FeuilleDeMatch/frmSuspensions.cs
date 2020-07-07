@@ -128,6 +128,8 @@ namespace MatchManager_UI.FeuilleDeMatch
         {
             try
             {
+                //si carton jaune, vérification du nb de matchs sélectionnés
+                //si carton rouge, la sélection des matchs de suspension next match est automatisée, le nb ne doit pas être vérifié
                 if (slctdEvent.Susp_Next_Match == false && int.Parse(lblNbMatchsRestant.Text) != 0 && lstbxMatchsRestant.SelectedItems.Count < lstbxMatchsRestant.Items.Count)
                 {
                     throw new BusinessErrors("Nombre de matchs de suspension sélectionnés erroné");
@@ -135,7 +137,15 @@ namespace MatchManager_UI.FeuilleDeMatch
                 else
                 {
                     //sauver les cartons + les suspensions liées
-                    //prendre 1 carton = les x premiers matchs, le suivants les x suivants matchs,...
+                    EventsServices oServices = new EventsServices();
+                    List<MdlMatchMM> suspList = new List<MdlMatchMM>();
+                    foreach (MdlMatchMM oMatch in lstbxMatchsRestant.SelectedItems)
+                    {
+                        suspList.Add(oMatch);
+                    }
+                    oServices.SaveCardEvents(nbEvent, slctdJoueur, matchOrigineSanction, slctdEvent, suspList);
+                    MessageBox.Show("Enregistrement effectués");
+                    this.DialogResult = DialogResult.OK;
                 }
             }
             catch (BusinessErrors ex)
