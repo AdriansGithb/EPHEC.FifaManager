@@ -221,5 +221,27 @@ namespace MatchManager_BL
             }
         }
 
+        //vérifier si une équipe est forfait ou non
+        public void VerifierSiEquipeForfaitMatch(out bool forfaitEqpDom, out bool forfaitEqpVisit, MdlMatchMM match)
+        {
+            try
+            {
+                JoueursServices oServices = new JoueursServices();
+                forfaitEqpDom = !SeuilMinJoueurs_OK(oServices
+                    .GetRegisteredTeamPlayersList_ForAMatch(match.EqpDom_CoChmp_ID, match.Match_ID).Count);
+                forfaitEqpVisit = !SeuilMinJoueurs_OK(oServices
+                    .GetRegisteredTeamPlayersList_ForAMatch(match.EqpVisit_CoChmp_ID, match.Match_ID).Count);
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+
     }
 }

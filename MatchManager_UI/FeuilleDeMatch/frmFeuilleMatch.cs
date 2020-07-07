@@ -38,6 +38,7 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxNbEvent_Load();
                 lblScores_Load();
                 boxResults_DefaultSelection();
+                verifForfait_Load();
             }
             catch (BusinessErrors ex)
             {
@@ -49,6 +50,52 @@ namespace MatchManager_UI.FeuilleDeMatch
                 MessageBox.Show(oError.Message);
             }
 
+        }
+
+        //vérifier si le nb de joueurs inscrits est ok, sinon paramétrer la fenêtre et proposition de résultats
+        public void verifForfait_Load()
+        {
+            try
+            {
+                EqpMatchServices oServices = new EqpMatchServices();
+                bool forfaitDom, forfaitVisit = false;
+                oServices.VerifierSiEquipeForfaitMatch(out forfaitDom,out forfaitVisit, slctdMatch);
+                if (forfaitDom || forfaitVisit)
+                {
+                    gpbxEvent.Enabled = false;
+                    // résultat = perdu/forfait dans les 2 équipes si les 2 = forfaits
+                    if (forfaitDom && forfaitVisit)
+                    {
+                        boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Perdu/Forfait");
+                        goodResultDom = (MdlTypeResult) boxResultDom.SelectedItem;
+                        boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Perdu/Forfait");
+                        goodResultVisit = (MdlTypeResult)boxResultVisit.SelectedItem;
+                    }
+                    // = perdu vs gagné si une seule des 2 est forfait
+                    else if (forfaitDom)
+                    {
+                        boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Perdu/Forfait");
+                        goodResultDom = (MdlTypeResult)boxResultDom.SelectedItem;
+                        boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Gagné");
+                        goodResultVisit = (MdlTypeResult)boxResultVisit.SelectedItem;
+                    }
+                    else
+                    {
+                        boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Gagné");
+                        goodResultDom = (MdlTypeResult)boxResultDom.SelectedItem;
+                        boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Perdu/Forfait");
+                        goodResultVisit = (MdlTypeResult)boxResultVisit.SelectedItem;
+                    }
+
+                    MessageBox.Show(
+                        "Au moins une équipe est déclarée forfait pour ce match à cause de joueurs manquants pour valider l'inscription au match. La feuille de match est donc paramétrée pour enregistrer le score par forfait.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //sélectionner valeurs par defaut des boxResult
