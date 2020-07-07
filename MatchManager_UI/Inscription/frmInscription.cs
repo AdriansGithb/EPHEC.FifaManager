@@ -356,7 +356,7 @@ namespace MatchManager_UI.Inscription
             {
                 //vérification d'un changement éventuel dans la liste des joueurs inscrits au match
                 EqpMatchServices oServices = new EqpMatchServices();
-                if (oServices.CheckIfModification(lstbxJoueursMatchItems_ToMdlJoueursList(), eqpMatchOrigine))
+                if (this.DialogResult!=DialogResult.OK && oServices.CheckIfModification(lstbxJoueursMatchItems_ToMdlJoueursList(), eqpMatchOrigine))
                 {
                     DialogResult res = MessageBox.Show(
                         "Des changements ont été effectués sans être sauvegardés. OK pour quitter sans sauver, ANNULER puis Sauver pour annuler et sauver les changements. ",
