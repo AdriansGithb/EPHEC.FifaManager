@@ -34,10 +34,14 @@ namespace MatchManager_BL
                         //création de la datatable
                         DataTable suspMatchsTab = new DataTable("susp_match_tab");
                         suspMatchsTab.Columns.Add("Susp_Mch_ID", typeof(int));
-                        for(int j=0;j<card.Nb_Jours_Suspension;j++)
+                        for(int j=0;j<card.Nb_Jours_Suspension ;j++)
                         {
                             DataRow oRow = suspMatchsTab.NewRow();
-                            oRow["Susp_Mch_ID"] = matchSuspList[indexCount].Match_ID;
+                            //si il est encore possible d'insérer des matchs de suspension, insérer un id
+                            if (indexCount < matchSuspList.Count)
+                                oRow["Susp_Mch_ID"] = matchSuspList[indexCount].Match_ID;
+                            //sinon insérer des id nulls
+                            else oRow["Susp_Mch_ID"] = DBNull.Value;
                             suspMatchsTab.Rows.Add(oRow);
                             indexCount++;
                         }

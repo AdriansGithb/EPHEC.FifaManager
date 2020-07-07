@@ -21,7 +21,7 @@ namespace MatchManager_BL
                  List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
                  string dateString;
                  // réception de la datatable contenant les matchs
-                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now.AddDays(4));
+                 DataTable oTab = oData.LoadMatchOfTheDayData(new DateTime(2020,7,4));
                  DataTableReader oReader = oTab.CreateDataReader();
                  // transformation des objets de la datatable en liste de modèles matchs
                  while (oReader.Read())
@@ -61,8 +61,8 @@ namespace MatchManager_BL
 
                 foreach (MdlMatchMM oMatch in fullMatchList)
                 {
-                    bool isLaterThanToday = IsLaterThanToday(oMatch.Date);
-                    if (isLaterThanToday)
+                    //bool isLaterThanToday = IsLaterThanToday(oMatch.Date);
+                    //if (isLaterThanToday)
                         rtrnList.Add(oMatch);
                 }
 

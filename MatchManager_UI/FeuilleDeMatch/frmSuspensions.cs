@@ -50,7 +50,7 @@ namespace MatchManager_UI.FeuilleDeMatch
                 lblNbMatchTotal.Text = nbSuspensions.ToString();
                 lblNbMatchsRestant.Text = nbSuspensions.ToString();
                 lstbxMatchs_Load();                
-                checkIfNextMatchRule();
+                checkIfNextMatchRule_AndAutoselect();
 
             }
             catch (BusinessErrors ex)
@@ -88,7 +88,7 @@ namespace MatchManager_UI.FeuilleDeMatch
         }
 
         //vérifier si on peut choisir le match ou si ce sont obligatoirement les matchs suivants
-        private void checkIfNextMatchRule()
+        private void checkIfNextMatchRule_AndAutoselect()
         {
             try
             {
