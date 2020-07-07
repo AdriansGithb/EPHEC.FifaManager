@@ -72,6 +72,15 @@ namespace Errors
                 case "Nombre de matchs de suspension sélectionnés erroné":
                     _Message = "Le nombre de matchs sélectionnés ne correspond pas au nombre de matchs de suspension à enregistrer. Veuillez modifier la sélection pour pouvoir sauver.";
                     break;
+                case "type event non reconnu" :
+                    _Message =
+                        "Type d'événement sélectionné non reconnu pour enregistrement. Veuillez contacter un administrateur.";
+                    break;
+                case "Enregistrement résultat non encodé":
+                    _Message =
+                        "Vous ne pouvez pas enregistrer un résultat 'Pas joué/encodé' dans une feuille de match. Veuillez modifier les résulats encodés.";
+                    break;
+
                 //default:
                 //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
                 default:

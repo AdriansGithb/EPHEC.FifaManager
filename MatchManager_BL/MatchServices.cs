@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using Errors;
 using MatchManager_DAL;
 using Models;
@@ -31,7 +32,7 @@ namespace MatchManager_BL
                      dateString = oReader.GetDateTime(1).ToShortDateString();
                      oMatch =
                          new MdlMatchMM(oReader.GetInt32(0), oReader.GetDateTime(1), dateString, oReader.GetInt32(2), oReader.GetString(3),oReader.GetInt32(4), oReader.GetString(5), oReader.GetInt32(6));
-                     
+                     oMatch.LastUpdate = oReader.GetDateTime(7);
                      matchLst.Add(oMatch);
                  }
                  oReader.Close();
@@ -229,6 +230,30 @@ namespace MatchManager_BL
             {
                 throw new BusinessErrors(ex.Message);
             }
+        }
+
+        //sauvegarder les résultats d'une feuille de match
+        public void SetMatchResults(int match_id, int typResDom, int typResVisit, DateTime lstupdt)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    MatchsData oData = new MatchsData();
+                    oData.InsertMatchResults(match_id,typResDom, typResVisit, lstupdt);
+
+                    scope.Complete();
+                }
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+
         }
     }
 }

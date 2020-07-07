@@ -17,6 +17,8 @@ namespace MatchManager_UI.FeuilleDeMatch
     public partial class frmFeuilleMatch : Form
     {
         private MdlMatchMM slctdMatch;
+        private MdlTypeResult goodResultDom;
+        private MdlTypeResult goodResultVisit;
         public frmFeuilleMatch(MdlMatchMM slctdMatch)
         {
             InitializeComponent();
@@ -71,7 +73,8 @@ namespace MatchManager_UI.FeuilleDeMatch
                     boxResultDom.SelectedIndex = boxResultDom.FindStringExact("Nul");
                     boxResultVisit.SelectedIndex = boxResultVisit.FindStringExact("Nul");
                 }
-
+                goodResultDom = (MdlTypeResult)boxResultDom.SelectedItem;
+                goodResultVisit = (MdlTypeResult)boxResultVisit.SelectedItem;
             }
             catch (Exception ex)
             {
@@ -221,9 +224,57 @@ namespace MatchManager_UI.FeuilleDeMatch
                     frmSuspensions oFrmSuspensions = new frmSuspensions(slctdMatch ,slctdEvent,slctdEquipe,slctdJoueur, nbEvent );
                     oFrmSuspensions.ShowDialog();
                 }
-                else
+                else if(slctdEvent.Libelle.Contains("Goal"))
                 {
+                    EventsServices oServices = new EventsServices();
+                    oServices.SaveGoalEvents(nbEvent, slctdJoueur, slctdMatch, slctdEvent);
+                    MessageBox.Show("Goal(s) sauvegardé(s)");
+                    lblScores_Load();
+                    boxResults_DefaultSelection();
+                }
+                else throw new BusinessErrors("type event non reconnu");
+            }
+            catch (BusinessErrors ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                BusinessErrors oError = new BusinessErrors(ex.Message);
+                MessageBox.Show(oError.Message);
+            }
+        }
 
+        //sauver le résultat
+        private void btnResultSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MdlTypeResult slctdResDom = (MdlTypeResult) boxResultDom.SelectedItem;
+                MdlTypeResult slctdResVisit = (MdlTypeResult)boxResultVisit.SelectedItem;
+                bool save = true;
+
+                //si un des 2 résultats à enregistrer est de type "pas joué/encodé"
+                if (slctdResVisit.Libelle.Contains("Pas joué") || slctdResDom.Libelle.Contains("Pas joué"))
+                {
+                    throw new BusinessErrors("Enregistrement résultat non encodé");
+                }
+                //si un des deux résultats sélectionné n'est pas le même que celui qui devrait être sélectionné
+                else if (!slctdResDom.Libelle.Equals(goodResultDom.Libelle) ||
+                    !slctdResVisit.Libelle.Equals(goodResultVisit.Libelle))
+                    {
+                        DialogResult res = MessageBox.Show($"Vous allez sauvegarder des résultats qui ne correspondent pas au score. Le bon résultat devrait être : {goodResultDom.Libelle} - {goodResultVisit.Libelle}. Cliquez sur OK pour sauver malgré tout, ou sur ANNULER pour revenir dans la feuille de match.", "Resultats manuels erronés", MessageBoxButtons.OKCancel);
+                        if (res == DialogResult.Cancel)
+                            save = false;
+                    }
+                
+                //si sauvegarde possible (save = true)
+                if (save)
+                {
+                    MatchServices oServices = new MatchServices();
+                    oServices.SetMatchResults(slctdMatch.Match_ID, slctdResDom.Id, slctdResVisit.Id, slctdMatch.LastUpdate);
+                    MessageBox.Show("Feuille de match enregistrée et clôturée");
+                    this.DialogResult = DialogResult.OK;
                 }
             }
             catch (BusinessErrors ex)
@@ -235,6 +286,7 @@ namespace MatchManager_UI.FeuilleDeMatch
                 BusinessErrors oError = new BusinessErrors(ex.Message);
                 MessageBox.Show(oError.Message);
             }
+
         }
     }
 }

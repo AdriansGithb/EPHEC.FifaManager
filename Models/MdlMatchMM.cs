@@ -20,6 +20,7 @@ namespace Models
         public int EqpVisit_CoChmp_ID { get; set; }
 
         public string NomString { get; set; }
+        public DateTime LastUpdate { get; set; }
 
         public MdlMatchMM()
         {

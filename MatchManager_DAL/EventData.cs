@@ -91,5 +91,48 @@ namespace MatchManager_DAL
                 throw new BusinessErrors(ex.Message);
             }
         }
+
+        //insère un événement de x type_goal lié à un joueur
+        public void InsertGoalEvents_1Player(int ceqp_id, int match_id, int tevnt_id, int nb_event)
+        {
+            try
+            {
+                using (SqlConnection oCon = new SqlConnection())
+                {
+                    oCon.ConnectionString = _Connection;
+
+                    oCon.Open();
+                    //appel de la procédure stockée
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "[sch_MatchManagement].SP_Insert_GoalEvents";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = oCon;
+
+                    //remplissage de la datatable
+                    SqlParameter oPrmtrCeqp = new SqlParameter("@ceqp_id", ceqp_id);
+                    cmd.Parameters.Add(oPrmtrCeqp);
+                    SqlParameter oPrmtrMatch = new SqlParameter("@match_id", match_id);
+                    cmd.Parameters.Add(oPrmtrMatch);
+                    SqlParameter oPrmtrTevnt = new SqlParameter("@tevnt_id", tevnt_id);
+                    cmd.Parameters.Add(oPrmtrTevnt);
+                    SqlParameter oPrmtrNbEvnt = new SqlParameter("@nbEvent", nb_event);
+                    cmd.Parameters.Add(oPrmtrNbEvnt);
+
+                    cmd.ExecuteNonQuery();
+
+                    oCon.Close();
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
     }
 }

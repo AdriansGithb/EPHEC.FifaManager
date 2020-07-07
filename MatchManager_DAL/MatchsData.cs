@@ -135,5 +135,49 @@ namespace MatchManager_DAL
             }
         }
 
+        //insère les résultats d'une feuille de match
+        public void InsertMatchResults(int match_id, int typResDom, int typResVisit, DateTime lstupdt)
+        {
+            try
+            {
+                using (SqlConnection oCon = new SqlConnection())
+                {
+                    oCon.ConnectionString = _Connection;
+
+                    oCon.Open();
+                    //appel de la procédure stockée
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "[sch_MatchManagement].SP_ModifResult";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = oCon;
+
+                    //remplissage de la datatable
+                    SqlParameter oPrmtrResDom = new SqlParameter("@tpResDomId", typResDom);
+                    cmd.Parameters.Add(oPrmtrResDom);
+                    SqlParameter oPrmtrMatch = new SqlParameter("@match_id", match_id);
+                    cmd.Parameters.Add(oPrmtrMatch);
+                    SqlParameter oPrmtrResVisit = new SqlParameter("@tpResVisId", typResVisit);
+                    cmd.Parameters.Add(oPrmtrResVisit);
+                    SqlParameter oPrmtrLstUpdt = new SqlParameter("@lstUpdt", lstupdt);
+                    cmd.Parameters.Add(oPrmtrLstUpdt);
+
+                    cmd.ExecuteNonQuery();
+
+                    oCon.Close();
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+
+
     }
 }

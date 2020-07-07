@@ -31,6 +31,7 @@
             this.gpbxEvent = new System.Windows.Forms.GroupBox();
             this.lblSelectEvent = new System.Windows.Forms.Label();
             this.gpbxJoueur = new System.Windows.Forms.GroupBox();
+            this.boxNbEvent = new System.Windows.Forms.ComboBox();
             this.lblNbEvent = new System.Windows.Forms.Label();
             this.lblJoueur = new System.Windows.Forms.Label();
             this.lblEqp = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.lblNomEqpDom = new System.Windows.Forms.Label();
             this.lblEqpDom = new System.Windows.Forms.Label();
             this.lblMatch = new System.Windows.Forms.Label();
-            this.boxNbEvent = new System.Windows.Forms.ComboBox();
             this.gpbxEvent.SuspendLayout();
             this.gpbxJoueur.SuspendLayout();
             this.gpbxResult.SuspendLayout();
@@ -92,6 +92,15 @@
             this.gpbxJoueur.TabIndex = 1;
             this.gpbxJoueur.TabStop = false;
             this.gpbxJoueur.Text = "Sélectionner le joueur lié à l\'événement";
+            // 
+            // boxNbEvent
+            // 
+            this.boxNbEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxNbEvent.FormattingEnabled = true;
+            this.boxNbEvent.Location = new System.Drawing.Point(503, 44);
+            this.boxNbEvent.Name = "boxNbEvent";
+            this.boxNbEvent.Size = new System.Drawing.Size(56, 21);
+            this.boxNbEvent.TabIndex = 9;
             // 
             // lblNbEvent
             // 
@@ -184,6 +193,7 @@
             this.btnResultSave.TabIndex = 7;
             this.btnResultSave.Text = "Sauver le résultat et clôturer la feuille de match";
             this.btnResultSave.UseVisualStyleBackColor = true;
+            this.btnResultSave.Click += new System.EventHandler(this.btnResultSave_Click);
             // 
             // boxResultVisit
             // 
@@ -270,15 +280,6 @@
             this.lblMatch.Size = new System.Drawing.Size(51, 17);
             this.lblMatch.TabIndex = 44;
             this.lblMatch.Text = "Match";
-            // 
-            // boxNbEvent
-            // 
-            this.boxNbEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.boxNbEvent.FormattingEnabled = true;
-            this.boxNbEvent.Location = new System.Drawing.Point(503, 44);
-            this.boxNbEvent.Name = "boxNbEvent";
-            this.boxNbEvent.Size = new System.Drawing.Size(56, 21);
-            this.boxNbEvent.TabIndex = 9;
             // 
             // frmFeuilleMatch
             // 

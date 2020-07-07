@@ -61,5 +61,36 @@ namespace MatchManager_BL
                 throw new BusinessErrors(ex.Message);
             }
         }
+
+        //sauvegarde des goals
+        public void SaveGoalEvents(int nbEvent, MdlJoueursParEquipe buteur, MdlMatchMM match, MdlTypeEvent type_goal)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    //variables utiles pour l'inscription du/des goals
+                    int ceqp_id = buteur.CEqp_Id;
+                    int match_id = match.Match_ID;
+                    int tevnt_id = type_goal.Id;
+
+                    EventData oData = new EventData();
+                    oData.InsertGoalEvents_1Player(ceqp_id, match_id, tevnt_id, nbEvent);
+
+                    scope.Complete();
+                }
+            }
+            catch (BusinessErrors ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
+        }
+
+
+
     }
 }
