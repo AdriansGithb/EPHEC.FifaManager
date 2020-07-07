@@ -191,7 +191,7 @@
             this.btnResultSave.Name = "btnResultSave";
             this.btnResultSave.Size = new System.Drawing.Size(126, 64);
             this.btnResultSave.TabIndex = 7;
-            this.btnResultSave.Text = "Sauver le résultat et clôturer la feuille de match";
+            this.btnResultSave.Text = "Sauver le résultat et fermer la feuille de match";
             this.btnResultSave.UseVisualStyleBackColor = true;
             this.btnResultSave.Click += new System.EventHandler(this.btnResultSave_Click);
             // 
