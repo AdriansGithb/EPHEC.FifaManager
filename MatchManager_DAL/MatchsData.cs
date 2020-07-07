@@ -14,7 +14,7 @@ namespace MatchManager_DAL
     {
         private string _Connection = "Server=MSI\\SQLEXPRESS;Database=Fifa_Manager;User Id=UserMatchManagement;Password=;";
 
-        //renvoit une datatable contenant la liste des matchs du jour
+        //renvoie une datatable contenant la liste des matchs du jour
         public DataTable LoadMatchOfTheDayData(DateTime _today)
         {
             try
@@ -54,7 +54,7 @@ namespace MatchManager_DAL
             }
         }
 
-        //renvoit une datatable contenant les scores du match envoyé en param
+        //renvoie une datatable contenant les scores du match envoyé en param
         public DataRow LoadMatchScores(int match_id)
         {
             try
@@ -93,7 +93,7 @@ namespace MatchManager_DAL
             }
         }
 
-        //renvoit une datatable contenant la liste des matchs restants d'une équipe après une date donnée, pour la même saison
+        //renvoie une datatable contenant la liste des matchs restants d'une équipe après une date donnée, pour la même saison
         public DataTable LoadMatchsRestantData(int ceqp_id, DateTime date_debut)
         {
             try

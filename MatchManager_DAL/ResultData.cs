@@ -13,7 +13,7 @@ namespace MatchManager_DAL
     {
         private string _Connection = "Server=MSI\\SQLEXPRESS;Database=Fifa_Manager;User Id=UserMatchManagement;Password=;";
 
-        //renvoit une datatable contenant la table des types de résultats
+        //renvoie une datatable contenant la table des types de résultats
         public DataTable LoadResultTypeData()
         {
             try

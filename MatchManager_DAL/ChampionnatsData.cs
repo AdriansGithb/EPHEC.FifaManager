@@ -14,7 +14,7 @@ namespace MatchManager_DAL
     {
         private string _Connection = "Server=MSI\\SQLEXPRESS;Database=Fifa_Manager;User Id=UserMatchManagement;Password=;";
 
-        //renvoit une datatable contenant le data de la table Championnats
+        //renvoie une datatable contenant le data de la table Championnats
         public DataTable LoadChampData()
         {
             try
@@ -50,7 +50,7 @@ namespace MatchManager_DAL
             }
         }
 
-        //renvoit une datatable contenant la liste des matchs de la/des saisons d'un championnat passé en paramètre
+        //renvoie une datatable contenant la liste des matchs de la/des saisons d'un championnat passé en paramètre
         public DataTable LoadMatchListData(int champ_id, int slctdSsn)
         {
             try

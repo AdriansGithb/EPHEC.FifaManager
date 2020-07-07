@@ -12,7 +12,7 @@ namespace MatchManager_BL
 {
     public class JoueursServices
     {
-        //renvoit la liste des joueurs d'une équipe dispo pour un match donné en param
+        //renvoie la liste des joueurs d'une équipe dispo pour un match donné en param
         public List<MdlJoueursParEquipe> GetAvailableTeamPlayersList_ForAMatch(int eqp_cochmp_id, int match_id)
         {
             try
@@ -45,7 +45,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit la liste des joueurs d'une équipe déjà inscrits pour un match donné
+        //renvoie la liste des joueurs d'une équipe déjà inscrits pour un match donné
         public List<MdlJoueursParEquipe> GetRegisteredTeamPlayersList_ForAMatch(int eqp_cochmp_id, int match_id)
         {
             try

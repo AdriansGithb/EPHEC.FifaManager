@@ -268,7 +268,7 @@ namespace MatchManager_UI.FeuilleDeMatch
 
                 if (slctdEvent.Libelle.Equals("Carton jaune")|| slctdEvent.Libelle.Equals("Carton rouge"))
                 {
-                    frmSuspensions oFrmSuspensions = new frmSuspensions(slctdMatch ,slctdEvent,slctdEquipe,slctdJoueur, nbEvent );
+                    frmSuspensions oFrmSuspensions = new frmSuspensions(slctdMatch ,slctdEvent,slctdJoueur, nbEvent );
                     oFrmSuspensions.ShowDialog();
                 }
                 else if(slctdEvent.Libelle.Contains("Goal"))

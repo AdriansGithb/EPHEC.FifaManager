@@ -13,8 +13,8 @@ namespace MatchManager_BL
 {
     public class ChampionnatsServices
     {
-        //renvoit le championnat de l'année en cours
-                //si pas de championnat durant l'année en cours : renvoit un championnat avec NomString vide
+        //renvoie le championnat de l'année en cours
+                //si pas de championnat durant l'année en cours : renvoie un championnat avec NomString vide
         public MdlChampionnat GetChampOfThisYear()
         {
             List<MdlChampionnat> fullList = GetAllChampionnats();
@@ -26,7 +26,7 @@ namespace MatchManager_BL
             return rtrnChamp;
         }
 
-        //renvoit une liste contenant les championnats de l'année en cours, ou futures
+        //renvoie une liste contenant les championnats de l'année en cours, ou futures
         public List<MdlChampionnat> GetChampsOfThisYearAndFuture()
         {
             try
@@ -53,7 +53,7 @@ namespace MatchManager_BL
             }
         }
 
-        // renvoit une liste contenant tous les championnats
+        // renvoie une liste contenant tous les championnats
         public List<MdlChampionnat> GetAllChampionnats()
         {
             try
@@ -84,7 +84,7 @@ namespace MatchManager_BL
             }
         }
 
-        // renvoit une liste contenant tous les matchs d'une / des saison(s) d'un championnat
+        // renvoie une liste contenant tous les matchs d'une / des saison(s) d'un championnat
         public List<MdlMatchMM> GetFullMatchList(int champ_id, int slctdSsn)
         {
             try

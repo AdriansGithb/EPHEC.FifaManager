@@ -48,7 +48,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit une liste de matchs pour lesquels l'inscription des joueurs est encore modifiable
+        //renvoie une liste de matchs pour lesquels l'inscription des joueurs est encore modifiable
         public List<MdlMatchMM> GetPlayersInscription_StillEditable_MatchList(int champ_id, int slctdSsn)
         {
             try
@@ -79,8 +79,8 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit un bool pour dire si la date donnée en param est postérieure à la date du jour
-        //renvoit false si la date en param est nulle
+        //renvoie un bool pour dire si la date donnée en param est postérieure à la date du jour
+        //renvoie false si la date en param est nulle
         public bool IsLaterThanToday(DateTime? dateToCompare)
         {
             try
@@ -105,7 +105,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit la liste complète des types de résultats
+        //renvoie la liste complète des types de résultats
         public List<MdlTypeResult> GetResultTypes()
         {
             try
@@ -137,7 +137,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit la liste complète des types d'événements
+        //renvoie la liste complète des types d'événements
         public List<MdlTypeEvent> GetEventTypes()
         {
             try
@@ -173,7 +173,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit le score d'un match
+        //renvoie le score d'un match
         public void GetMatchScore(out int scoreDom, out int scoreVisit, int match_id)
         {
             try
@@ -197,7 +197,7 @@ namespace MatchManager_BL
             }
         }
 
-        //renvoit la liste des matchs restants après une date de match de début de comparaison
+        //renvoie la liste des matchs restants après une date de match de début de comparaison
         public List<MdlMatchMM> GetMatchsRestantsList(int ceqp_id, DateTime date_debut )
         {
             try

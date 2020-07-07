@@ -67,7 +67,7 @@ namespace BackEnd_BL
             }
         }
 
-        //fonction de préparation des données pour les tableaux calendrier, qui renvoit 2 listes dans une liste
+        //fonction de préparation des données pour les tableaux calendrier, qui renvoie 2 listes dans une liste
         public List<List<MdlMatchClndr>> GetClndrLists(int champ_id, int slctdSsn)
         {
             try

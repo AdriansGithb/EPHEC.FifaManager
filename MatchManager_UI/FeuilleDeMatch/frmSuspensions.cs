@@ -17,19 +17,17 @@ namespace MatchManager_UI.FeuilleDeMatch
     {
         private MdlMatchMM matchOrigineSanction;
         private MdlTypeEvent slctdEvent ;
-        private MdlEquipeChamp slctdEquipeChamp ;
         private MdlJoueursParEquipe slctdJoueur ;
         private int nbEvent ;
         private int nbSuspensions;
 
-        public frmSuspensions(MdlMatchMM matchOrigineSanction,MdlTypeEvent slctdEvent, MdlEquipeChamp slctdEquipeChamp, MdlJoueursParEquipe slctdJoueur, int nbEvent )
+        public frmSuspensions(MdlMatchMM matchOrigineSanction,MdlTypeEvent slctdEvent, MdlJoueursParEquipe slctdJoueur, int nbEvent )
         {
             try
             {
                 InitializeComponent();
                 this.matchOrigineSanction = matchOrigineSanction;
                 this.slctdEvent = slctdEvent;
-                this.slctdEquipeChamp = slctdEquipeChamp;
                 this.slctdJoueur = slctdJoueur;
                 this.nbEvent = nbEvent;
                 this.nbSuspensions = nbEvent * slctdEvent.Nb_Jours_Suspension;

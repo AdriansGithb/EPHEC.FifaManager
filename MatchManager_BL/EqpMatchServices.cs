@@ -15,7 +15,7 @@ namespace MatchManager_BL
         public static int NbJoueursMax = 7;
         public static int NbJoueursMin = 5;
 
-        //vérifier le nb max de joueurs inscrits possible, renvoit true si seuil pas atteint
+        //vérifier le nb max de joueurs inscrits possible, renvoie true si seuil pas atteint
         public bool SeuilMaxJoueurs_OK(int nbJoueursAjoutes, int nbJoueursInscrits)
         {
             try
@@ -103,7 +103,7 @@ namespace MatchManager_BL
         }
 
         //vérifier si il y a eu des modifications dans la liste de l'équipe
-        //renvoit true si il y a eu des modifs, et false sinon
+        //renvoie true si il y a eu des modifs, et false sinon
         public bool CheckIfModification(List<MdlJoueursParEquipe> nwEqpList, List<MdlJoueursParEquipe> oldEqpList)
         {
             try
@@ -151,7 +151,7 @@ namespace MatchManager_BL
                 }
                 //en sortant de cette boucle, la liste joueursInscritsList comprend uniquement les joueurs qui n'étaient pas présents dans la liste d'origine
                 //et la liste jrDesinscritsList ne comprend que les joueurs d'origine qui n'ont pas été trouvé dans la nwList
-                //on rassemble les 2, dans l'ordre (d'abord la nouvelle, ensuite la 2e) et on renvoit
+                //on rassemble les 2, dans l'ordre (d'abord la nouvelle, ensuite la 2e) et on renvoie
                 List<List<MdlJoueursParEquipe>> rtrnList = new List<List<MdlJoueursParEquipe>>();
                 rtrnList.Add(joueursInscritsList);
                 rtrnList.Add(jrDesinscritsList);

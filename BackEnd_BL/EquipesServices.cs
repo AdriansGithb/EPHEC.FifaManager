@@ -49,7 +49,7 @@ namespace BackEnd_BL
         }
 
         //vérifier si il y a eu des modifications dans la liste de l'équipe
-        //renvoit true si il y a eu des modifs, et false sinon
+        //renvoie true si il y a eu des modifs, et false sinon
         public bool CheckIfModification(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList)
         {
             try
@@ -97,7 +97,7 @@ namespace BackEnd_BL
                 }
                 //en sortant de cette boucle, la liste nwJoueursList comprend uniquement les joueurs qui n'étaient pas présents dans la liste d'origine
                 //et la liste jrDesinscritsList ne comprend que les joueurs d'origine qui n'ont pas été trouvé dans la nwList
-                //on rassemble les 2, dans l'ordre (d'abord la nouvelle, ensuite la 2e) et on renvoit
+                //on rassemble les 2, dans l'ordre (d'abord la nouvelle, ensuite la 2e) et on renvoie
                 List<List<MdlJoueurs>> rtrnList = new List<List<MdlJoueurs>>();
                 rtrnList.Add(nwJoueursList);
                 rtrnList.Add(jrDesinscritsList);
@@ -155,7 +155,7 @@ namespace BackEnd_BL
             }
         }
         
-        //vérifier le nb max de joueurs inscrits possible, renvoit true si seuil pas atteint
+        //vérifier le nb max de joueurs inscrits possible, renvoie true si seuil pas atteint
         public bool SeuilMaxJoueurs_OK(int nbJoueursAjoutes, int nbJoueursInscrits)
         {
             try
@@ -175,7 +175,7 @@ namespace BackEnd_BL
             }
         }
         
-        //vérifier le nb min de joueurs inscrits dans l'équipe, renvoit true si seuil pas atteint
+        //vérifier le nb min de joueurs inscrits dans l'équipe, renvoie true si seuil pas atteint
         public bool SeuilMinJoueurs_OK(int nbJoueursEnMoins, int nbJoueursTotal)
         {
             try
@@ -300,7 +300,7 @@ namespace BackEnd_BL
         }
 
         //vérifier si l'équipe recevant le joueur comptera plus de 10 joueurs après transfert
-        //renvoit true si possible
+        //renvoie true si possible
         public bool NbJoueursMaxApresTansfert_OK(int nbJoueurs)
         {
             try
@@ -321,7 +321,7 @@ namespace BackEnd_BL
         }
 
         //vérifier si l'équipe donnant le joueur comptera min 5 joueurs après transfert
-        //renvoit true si possible
+        //renvoie true si possible
         public bool NbJoueursMinApresTansfert_OK(int nbJoueurs)
         {
             try

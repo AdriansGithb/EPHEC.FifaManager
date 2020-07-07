@@ -10,7 +10,7 @@ namespace BackEnd_DAL
 {
     public class ResultatsData
     {
-        // Appel de la SP SelectResults qui renvoit tous les résultats d'une saison entrée en paramètre
+        // Appel de la SP SelectResults qui renvoie tous les résultats d'une saison entrée en paramètre
         public List<SP_SelectResults_Result> SelectResultats(int champId, int ssn)
         {
             try
@@ -39,7 +39,7 @@ namespace BackEnd_DAL
             }
 
         }
-        // Appel de la SP SelectAllTypeResults qui renvoit tous les types de résultat de la BD (id et libelle)
+        // Appel de la SP SelectAllTypeResults qui renvoie tous les types de résultat de la BD (id et libelle)
         public List<SP_SelectAllTypeResults_Result> SelectAllTypeResults()
         {
             try

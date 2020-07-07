@@ -13,7 +13,7 @@ namespace MatchManager_DAL
     {
         private string _Connection = "Server=MSI\\SQLEXPRESS;Database=Fifa_Manager;User Id=UserMatchManagement;Password=;";
 
-        //renvoit une datatable avec la liste des joueurs d'une équipe disponibles pour inscription au match donné en param
+        //renvoie une datatable avec la liste des joueurs d'une équipe disponibles pour inscription au match donné en param
         public DataTable LoadAvailablePlayers_ForATeam_ForAMatch(int eqp_cochmp_id, int match_id)
         {
             try
@@ -55,7 +55,7 @@ namespace MatchManager_DAL
             }
         }
 
-        //renvoit une datatable avec la liste des joueurs d'une équipe déjà inscrits au match donné en param
+        //renvoie une datatable avec la liste des joueurs d'une équipe déjà inscrits au match donné en param
         public DataTable LoadRegisteredPlayers_ForATeam_ForAMatch(int eqp_cochmp_id, int match_id)
         {
             try
