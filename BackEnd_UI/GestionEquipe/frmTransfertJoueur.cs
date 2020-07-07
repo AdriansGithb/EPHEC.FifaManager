@@ -51,6 +51,15 @@ namespace BackEnd_UI.GestionEquipe
                 boxChampSelection.DataSource = lstChamp;
                 boxChampSelection.DisplayMember = "NomString";
                 boxChampSelection.ValueMember = "Id";
+                //si la liste est vide, aucune intersaison n'est en cours
+                if (boxChampSelection.Items.Count == 0)
+                {
+                    gpbxSlctChamp.Enabled = false;
+                    gpbxSlctEqpOrgn.Enabled = false;
+                    gpbxSlctEqpTrnsfrt.Enabled = false;
+                    btnTransferer.Enabled = false;
+                    throw new BusinessErrors("Aucune intersaison en cours");
+                }
             }
             catch (Exception ex)
             {

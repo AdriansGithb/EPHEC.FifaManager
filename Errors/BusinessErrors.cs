@@ -80,12 +80,17 @@ namespace Errors
                     _Message =
                         "Vous ne pouvez pas enregistrer un résultat 'Pas joué/encodé' dans une feuille de match. Veuillez modifier les résulats encodés.";
                     break;
-
-                //default:
-                //    _Message = "Erreur inconnue, veuillez contacter un administrateur";
-                default:
-                    _Message = erMsg;
+                case "Aucune intersaison en cours":
+                    _Message =
+                        "Aucune intersaison n'est en cours actuellement. Aucun transfert n'est donc éditable actuellement.";
                     break;
+
+                default:
+                    _Message = "Erreur inconnue, veuillez contacter un administrateur";
+                    break;
+                    //default:
+                    //    _Message = erMsg;
+                    //    break;
             }
         }
 
