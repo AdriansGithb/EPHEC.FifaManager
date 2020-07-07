@@ -60,7 +60,7 @@ namespace BackEnd_BL
                     oCarton.Joueur = $"{cart.Jr_Nom} {cart.Jr_Prenom} -{cart.Jr_ID}-";
                     oCarton.MatchID_Event = cart.MatchID_Event;
                     //personnalisation du champ match suspendu : si ID_MatchSuspendus est null c'est que la suspension n'a pas été effectuée, sinon enregistrer l'id du match de suspension
-                    if (oCarton.ID_MatchSuspendus is null)
+                    if (cart.MatchID_Suspension_effectuée is null)
                         oCarton.ID_MatchSuspendus = "Pas effectué";
                     else oCarton.ID_MatchSuspendus = cart.MatchID_Suspension_effectuée.ToString();
 
