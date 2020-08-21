@@ -41,9 +41,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -73,9 +73,9 @@ namespace BackEnd_BL
 
                 return rtrnLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -91,9 +91,9 @@ namespace BackEnd_BL
                 ResultatsData oData = new ResultatsData();
                 oData.ModifResult(mchId, newResDom, newResVst, lstUpdt);
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

@@ -52,9 +52,9 @@ namespace MatchManager_BL
                     scope.Complete();
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -80,9 +80,9 @@ namespace MatchManager_BL
                     scope.Complete();
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

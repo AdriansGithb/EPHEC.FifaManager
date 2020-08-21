@@ -61,9 +61,9 @@ namespace BackEnd_UI.GestionEquipe
                 boxChampSelection.DisplayMember = "NomString";
                 boxChampSelection.ValueMember = "Id";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

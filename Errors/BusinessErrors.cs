@@ -88,9 +88,9 @@ namespace Errors
                 default:
                     _Message = "Erreur inconnue, veuillez contacter un administrateur";
                     break;
-                    //default:
-                    //    _Message = erMsg;
-                    //    break;
+                //default:
+                //    _Message = erMsg;
+                //    break;
             }
         }
 

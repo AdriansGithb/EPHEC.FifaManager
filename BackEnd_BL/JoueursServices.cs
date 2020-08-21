@@ -26,9 +26,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -47,9 +47,9 @@ namespace BackEnd_BL
                 List<MdlJoueurs> rtrnList = ToMdlJoueurs(tempList);
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -67,9 +67,9 @@ namespace BackEnd_BL
                 List<MdlJoueurs> rtrnList = ToMdlJoueurs(tempList);
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -97,9 +97,9 @@ namespace BackEnd_BL
                 return rtrnList;
 
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -123,9 +123,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -157,9 +157,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

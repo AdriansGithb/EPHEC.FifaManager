@@ -35,9 +35,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return jrList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -68,9 +68,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return jrList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

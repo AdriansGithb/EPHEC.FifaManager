@@ -128,7 +128,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "frmModifResult";
-            this.Text = "frmModifResult";
+            this.Text = "Modifier les résultats";
             this.Load += new System.EventHandler(this.frmModifResult_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

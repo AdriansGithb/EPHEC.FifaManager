@@ -22,7 +22,7 @@ namespace MatchManager_BL
                  List<MdlMatchMM> matchLst = new List<MdlMatchMM>();
                  string dateString;
                  // réception de la datatable contenant les matchs
-                 DataTable oTab = oData.LoadMatchOfTheDayData(DateTime.Now)/*(new DateTime(2020,7,4))*/;
+                 DataTable oTab = oData.LoadMatchOfTheDayData/*(DateTime.Now)*/(new DateTime(2020,7,11));
                  DataTableReader oReader = oTab.CreateDataReader();
                  // transformation des objets de la datatable en liste de modèles matchs
                  while (oReader.Read())
@@ -38,9 +38,9 @@ namespace MatchManager_BL
                  oReader.Close();
                  return matchLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -62,16 +62,16 @@ namespace MatchManager_BL
 
                 foreach (MdlMatchMM oMatch in fullMatchList)
                 {
-                    bool isLaterThanToday = IsLaterThanToday(oMatch.Date);
-                    if (isLaterThanToday)
+                    bool isLaterThanToday = IsLaterThanToday(oMatch.Date); /* mettre ces lignes en commentaires pour désactiver le controle avec la date du jour*/
+                    if (isLaterThanToday)                                   /* pour pouvoir inscrire des joueurs a un match dont la date est dépassée */
                         rtrnList.Add(oMatch);
                 }
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -127,9 +127,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -163,9 +163,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -187,9 +187,9 @@ namespace MatchManager_BL
                 if (scoreVisit < 0)
                     scoreVisit = 0;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -222,9 +222,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return matchLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -245,9 +245,9 @@ namespace MatchManager_BL
                     scope.Complete();
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {

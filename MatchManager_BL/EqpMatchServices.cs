@@ -25,10 +25,6 @@ namespace MatchManager_BL
                     return true;
                 else return false;
             }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
-            }
             catch (Exception ex)
             {
                 throw new BusinessErrors(ex.Message);
@@ -92,9 +88,9 @@ namespace MatchManager_BL
                         InscrireJoueurs_EqpMatch(inscriptionList, match);
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -157,9 +153,9 @@ namespace MatchManager_BL
                 rtrnList.Add(jrDesinscritsList);
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -184,9 +180,9 @@ namespace MatchManager_BL
 
                 oData.SendMatchRegistrationsData(insertTab);
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -211,9 +207,9 @@ namespace MatchManager_BL
 
                 oData.SendMatchUnsubscriptionsData(deleteTab);
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -232,9 +228,9 @@ namespace MatchManager_BL
                 forfaitEqpVisit = !SeuilMinJoueurs_OK(oServices
                     .GetRegisteredTeamPlayersList_ForAMatch(match.EqpVisit_CoChmp_ID, match.Match_ID).Count);
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

@@ -46,9 +46,9 @@ namespace MatchManager_UI
                 boxChampSelection.DisplayMember = "NomString";
                 boxChampSelection.SelectedIndex = 0;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

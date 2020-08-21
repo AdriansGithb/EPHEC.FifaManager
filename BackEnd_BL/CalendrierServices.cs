@@ -57,9 +57,9 @@ namespace BackEnd_BL
 
                 return possible;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -127,9 +127,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -165,9 +165,9 @@ namespace BackEnd_BL
                 return matchList;
 
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors)
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -203,9 +203,9 @@ namespace BackEnd_BL
                 return matchList;
 
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -228,9 +228,9 @@ namespace BackEnd_BL
 
                 return rtrnLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -351,9 +351,9 @@ namespace BackEnd_BL
                 }
                 return rtrnMatchList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -377,9 +377,9 @@ namespace BackEnd_BL
 
                 return datedMatchList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -398,9 +398,9 @@ namespace BackEnd_BL
 
                 return datedMatchList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -418,9 +418,9 @@ namespace BackEnd_BL
                 fullList.AddRange(GenererCalendrier_Saison(ssnList[1]));
                 return fullList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -439,9 +439,9 @@ namespace BackEnd_BL
                     oData.InsertUpdateMtchClndr(match.Match_ID,match.Date,match.Saison_Id,match.EqpDom_CoChmp_ID, match.EqpVisit_CoChmp_ID, match.LastUpdate);
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -457,9 +457,9 @@ namespace BackEnd_BL
                 CalendrierData oData = new CalendrierData();
                 oData.SetDateGnrClndr_Ssn(ssn_id);
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -475,9 +475,9 @@ namespace BackEnd_BL
                 DateTime EndDate = beginDate.AddDays(MdlChampionnat.SsnWeeks * 7);
                 return EndDate;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -496,9 +496,9 @@ namespace BackEnd_BL
                     return false;
                 else return true;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

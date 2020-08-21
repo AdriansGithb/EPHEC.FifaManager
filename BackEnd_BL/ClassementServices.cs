@@ -36,9 +36,9 @@ namespace BackEnd_BL
 
                 return returnLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

@@ -51,9 +51,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 checkIfNextMatchRule_AndAutoselect();
 
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -75,9 +75,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 }
                 lstbxMatchsRestant.DisplayMember = "NomString";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

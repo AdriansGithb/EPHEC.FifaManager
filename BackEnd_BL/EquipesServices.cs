@@ -20,27 +20,32 @@ namespace BackEnd_BL
         public void SaveModifications(List<MdlJoueurs> nwEqpList, List<MdlJoueurs> oldEqpList, MdlEquipeChamp eqp)
         {
             try
-            {                //obtenir une liste d'inscriptions et une liste de désinscriptions à réaliser
-                List<List<MdlJoueurs>> triLists = TrierInscriptions_Desinscriptions_Joueurs(nwEqpList, oldEqpList);
-                List<MdlJoueurs> inscriptionList = triLists[0];
-                List<MdlJoueurs> desinscriptionList = triLists[1];
-                //si les 2 listes sont vides, l'utilisateur a sauvé sans qu'aucun changement n'ait réellement été fait sur la composition d'équipe
-                if (inscriptionList.Count == 0 && desinscriptionList.Count == 0)
-                    throw new BusinessErrors("Aucune modification d'équipe");
-                //sinon, si au moins une des 2 contient des objets
-                else
-                {                
-                    //inscrire la liste d'inscriptions, si la liste contient des objets
-                    if(inscriptionList.Count>0)
-                        InscrireJoueurs_Eqp(inscriptionList,eqp);
-                    //désinscrire la liste de désinscriptions, si la liste contient des objets
-                    if (desinscriptionList.Count>0)
-                        DesinscrireJoueurs_Eqp(desinscriptionList,eqp);
-                }
-            }
-            catch (BusinessErrors ex)
             {
-                throw ex;
+                if (nwEqpList.Count >= NbJoueursMin && nwEqpList.Count <= NbJoueursMax)
+                {
+                    //obtenir une liste d'inscriptions et une liste de désinscriptions à réaliser
+                    List<List<MdlJoueurs>> triLists = TrierInscriptions_Desinscriptions_Joueurs(nwEqpList, oldEqpList);
+                    List<MdlJoueurs> inscriptionList = triLists[0];
+                    List<MdlJoueurs> desinscriptionList = triLists[1];
+                    //si les 2 listes sont vides, l'utilisateur a sauvé sans qu'aucun changement n'ait réellement été fait sur la composition d'équipe
+                    if (inscriptionList.Count == 0 && desinscriptionList.Count == 0)
+                        throw new BusinessErrors("Aucune modification d'équipe");
+                    //sinon, si au moins une des 2 contient des objets
+                    else
+                    {
+                        //inscrire la liste d'inscriptions, si la liste contient des objets
+                        if (inscriptionList.Count > 0)
+                            InscrireJoueurs_Eqp(inscriptionList, eqp);
+                        //désinscrire la liste de désinscriptions, si la liste contient des objets
+                        if (desinscriptionList.Count > 0)
+                            DesinscrireJoueurs_Eqp(desinscriptionList, eqp);
+                    }
+                }
+                else throw new BusinessErrors("Une équipe doit contenir minimum 5 joueurs et maximum 10 pour être inscrite");
+            }
+            catch (BusinessErrors )
+            {
+                throw ;
             }
             catch (Exception ex)
             {
@@ -103,9 +108,9 @@ namespace BackEnd_BL
                 rtrnList.Add(jrDesinscritsList);
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -124,9 +129,9 @@ namespace BackEnd_BL
                     oData.InsertJoueur_Eqp(oJoueur.Id,eqp.Id);
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -145,9 +150,9 @@ namespace BackEnd_BL
                     oData.DeleteJoueur_Eqp(oJoueur.Id, eqp.Id);
                 }
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -165,10 +170,6 @@ namespace BackEnd_BL
                     return true;
                 else return false;
             }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
-            }
             catch (Exception ex)
             {
                 throw new BusinessErrors(ex.Message);
@@ -184,10 +185,6 @@ namespace BackEnd_BL
                 if (nwTotal >= NbJoueursMin)
                     return true;
                 else return false;
-            }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
             }
             catch (Exception ex)
             {
@@ -215,9 +212,9 @@ namespace BackEnd_BL
 
                 return rtrnList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -264,9 +261,9 @@ namespace BackEnd_BL
 
                 return eqpList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -289,9 +286,9 @@ namespace BackEnd_BL
                 //sinon, renvoyer -1
                 else return -1;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -310,10 +307,6 @@ namespace BackEnd_BL
                     return false;
                 else return true;
             }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
-            }
             catch (Exception ex)
             {
                 throw new BusinessErrors(ex.Message);
@@ -330,10 +323,6 @@ namespace BackEnd_BL
                 if (nbJoueurs <= 5)
                     return false;
                 else return true;
-            }
-            catch (BusinessErrors ex)
-            {
-                throw ex;
             }
             catch (Exception ex)
             {
@@ -363,9 +352,9 @@ namespace BackEnd_BL
                     throw new Exception("Moins de 5 joueurs");
                 else throw new Exception("Plus de 10 joueurs");
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

@@ -140,9 +140,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 lblGoalsDom.Text = scoreDom.ToString();
                 lblGoalsVisit.Text = scoreVisit.ToString();
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -174,9 +174,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxJoueurs.DataSource = oServices.GetRegisteredTeamPlayersList_ForAMatch(slctdEqp.Id,slctdMatch.Match_ID);
                 boxJoueurs.DisplayMember = "NomPrenom";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -204,9 +204,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxEquipes.SelectedIndex = 0;
 
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -227,9 +227,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxResultVisit.DataSource = oServices.GetResultTypes();
                 boxResultVisit.DisplayMember = "Libelle";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -246,9 +246,9 @@ namespace MatchManager_UI.FeuilleDeMatch
                 boxEvent.DataSource = oServices.GetEventTypes();
                 boxEvent.DisplayMember = "Libelle";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {

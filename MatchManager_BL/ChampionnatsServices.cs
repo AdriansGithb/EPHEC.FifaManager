@@ -17,13 +17,20 @@ namespace MatchManager_BL
                 //si pas de championnat durant l'année en cours : renvoie un championnat avec NomString vide
         public MdlChampionnat GetChampOfThisYear()
         {
-            List<MdlChampionnat> fullList = GetAllChampionnats();
-            MdlChampionnat rtrnChamp = new MdlChampionnat();
-            if (fullList.Exists(champ => champ.Annee == DateTime.Now.Year))
-                rtrnChamp = fullList.Find(champ => champ.Annee == DateTime.Now.Year);
-            else rtrnChamp.NomString = "";
+            try
+            {
+                List<MdlChampionnat> fullList = GetAllChampionnats();
+                MdlChampionnat rtrnChamp = new MdlChampionnat();
+                if (fullList.Exists(champ => champ.Annee == DateTime.Now.Year))
+                    rtrnChamp = fullList.Find(champ => champ.Annee == DateTime.Now.Year);
+                else rtrnChamp.NomString = "";
 
-            return rtrnChamp;
+                return rtrnChamp;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessErrors(ex.Message);
+            }
         }
 
         //renvoie une liste contenant les championnats de l'année en cours, ou futures
@@ -43,9 +50,9 @@ namespace MatchManager_BL
 
                 return sortedList;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -74,9 +81,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return lstChamps;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -117,9 +124,9 @@ namespace MatchManager_BL
                 oReader.Close();
                 return matchLst;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {

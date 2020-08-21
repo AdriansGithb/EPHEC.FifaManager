@@ -96,9 +96,9 @@ namespace MatchManager_UI.Inscription
                 lstbxJoueursInscrits_Load();
                 lstbxJoueursDispo_Load();
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -121,9 +121,9 @@ namespace MatchManager_UI.Inscription
                 }
                 lstbxJoueursDispo.DisplayMember = "NomPrenom";
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -147,9 +147,9 @@ namespace MatchManager_UI.Inscription
                 lstbxJoueursMatch.DisplayMember = "NomPrenom";
                 eqpMatchOrigine = lstJoueursInscrits;
             }
-            catch (BusinessErrors ex)
+            catch (BusinessErrors )
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -256,10 +256,6 @@ namespace MatchManager_UI.Inscription
             {
                 lstbxJoueursDispo.ClearSelected();
                 lstbxJoueursMatch.ClearSelected();
-            }
-            catch (BusinessErrors ex)
-            {
-                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
