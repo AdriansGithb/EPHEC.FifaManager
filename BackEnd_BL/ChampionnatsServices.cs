@@ -155,7 +155,7 @@ namespace BackEnd_BL
                     List<MdlSaison> ssnList = GetChampSaisons(champ.Id);
                     MdlSaison frstSsn = ssnList.Find(ssn => ssn.FirstOrSecond == 1);
                     //si la date est postérieure à aujourd'hui,ajouter le championnat dans la liste à retourner
-                    if (frstSsn.Debut > DateTime.Today)
+                    if (frstSsn.Debut > DateTime.Today)     // à mettre en commentaire pour remplir la db !!!
                         rtrnList.Add(champ);
                 }
 

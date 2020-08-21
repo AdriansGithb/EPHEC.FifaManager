@@ -23,6 +23,9 @@ namespace BackEnd_BL
             {
                 bool possible = false;
                 blckdSsn = -1;
+
+                //return true; // (!!!!uniquement pour le remplissage de la db)
+
                 //récupération des saisons du championnats sélectionné
                 ChampionnatsServices oServices = new ChampionnatsServices();
                 List<MdlSaison> lstSsnChamp = oServices.GetChampSaisons(champ_id);

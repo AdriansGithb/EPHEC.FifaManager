@@ -44,7 +44,7 @@ namespace MatchManager_BL
                 foreach (MdlChampionnat oChamp in toSortList)
                 {
                     //si l'année du championnat est égale ou supérieure à l'année du jour : l'ajouter à la liste
-                    if (oChamp.Annee >= DateTime.Now.Year)
+                    if (oChamp.Annee >= DateTime.Now.Year)          // en commentaire pour le remplissage db
                         sortedList.Add(oChamp);
                 }
 
