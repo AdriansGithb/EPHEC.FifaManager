@@ -1,4 +1,10 @@
 # FifaManager
+Langages et technologies utilisées : 
+DataBase : T-SQL, Procédures stockées, SQL Server, avec sécurité sur base de schémas
+BackEnd : C#, .Net, Entity Framework (app "BackEnd"), ADO.Net (app "MatchManager")
+FrontEnd : C#, Windows Forms
++ Gestion des erreurs
+
 Fifa Manager SGBD project : Projet réalisé dans le cadre du cours de Systèmes de Gestion de Bases de Données
 
 Enoncé :
